@@ -140,7 +140,8 @@ export async function getStaticProps({params: {name}}) {
       establishment: specificEstablishment[0],
       images: specificEstablishment[0].images,
       promoteImage: specificEstablishment[0].promoteImage
-    }
+    },  
+      revalidate: 1,
   }
 }
 
