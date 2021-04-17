@@ -37,7 +37,8 @@ export default function EstablishmentsPage({establishments}) {
 					}
 	    
 	    				.main {
-	    					height: auto;
+	    					height: 100vh;
+
 	    				}
 
 					.establishment-container:hover  {
