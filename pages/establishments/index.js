@@ -38,6 +38,7 @@ export default function EstablishmentsPage({establishments}) {
 	    
 	    				.main {
 	    					height: auto;
+	    				}
 
 					.establishment-container:hover  {
 						transform: scale(1.01);
