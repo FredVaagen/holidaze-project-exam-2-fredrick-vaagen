@@ -74,6 +74,7 @@ export async function getStaticProps() {
 	const resPrice = await fetch(`${BASE_URL}/establishments?_sort=price:asc`);
 	const establishments = await res.json();
 	return {
-	  props: { establishments },
+	  props: { establishments },   
+	  revalidate: 1, 
 	};
   }
