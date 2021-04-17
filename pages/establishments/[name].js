@@ -154,6 +154,6 @@ export async function getStaticPaths() {
             params: {name: String(el.name)}
         })),
         
-        fallback: false
+        fallback: true
     };
 }
