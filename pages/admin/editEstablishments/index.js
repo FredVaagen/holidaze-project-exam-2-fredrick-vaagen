@@ -7,9 +7,6 @@ import Image from 'next/image'
 
 
 export default function EstablishmentsPage({establishments}) {
-	
-	location.reload()
-	
 	return (
 		<div className="establishments">
 			<Container className="mt-5 mb-5"><h2>Click on a establishment to edit</h2></Container>
