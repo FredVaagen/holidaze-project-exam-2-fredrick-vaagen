@@ -27,14 +27,12 @@ const ImageUpload = (props) => {
      
     } 
 
-    function reloadPage() {
-      location.reload()
-    }
+
 
   return (
     <Container>
     <div className="FileUpload">
-      <form onSubmit={handleSubmit(submitData, reloadPage)}>
+      <form onSubmit={handleSubmit(submitData)}>
         <div><input hidden type="text" {...register("name")} /></div>
         <div><label>Upload establishment images (Maximum of 5)</label><input type="file" multiple {...register("file")} /></div>
         <button type="submit">Upload</button>
