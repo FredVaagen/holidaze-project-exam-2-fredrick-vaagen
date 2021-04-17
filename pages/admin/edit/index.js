@@ -2,7 +2,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
 import Link from 'next/link'
-import { BASE_URL } from './../../../constants/api';
+import { BASE_URL } from '../../../constants/api';
 import Image from 'next/image'
 
 
@@ -11,7 +11,7 @@ export default function EstablishmentsPage({establishments}) {
 		<div className="establishments">
 			<Container className="mt-5 mb-5"><h2>Click on a establishment to edit</h2></Container>
 			{establishments.map(establishment => (	
-				<Link href="/admin/editEstablishments/[name]" as={`/admin/editEstablishments/${establishment.name}`} key={establishment.id}>
+				<Link href="/admin/edit/[name]" as={`/admin/edit/${establishment.name}`} key={establishment.id}>
 					<Container className="establishment-container" >
 						<Row className="establishment-specific">
 							<Col xs={12} md={3}>

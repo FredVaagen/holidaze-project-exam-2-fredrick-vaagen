@@ -5,9 +5,9 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import Carousel from 'react-bootstrap/Carousel'
-import { BASE_URL } from './../../../constants/api';
+import { BASE_URL } from '../../../constants/api';
 import SimpleMap from "../../../components/establishments/maps/SimpleMap"
-import ImageUpload from './../../../components/admin/establishment/ImageUpload';
+import ImageUpload from '../../../components/admin/establishment/ImageUpload';
 
 
 export default function Establishment({establishment, images, promoteImage}) {

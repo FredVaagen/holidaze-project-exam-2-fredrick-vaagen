@@ -17,7 +17,7 @@ const SimpleMap = (props) => {
       };
     
     const [center, setCenter] = useState({lat: latitude, lng: longitude });
-    const [zoom, setZoom] = useState(15);
+    const [zoom, setZoom] = useState(14);
     
     return (
         <div style={{ height: '300px', width: '100%' }}>

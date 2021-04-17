@@ -36,7 +36,7 @@ const EditEstablishment = (props, ctx) => {
     console.log("Success", res);
 
     if (data.name) {
-      router.replace(`/admin/editEstablishments/${data.name}`)
+      router.replace(`/admin/edit/${data.name}`)
     } else router.reload()
   
    
@@ -59,11 +59,12 @@ try {
     },
   });
   console.log("Success", res);
+  router.push("/admin")
 
 } catch (error) {
   console.log(error);
 }
-router.push("/admin")
+
 };
 
   return (

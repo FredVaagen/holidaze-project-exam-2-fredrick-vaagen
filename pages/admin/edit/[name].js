@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button'
 import Image from 'react-bootstrap/Image'
 import Carousel from 'react-bootstrap/Carousel'
 import SimpleMap from '../../../components/establishments/maps/SimpleMap'
-import { BASE_URL } from './../../../constants/api';
+import { BASE_URL } from '../../../constants/api';
 import EditEstablishment from '../../../components/admin/establishment/EditEstablishment'
 
 export default function Establishment({establishment, images, promoteImage}) {
