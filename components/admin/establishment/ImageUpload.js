@@ -24,13 +24,17 @@ const ImageUpload = (props) => {
         data: formData
       });
       console.log("Success", res);
-      location.reload()
+     
     } 
+
+    function reloadPage() {
+      location.reload()
+    }
 
   return (
     <Container>
     <div className="FileUpload">
-      <form onSubmit={handleSubmit(submitData)}>
+      <form onSubmit={handleSubmit(submitData, reloadPage)}>
         <div><input hidden type="text" {...register("name")} /></div>
         <div><label>Upload establishment images (Maximum of 5)</label><input type="file" multiple {...register("file")} /></div>
         <button type="submit">Upload</button>
@@ -51,6 +55,7 @@ const ImageUpload = (props) => {
         .FileUpload button  {
             width: 200px;
             margin-top: 2rem;
+            margin-bottom: 2rem;
           }
 	    `}       
 		</style>
