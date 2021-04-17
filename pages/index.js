@@ -142,7 +142,8 @@ export async function getStaticProps() {
 	const establishments = await res.json();
 
 	return {
-	  props: { establishments },
+	  props: { establishments },  
+		revalidate: 1, 
 	};
   }
 
