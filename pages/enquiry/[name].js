@@ -122,7 +122,8 @@ export async function getStaticProps({params: {name}}) {
     return {
       props: {
         establishment: specificEstablishment[0]
-      }
+      }, 
+        revalidate: 1, 
     }
   }
   
