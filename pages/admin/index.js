@@ -123,7 +123,7 @@ const Admin = ({enquiries, contacts}) => {
 		]);		
 	return { 
 		props: { enquiries, contacts, establishments }, 
-		revalidate: 1,
+		
 	};
 }
 
