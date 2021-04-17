@@ -97,7 +97,7 @@ const Admin = ({enquiries, contacts}) => {
 		</Container>
 	);
   };
-  export async function getServerSideProps(ctx) {
+  export async function getStaticProps(ctx) {
     const token = parseCookies(ctx).token
     const [enquiriesRes, contactsRes, establishmentsRes] = await Promise.all([
 		fetch(`${BASE_URL}/enquiries`, {
@@ -121,7 +121,10 @@ const Admin = ({enquiries, contacts}) => {
 			contactsRes.json(),
 			establishmentsRes.json()
 		]);		
-	return { props: { enquiries, contacts, establishments } };
+	return { 
+		props: { enquiries, contacts, establishments }, 
+		revalidate: 1,
+	};
 }
 
 export default Admin;
