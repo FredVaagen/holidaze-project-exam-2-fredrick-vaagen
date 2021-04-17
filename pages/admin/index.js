@@ -97,7 +97,7 @@ const Admin = ({enquiries, contacts}) => {
 		</Container>
 	);
   };
-  export async function getStaticProps(ctx) {
+  export async function getServerSideProps(ctx) {
     const token = parseCookies(ctx).token
     const [enquiriesRes, contactsRes, establishmentsRes] = await Promise.all([
 		fetch(`${BASE_URL}/enquiries`, {
