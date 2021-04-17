@@ -35,6 +35,9 @@ export default function EstablishmentsPage({establishments}) {
 						margin-bottom: 100px;
 						border-radius: 50px;
 					}
+	    
+	    				.main {
+	    					height: auto;
 
 					.establishment-container:hover  {
 						transform: scale(1.01);
