@@ -63,7 +63,7 @@ alert(`Are you sure you want to remove this establishment from Holidaze?`)
     console.log("Success", res);
   } catch (error) {
     console.log(error);
-  }
+  } window.location.reload()
 }
 
 
@@ -84,7 +84,7 @@ alert(`Are you sure you want to remove this establishment from Holidaze?`)
     </div>
 
 
-   <form onSubmit={window.location.reload()(removeEstablishment)}><button className="remove" type="submit">Remove establishment</button></form >
+   <form onSubmit={removeEstablishment}><button className="remove" type="submit">Remove establishment</button></form >
 
     <style global jsx >
 			{`
