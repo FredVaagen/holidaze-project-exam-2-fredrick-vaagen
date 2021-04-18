@@ -6,9 +6,10 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import EditIcon from '@material-ui/icons/Edit';
 import { BASE_URL } from '../../constants/api'
 
-const Admin = ({enquiries, contacts}) => {
+const Admin = ({enquiries, contacts, establishments}) => {
 	return (
 		<Container fluid className="p-0">
 			<Tabs defaultActiveKey="enquiries" >
@@ -49,12 +50,21 @@ const Admin = ({enquiries, contacts}) => {
 					</Container>
 				</Tab>
 				<Tab eventKey="editEstablishment" title="Edit establishments">
-				<Container className="create-establishment">
-						<Row><Col><h2>Edit a establishment</h2></Col></Row>
-						<Link  href="/admin/edit"><button className="create-establishment-button"><AddCircleIcon /></button></Link>
+					<Container className="create-establishment">
+						<h2>Edit a establishment</h2>
+						{establishments.map(establishment => (
+						<Container key={establishment.id} className="establishment-container" >
+							<Row className="establishment-specific">
+								<Col xs={12} md={9} className="mt-5">
+								<Link href="/admin/edit/[name]" as={`/admin/edit/${establishment.name}`}><p>Name: {establishment.name} </p></Link>
+								</Col>
+							</Row>
+				</Container>
+					))}	
 					</Container>
 				</Tab>
 			</Tabs>
+
 			<style global jsx >
 			{`
 				.main {

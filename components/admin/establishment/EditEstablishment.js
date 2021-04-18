@@ -34,36 +34,34 @@ const EditEstablishment = (props) => {
       data: formDataToSend
     });
     console.log("Success", res);
-
     if (data.name) {
       router.replace(`/admin/edit/${data.name}`)
     } else router.reload()
-  
-   
-  
   } catch (error) {
     console.log(error);
   }
 };
 
 const removeEstablishment = async (ctx) => {
-const token = parseCookies(ctx).token
-
-alert(`Are you sure you want to remove this establishment from Holidaze?`)
-
-  try {
-    const res = await axios({
-      method: "DELETE",
-      url: `${BASE_URL}/establishments/${props.id}`,
-      headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-      },
-    });
-    console.log("Success", res);
-  } catch (error) {
-    console.log(error);
-  }
+  const token = parseCookies(ctx).token
+  if (confirm("Are you sure you want to remove this establishment?")) {  
+    try {
+      const res = await axios({
+        method: "DELETE",
+        url: `${BASE_URL}/establishments/${props.id}`,
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("Success", res);
+    } catch (error) {
+      console.log(error);
+    } 
+      router.back()
+    } else { 
+      router.reload()
+  } 
 }
 
   return (
@@ -82,7 +80,7 @@ alert(`Are you sure you want to remove this establishment from Holidaze?`)
     </div>
 
 
-   <form onSubmit={removeEstablishment}><button className="remove" type="submit">Remove establishment</button></form >
+   <form onSubmit={handleSubmit(removeEstablishment)}><button className="remove" type="submit">Remove establishment</button></form >
 
     <style global jsx >
 			{`

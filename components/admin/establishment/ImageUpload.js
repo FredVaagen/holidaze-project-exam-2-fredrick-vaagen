@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { parseCookies  } from 'nookies'
@@ -8,7 +9,8 @@ import { BASE_URL } from './../../../constants/api';
 const ImageUpload = (props) => {
   const id = props.id
   const { register, handleSubmit } = useForm();
-  
+  const router = useRouter()
+
   const submitData = async (data, ctx) => {
       const token = parseCookies(ctx).token
       

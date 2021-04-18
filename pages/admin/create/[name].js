@@ -11,7 +11,7 @@ import ImageUpload from '../../../components/admin/establishment/ImageUpload';
 
 
 export default function Establishment({establishment, images, promoteImage}) {
-  const router = useRouter();
+  const router = useRouter()
 
   
   if (!router.isFallback && !images, !promoteImage) {
