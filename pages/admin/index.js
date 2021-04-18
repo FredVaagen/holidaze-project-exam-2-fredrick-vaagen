@@ -1,13 +1,12 @@
+import Link from "next/link";
 import { parseCookies  } from 'nookies'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
-import { BASE_URL } from '../../constants/api'
-import Link from "next/link";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import { AddCircle } from '@material-ui/icons'
+import { BASE_URL } from '../../constants/api'
 
 const Admin = ({enquiries, contacts}) => {
 	return (
@@ -46,15 +45,14 @@ const Admin = ({enquiries, contacts}) => {
 				<Tab eventKey="createEstablishment" title="Create new establishment">
 					<Container className="create-establishment">
 						<Row><Col><h2>Create establishment</h2></Col></Row>
-						<Link href="/admin/createEstablishment"><button className="create-establishment-button"><AddCircleIcon /></button></Link>
+						<Link href="/admin/create"><button className="create-establishment-button"><AddCircleIcon /></button></Link>
 					</Container>
 				</Tab>
 				<Tab eventKey="editEstablishment" title="Edit establishments">
 				<Container className="create-establishment">
 						<Row><Col><h2>Edit a establishment</h2></Col></Row>
-						<Link  href="/admin/editEstablishments"><button className="create-establishment-button"><AddCircleIcon /></button></Link>
+						<Link  href="/admin/edit"><button className="create-establishment-button"><AddCircleIcon /></button></Link>
 					</Container>
-	
 				</Tab>
 			</Tabs>
 			<style global jsx >
@@ -91,9 +89,8 @@ const Admin = ({enquiries, contacts}) => {
 				.MuiSvgIcon-root:hover {
 					transform: scale(1.1);
 				}
-				
 			`}
-		</style>
+			</style>
 		</Container>
 	);
   };
