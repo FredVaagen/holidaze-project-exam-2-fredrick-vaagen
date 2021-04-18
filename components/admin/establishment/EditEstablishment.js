@@ -50,7 +50,7 @@ const removeEstablishment = async (ctx) => {
 const token = parseCookies(ctx).token
 
 alert(`Are you sure you want to remove this establishment from Holidaze?`)
-if (alert == true) {
+
   try {
     const res = await axios({
       method: "DELETE",
@@ -63,11 +63,7 @@ if (alert == true) {
     console.log("Success", res);
   } catch (error) {
     console.log(error);
-  } 
-  
-  } else { router.reload()
   }
-
 }
 
 
@@ -88,7 +84,7 @@ if (alert == true) {
     </div>
 
 
-   <form onSubmit={removeEstablishment}><button className="remove" type="submit">Remove establishment</button></form >
+   <form onSubmit={window.location.reload()(removeEstablishment)}><button className="remove" type="submit">Remove establishment</button></form >
 
     <style global jsx >
 			{`
