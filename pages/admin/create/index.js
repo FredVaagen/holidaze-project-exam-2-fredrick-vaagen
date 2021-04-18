@@ -43,11 +43,9 @@ function createEstablishment()  {
       const res = await axios({
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`
         },
-          url:  `${BASE_URL}/upload`,
-        
+        url: `${BASE_URL}/upload`,
         data: formData
       });
       console.log("Success", res);
