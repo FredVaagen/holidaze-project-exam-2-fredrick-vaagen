@@ -11,6 +11,8 @@ const ImageUpload = (props) => {
   const { register, handleSubmit } = useForm();
   const router = useRouter()
 
+  router.reload()
+
   const submitData = async (data, ctx) => {
       const token = parseCookies(ctx).token
       
@@ -32,8 +34,8 @@ const ImageUpload = (props) => {
         data: formData
       });
       console.log("Success", res);
-      router.reload(), 
       router.reload()
+      
     } 
   return (
     <Container>
