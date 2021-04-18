@@ -12,8 +12,6 @@ function createEstablishment()  {
 
   const submitData = async (data,ctx) => {
     const token = parseCookies(ctx).token
-
-
     try {
       const formDataToSend = {
         name: data.name,
@@ -44,7 +42,12 @@ function createEstablishment()  {
       
       const res = await axios({
         method: "POST",
-        url:  `${BASE_URL}/upload`,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+          url:  `${BASE_URL}/upload`,
+        
         data: formData
       });
       console.log("Success", res);
