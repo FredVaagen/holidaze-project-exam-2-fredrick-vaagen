@@ -8,7 +8,9 @@ const ImageUpload = (props) => {
   const id = props.id
   const { register, handleSubmit } = useForm();
   
-  const submitData = async (data) => {
+  const submitData = async (data, ctx) => {
+      const token = parseCookies(ctx).token
+      
       const formData = new FormData();
       formData.append("files", data.file[0]);
       formData.append("files", data.file[1]);
@@ -20,15 +22,14 @@ const ImageUpload = (props) => {
       formData.append("field", "images");
       const res = await axios({
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
         url: `${BASE_URL}/upload`,
         data: formData
       });
       console.log("Success", res);
-     
     } 
-
-
-
   return (
     <Container>
     <div className="FileUpload">

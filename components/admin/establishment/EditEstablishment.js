@@ -7,11 +7,11 @@ import axios from "axios";
 import ImageUpload from "./ImageUpload";
 import { useRouter } from "next/router";
 
-const EditEstablishment = (props, ctx) => {
+const EditEstablishment = (props) => {
   const { register, handleSubmit } = useForm();
   const router = useRouter();
  
-  const submitData = async (data) => {
+  const submitData = async (data,ctx) => {
     const token = parseCookies(ctx).token
     try {
     const formDataToSend = {
