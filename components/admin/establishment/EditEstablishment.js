@@ -48,23 +48,29 @@ const EditEstablishment = (props) => {
 
 const removeEstablishment = async (ctx) => {
 const token = parseCookies(ctx).token
-alert(`Are you sure you want to remove this establishment from Holidaze?`)
-router.push("/admin")
-try {
-  const res = await axios({
-    method: "DELETE",
-    url: `${BASE_URL}/establishments/${props.id}`,
-    headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-    },
-  });
-  console.log("Success", res);
-} catch (error) {
-  console.log(error);
-} 
 
-};
+alert(`Are you sure you want to remove this establishment from Holidaze?`)
+if (alert == true) {
+  try {
+    const res = await axios({
+      method: "DELETE",
+      url: `${BASE_URL}/establishments/${props.id}`,
+      headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log("Success", res);
+  } catch (error) {
+    console.log(error);
+  } 
+  
+  } else { router.reload()
+  }
+
+}
+
+
 
   return (
     <Container>
