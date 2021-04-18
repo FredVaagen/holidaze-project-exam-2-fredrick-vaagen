@@ -105,6 +105,7 @@ export default function Establishment({establishment, images, promoteImage}) {
 
             .carousel-item img {
                 max-height: 300px;
+                width: 100%;
             }
 
             .price-location {
