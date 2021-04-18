@@ -49,6 +49,7 @@ const EditEstablishment = (props) => {
 const removeEstablishment = async (ctx) => {
 const token = parseCookies(ctx).token
 alert(`Are you sure you want to remove this establishment from Holidaze?`)
+router.push("/admin")
 try {
   const res = await axios({
     method: "DELETE",
@@ -59,11 +60,9 @@ try {
     },
   });
   console.log("Success", res);
-  router.push("/admin")
-
 } catch (error) {
   console.log(error);
-}
+} 
 
 };
 
