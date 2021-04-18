@@ -11,8 +11,6 @@ const ImageUpload = (props) => {
   const { register, handleSubmit } = useForm();
   const router = useRouter()
 
-  router.reload()
-
   const submitData = async (data, ctx) => {
       const token = parseCookies(ctx).token
       
