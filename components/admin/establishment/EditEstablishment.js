@@ -40,7 +40,7 @@ const EditEstablishment = (props) => {
     } catch (error) {
       console.log(error);
     }
-    router.reload();
+  
   };
 
   const removeEstablishment = async (ctx) => {
@@ -96,7 +96,7 @@ const EditEstablishment = (props) => {
             <label>Address</label>
             <input type="text" {...register("address")} />
           </div>
-          <button type="submit">Create</button>
+          <button type="submit">Update</button>
         </form>
       </div>
 
@@ -123,7 +123,7 @@ const EditEstablishment = (props) => {
             margin-top: 3rem;
             background: none;
             transistion: 1s;
-            border: none;
+            border: 1px solid black;
           }
           .remove:hover {
             background: red;

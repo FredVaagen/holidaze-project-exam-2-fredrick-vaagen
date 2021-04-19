@@ -4,6 +4,7 @@ import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import ListGroup from "react-bootstrap/ListGroup";
 import Container from "react-bootstrap/Container";
 import { BASE_URL } from "../../constants/api";
 import CreateEstablishment from "../../components/admin/establishment/CreateEstablishment";
@@ -60,24 +61,20 @@ const Admin = ({ enquiries, contacts, establishments }) => {
         </Tab>
         <Tab eventKey="editEstablishment" title="Edit establishments">
           <Container className="create-establishment">
-            <h2>Edit a establishment</h2>
-            {establishments.map((establishment) => (
-              <Container
-                key={establishment.id}
-                className="establishment-container"
-              >
-                <Row className="establishment-specific">
-                  <Col xs={12} md={9} className="mt-5">
-                    <Link
-                      href="/admin/edit/[name]"
-                      as={`/admin/edit/${establishment.name}`}
-                    >
-                      <p>Name: {establishment.name} </p>
-                    </Link>
-                  </Col>
-                </Row>
-              </Container>
-            ))}
+            <ListGroup>
+              <h2>Edit a establishment</h2>
+              {establishments.map((establishment) => (
+                <Container className="establishment-container">
+                  <Link
+                    key={establishment.id}
+                    href="/admin/edit/[name]"
+                    as={`/admin/edit/${establishment.name}`}
+                  >
+                    <ListGroup.Item className="editEstablishment-list-item">{establishment.name}</ListGroup.Item>
+                  </Link>
+                </Container>
+              ))}
+            </ListGroup>
           </Container>
         </Tab>
       </Tabs>
@@ -108,14 +105,23 @@ const Admin = ({ enquiries, contacts, establishments }) => {
             border: none;
           }
 
-          .MuiSvgIcon-root {
-            font-size: 10rem !important;
-            transisition: 0.3s;
+          .editEstablishment-list-item {
+            transition: .3s;
           }
 
-          .MuiSvgIcon-root:hover {
-            transform: scale(1.1);
-          }
+    
+            .editEstablishment-list-item:hover {
+              cursor: pointer;
+              background: black;
+              color: white;
+        
+
+            }
+          
+
+
+
+
         `}
       </style>
     </Container>
