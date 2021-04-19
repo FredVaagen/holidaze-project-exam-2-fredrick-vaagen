@@ -60,8 +60,7 @@ function CreateEstablishment()  {
   return (
     <Container>
     <div className="create-establishment mt-5 mb-5">
-        <h1>Create establishment</h1>
-      <form onSubmit={handleSubmit(submitData)}>
+      <form className="create-establishment-form" onSubmit={handleSubmit(submitData)}>
         <div><label>Name</label><input type="text" {...register("name")} /></div>
         <div><label>Description</label><textarea type="text" {...register("description")} /></div>
         <div><label>Price per night</label><input type="number" {...register("price")} /></div>
@@ -95,8 +94,13 @@ function CreateEstablishment()  {
           margin-top: .1rem;
           margin-bottom: 2rem;
           color: black;
-          text-align: left;
 				}
+
+        .create-establishment-form {
+          text-align: left;
+        }
+
+    
 
         .create-establishment a {
           color: black;
