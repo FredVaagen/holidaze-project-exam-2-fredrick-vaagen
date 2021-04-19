@@ -1,44 +1,50 @@
 import React, { useContext } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { Container} from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { logout } from "../../lib/auth";
 import AppContext from "../../context/AppContext";
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 import Footer from "../footer/Footer";
 
 const Layout = (props) => {
-    const title = "Holidaze" ;
-    const { user, setUser } = useContext(AppContext);
+  const title = "Holidaze";
+  const { user, setUser } = useContext(AppContext);
 
-    return (
-      <div>
-        <Head>
-          <title>{title}</title>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        </Head>
-        <Navbar expand="md">
+  return (
+    <div>
+      <Head>
+        <title>{title}</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <Navbar expand="md">
         <Navbar.Brand href="/">Holidaze</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="m-auto">
-          <Link href="/establishments" passHref><Nav.Link className="establishments-link">Places to stay</Nav.Link></Link>
-          <Link href="/contact" passHref><Nav.Link>Explore the city</Nav.Link></Link>
-          <Link href="/contact" passHref><Nav.Link>Contact us</Nav.Link></Link>
+            <Link href="/establishments" passHref>
+              <Nav.Link className="establishments-link">
+                Places to stay
+              </Nav.Link>
+            </Link>
+            <Link href="/contact" passHref>
+              <Nav.Link>Explore the city</Nav.Link>
+            </Link>
+            <Link href="/contact" passHref>
+              <Nav.Link>Contact us</Nav.Link>
+            </Link>
           </Nav>
           <Nav className="mr login">
             <Nav.Item>
-             {user ? (
-               <Link href="/admin">
-                 <a className="mr-3">
-                   Admin Dashboard
-                 </a>
-               </Link>
-             ) : (
-              <></>
-             )}
+              {user ? (
+                <Link href="/admin">
+                  <a className="mr-3">Admin Dashboard</a>
+                </Link>
+              ) : (
+                <></>
+              )}
             </Nav.Item>
             <Nav.Item className="login-link">
               {user ? (
@@ -52,18 +58,17 @@ const Layout = (props) => {
                     Logout
                   </a>
                 </Link>
-
               ) : (
                 <Link href="/login">
                   <a>Sign in</a>
                 </Link>
               )}
             </Nav.Item>
-            
           </Nav>
         </Navbar.Collapse>
-        </Navbar>
-        <style global jsx >{`
+      </Navbar>
+      <style global jsx>
+        {`
 
        ////////////// Overriding a bunch of Bootstrap CSS for NAVIGATION and a tags /////////////////
           
@@ -167,22 +172,15 @@ const Layout = (props) => {
       }
     
       `}
-    </style>
-        <Container fluid className="main">{props.children}</Container>
-        <Footer />
-      </div>
-    );
-  };
-  
-  export default Layout;
-  // import Router from 'next/router'
-  // <div onClick={() => Router.back()} className="ml-3">Back</div>
+      </style>
+      <Container fluid className="main">
+        {props.children}
+      </Container>
+      <Footer />
+    </div>
+  );
+};
 
-  
-
-
-
-
-
-
-
+export default Layout;
+// import Router from 'next/router'
+// <div onClick={() => Router.back()} className="ml-3">Back</div>

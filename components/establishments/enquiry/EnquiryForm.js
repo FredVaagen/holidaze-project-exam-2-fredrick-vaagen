@@ -1,98 +1,139 @@
-import fetch from 'isomorphic-fetch'
+import fetch from "isomorphic-fetch";
 import React from "react";
 import { useRouter } from "next/router";
 import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
-import { Container, Form, Button, Col, Row} from "react-bootstrap";
-import { BASE_URL } from '../../../constants/api';
+import { Container, Form, Button, Col, Row } from "react-bootstrap";
+import { BASE_URL } from "../../../constants/api";
 
 import "react-datepicker/dist/react-datepicker.css";
 
 function Enquiry(establishment) {
   const router = useRouter();
-  const { control, handleSubmit, register, formState: { errors } } = useForm();
-  
-  const establishmentName = establishment.name; 
+  const {
+    control,
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
+
+  const establishmentName = establishment.name;
 
   const onSubmit = async (data) => {
     const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data), 
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
     };
 
     await fetch([BASE_URL + "/enquiries"], requestOptions);
-    router.push("/enquiry/feedback")
-} 
+    router.push("/enquiry/feedback");
+  };
   return (
     <Container>
-      <Form  onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <Row>
-        <Form.Group>
-        <Form.Label className="ml-3">Check in</Form.Label>
-        <Col>
-          <Controller
-            control={control}
-            name="startDate"
-            render={({field}) => (
-              <DatePicker
-                onChange={(e) => field.onChange(e)}
-                minDate={(new Date())}
-                selected={field.value}
+          <Form.Group>
+            <Form.Label className="ml-3">Check in</Form.Label>
+            <Col>
+              <Controller
+                control={control}
+                name="startDate"
+                render={({ field }) => (
+                  <DatePicker
+                    onChange={(e) => field.onChange(e)}
+                    minDate={new Date()}
+                    selected={field.value}
+                  />
+                )}
               />
-            )}
-          />
-          </Col>
+            </Col>
           </Form.Group>
-          <Form.Group >
-          <Form.Label className="ml-3">Check Out</Form.Label>
-          <Col>
-          <Controller
-            control={control}
-            name="endDate"
-            render={({field}) => (
-              <DatePicker 
-                selected={field.value}
-                minDate={(new Date())}
-                onChange={(e) => field.onChange(e)}
-              /> 
-            )}
-          />
-          </Col>
-        </Form.Group>
+          <Form.Group>
+            <Form.Label className="ml-3">Check Out</Form.Label>
+            <Col>
+              <Controller
+                control={control}
+                name="endDate"
+                render={({ field }) => (
+                  <DatePicker
+                    selected={field.value}
+                    minDate={new Date()}
+                    onChange={(e) => field.onChange(e)}
+                  />
+                )}
+              />
+            </Col>
+          </Form.Group>
         </Row>
         <Row>
           <Col>
             <Form.Group controlId="firstname">
               <Form.Label>First name</Form.Label>
-              <Form.Control name="firstname" as="input" rows={3} placeholder="Enter first name"
-              aria-invalid={errors.firstname ? "true" : "false"}
-              {...register('firstname', { required: true })}/>
-               {errors.firstname && <div className="alert alert-danger">Required field</div>}
+              <Form.Control
+                name="firstname"
+                as="input"
+                rows={3}
+                placeholder="Enter first name"
+                aria-invalid={errors.firstname ? "true" : "false"}
+                {...register("firstname", { required: true })}
+              />
+              {errors.firstname && (
+                <div className="alert alert-danger">Required field</div>
+              )}
             </Form.Group>
-        </Col>
+          </Col>
           <Col>
             <Form.Group controlId="lastname">
               <Form.Label>Last name</Form.Label>
-              <Form.Control name="lastname" as="input" rows={3} placeholder="Enter last name" {...register("lastname", { required: true })}/>
-              {errors.lastname && <div className="alert alert-danger">Required field</div>}
+              <Form.Control
+                name="lastname"
+                as="input"
+                rows={3}
+                placeholder="Enter last name"
+                {...register("lastname", { required: true })}
+              />
+              {errors.lastname && (
+                <div className="alert alert-danger">Required field</div>
+              )}
             </Form.Group>
           </Col>
         </Row>
         <Form.Group controlId="ControlEmailInput">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" name="email" as="input" rows={3} placeholder="Enter email" {...register("email", { required: true })}/>
-          {errors.email && <div className="alert alert-danger">Required field</div>}
+          <Form.Control
+            type="email"
+            name="email"
+            as="input"
+            rows={3}
+            placeholder="Enter email"
+            {...register("email", { required: true })}
+          />
+          {errors.email && (
+            <div className="alert alert-danger">Required field</div>
+          )}
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Your message</Form.Label>
-          <Form.Control  name="message" as="textarea" rows={3} placeholder="Your message" {...register("message")}/>
+          <Form.Control
+            name="message"
+            as="textarea"
+            rows={3}
+            placeholder="Your message"
+            {...register("message")}
+          />
         </Form.Group>
-        <Button className="button" type="submit" >Submit</Button>
-        <Form.Control hidden value={establishmentName} {...register("establishmentName")}/>
+        <Button className="button" type="submit">
+          Submit
+        </Button>
+        <Form.Control
+          hidden
+          value={establishmentName}
+          {...register("establishmentName")}
+        />
       </Form>
-    <style global jsx>
-      {`
+      <style global jsx>
+        {`
           .summary p {
             font-weight: bold;
             margin-top: 2rem;
@@ -108,11 +149,10 @@ function Enquiry(establishment) {
             color: black;
             border: 1px solid black;
           }
-    `}
-    </style>
-  </Container>
-  )
+        `}
+      </style>
+    </Container>
+  );
 }
-
 
 export default Enquiry;

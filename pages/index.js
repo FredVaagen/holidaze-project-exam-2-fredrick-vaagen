@@ -1,16 +1,13 @@
-import fetch from 'isomorphic-unfetch';
-import Router from 'next/router';
-import SearchIcon from '@material-ui/icons/Search';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import Container from 'react-bootstrap/Container'
-import { BASE_URL } from './../constants/api';
+import fetch from "isomorphic-unfetch";
+import Router from "next/router";
+import SearchIcon from "@material-ui/icons/Search";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import { BASE_URL } from "./../constants/api";
 
-
-export default function Home ({establishments}) {
-
-  const getEstablishmentName = name => {
+export default function Home({ establishments }) {
+  const getEstablishmentName = (name) => {
     JSON.stringify(establishments, (val) => {
       if (val === name) {
       }
@@ -25,37 +22,33 @@ export default function Home ({establishments}) {
 
   return (
     <>
-    <Container fluid className="home">
-        <div className="searchbar">
-            <Autocomplete className="autocomplete"
-              options={establishments.map(option => option.name)}
-              onChange={goToEstablishment}
-              renderInput={params => (
-                <TextField 
-                  {...params}
-                  placeholder='Search Establishments...'
-                  InputProps={{
-                    ...params.InputProps,
-                    startAdornment: (
-                      <InputAdornment 
-                        position='start'
-                      >
-                        <SearchIcon />
-                      </InputAdornment>
-                    )
-                  }}
-                />
-              )}
+      <div className="searchbar">
+        <Autocomplete
+          className="autocomplete"
+          options={establishments.map((option) => option.name)}
+          onChange={goToEstablishment}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              placeholder="Search Establishments..."
+              InputProps={{
+                ...params.InputProps,
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }}
             />
-        </div>
-   
-        <style global jsx>
+          )}
+        />
+      </div>
+
+      <style global jsx>
         {`
 
           .main {
             background: black;
-          }
-          .home {
             height:80vh;
             background: url('/me.jpg') no-repeat;
             background-position: center;
@@ -64,6 +57,7 @@ export default function Home ({establishments}) {
             flex-direction: column;
             padding: 0;
           }
+ 
           .navbar-light .navbar-nav .nav-link {
             margin: 2rem;       
         }
@@ -129,23 +123,16 @@ export default function Home ({establishments}) {
   }
   `}
       </style>
-      </Container>   
- 
-      </> 
-
-        
+    </>
   );
-};
+}
 
 export async function getStaticProps() {
-	const res = await fetch(`${BASE_URL}/establishments?_sort=name:asc`);
-	const establishments = await res.json();
+  const res = await fetch(`${BASE_URL}/establishments?_sort=name:asc`);
+  const establishments = await res.json();
 
-	return {
-	  props: { establishments },  
-		revalidate: 1, 
-	};
-  }
-
-
-
+  return {
+    props: { establishments },
+    revalidate: 1,
+  };
+}

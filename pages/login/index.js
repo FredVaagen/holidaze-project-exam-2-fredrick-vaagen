@@ -2,13 +2,7 @@
 
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Form,
-} from "react-bootstrap";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { login } from "../../lib/auth";
 import AppContext from "../../context/AppContext";
 
@@ -18,10 +12,10 @@ function Login() {
   const [error, setError] = useState(false);
   const router = useRouter();
   const appContext = useContext(AppContext);
-  
+
   useEffect(() => {
     if (appContext.isAuthenticated) {
-      router.prefetch('/admin')
+      router.prefetch("/admin");
     }
   }, []);
 
@@ -73,13 +67,14 @@ function Login() {
                   </Form.Group>
 
                   <Form.Group>
-                    <Button className="button"
+                    <Button
+                      className="button"
                       onClick={() => {
                         setLoading(true);
                         login(data.identifier, data.password)
                           .then((res) => {
                             setLoading(false);
-                          
+
                             appContext.setUser(res.data.user);
                           })
                           .catch((error) => {
@@ -132,7 +127,7 @@ function Login() {
             background: none;
             color: black;
             border: 1px solid black;
-          } 
+          }
 
           .button:hover {
             background: black;

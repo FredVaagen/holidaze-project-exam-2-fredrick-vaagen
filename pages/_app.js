@@ -5,8 +5,8 @@ import fetch from "isomorphic-unfetch";
 import Layout from "../components/layout/Layout";
 import AppContext from "../context/AppContext";
 import { BASE_URL } from "../constants/api";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "../styles/globals.css"
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../styles/globals.css";
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
 
@@ -20,7 +20,6 @@ const progress = new ProgressBar({
 Router.events.on("routeChangeStart", progress.start);
 Router.events.on("routeChangeComplete", progress.finish);
 Router.events.on("routeChangeError", progress.finish);
-
 
 class MyApp extends App {
   state = {
@@ -75,7 +74,3 @@ class MyApp extends App {
 }
 
 export default MyApp;
-
-
-
-
