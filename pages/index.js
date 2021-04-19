@@ -9,7 +9,6 @@ import { BASE_URL } from './../constants/api';
 
 
 export default function Home ({establishments}) {
-
   const getEstablishmentName = name => {
     JSON.stringify(establishments, (val) => {
       if (val === name) {
@@ -17,15 +16,12 @@ export default function Home ({establishments}) {
       return val;
     });
   };
-
   const goToEstablishment = async (e, val) => {
     await getEstablishmentName();
     Router.push(`/establishments/${val}`);
   };
-
   return (
     <>
-    <Container fluid className="home">
         <div className="searchbar">
             <Autocomplete className="autocomplete"
               options={establishments.map(option => option.name)}
@@ -54,8 +50,6 @@ export default function Home ({establishments}) {
 
           .main {
             background: black;
-          }
-          .home {
             height:80vh;
             background: url('/me.jpg') no-repeat;
             background-position: center;
@@ -64,6 +58,7 @@ export default function Home ({establishments}) {
             flex-direction: column;
             padding: 0;
           }
+  
           .navbar-light .navbar-nav .nav-link {
             margin: 2rem;       
         }
@@ -111,9 +106,7 @@ export default function Home ({establishments}) {
             z-index: 1;
             width: 100%;
             margin: 0;
-            
           }
-
           #basic-navbar-nav {
             background: black;
             padding: 1rem;
@@ -125,15 +118,11 @@ export default function Home ({establishments}) {
           .establishments-link {
             margin-top: 3rem;
           }
+        }
       }
-  }
-  `}
+    `}
       </style>
-      </Container>   
- 
-      </> 
-
-        
+  </>     
   );
 };
 
