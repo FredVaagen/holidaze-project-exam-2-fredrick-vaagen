@@ -70,7 +70,9 @@ const Admin = ({ enquiries, contacts, establishments }) => {
                     href="/admin/edit/[name]"
                     as={`/admin/edit/${establishment.name}`}
                   >
-                    <ListGroup.Item className="editEstablishment-list-item">{establishment.name}</ListGroup.Item>
+                    <ListGroup.Item className="editEstablishment-list-item">
+                      {establishment.name}
+                    </ListGroup.Item>
                   </Link>
                 </Container>
               ))}
@@ -106,22 +108,14 @@ const Admin = ({ enquiries, contacts, establishments }) => {
           }
 
           .editEstablishment-list-item {
-            transition: .3s;
+            transition: 0.3s;
           }
 
-    
-            .editEstablishment-list-item:hover {
-              cursor: pointer;
-              background: black;
-              color: white;
-        
-
-            }
-          
-
-
-
-
+          .editEstablishment-list-item:hover {
+            cursor: pointer;
+            background: black;
+            color: white;
+          }
         `}
       </style>
     </Container>
