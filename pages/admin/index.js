@@ -6,8 +6,8 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import EditIcon from '@material-ui/icons/Edit';
 import { BASE_URL } from '../../constants/api'
+import CreateEstablishment from '../../components/admin/establishment/CreateEstablishment'
 
 const Admin = ({enquiries, contacts, establishments}) => {
 	return (
@@ -45,8 +45,8 @@ const Admin = ({enquiries, contacts, establishments}) => {
 				</Tab>				
 				<Tab eventKey="createEstablishment" title="Create new establishment">
 					<Container className="create-establishment">
-						<Row><Col><h2>Create establishment</h2></Col></Row>
-						<Link href="/admin/create"><button className="create-establishment-button"><AddCircleIcon /></button></Link>
+						<h2>Create establishment</h2>
+						<CreateEstablishment />
 					</Container>
 				</Tab>
 				<Tab eventKey="editEstablishment" title="Edit establishments">

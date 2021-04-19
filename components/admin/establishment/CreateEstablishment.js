@@ -4,9 +4,10 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { parseCookies  } from 'nookies'
 import Container from 'react-bootstrap/Container'
-import { BASE_URL } from '../../../constants/api';
+import { BASE_URL } from "../../../constants/api";
 
-function createEstablishment()  {
+
+function CreateEstablishment()  {
   const { register, handleSubmit } = useForm();
   const router = useRouter();
 
@@ -111,5 +112,5 @@ function createEstablishment()  {
   );
 };
 
-export default createEstablishment;
+export default CreateEstablishment;
 
