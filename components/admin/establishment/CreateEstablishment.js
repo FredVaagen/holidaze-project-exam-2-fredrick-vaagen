@@ -95,6 +95,7 @@ function CreateEstablishment()  {
           margin-top: .1rem;
           margin-bottom: 2rem;
           color: black;
+          text-align: left;
 				}
 
         .create-establishment a {
