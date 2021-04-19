@@ -39,7 +39,7 @@ const EditEstablishment = (props) => {
     } else router.reload()
   } catch (error) {
     console.log(error);
-  }
+  } router.reload()
 };
 
 const removeEstablishment = async (ctx) => {
