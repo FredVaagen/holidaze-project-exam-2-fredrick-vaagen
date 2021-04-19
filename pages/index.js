@@ -35,7 +35,7 @@ export default function Home({ establishments }) {
                 ...params.InputProps,
                 startAdornment: (
                   <InputAdornment position="start">
-                    <SearchIcon />
+                   
                   </InputAdornment>
                 ),
               }}
