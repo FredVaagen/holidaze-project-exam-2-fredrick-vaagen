@@ -139,7 +139,7 @@ const Layout = (props) => {
 
 
       .navbar-toggler {
-        color: red !important;
+      
         background: white !important;
         margin-bottom: 10px;
         font-size: 1rem;

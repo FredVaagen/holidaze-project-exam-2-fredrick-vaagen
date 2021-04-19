@@ -5,13 +5,12 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Image from "react-bootstrap/Image";
 import { BASE_URL } from "../../constants/api";
 import Carousel from "react-bootstrap/Carousel";
-import Link from "next/link";
 import SimpleMap from "../../components/establishments/maps/SimpleMap";
 import Enquiry from "../../components/establishments/enquiry/EnquiryForm";
 import Modal from "react-bootstrap/Modal";
+import Image from "next/image";
 
 export default function Establishment({ establishment, images, promoteImage }) {
   const [show, setShow] = useState(false);
@@ -26,28 +25,24 @@ export default function Establishment({ establishment, images, promoteImage }) {
   return (
     <Container className="establishment">
       <h1>{establishment.name}</h1>
-      <Container className="establishment__imagesAndMaps">
+      <Container className="establishment-images">
         <Row>
           <Col s={12} md={6} className="images mb-3">
             {router.isFallback ? (
               <div>Loading…</div>
             ) : (
               <>
-                <Image src={promoteImage.url} alt={establishment.name} />
+                <Image
+                  src={promoteImage.url}
+                  alt={establishment.name}
+                  width="600"
+                  height="auto"
+                />
               </>
             )}
           </Col>
           <Col s={12} md={6}>
             <Carousel>
-              <Carousel.Item>
-                {router.isFallback ? (
-                  <div>Loading…</div>
-                ) : (
-                  <>
-                    <Image src={promoteImage.url} alt={establishment.name} />
-                  </>
-                )}
-              </Carousel.Item>
               {images.map((image) => (
                 <Carousel.Item key={image.id}>
                   {router.isFallback ? (
@@ -58,6 +53,8 @@ export default function Establishment({ establishment, images, promoteImage }) {
                         className="d-block w-100"
                         src={image.url}
                         alt={image.name}
+                        width="500"
+                        height="auto"
                       />
                     </>
                   )}
@@ -67,20 +64,20 @@ export default function Establishment({ establishment, images, promoteImage }) {
           </Col>
         </Row>
       </Container>
-
       <Container className="details-container">
         <Row className="details">
           <Col>
-            <p>{establishment.description}</p>
-            <p className="price">NOK {establishment.price} per night</p>
-            <p className="location">Location: {establishment.address} </p>
+            <h5 className="subline">About </h5>
+            <p className="description">{establishment.description}</p>
           </Col>
         </Row>
+        <h5 className="subline">Location </h5>
         <SimpleMap className="googlemap" {...establishment} />
         <Button className="button" onClick={handleShow}>
           Book
         </Button>
       </Container>
+
 
       <Modal
         show={show}
@@ -112,7 +109,14 @@ export default function Establishment({ establishment, images, promoteImage }) {
           }
 
           .establishment h1 {
-            margin-left: 10px;
+            margin-left: 15px;
+            font-size: 26px;
+            font-weight: 400;
+            margin-bottom: 3rem;
+          }
+
+          .establishment-images {
+            border-bottom: 1px solid rgb(221, 221, 221);
           }
 
           .images img {
@@ -133,7 +137,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
             background: none;
             color: black;
             border: 1px solid black;
-            width: 200px;
+            width: 100%;
             margin-bottom: 1rem;
             margin-top: 1rem;
           }
@@ -145,7 +149,21 @@ export default function Establishment({ establishment, images, promoteImage }) {
 
           .details {
             height: auto;
+            border-bottom: 1px solid rgb(221, 221, 221);
+            margin-top: 3rem;
+            margin-bottom: 2rem;
           }
+
+          .details .description {
+            margin-bottom: 2rem;
+            margin-top: 1rem;
+          }
+
+          .subline {
+            font-size: 18px;
+            margin-bottom: 1rem;
+          }
+
         `}
       </style>
     </Container>

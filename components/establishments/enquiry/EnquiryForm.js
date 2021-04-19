@@ -44,6 +44,7 @@ function Enquiry(establishment) {
                     onChange={(e) => field.onChange(e)}
                     minDate={new Date()}
                     selected={field.value}
+                    required
                   />
                 )}
               />
@@ -60,6 +61,7 @@ function Enquiry(establishment) {
                     selected={field.value}
                     minDate={new Date()}
                     onChange={(e) => field.onChange(e)}
+                    required
                   />
                 )}
               />

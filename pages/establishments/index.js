@@ -26,7 +26,7 @@ export default function EstablishmentsPage({ establishments }) {
               <Col xs={12} md={9}>
                 <h3>{establishment.name}</h3>
                 <p>{establishment.description}</p>
-                <p className="price">NOK {establishment.price},- per night </p>
+                <p className="price">NOK {establishment.price},-</p>
               </Col>
             </Row>
           </Container>
@@ -57,18 +57,16 @@ export default function EstablishmentsPage({ establishments }) {
           }
 
           h3 {
-            font-weight: bold;
-            margin-bottom: 20px;
             font-size: 20px;
           }
 
           p {
-            font-size: 14px;
+            font-size: 13px;
           }
 
           .price {
             text-align: right;
-            font-weight: bold;
+           
           }
 
           img {

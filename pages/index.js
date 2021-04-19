@@ -34,9 +34,7 @@ export default function Home({ establishments }) {
               InputProps={{
                 ...params.InputProps,
                 startAdornment: (
-                  <InputAdornment position="start">
-                   
-                  </InputAdornment>
+                  <InputAdornment position="start"></InputAdornment>
                 ),
               }}
             />
@@ -56,6 +54,7 @@ export default function Home({ establishments }) {
             display: flex;
             flex-direction: column;
             padding: 0;
+            
           }
  
           .navbar-light .navbar-nav .nav-link {
@@ -97,6 +96,10 @@ export default function Home({ establishments }) {
         
         .MuiInput-underline:after {
             border-bottom: none !important;  
+        }
+
+        .MuiAutoComplete-popupIndicatorOpen {
+        
         }
 
         @media only screen and (max-width: 750px){

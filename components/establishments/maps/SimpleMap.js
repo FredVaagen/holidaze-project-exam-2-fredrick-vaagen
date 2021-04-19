@@ -6,8 +6,9 @@ import { GOOGLE_API } from '../../../constants/api';
 const SimpleMap = (props) => {
     const longitude = props.lng; 
     const latitude = props.lat
-    
-    const getMapOptions = (maps) => {
+
+
+      const getMapOptions = (maps, map) => {
         return {
           disableDefaultUI: true,
           mapTypeControl: true,
@@ -15,23 +16,33 @@ const SimpleMap = (props) => {
           styles: [{ featureType: 'poi', elementType: 'labels', stylers: [{ visibility: 'on' }] }],
         };
       };
+ 
+
+    
+
     
     const [center, setCenter] = useState({lat: latitude, lng: longitude });
     const [zoom, setZoom] = useState(14);
     
     return (
+ 
         <div style={{ height: '300px', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: GOOGLE_API }}
           defaultCenter={center}
           defaultZoom={zoom}
           options={getMapOptions}
+          yesIWantToUseGoogleMapApiInternals
+          onGoogleApiLoaded={({ map, maps }) => getMapOptions(map, maps)}
+
+
         >
           <Marker
             lat={latitude}
             lng={longitude}
-            name="My Marker"
+            name={props.address}
             color="blue"
+          
           />
         </GoogleMapReact>
       </div>
