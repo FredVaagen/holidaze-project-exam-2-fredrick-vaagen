@@ -80,7 +80,13 @@ const Layout = (props) => {
             flex-direction: column;
             flex: 1 0; 
             height: 100vh;
-           
+          }
+
+          @media only screen and (max-width: 900px){
+
+            .main {
+              height: auto;
+            }
           }
 
           .navbar {

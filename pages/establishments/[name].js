@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import fetch from 'isomorphic-fetch'
 import { useRouter } from "next/router";
 import Container from 'react-bootstrap/Container'
@@ -9,9 +10,14 @@ import { BASE_URL } from '../../constants/api';
 import Carousel from 'react-bootstrap/Carousel'
 import Link from 'next/link'
 import SimpleMap from '../../components/establishments/maps/SimpleMap'
+import Enquiry from '../../components/establishments/enquiry/EnquiryForm';
+import Modal from 'react-bootstrap/Modal'
 
 
 export default function Establishment({establishment, images, promoteImage}) {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const router = useRouter();
 
   if (!router.isFallback && !images, !promoteImage) {
@@ -24,7 +30,19 @@ export default function Establishment({establishment, images, promoteImage}) {
       <Container className="establishment__imagesAndMaps">
       <Row>
         <Col s={12} md={6} className="images mb-3">
-          <Carousel>
+            {router.isFallback ? (
+              <div>Loading…</div>
+                ) : (
+                <>
+              <Image 
+              src={promoteImage.url} 
+              alt={establishment.name} 
+              />
+              </>
+              )}
+            </Col>
+            <Col s={12} md={6}>
+            <Carousel>
             <Carousel.Item> 
             {router.isFallback ? (
               <div>Loading…</div>
@@ -52,11 +70,8 @@ export default function Establishment({establishment, images, promoteImage}) {
                 )}
               </Carousel.Item>
             )} 
-
           </Carousel>
-            </Col>
-            <Col s={12} md={6}>
-              <SimpleMap className="googlemap" {...establishment}/>
+            
             </Col>
           </Row>
           </Container>
@@ -64,29 +79,41 @@ export default function Establishment({establishment, images, promoteImage}) {
           <Container className="details-container">
             <Row className="details">
               <Col>
-              
-              <p>{establishment.description}</p>
-              <div className="price-location">
+                <p>{establishment.description}</p>
                 <p className="price">NOK {establishment.price} per night</p>
                 <p className="location">Location: {establishment.address} </p>
-              </div>
-         
               </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Link href="/enquiry/[name]" as={`/enquiry/${establishment.name}`}><Button className="button">BOOK NOW</Button></Link>
-              </Col>
-            </Row>
-      
+            </Row>  
+            <SimpleMap className="googlemap" {...establishment}/>
+            <Button className="button"  onClick={handleShow}> 
+              Book 
+            </Button>
           </Container>
-     
 
+          <Modal
+            show={show}
+            size="lg"
+            onHide={handleClose}
+            backdrop="static"
+            keyboard={false}
+           
+          >
+            <Modal.Header closeButton>
+              <Modal.Title>{establishment.name} Enquiry</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+            <Enquiry {...Establishment} />
+            </Modal.Body>
+          </Modal>
           <style jsx global>{`
+            .main {
+               height: auto;
+            }
+            
             .establishment {
-              margin-top: 5%;
+              margin-top: 5rem;
               height: auto;
-              margin-bottom: 5%;
+              margin-bottom: 3rem;
               color: black;
               display: flex;
               flex-direction: column;
@@ -96,15 +123,18 @@ export default function Establishment({establishment, images, promoteImage}) {
               margin-left: 10px;
             }
 
+            .images img {
+              max-height: 300px;
+              min-height: 300px;
+              width: 100%;
+              border-radius: 15px;
+            }
+
             .carousel-item img {
                 max-height: 300px;
                 min-height: 300px;
                 width: 100%;
-            }
-
-            .price-location {
-              display: flex;
-              justify-content: space-between;
+                border-radius: 15px;
             }
 
             .button {
@@ -121,10 +151,11 @@ export default function Establishment({establishment, images, promoteImage}) {
               color: white;
             }
 
-
+            .details {
+              height: auto;
+            }
           `}
-        </style>
-
+         </style>
     </Container>
     )
 }

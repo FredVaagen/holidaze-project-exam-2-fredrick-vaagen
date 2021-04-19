@@ -4,9 +4,9 @@ import { useRouter } from "next/router";
 import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import { Container, Form, Button, Col, Row} from "react-bootstrap";
-import { BASE_URL } from '../../constants/api';
-import "react-datepicker/dist/react-datepicker.css";
+import { BASE_URL } from '../../../constants/api';
 
+import "react-datepicker/dist/react-datepicker.css";
 
 function Enquiry(establishment) {
   const router = useRouter();
@@ -26,7 +26,6 @@ function Enquiry(establishment) {
 } 
   return (
     <Container>
-      <h1 className="mt-5 mb-5">{establishment.name} Enquiry </h1>
       <Form  onSubmit={handleSubmit(onSubmit)}>
         <Row>
         <Form.Group>
