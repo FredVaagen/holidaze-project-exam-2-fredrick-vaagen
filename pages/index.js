@@ -45,7 +45,7 @@ export default function Home({ establishments }) {
           )}
         />
       </Container>
-      <Container className="headline-container">
+      <Container fluid className="headline-container">
         <Link href="/establishments">
           <a>
             <h1 className="headline">HOLIDAZE.</h1>
@@ -81,14 +81,15 @@ export default function Home({ establishments }) {
           text-align: center;
           display: grid;
           align-content: center;
-          
+       
+         
         }
 
           .headline {
             color: white;
             font-size: 7rem;
             margin-top: 1rem;
-            
+           
           }
 
           .subheading {
