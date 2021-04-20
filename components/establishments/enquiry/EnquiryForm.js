@@ -44,7 +44,6 @@ function Enquiry(establishment) {
                     onChange={(e) => field.onChange(e)}
                     minDate={new Date()}
                     selected={field.value}
-                    required
                   />
                 )}
               />
@@ -56,15 +55,17 @@ function Enquiry(establishment) {
               <Controller
                 control={control}
                 name="endDate"
+              
                 render={({ field }) => (
                   <DatePicker
                     selected={field.value}
                     minDate={new Date()}
                     onChange={(e) => field.onChange(e)}
-                    required
+               
                   />
                 )}
               />
+   
             </Col>
           </Form.Group>
         </Row>
@@ -81,7 +82,7 @@ function Enquiry(establishment) {
                 {...register("firstname", { required: true })}
               />
               {errors.firstname && (
-                <div className="alert alert-danger">Required field</div>
+                <div className="alert-danger">Required field</div>
               )}
             </Form.Group>
           </Col>
@@ -96,7 +97,7 @@ function Enquiry(establishment) {
                 {...register("lastname", { required: true })}
               />
               {errors.lastname && (
-                <div className="alert alert-danger">Required field</div>
+                <div className="alert-danger">Required field</div>
               )}
             </Form.Group>
           </Col>
@@ -111,9 +112,7 @@ function Enquiry(establishment) {
             placeholder="Enter email"
             {...register("email", { required: true })}
           />
-          {errors.email && (
-            <div className="alert alert-danger">Required field</div>
-          )}
+          {errors.email && <div className="alert-danger">Required field</div>}
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Your message</Form.Label>
@@ -150,6 +149,12 @@ function Enquiry(establishment) {
             background: none;
             color: black;
             border: 1px solid black;
+          }
+
+          .alert-danger {
+            background: none;
+            color: red;
+            font-size: 12px;
           }
         `}
       </style>

@@ -58,7 +58,7 @@ export default function ContactForm() {
           <Form.Label>First name</Form.Label>
           <Form.Control {...register("firstname")} />
           {errors.firstname && (
-            <div className="alert alert-danger">{errors.firstname.message}</div>
+            <div className="alert-danger">{errors.firstname.message}</div>
           )}
         </Form.Group>
 
@@ -66,7 +66,7 @@ export default function ContactForm() {
           <Form.Label>Last name</Form.Label>
           <Form.Control {...register("lastname")} />
           {errors.lastname && (
-            <div className="alert alert-danger">{errors.lastname.message}</div>
+            <div className="alert-danger">{errors.lastname.message}</div>
           )}
         </Form.Group>
 
@@ -74,7 +74,7 @@ export default function ContactForm() {
           <Form.Label>Email</Form.Label>
           <Form.Control type="email" {...register("email")} />
           {errors.email && (
-            <div className="alert alert-danger">{errors.email.message}</div>
+            <div className="alert-danger">{errors.email.message}</div>
           )}
         </Form.Group>
 
@@ -82,7 +82,7 @@ export default function ContactForm() {
           <Form.Label>Subject</Form.Label>
           <Form.Control {...register("subject")} />
           {errors.subject && (
-            <div className="alert alert-danger">{errors.subject.message}</div>
+            <div className="alert-danger">{errors.subject.message}</div>
           )}
         </Form.Group>
 
@@ -90,13 +90,22 @@ export default function ContactForm() {
           <Form.Label>Message</Form.Label>
           <Form.Control as="textarea" {...register("message")} />
           {errors.message && (
-            <div className="alert alert-danger">{errors.message.message}</div>
+            <div className="alert-danger">{errors.message.message}</div>
           )}
         </Form.Group>
         <Button variant="dark" type="submit">
           Submit
         </Button>
       </Form>
+      <style global jsx>
+        {`
+          .alert-danger {
+            background: none;
+            color: red;
+            font-size: 12px;
+          }
+        `}
+      </style>
     </Container>
   );
 }

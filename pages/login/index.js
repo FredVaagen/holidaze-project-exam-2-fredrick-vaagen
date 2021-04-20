@@ -1,5 +1,3 @@
-/* /pages/login.js */
-
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";

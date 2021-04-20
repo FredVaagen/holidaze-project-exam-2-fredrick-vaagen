@@ -1,7 +1,10 @@
 import fetch from "isomorphic-unfetch";
 import Router from "next/router";
+import Link from "next/link";
+import Container from "react-bootstrap/Container";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
+import SearchIcon from "@material-ui/icons/Search";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { BASE_URL } from "./../constants/api";
 
@@ -21,7 +24,7 @@ export default function Home({ establishments }) {
 
   return (
     <>
-      <div className="searchbar">
+      <Container className="searchbar">
         <Autocomplete
           className="autocomplete"
           options={establishments.map((option) => option.name)}
@@ -33,13 +36,25 @@ export default function Home({ establishments }) {
               InputProps={{
                 ...params.InputProps,
                 startAdornment: (
-                  <InputAdornment position="start"></InputAdornment>
+                  <InputAdornment position="end">
+                    <SearchIcon />
+                  </InputAdornment>
                 ),
               }}
             />
           )}
         />
-      </div>
+      </Container>
+      <Container className="headline-container">
+        <Link href="/establishments">
+          <a>
+            <h1 className="headline">HOLIDAZE.</h1>
+            <h2 className="subheading">
+              Find the perfect accomedation while staying in Bergen, Norway.
+            </h2>
+          </a>
+        </Link>
+      </Container>
 
       <style global jsx>
         {`
@@ -53,6 +68,7 @@ export default function Home({ establishments }) {
             display: flex;
             flex-direction: column;
             padding: 0;
+           
             
           }
  
@@ -60,41 +76,60 @@ export default function Home({ establishments }) {
             margin: 2rem;       
         }
 
-          h1 {
-            color: white;
-            font-size: 5rem;
-            text-align: center;
-            padding: 4rem;
+        .headline-container {
+          height: 100%;
+          text-align: center;
+          display: grid;
+          align-content: center;
           
+        }
+
+          .headline {
+            color: white;
+            font-size: 7rem;
+            margin-top: 1rem;
+            
           }
 
-          h2 {
+          .subheading {
             color: white;
-            font-size: 1rem; 
             text-align: center;
+            font-size: 20px;
           }
+
           
           .searchbar {
             background: white;
-            border-radius: 50px;
-            border: none;  
+            border-radius: 20px;
+            border: none;
             align-self: center;
             width: 100%;
             max-width: 800px;
             min-width: 200px;
-            padding: .6rem;
-            margin-top: -1.5rem;
+            margin-top: -1rem;
             z-index: 3;
-            
+           
+           
           }
 
+          .MuiInputBase-root {
+            height: 50px;
+            border-radius: 50px !important;
+          }
+
+          .MuiAutocomplete-clearIndicator {
+            visibility: visible;
+          }
+
+  
+
           .MuiInput-underline:before {
-            border-bottom: none !important;  
-        }
+            border-bottom: none !important;
+          }
         
         
         .MuiInput-underline:after {
-            border-bottom: none !important;  
+            border-bottom: none !important;
         }
 
         @media only screen and (max-width: 750px){
@@ -103,7 +138,6 @@ export default function Home({ establishments }) {
             z-index: 1;
             width: 100%;
             margin: 0;
-            
           }
 
           #basic-navbar-nav {

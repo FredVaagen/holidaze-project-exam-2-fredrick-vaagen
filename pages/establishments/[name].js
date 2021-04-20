@@ -25,7 +25,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
   }
 
   return (
-    <Container fluid>
+    <Container fluid >
       <BackArrow />
       <Container className="establishment">
         <Container className="establishment-images">
@@ -35,20 +35,20 @@ export default function Establishment({ establishment, images, promoteImage }) {
               <Image
                 src={promoteImage.url}
                 alt={establishment.name}
-                width="600"
+                width="1000"
                 height="auto"
               />
             </Col>
             <Col s={12} md={6}>
-              <Carousel>
+              <Carousel fade indicators={false}>
                 {images.map((image) => (
                   <Carousel.Item key={image.id}>
                     <Image
                       className="d-block w-100"
                       src={image.url}
                       alt={image.name}
-                      width="500"
-                      height="auto"
+                      width="1000"
+                      height="200"
                     />
                   </Carousel.Item>
                 ))}
@@ -111,10 +111,9 @@ export default function Establishment({ establishment, images, promoteImage }) {
             }
 
             .images img {
-              max-height: 300px;
+              border-radius: 20px;
               min-height: 300px;
-              width: 100%;
-              border-radius: 30px;
+
             }
 
             .carousel-item img {

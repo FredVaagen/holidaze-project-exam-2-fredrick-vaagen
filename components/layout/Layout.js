@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { Container } from "react-bootstrap";
+import FilterHdrIcon from "@material-ui/icons/FilterHdr";
 import { logout } from "../../lib/auth";
 import AppContext from "../../context/AppContext";
 import Navbar from "react-bootstrap/Navbar";
@@ -20,7 +21,10 @@ const Layout = (props) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Navbar expand="md">
-        <Navbar.Brand href="/">Holidaze</Navbar.Brand>
+        <Navbar.Brand href="/">
+          <FilterHdrIcon />
+          Holidaze
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="m-auto">
@@ -187,4 +191,3 @@ const Layout = (props) => {
 
 export default Layout;
 // import Router from 'next/router'
-

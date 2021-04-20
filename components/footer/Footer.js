@@ -1,6 +1,10 @@
 import React from "react";
 import { MDBFooter } from "mdb-react-ui-kit";
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
 
 export default function Footer() {
   return (
@@ -30,16 +34,24 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} Copyright:{" Holidaze, Inc"}
           <a className="text-dark" href="https://mdbootstrap.com/"></a>
           <a className="text-dark" href="https://mdbootstrap.com/">
-            Personvern
+            Privacy
           </a>
-          <a className="text-dark">Vilkår</a>
-          <a className="text-dark">Firmaopplysninger</a>
+          <a className="text-dark">Terms</a>
+          <a className="text-dark">Company Information</a>
         </div>
         <div>
-          <a className="text-dark">Facebook</a>
-          <a className="text-dark">Instagram</a>
-          <a className="text-dark">Twitter</a>
-          <a className="text-dark">LinkedIn</a>
+          <a className="text-dark">
+            <FacebookIcon />
+          </a>
+          <a className="text-dark">
+            <InstagramIcon />
+          </a>
+          <a className="text-dark">
+            <TwitterIcon />
+          </a>
+          <a className="text-dark">
+            <LinkedInIcon />
+          </a>
         </div>
       </div>
 
@@ -51,10 +63,13 @@ export default function Footer() {
           display: flex;
           flex-direction: column;
           flex: 0 1;
+          margin-top: 3rem;
+      
         }
 
         .footer-main h5 {
           font-size: 14px;
+          text-align: center;
         }
 
         .bottom-footer {
