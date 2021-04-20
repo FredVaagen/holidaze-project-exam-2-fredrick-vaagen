@@ -158,6 +158,10 @@ const Layout = (props) => {
         z-index: 1;  
       }
 
+      .back-arrow:hover {
+        cursor: pointer;
+      }
+
       @media only screen and (max-width: 800px){
 
         .login-link {
@@ -183,4 +187,4 @@ const Layout = (props) => {
 
 export default Layout;
 // import Router from 'next/router'
-// <div onClick={() => Router.back()} className="ml-3">Back</div>
+

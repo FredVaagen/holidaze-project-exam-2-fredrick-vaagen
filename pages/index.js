@@ -1,6 +1,5 @@
 import fetch from "isomorphic-unfetch";
 import Router from "next/router";
-import SearchIcon from "@material-ui/icons/Search";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -71,7 +70,7 @@ export default function Home({ establishments }) {
 
           h2 {
             color: white;
-            font-size: 1REM; 
+            font-size: 1rem; 
             text-align: center;
           }
           
@@ -85,7 +84,7 @@ export default function Home({ establishments }) {
             min-width: 200px;
             padding: .6rem;
             margin-top: -1.5rem;
-            z-index: 4;
+            z-index: 3;
             
           }
 
@@ -96,10 +95,6 @@ export default function Home({ establishments }) {
         
         .MuiInput-underline:after {
             border-bottom: none !important;  
-        }
-
-        .MuiAutoComplete-popupIndicatorOpen {
-        
         }
 
         @media only screen and (max-width: 750px){

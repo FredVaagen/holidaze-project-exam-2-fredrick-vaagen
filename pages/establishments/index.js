@@ -1,11 +1,18 @@
+import { useRouter } from "next/router";
+import Link from "next/link";
+import Image from "next/image";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import Link from "next/link";
 import { BASE_URL } from "./../../constants/api";
-import Image from "next/image";
 
 export default function EstablishmentsPage({ establishments }) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="establishments">
       {establishments.map((establishment) => (
@@ -42,10 +49,6 @@ export default function EstablishmentsPage({ establishments }) {
             border-radius: 50px;
           }
 
-          .main {
-            height: 100vh;
-          }
-
           .establishment-container:hover {
             transform: scale(1.01);
             cursor: pointer;
@@ -66,7 +69,6 @@ export default function EstablishmentsPage({ establishments }) {
 
           .price {
             text-align: right;
-           
           }
 
           img {

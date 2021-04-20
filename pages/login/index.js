@@ -74,8 +74,8 @@ function Login() {
                         login(data.identifier, data.password)
                           .then((res) => {
                             setLoading(false);
-
                             appContext.setUser(res.data.user);
+                            if(res.ok) router.push("/admin")
                           })
                           .catch((error) => {
                             setError(error.response.data);

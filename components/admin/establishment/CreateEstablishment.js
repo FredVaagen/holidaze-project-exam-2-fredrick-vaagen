@@ -7,7 +7,8 @@ import Container from "react-bootstrap/Container";
 import { BASE_URL } from "../../../constants/api";
 
 function CreateEstablishment() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit,     formState: { errors },
+} = useForm();
   const router = useRouter();
 
   const submitData = async (data, ctx) => {
@@ -67,11 +68,17 @@ function CreateEstablishment() {
           </div>
           <div>
             <label>Description</label>
-            <textarea type="text" {...register("description")} />
+            <textarea type="text" {...register("description", { required: true })} />
+            {errors.description && (
+            <div className="alert alert-danger">Required field</div>
+          )}
           </div>
           <div>
             <label>Price per night</label>
-            <input type="number" {...register("price")} />
+            <input type="number" {...register("price", { required: true })} />
+            {errors.price && (
+            <div className="alert alert-danger">Required field</div>
+          )}
           </div>
           <div>
             <a target="_blank" href="https://www.latlong.net/">
