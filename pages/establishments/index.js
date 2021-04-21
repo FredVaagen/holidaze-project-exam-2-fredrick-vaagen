@@ -8,7 +8,6 @@ import { BASE_URL } from "./../../constants/api";
 
 export default function EstablishmentsPage({ establishments }) {
   const router = useRouter();
-
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
@@ -48,6 +47,10 @@ export default function EstablishmentsPage({ establishments }) {
             transition: 0.5s;
             margin-bottom: 100px;
             border-radius: 50px;
+          }
+
+          .main {
+            height: auto;
           }
 
           .establishment-container:hover {
