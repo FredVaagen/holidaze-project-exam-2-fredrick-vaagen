@@ -62,38 +62,38 @@ function CreateEstablishment() {
           className="create-establishment-form"
           onSubmit={handleSubmit(submitData)}
         >
-          <div>
+       
             <label>Name</label>
             <input type="text" {...register("name")} />
-          </div>
-          <div>
+       
+  
             <label>Description</label>
             <textarea type="text" {...register("description", { required: true })} />
             {errors.description && (
             <div className="alert alert-danger">Required field</div>
           )}
-          </div>
-          <div>
+         
+     
             <label>Price per night</label>
             <input type="number" {...register("price", { required: true })} />
             {errors.price && (
             <div className="alert alert-danger">Required field</div>
           )}
-          </div>
-          <div>
+   
+      
             <a target="_blank" href="https://www.latlong.net/">
               <label>Latitude</label>
             </a>
             <input {...register("lat")} />
-          </div>
-          <div>
+      
+     
             <label>Longitude</label>
             <input {...register("lng")} />
-          </div>
-          <div>
+    
+      
             <label>Address</label>
             <input type="text" {...register("address")} />
-          </div>
+      
           <div>
             <label>
               Upload establishment promo/thumbnail image (Maximum of 1)
@@ -122,8 +122,7 @@ function CreateEstablishment() {
           .create-establishment input,
           textarea {
             width: 100%;
-            margin-top: 0.1rem;
-            margin-bottom: 2rem;
+     
             color: black;
           }
 

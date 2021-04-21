@@ -32,6 +32,7 @@ export default function EstablishmentsPage({ establishments }) {
               </Col>
               <Col xs={12} md={9}>
                 <h3>{establishment.name}</h3>
+                <p>{establishment.address}</p>
                 <p>{establishment.description}</p>
                 <p className="price">NOK {establishment.price},-</p>
               </Col>
@@ -69,11 +70,13 @@ export default function EstablishmentsPage({ establishments }) {
 
           .price {
             text-align: right;
+            font-weight: 500;
           }
 
           img {
             border-radius: 10px;
           }
+          
         `}
       </style>
     </div>
@@ -84,8 +87,9 @@ export async function getStaticProps() {
   const res = await fetch(`${BASE_URL}/establishments?_sort=name:asc`);
   const resPrice = await fetch(`${BASE_URL}/establishments?_sort=price:asc`);
   const establishments = await res.json();
+  const ascPrice = await resPrice.json();
   return {
-    props: { establishments },
+    props: { establishments, ascPrice},
     revalidate: 5,
   };
 }

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import fetch from "isomorphic-fetch";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import Image from "next/image";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -13,61 +13,113 @@ import Enquiry from "../../components/establishments/enquiry/EnquiryForm";
 import { BASE_URL } from "../../constants/api";
 import BackArrow from "../../components/layout/BackArrow";
 
+const useMediaQuery = (width) => {
+  const [targetReached, setTargetReached] = useState(false);
+
+  const updateTarget = useCallback((e) => {
+    if (e.matches) {
+      setTargetReached(true);
+    } else {
+      setTargetReached(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const media = window.matchMedia(`(max-width: ${width}px)`);
+    media.addListener(updateTarget);
+
+    if (media.matches) {
+      setTargetReached(true);
+    }
+
+    return () => media.removeListener(updateTarget);
+  }, []);
+
+  return targetReached;
+};
+
 export default function Establishment({ establishment, images, promoteImage }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const router = useRouter()
+  const router = useRouter();
 
+  const isBreakpoint = useMediaQuery(991);
 
   if (router.isFallback) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   return (
-    <Container fluid >
+    <Container fluid>
       <BackArrow />
       <Container className="establishment">
         <Container className="establishment-images">
           <h1>{establishment.name}</h1>
-          <Row>
-            <Col s={12} md={6} className="images mb-3">
-              <Image
-                src={promoteImage.url}
-                alt={establishment.name}
-                width="1000"
-                height="auto"
-              />
-            </Col>
-            <Col s={12} md={6}>
-              <Carousel fade indicators={false}>
-                {images.map((image) => (
-                  <Carousel.Item key={image.id}>
+          {isBreakpoint ? (
+            <Row>
+              <Col>
+                <Carousel fade indicators={false}>
+                  {images.map((image) => (
+                    <Carousel.Item key={image.id}>
+                      <Image
+                        className="d-block w-100"
+                        src={image.url}
+                        alt={image.name}
+                        width="1000"
+                        height="auto"
+                      />
+                    </Carousel.Item>
+                  ))}
+
+                  <Carousel.Item>
                     <Image
-                      className="d-block w-100"
-                      src={image.url}
-                      alt={image.name}
+                      src={promoteImage.url}
+                      alt={establishment.name}
                       width="1000"
-                      height="200"
+                      height="auto"
                     />
                   </Carousel.Item>
+                </Carousel>
+              </Col>
+            </Row>
+          ) : (
+            <Row className="no-gutters">
+              <Col s={4} md={4} lg={4} className="images mb-3 no-gutters">
+                <Image
+                  src={promoteImage.url}
+                  alt={establishment.name}
+                  width="1000"
+                  height="auto"
+                />
+              </Col>
+              <Col className="no-gutters" s={8} md={8} lg={8}>
+                {images.slice(0, 4).map((image) => (
+                  <Image
+                    key={image.id}
+                    className="detail-images ml-2 mr-2"
+                    src={image.url}
+                    alt={image.name}
+                    width="auto"
+                    height="auto"
+                  />
                 ))}
-              </Carousel>
-            </Col>
-          </Row>
+              </Col>
+            </Row>
+          )}
         </Container>
         <Container className="details-container">
           <Row className="details">
             <Col>
               <h5 className="subheading">About </h5>
               <p className="description">{establishment.description}</p>
+              <Button className="button" onClick={handleShow}>
+                Book
+              </Button>
             </Col>
           </Row>
           <h5 className="subheading">Location </h5>
           <SimpleMap {...establishment} />
-          <Button className="button" onClick={handleShow}>
-            Book
-          </Button>
         </Container>
 
         <Modal
@@ -100,7 +152,6 @@ export default function Establishment({ establishment, images, promoteImage }) {
             }
 
             .establishment h1 {
-              margin-left: 15px;
               font-size: 26px;
               font-weight: 400;
               margin-bottom: 2rem;
@@ -111,23 +162,15 @@ export default function Establishment({ establishment, images, promoteImage }) {
             }
 
             .images img {
-              border-radius: 20px;
-              min-height: 300px;
-
-            }
-
-            .carousel-item img {
-              max-height: 300px;
-              min-height: 300px;
-              width: 100%;
-              border-radius: 20px;
+              height: 306px;
+            
             }
 
             .button {
               background: none;
               color: black;
               border: 1px solid black;
-              width: 100%;
+              width: 200px;
               margin-bottom: 1rem;
               margin-top: 1rem;
             }
@@ -147,6 +190,14 @@ export default function Establishment({ establishment, images, promoteImage }) {
             .details .description {
               margin-bottom: 2rem;
               margin-top: 1rem;
+              font-size: 14px;
+            }
+
+            .carousel-item img {
+              max-height: 300px;
+              min-height: 300px;
+              width: 100%;
+              border-radius: 5px;
             }
 
             .subheading {

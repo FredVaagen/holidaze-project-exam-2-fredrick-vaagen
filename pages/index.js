@@ -45,7 +45,7 @@ export default function Home({ establishments }) {
           )}
         />
       </Container>
-      <Container fluid className="headline-container">
+      <Container className="headline-container">
         <Link href="/establishments">
           <a>
             <h1 className="headline">HOLIDAZE.</h1>
@@ -68,8 +68,6 @@ export default function Home({ establishments }) {
             display: flex;
             flex-direction: column;
             padding: 0;
-           
-            
           }
  
           .navbar-light .navbar-nav .nav-link {
@@ -81,16 +79,15 @@ export default function Home({ establishments }) {
           text-align: center;
           display: grid;
           align-content: center;
-       
-         
         }
 
           .headline {
             color: white;
             font-size: 7rem;
             margin-top: 1rem;
-           
           }
+
+        
 
           .subheading {
             color: white;
