@@ -5,8 +5,8 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Badge from "react-bootstrap/Badge";
-import { BASE_URL } from "./../../constants/api";
-import SortDropdown from "../../components/layout/SortDropdown"
+import { BASE_URL } from "../../../constants/api";
+import SortDropdown from "../../../components/layout/SortDropdown";
 
 export default function EstablishmentsPage({ establishments }) {
   const router = useRouter();
@@ -100,12 +100,10 @@ export default function EstablishmentsPage({ establishments }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch(`${BASE_URL}/establishments?_sort=name:asc`);
-  const resPrice = await fetch(`${BASE_URL}/establishments?_sort=price:asc`);
+  const res = await fetch(`${BASE_URL}/establishments?_sort=name:desc`);
   const establishments = await res.json();
-  const ascPrice = await resPrice.json();
   return {
-    props: { establishments, ascPrice },
+    props: { establishments },
     revalidate: 1,
   };
 }

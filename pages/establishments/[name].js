@@ -8,6 +8,8 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Carousel from "react-bootstrap/Carousel";
+import Spinner from "react-bootstrap/Spinner";
+
 import SimpleMap from "../../components/establishments/maps/SimpleMap";
 import Enquiry from "../../components/establishments/enquiry/EnquiryForm";
 import { BASE_URL } from "../../constants/api";
@@ -47,7 +49,11 @@ export default function Establishment({ establishment, images, promoteImage }) {
   const isBreakpoint = useMediaQuery(991);
 
   if (router.isFallback) {
-    return <div>Loading...</div>;
+    return (
+      <Spinner animation="border" role="status">
+        <span className="sr-only">Loading...</span>
+      </Spinner>
+    );
   }
 
   return (
@@ -163,7 +169,6 @@ export default function Establishment({ establishment, images, promoteImage }) {
 
             .images img {
               height: 306px;
-            
             }
 
             .button {
@@ -178,6 +183,12 @@ export default function Establishment({ establishment, images, promoteImage }) {
             .button:hover {
               background: black;
               color: white;
+            }
+
+            .button:focus {
+              background: black;
+              color: white;
+              box-shadow: 0 0 0 0.2rem rgb( 0 0 0 / 50%);
             }
 
             .details {

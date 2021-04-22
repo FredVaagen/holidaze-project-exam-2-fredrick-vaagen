@@ -42,7 +42,7 @@ const ImageUpload = (props) => {
             <input hidden type="text" {...register("name")} />
           </div>
           <div>
-            <label>Upload establishment images (Maximum of 5)</label>
+            <label>Upload detail images  (4 images are recommended)</label>
             <input type="file" multiple {...register("file")} />
           </div>
           <button type="submit">Upload</button>

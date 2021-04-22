@@ -10,7 +10,7 @@ import Nav from "react-bootstrap/Nav";
 import Footer from "../footer/Footer";
 
 const Layout = (props) => {
-  const title = "Holidaze";
+  const title = "Holidaze Hotel Booking";
   const { user, setUser } = useContext(AppContext);
 
   return (
@@ -166,6 +166,14 @@ const Layout = (props) => {
         cursor: pointer;
       }
 
+      .btn-primary:not(:disabled):not(.disabled):active {
+        background: black;
+        color: white;
+        box-shadow: 0 0 0 0.2rem rgb( 0 0 0 / 50%);
+      }
+
+
+
       @media only screen and (max-width: 800px){
 
         .login-link {
@@ -173,7 +181,6 @@ const Layout = (props) => {
           margin-left: -10px;
           margin-top: 2rem;
         }
-
 
         }
 

@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { login } from "../../lib/auth";
 import AppContext from "../../context/AppContext";
+import Spinner from "react-bootstrap/Spinner";
 
 function Login() {
   const [data, updateData] = useState({ identifier: "", password: "" });
@@ -73,7 +74,7 @@ function Login() {
                           .then((res) => {
                             setLoading(false);
                             appContext.setUser(res.data.user);
-                            if(res.ok) router.push("/admin")
+                            if (res.ok) router.push("/admin");
                           })
                           .catch((error) => {
                             setError(error.response.data);
@@ -81,7 +82,17 @@ function Login() {
                           });
                       }}
                     >
-                      {loading ? "Loading... " : "Log in"}
+                      {loading ? (
+                        <Spinner
+                          as="span"
+                          animation="border"
+                          size="sm"
+                          role="status"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        "Log in"
+                      )}
                     </Button>
                   </Form.Group>
                 </fieldset>

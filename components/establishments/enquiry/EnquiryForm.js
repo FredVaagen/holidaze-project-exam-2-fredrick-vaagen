@@ -37,8 +37,6 @@ function Enquiry(establishment) {
             <Form.Label className="ml-3">Check in</Form.Label>
             <Col>
               <Controller
-                control={control}
-                name="startDate"
                 render={({ field }) => (
                   <DatePicker
                     onChange={(e) => field.onChange(e)}
@@ -46,26 +44,33 @@ function Enquiry(establishment) {
                     selected={field.value}
                   />
                 )}
+                control={control}
+                name="startDate"
+                rules={{ required: true }}
               />
+              {errors.startDate && (
+                <div className="alert-danger">You must pick a checkin date</div>
+              )}
             </Col>
           </Form.Group>
           <Form.Group>
             <Form.Label className="ml-3">Check Out</Form.Label>
             <Col>
               <Controller
-                control={control}
-                name="endDate"
-              
                 render={({ field }) => (
                   <DatePicker
                     selected={field.value}
                     minDate={new Date()}
                     onChange={(e) => field.onChange(e)}
-               
                   />
                 )}
+                control={control}
+                name="endDate"
+                rules={{ required: true }}
               />
-   
+              {errors.endDate && (
+                <div className="alert-danger">You must pick a checkout date</div>
+              )}
             </Col>
           </Form.Group>
         </Row>
@@ -79,10 +84,10 @@ function Enquiry(establishment) {
                 rows={3}
                 placeholder="Enter first name"
                 aria-invalid={errors.firstname ? "true" : "false"}
-                {...register("firstname", { required: true })}
+                {...register("firstname", { required: true, minLength: 2 })}
               />
               {errors.firstname && (
-                <div className="alert-danger">Required field</div>
+                <div className="alert-danger">Please enter a first name (Minimum 2 characters)</div>
               )}
             </Form.Group>
           </Col>
@@ -94,10 +99,10 @@ function Enquiry(establishment) {
                 as="input"
                 rows={3}
                 placeholder="Enter last name"
-                {...register("lastname", { required: true })}
+                {...register("lastname", { required: true, minLength: 2 })}
               />
               {errors.lastname && (
-                <div className="alert-danger">Required field</div>
+                <div className="alert-danger">Please enter a last name (Minimum 2 characters)</div>
               )}
             </Form.Group>
           </Col>
@@ -110,9 +115,9 @@ function Enquiry(establishment) {
             as="input"
             rows={3}
             placeholder="Enter email"
-            {...register("email", { required: true })}
+            {...register("email", { required: true, pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ })}
           />
-          {errors.email && <div className="alert-danger">Required field</div>}
+          {errors.email && <div className="alert-danger">Email is required</div>}
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Your message</Form.Label>
@@ -150,6 +155,15 @@ function Enquiry(establishment) {
             color: black;
             border: 1px solid black;
           }
+
+          
+          .button:focus {
+            background: black;
+            color: white;
+            box-shadow: 0 0 0 0.2rem rgb( 0 0 0 / 50%);
+          }
+
+
 
           .alert-danger {
             background: none;
