@@ -9,16 +9,10 @@ import { BASE_URL } from "../../../constants/api";
 import SimpleMap from "../../../components/establishments/maps/SimpleMap";
 import ImageUpload from "../../../components/admin/establishment/ImageUpload";
 
-
-
 export default function Establishment({ establishment, images, promoteImage }) {
   const router = useRouter();
   if (router.isFallback) {
-    return (
-      <Spinner animation="border" role="status">
-        <span className="sr-only">Loading...</span>
-      </Spinner>
-    );
+    return <div>Loading...</div>;
   }
 
   return (
