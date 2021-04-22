@@ -9,15 +9,10 @@ import { BASE_URL } from "../../../constants/api";
 import SimpleMap from "../../../components/establishments/maps/SimpleMap";
 import ImageUpload from "../../../components/admin/establishment/ImageUpload";
 
-<MediaQUery />;
+
 
 export default function Establishment({ establishment, images, promoteImage }) {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const router = useRouter();
-  const isBreakpoint = MediaQuery(991);
-
   if (router.isFallback) {
     return (
       <Spinner animation="border" role="status">
