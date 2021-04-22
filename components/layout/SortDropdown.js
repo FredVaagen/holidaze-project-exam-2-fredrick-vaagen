@@ -11,16 +11,16 @@ function SortDropdown() {
 
       <Dropdown.Menu>
         <Link href="/establishments/sort/lowest-price">
-          <Dropdown.Item>Lowest price</Dropdown.Item>
+          <Dropdown.Item href="#/action-1">Lowest price</Dropdown.Item>
         </Link>
         <Link href="/establishments/sort/highest-price">
-          <Dropdown.Item>Highest price</Dropdown.Item>
+          <Dropdown.Item href="#/action-1">Highest price</Dropdown.Item>
         </Link>
         <Link href="/establishments">
-          <Dropdown.Item>a-z</Dropdown.Item>
+          <Dropdown.Item href="#/action-1">a-z</Dropdown.Item>
         </Link>
         <Link href="/establishments/sort/z-a">
-          <Dropdown.Item>z-a</Dropdown.Item>
+          <Dropdown.Item href="#/action-1">z-a</Dropdown.Item>
         </Link>
       </Dropdown.Menu>
       <style global jsx>
