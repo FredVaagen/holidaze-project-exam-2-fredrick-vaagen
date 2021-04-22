@@ -6,7 +6,7 @@ function SortDropdown() {
   return (
     <Dropdown>
       <Dropdown.Toggle variant="success" id="dropdown-basic">
-        Sort establishments
+        Sort places
       </Dropdown.Toggle>
 
       <Dropdown.Menu>

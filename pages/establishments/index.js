@@ -30,8 +30,8 @@ export default function EstablishmentsPage({ establishments }) {
               <Col xs={12} md={3}>
                 <Image
                   src={establishment.promoteImage.url}
-                  width="auto"
-                  height="auto"
+                  width="500"
+                  height="350"
                 />
               </Col>
               <Col xs={12} md={9}>

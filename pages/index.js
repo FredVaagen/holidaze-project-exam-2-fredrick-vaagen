@@ -1,3 +1,4 @@
+import React, { useState, useCallback, useEffect, useContext } from "react";
 import fetch from "isomorphic-unfetch";
 import Router from "next/router";
 import Link from "next/link";
@@ -6,9 +7,14 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { BASE_URL } from "./../constants/api";
+import { BASE_URL } from "../constants/api";
+import MediaQuery from "../components/layout/MediaQuery";
+
+<MediaQuery />;
 
 export default function Home({ establishments }) {
+  const [show, setShow] = useState(false);
+  const isBreakpoint = MediaQuery(991);
   const getEstablishmentName = (name) => {
     JSON.stringify(establishments, (val) => {
       if (val === name) {
@@ -23,41 +29,141 @@ export default function Home({ establishments }) {
   };
 
   return (
-    <>
-      <Container className="searchbar">
-        <Autocomplete
-          className="autocomplete"
-          options={establishments.map((option) => option.name)}
-          onChange={goToEstablishment}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              placeholder="Search Establishments..."
-              InputProps={{
-                ...params.InputProps,
-                startAdornment: (
-                  <InputAdornment position="end">
-                    <SearchIcon />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          )}
-        />
-      </Container>
-      <Container className="headline-container">
-        <Link href="/establishments">
-          <a>
-            <h1 className="headline">HOLIDAZE.</h1>
-            <h2 className="subheading">
-              Find the perfect accomedation while staying in Bergen, Norway.
-            </h2>
-          </a>
-        </Link>
-      </Container>
 
-      <style global jsx>
-        {`
+    //////////////MOBILE INDEX PAGE///////////////////
+    <>
+      {isBreakpoint ? (
+        <Container className="p-0" fluid>
+          <Container fluid className="searchbar">
+            <Autocomplete
+              className="autocomplete"
+              options={establishments.map((option) => option.name)}
+              onChange={goToEstablishment}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  placeholder="Search Establishments..."
+                  InputProps={{
+                    ...params.InputProps,
+                    startAdornment: (
+                      <InputAdornment position="end">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              )}
+            />
+          </Container>
+          <Container className="headline-container">
+            <Link href="/establishments">
+              <a>
+                <h1 className="headline">HOLIDAZE.</h1>
+                <h2 className="subheading">
+                  Find the perfect accomedation while staying in Bergen, Norway.
+                </h2>
+              </a>
+            </Link>
+          </Container>
+          <style global jsx>
+            {`
+
+          .main {
+            background: black;
+            height:90vh;
+            background: url('/me.jpg') no-repeat;
+            background-position: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+          }
+          a {
+            color: black;
+          }
+ 
+          .headline-container {
+            height: 100%;
+            text-align: center;
+            display: grid;
+            align-content: center;
+          }
+
+          .headline {
+            color: white;
+            font-size: 28px;
+            margin-top: 1rem;
+          }
+          .subheading {
+            color: white;
+            text-align: center;
+            font-size: 12px;
+          }    
+          .searchbar {
+            background: white;
+            
+            border: none;
+            align-self: center;
+            width: 100%;
+        
+       
+          }
+
+          .MuiInputBase-root {
+            height: 50px;
+            border-radius: 50px !important;
+          }
+
+          .MuiAutocomplete-clearIndicator {
+            visibility: visible;
+          }
+          .MuiInput-underline:before {
+            border-bottom: none !important;
+          }
+  
+          .MuiInput-underline:after {
+              border-bottom: none !important;
+          }
+        }
+    `}
+          </style>
+          ;
+        </Container>
+          //////////////END OF MOBILE INDEX PAGE///////////////////
+      ) : (
+        /////////////////DESKTOP INDEX PAGE///////////////////////////
+        <Container className="headline-container">
+          <Link href="/establishments">
+            <a>
+              <h1 className="headline">HOLIDAZE.</h1>
+              <h2 className="subheading">
+                Find the perfect accomedation while staying in Bergen, Norway.
+              </h2>
+            </a>
+          </Link>
+          <Container className="searchbar">
+            <Autocomplete
+              className="autocomplete"
+              options={establishments.map((option) => option.name)}
+              onChange={goToEstablishment}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  placeholder="Search Establishments..."
+                  InputProps={{
+                    ...params.InputProps,
+                    startAdornment: (
+                      <InputAdornment position="end">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              )}
+            />
+          </Container>
+          <style global jsx>
+            {`
 
           .main {
             background: black;
@@ -70,32 +176,24 @@ export default function Home({ establishments }) {
             padding: 0;
           }
  
-          .navbar-light .navbar-nav .nav-link {
-            margin: 2rem;       
-        }
-
-        .headline-container {
-          height: 100%;
-          text-align: center;
-          display: grid;
-          align-content: center;
-        }
+    
+          .headline-container {
+            height: 100%;
+            text-align: center;
+            display: grid;
+            align-content: center;
+          }
 
           .headline {
             color: white;
             font-size: 7rem;
             margin-top: 1rem;
           }
-
-        
-
           .subheading {
             color: white;
             text-align: center;
             font-size: 20px;
-          }
-
-          
+          }    
           .searchbar {
             background: white;
             border-radius: 20px;
@@ -104,10 +202,7 @@ export default function Home({ establishments }) {
             width: 100%;
             max-width: 800px;
             min-width: 200px;
-            margin-top: -1rem;
-            z-index: 3;
-           
-           
+            margin-top: 1rem;
           }
 
           .MuiInputBase-root {
@@ -118,42 +213,47 @@ export default function Home({ establishments }) {
           .MuiAutocomplete-clearIndicator {
             visibility: visible;
           }
-
-  
-
           .MuiInput-underline:before {
             border-bottom: none !important;
           }
-        
-        
-        .MuiInput-underline:after {
-            border-bottom: none !important;
+  
+          .MuiInput-underline:after {
+              border-bottom: none !important;
+          }
+
+          @media only screen and (max-width: 991px){
+            .searchbar {
+              border-radius: 0;
+              z-index: 1;
+              width: 100%;
+              margin: 0;
+            }
+
+            #basic-navbar-nav {
+              background: black;
+              padding: 1rem;
+              text-align: center;
+              margin-top: 0;
+              z-index: 5;
+            }
+
+            .headline {
+              font-size: 4rem;
+            }
+
+            .subheading {
+              font-size: 1rem;
+              margin-bottom: 1rem;
+            }
+          }
         }
-
-        @media only screen and (max-width: 750px){
-          .searchbar {
-            border-radius: 0;
-            z-index: 1;
-            width: 100%;
-            margin: 0;
-          }
-
-          #basic-navbar-nav {
-            background: black;
-            padding: 1rem;
-            text-align: center;
-            margin-top: 0;
-            z-index: 5;
-          }
-
-          .establishments-link {
-            margin-top: 3rem;
-          }
-      }
-  }
-  `}
-      </style>
+    `}
+          </style>
+          ;
+        </Container>
+      )}
     </>
+       /////////////////END OF DESKTOP INDEX PAGE///////////////////////////
   );
 }
 

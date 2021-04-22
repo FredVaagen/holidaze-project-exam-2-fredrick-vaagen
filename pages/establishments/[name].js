@@ -9,44 +9,20 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Carousel from "react-bootstrap/Carousel";
 import Spinner from "react-bootstrap/Spinner";
-
 import SimpleMap from "../../components/establishments/maps/SimpleMap";
 import Enquiry from "../../components/establishments/enquiry/EnquiryForm";
 import { BASE_URL } from "../../constants/api";
 import BackArrow from "../../components/layout/BackArrow";
+import MediaQuery from "../../components/layout/MediaQuery";
 
-const useMediaQuery = (width) => {
-  const [targetReached, setTargetReached] = useState(false);
-
-  const updateTarget = useCallback((e) => {
-    if (e.matches) {
-      setTargetReached(true);
-    } else {
-      setTargetReached(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    const media = window.matchMedia(`(max-width: ${width}px)`);
-    media.addListener(updateTarget);
-
-    if (media.matches) {
-      setTargetReached(true);
-    }
-
-    return () => media.removeListener(updateTarget);
-  }, []);
-
-  return targetReached;
-};
+<MediaQuery />;
 
 export default function Establishment({ establishment, images, promoteImage }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const router = useRouter();
-
-  const isBreakpoint = useMediaQuery(991);
+  const isBreakpoint = MediaQuery(991);
 
   if (router.isFallback) {
     return (
@@ -57,7 +33,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
   }
 
   return (
-    <Container fluid>
+    <Container>
       <BackArrow />
       <Container className="establishment">
         <Container className="establishment-images">
@@ -106,7 +82,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
                     className="detail-images ml-2 mr-2"
                     src={image.url}
                     alt={image.name}
-                    width="auto"
+                    width="300"
                     height="auto"
                   />
                 ))}
@@ -188,7 +164,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
             .button:focus {
               background: black;
               color: white;
-              box-shadow: 0 0 0 0.2rem rgb( 0 0 0 / 50%);
+              box-shadow: 0 0 0 0.2rem rgb(0 0 0 / 50%);
             }
 
             .details {

@@ -9,37 +9,14 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
 import Spinner from "react-bootstrap/Spinner";
-
 import BackArrow from "../../../components/layout/BackArrow";
 import SimpleMap from "../../../components/establishments/maps/SimpleMap";
 import { BASE_URL } from "../../../constants/api";
 import EditEstablishment from "../../../components/admin/establishment/EditEstablishment";
 import Enquiry from "../../../components/establishments/enquiry/EnquiryForm";
+import MediaQuery from "../../../components/layout/MediaQuery";
 
-const useMediaQuery = (width) => {
-  const [targetReached, setTargetReached] = useState(false);
-
-  const updateTarget = useCallback((e) => {
-    if (e.matches) {
-      setTargetReached(true);
-    } else {
-      setTargetReached(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    const media = window.matchMedia(`(max-width: ${width}px)`);
-    media.addListener(updateTarget);
-
-    if (media.matches) {
-      setTargetReached(true);
-    }
-
-    return () => media.removeListener(updateTarget);
-  }, []);
-
-  return targetReached;
-};
+<MediaQuery />
 
 export default function Establishment({ establishment, images, promoteImage }) {
   const [show, setShow] = useState(false);
@@ -47,7 +24,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
   const handleShow = () => setShow(true);
   const router = useRouter();
 
-  const isBreakpoint = useMediaQuery(991);
+  const isBreakpoint = MediaQuery(991);
 
   if (router.isFallback) {
     return (
