@@ -66,6 +66,7 @@ const Layout = (props) => {
                   <Link href="/admin">
                     <a className="mr-3">
                       <DashboardIcon />
+                      <p>Dashboard</p>
                     </a>
                   </Link>
                 ) : (
@@ -81,6 +82,7 @@ const Layout = (props) => {
                         setUser(null);
                       }}>
                       <ExitToAppIcon />
+                      <p>Log out</p>
                     </a>
                   </Link>
                 ) : (
