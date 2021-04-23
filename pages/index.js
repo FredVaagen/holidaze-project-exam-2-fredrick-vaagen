@@ -33,6 +33,7 @@ export default function Home({ establishments }) {
     <>
       {isBreakpoint ? (
        <>
+       <Container fluid className="p-0"> 
           <Container fluid className="searchbar">
             <Autocomplete
               className="autocomplete"
@@ -120,6 +121,7 @@ export default function Home({ establishments }) {
         }
     `}
           </style>
+          </Container>
         </>
       ) : (
         //////////////END OF MOBILE INDEX PAGE///////////////////
@@ -216,7 +218,9 @@ export default function Home({ establishments }) {
     `}
           </style>
         </Container>
+      
         </>
+       
       )}
     </>
     /////////////////END OF DESKTOP INDEX PAGE///////////////////////////
