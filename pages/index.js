@@ -67,7 +67,7 @@ export default function Home({ establishments }) {
           <style global jsx>
             {`
 
-          .main {
+          .main-mobile {
             @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
             background: black;
             height:90vh;
@@ -157,7 +157,7 @@ export default function Home({ establishments }) {
           <style global jsx>
             {`
 
-          .main {
+          .main-desktop {
              @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
             background: black;
             height:80vh;

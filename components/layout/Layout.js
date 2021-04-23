@@ -21,32 +21,15 @@ const Layout = (props) => {
       </Head>
       {isBreakpoint ? (
         <>
-          <Container fluid className="main">
+          <Container fluid className="main-mobile">
             {props.children}
           </Container>
-          <style global jsx>
-            {`
-              .main {
-                @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
-                background: black;
-                height:90vh;
-                background: url('/me.jpg') no-repeat;
-                background-position: center;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                padding: 0;
-              }
-            
-            `}
-            </style>
-
           <MobileNavigation />
         </>
       ) : (
         <>
           <DesktopNavigation />
-          <Container fluid className="main">
+          <Container fluid className="main-desktop">
             {props.children}
           </Container>
         </>
