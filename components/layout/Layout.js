@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import { Container } from "react-bootstrap";
 import Footer from "../footer/Footer";
@@ -10,6 +10,7 @@ import DesktopNavigation from "../navigation/desktop/DesktopNavigation";
 
 const Layout = (props) => {
   const title = "Holidaze Hotel Booking";
+  const [show, setShow] = useState(false);
   const isBreakpoint = MediaQuery(1200);
 
   return (
