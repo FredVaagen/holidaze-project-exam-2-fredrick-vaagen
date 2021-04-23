@@ -12,7 +12,7 @@ export default function Footer() {
           <li><a>About</a></li>
           <li><a>Places</a></li>
           <li><a>Contact</a></li>
-          <li><a>Become a host</a></li>
+          <li><a>Host</a></li>
         </ul>
       </div>
       <div className="bottom-footer">
@@ -40,19 +40,21 @@ export default function Footer() {
 
       <style jsx global>{`
         .footer {
-          font-size: 12px;
+          font-size: 11px;
           text-align: center;
           display: flex;
           flex-direction: column;
           padding: 3rem;
           border-top: 1px solid rgb(221, 221, 221);
+         
           
         }
 
         .footer ul {
           list-style-type: none;
           display: flex;
-          justify-content: space-evenly;
+          justify-content: space-between;
+         
           
         }
 

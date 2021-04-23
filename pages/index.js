@@ -81,7 +81,7 @@ export default function Home({ establishments }) {
 
           .background-image {
             height:90vh;
-            background: url('/me-mobile.jpg') no-repeat;
+            background: url('/background-mobile.jpg') no-repeat;
             background-position: center;
             padding: 0;
           }
@@ -106,6 +106,7 @@ export default function Home({ establishments }) {
           }    
           .searchbar {
             background: white;
+            position: fixed;
             
             border: none;
             align-self: center;
@@ -177,7 +178,7 @@ export default function Home({ establishments }) {
 
           .background-image {
             height:90vh;
-            background: url('/me.jpg') no-repeat;
+            background: url('/background-desktop.jpg') no-repeat;
             background-position: center;
             padding: 0;
           }

@@ -49,21 +49,20 @@ export default function EstablishmentsPage({ establishments }) {
 
       <style global jsx>
         {`
+          .main {
+            height: auto;
+          }
+
           .establishment-container {
             margin-top: 3rem;
             transition: 0.5s;
             margin-bottom: 3rem;
             border-radius: 50px;
             height: auto;
-           
           }
 
           .establishment-specific {
             margin-bottom: 5rem;
-          }
-
-          .main {
-            height: auto;
           }
 
           .establishment-container:hover {
@@ -81,8 +80,8 @@ export default function EstablishmentsPage({ establishments }) {
             color: black;
             text-transform: uppercase;
             font-size: 9px;
-            margin-left: -.3rem;
-        
+            margin-left: -0.3rem;
+
             margin-bottom: 1rem;
           }
 
@@ -92,7 +91,7 @@ export default function EstablishmentsPage({ establishments }) {
 
           .price {
             font-size: 14px;
-            margin-top: 5rem;
+            
           }
 
           img {
