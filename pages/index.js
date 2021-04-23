@@ -31,11 +31,9 @@ export default function Home({ establishments }) {
   return (
     //////////////MOBILE INDEX PAGE///////////////////
     <>
-  
       {isBreakpoint ? (
         <>
-
-            <Container fluid className="background-image">
+          <Container fluid className="background-image">
             <Container fluid className="searchbar">
               <Autocomplete
                 className="autocomplete"
@@ -69,8 +67,8 @@ export default function Home({ establishments }) {
               </Link>
             </Container>
 
-          <style global jsx>
-            {`
+            <style global jsx>
+              {`
 
           .main {
             @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
@@ -85,6 +83,7 @@ export default function Home({ establishments }) {
             height:90vh;
             background: url('/me-mobile.jpg') no-repeat;
             background-position: center;
+            padding: 0;
           }
           
           .headline-container {
@@ -127,13 +126,13 @@ export default function Home({ establishments }) {
           }
         }
     `}
-          </style>
+            </style>
           </Container>
         </>
       ) : (
         //////////////END OF MOBILE INDEX PAGE///////////////////
         /////////////////DESKTOP INDEX PAGE///////////////////////////
-        <>
+        <Container fluid className="background-image">
           <Container className="headline-container">
             <Link href="/establishments">
               <a>
@@ -170,14 +169,19 @@ export default function Home({ establishments }) {
           .main {
             @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
             background: black;
-            height:90vh;
-            background: url('/me-mobile.jpg') no-repeat;
-            background-position: center;
             width: 100%;
             display: flex;
             flex-direction: column;
             padding: 0;
           }
+
+          .background-image {
+            height:90vh;
+            background: url('/me.jpg') no-repeat;
+            background-position: center;
+            padding: 0;
+          }
+
           .headline-container {
             height: 100%;
             text-align: center;
@@ -225,7 +229,7 @@ export default function Home({ establishments }) {
     `}
             </style>
           </Container>
-        </>
+        </Container>
       )}
     </>
     /////////////////END OF DESKTOP INDEX PAGE///////////////////////////
