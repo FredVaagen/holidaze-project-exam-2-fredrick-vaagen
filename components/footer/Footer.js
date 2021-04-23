@@ -46,17 +46,20 @@ export default function Footer() {
           flex-direction: column;
           padding: 3rem;
           border-top: 1px solid rgb(221, 221, 221);
+          
         }
 
         .footer ul {
           list-style-type: none;
           display: flex;
           justify-content: space-evenly;
+          
         }
 
         .footer li {
           margin-right: 1rem;
           margin-left: 1rem;
+          font-weight: 200;
         }
 
         .bottom-footer {
@@ -65,6 +68,7 @@ export default function Footer() {
           justify-content: space-between;
           padding: 10px;
           border-top: 1px solid rgb(221, 221, 221);
+          font-weight: 400;
         }
 
         .bottom-footer a {
