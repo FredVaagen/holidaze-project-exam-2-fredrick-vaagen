@@ -64,7 +64,7 @@ const Layout = (props) => {
               <Nav.Item>
                 {user ? (
                   <Link href="/admin">
-                    <a className="mr-3">
+                    <a >
                       <DashboardIcon />
                       <p>Dashboard</p>
                     </a>
