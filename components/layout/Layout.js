@@ -22,7 +22,7 @@ const Layout = (props) => {
       </Head>
       {isBreakpoint ? (
         <>
-          <Container fluid className="main">
+          <Container fluid className="main p-0 m-0">
             {props.children}
           </Container>
           <MobileNavigation />
@@ -30,7 +30,7 @@ const Layout = (props) => {
       ) : (
         <>
           <DesktopNavigation />
-          <Container fluid className="main">
+          <Container fluid className="main p-0 m-0">
             {props.children}
           </Container>
         </>
