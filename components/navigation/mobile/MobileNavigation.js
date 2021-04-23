@@ -9,7 +9,6 @@ import ContactSupportIcon from "@material-ui/icons/ContactSupport";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import HomeIcon from "@material-ui/icons/Home";
 import FilterHdrIcon from "@material-ui/icons/FilterHdr";
 
 import { logout } from "../../../lib/auth";

@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState} from "react";
 import fetch from "isomorphic-fetch";
 import { useRouter } from "next/router";
 import Image from "next/image";
