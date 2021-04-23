@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Badge from "react-bootstrap/Badge";
 import { BASE_URL } from "../../../constants/api";
-import SortDropdown from "../../../components/layout/SortDropdown";
+import SortDropdown from "../../../components/establishments/sort/SortDropdown";
 
 export default function EstablishmentsPage({ establishments }) {
   const router = useRouter();
