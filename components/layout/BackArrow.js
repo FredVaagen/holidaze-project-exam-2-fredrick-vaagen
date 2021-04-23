@@ -10,8 +10,13 @@ function BackArrow() {
       Back
       <style jsx global>
         {`
+
+          .back-arrow {
+            margin-top: 2rem;
+          }
           .MuiSvgIcon-root {
             font-size: 1rem;
+            
             font-weight: 200;
             opacity: 0.5;
             margin-bottom: 1px;
