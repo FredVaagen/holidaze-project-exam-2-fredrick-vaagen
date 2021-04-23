@@ -45,6 +45,7 @@ export default function Footer() {
           display: flex;
           flex-direction: column;
           padding: 3rem;
+          border-top: 1px solid rgb(221, 221, 221);
         }
 
         .footer ul {
@@ -63,6 +64,7 @@ export default function Footer() {
           display: flex;
           justify-content: space-between;
           padding: 10px;
+          border-top: 1px solid rgb(221, 221, 221);
         }
 
         .bottom-footer a {

@@ -16,8 +16,8 @@ export default function EstablishmentsPage({ establishments}) {
 
   return (
     <Container className="establishments">
-      <h1 className="mt-5">Find a place to stay</h1>
-      <SortDropdown />
+      <h1 className="mt-3">Find a place to stay</h1>  
+     <SortDropdown />  
 
       {establishments.map((establishment) => (
         <Link
@@ -30,8 +30,8 @@ export default function EstablishmentsPage({ establishments}) {
               <Col xs={12} md={3}>
                 <Image
                   src={establishment.promoteImage.url}
-                  width="auto"
-                  height="auto"
+                  width="500"
+                  height="300"
                 />
               </Col>
               <Col xs={12} md={9}>
@@ -42,7 +42,7 @@ export default function EstablishmentsPage({ establishments}) {
                     {establishment.category}
                   </Badge>
                 </p>
-                <p>{establishment.description}</p>
+               
                 <p className="price">NOK {establishment.price},-</p>
               </Col>
             </Row>
@@ -53,10 +53,11 @@ export default function EstablishmentsPage({ establishments}) {
       <style global jsx>
         {`
           .establishment-container {
-            margin-top: 5rem;
+            margin-top: 1rem;
             transition: 0.5s;
-            margin-bottom: 100px;
+            margin-bottom: 3rem;
             border-radius: 50px;
+            height: auto;
           }
 
           .main {
