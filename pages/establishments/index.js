@@ -6,18 +6,17 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Badge from "react-bootstrap/Badge";
 import { BASE_URL } from "./../../constants/api";
-import SortDropdown from "../../components/layout/SortDropdown"
+import SortDropdown from "../../components/establishments/sort/SortDropdown"
 
 export default function EstablishmentsPage({ establishments }) {
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-
   return (
     <Container className="establishments">
       <h1 className="mt-5">Find a place to stay</h1>
-      <SortDropdown />
+     <SortDropdown />
 
       {establishments.map((establishment) => (
         <Link
@@ -42,7 +41,7 @@ export default function EstablishmentsPage({ establishments }) {
                     {establishment.category}
                   </Badge>
                 </p>
-                <p>{establishment.description}</p>
+               
                 <p className="price">NOK {establishment.price},-</p>
               </Col>
             </Row>
@@ -57,6 +56,7 @@ export default function EstablishmentsPage({ establishments }) {
             transition: 0.5s;
             margin-bottom: 100px;
             border-radius: 50px;
+            height: auto;
           }
 
           .main {

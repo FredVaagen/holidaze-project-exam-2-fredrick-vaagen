@@ -67,7 +67,6 @@ export default function Home({ establishments }) {
           </Container>
           <style global jsx>
             {`
-
           .main {
             background: black;
             height:90vh;
@@ -105,22 +104,17 @@ export default function Home({ establishments }) {
             border: none;
             align-self: center;
             width: 100%;
-        
-       
           }
-
           .MuiInputBase-root {
             height: 50px;
             border-radius: 50px !important;
           }
-
           .MuiAutocomplete-clearIndicator {
             visibility: visible;
           }
           .MuiInput-underline:before {
             border-bottom: none !important;
           }
-  
           .MuiInput-underline:after {
               border-bottom: none !important;
           }
@@ -175,8 +169,6 @@ export default function Home({ establishments }) {
             flex-direction: column;
             padding: 0;
           }
- 
-    
           .headline-container {
             height: 100%;
             text-align: center;
@@ -219,32 +211,6 @@ export default function Home({ establishments }) {
   
           .MuiInput-underline:after {
               border-bottom: none !important;
-          }
-
-          @media only screen and (max-width: 991px){
-            .searchbar {
-              border-radius: 0;
-              z-index: 1;
-              width: 100%;
-              margin: 0;
-            }
-
-            #basic-navbar-nav {
-              background: black;
-              padding: 1rem;
-              text-align: center;
-              margin-top: 0;
-              z-index: 5;
-            }
-
-            .headline {
-              font-size: 4rem;
-            }
-
-            .subheading {
-              font-size: 1rem;
-              margin-bottom: 1rem;
-            }
           }
         }
     `}

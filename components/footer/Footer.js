@@ -1,6 +1,4 @@
 import React from "react";
-import { MDBFooter } from "mdb-react-ui-kit";
-import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import InstagramIcon from "@material-ui/icons/Instagram";
@@ -8,79 +6,83 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 
 export default function Footer() {
   return (
-    <MDBFooter className="text-center text-lg-left footer-main ">
-      <MDBContainer className="p-4 mt-5">
-        <MDBRow>
-          <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
-            <h5 className="text-uppercase">ABOUT US</h5>
-          </MDBCol>
-
-          <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
-            <h5 className="text-uppercase mb-0">ESTABLISHMENTS</h5>
-          </MDBCol>
-
-          <MDBCol lg="3" md="6" className="mb-4 mb-md-0 ">
-            <h5 className="text-uppercase">CONTACT US</h5>
-          </MDBCol>
-
-          <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
-            <h5 className="text-uppercase mb-0">WORK</h5>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
-
-      <div className="d-flex  p-3 bottom-footer justify-content-between">
+    <>
+      <div className="footer">
+        <ul>
+          <li><a>About</a></li>
+          <li><a>Places</a></li>
+          <li><a>Contact</a></li>
+          <li><a>Become a host</a></li>
+        </ul>
+      </div>
+      <div className="bottom-footer">
         <div>
-          &copy; {new Date().getFullYear()} Copyright:{" Holidaze, Inc"}
-          <a className="text-dark" href="https://mdbootstrap.com/"></a>
-          <a className="text-dark" href="https://mdbootstrap.com/">
-            Privacy
-          </a>
-          <a className="text-dark">Terms</a>
-          <a className="text-dark">Company Information</a>
+        
+          <a>  &copy; {new Date().getFullYear()} Copyright:{" Holidaze, Inc"}</a>
+          <a>Privacy</a>
+          <a>Terms</a>
         </div>
-        <div>
-          <a className="text-dark">
+        <div className="socials">
+          <a>
             <FacebookIcon />
           </a>
-          <a className="text-dark">
+          <a>
             <InstagramIcon />
           </a>
-          <a className="text-dark">
+          <a>
             <TwitterIcon />
           </a>
-          <a className="text-dark">
+          <a>
             <LinkedInIcon />
           </a>
         </div>
       </div>
 
       <style jsx global>{`
-        .footer-main {
-          border-top: 1px solid #e9e9e9;
+        .footer {
           font-size: 12px;
           text-align: center;
           display: flex;
           flex-direction: column;
-          flex: 0 1;
-          margin-top: 3rem;
-      
+          padding: 3rem;
         }
 
-        .footer-main h5 {
-          font-size: 14px;
-          text-align: center;
+        .footer ul {
+          list-style-type: none;
+          display: flex;
+          justify-content: space-evenly;
+        }
+
+        .footer li {
+          margin-right: 1rem;
+          margin-left: 1rem;
         }
 
         .bottom-footer {
           font-size: 14px;
-          flex-wrap: wrap;
+          display: flex;
+          justify-content: space-between;
+          padding: 10px;
         }
 
         .bottom-footer a {
           margin-right: 1rem;
+          font-size: 10px;
         }
+
+        .socials svg {
+          font-size: 16px;
+        }
+
+        @media only screen and (max-width: 991px){
+          .bottom-footer  {
+            margin-bottom: 6rem;
+          }
+
+
+        }
+
       `}</style>
-    </MDBFooter>
+    </>
   );
 }
