@@ -67,7 +67,7 @@ export default function Home({ establishments }) {
           </Container>
           <style global jsx>
             {`
-            
+
           .main {
             @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
             background: black;
@@ -121,7 +121,6 @@ export default function Home({ establishments }) {
         }
     `}
           </style>
-          ;
         </Container>
           //////////////END OF MOBILE INDEX PAGE///////////////////
       ) : (
