@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useContext } from "react";
+import React, { useState} from "react";
 import fetch from "isomorphic-unfetch";
 import Router from "next/router";
 import Link from "next/link";
