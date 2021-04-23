@@ -31,53 +31,60 @@ export default function Home({ establishments }) {
   return (
     //////////////MOBILE INDEX PAGE///////////////////
     <>
+  
       {isBreakpoint ? (
-       <>
-       <Container fluid className="p-0"> 
-          <Container fluid className="searchbar">
-            <Autocomplete
-              className="autocomplete"
-              options={establishments.map((option) => option.name)}
-              onChange={goToEstablishment}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  placeholder="Search Establishments..."
-                  InputProps={{
-                    ...params.InputProps,
-                    startAdornment: (
-                      <InputAdornment position="end">
-                        <SearchIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              )}
-            />
-          </Container>
-          <Container className="headline-container">
-            <Link href="/establishments">
-              <a>
-                <h1 className="headline">HOLIDAZE.</h1>
-                <h2 className="subheading">
-                  Find the perfect accomedation while staying in Bergen, Norway.
-                </h2>
-              </a>
-            </Link>
-          </Container>
+        <>
+
+            <Container fluid className="background-image">
+            <Container fluid className="searchbar">
+              <Autocomplete
+                className="autocomplete"
+                options={establishments.map((option) => option.name)}
+                onChange={goToEstablishment}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    placeholder="Search Establishments..."
+                    InputProps={{
+                      ...params.InputProps,
+                      startAdornment: (
+                        <InputAdornment position="end">
+                          <SearchIcon />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                )}
+              />
+            </Container>
+            <Container className="headline-container">
+              <Link href="/establishments">
+                <a>
+                  <h1 className="headline">HOLIDAZE.</h1>
+                  <h2 className="subheading">
+                    Find the perfect accomedation while staying in Bergen,
+                    Norway.
+                  </h2>
+                </a>
+              </Link>
+            </Container>
+
           <style global jsx>
             {`
 
-          .main-mobile {
+          .main {
             @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
             background: black;
-            height:90vh;
-            background: url('/me-mobile.jpg') no-repeat;
-            background-position: center;
             width: 100%;
             display: flex;
             flex-direction: column;
             padding: 0;
+          }
+
+          .background-image {
+            height:90vh;
+            background: url('/me-mobile.jpg') no-repeat;
+            background-position: center;
           }
           
           .headline-container {
@@ -127,44 +134,44 @@ export default function Home({ establishments }) {
         //////////////END OF MOBILE INDEX PAGE///////////////////
         /////////////////DESKTOP INDEX PAGE///////////////////////////
         <>
-        <Container className="headline-container">
-          <Link href="/establishments">
-            <a>
-              <h1 className="headline">HOLIDAZE.</h1>
-              <h2 className="subheading">
-                Find the perfect accomedation while staying in Bergen, Norway.
-              </h2>
-            </a>
-          </Link>
-          <Container className="searchbar">
-            <Autocomplete
-              className="autocomplete"
-              options={establishments.map((option) => option.name)}
-              onChange={goToEstablishment}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  placeholder="Search Establishments..."
-                  InputProps={{
-                    ...params.InputProps,
-                    startAdornment: (
-                      <InputAdornment position="end">
-                        <SearchIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              )}
-            />
-          </Container>
-          <style global jsx>
-            {`
+          <Container className="headline-container">
+            <Link href="/establishments">
+              <a>
+                <h1 className="headline">HOLIDAZE.</h1>
+                <h2 className="subheading">
+                  Find the perfect accomedation while staying in Bergen, Norway.
+                </h2>
+              </a>
+            </Link>
+            <Container className="searchbar">
+              <Autocomplete
+                className="autocomplete"
+                options={establishments.map((option) => option.name)}
+                onChange={goToEstablishment}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    placeholder="Search Establishments..."
+                    InputProps={{
+                      ...params.InputProps,
+                      startAdornment: (
+                        <InputAdornment position="end">
+                          <SearchIcon />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                )}
+              />
+            </Container>
+            <style global jsx>
+              {`
 
-          .main-desktop {
-             @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+          .main {
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
             background: black;
-            height:80vh;
-            background: url('/me.jpg') no-repeat;
+            height:90vh;
+            background: url('/me-mobile.jpg') no-repeat;
             background-position: center;
             width: 100%;
             display: flex;
@@ -216,11 +223,9 @@ export default function Home({ establishments }) {
           }
         }
     `}
-          </style>
-        </Container>
-      
+            </style>
+          </Container>
         </>
-       
       )}
     </>
     /////////////////END OF DESKTOP INDEX PAGE///////////////////////////

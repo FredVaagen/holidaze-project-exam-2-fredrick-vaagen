@@ -11,7 +11,7 @@ import DesktopNavigation from "../navigation/desktop/DesktopNavigation";
 const Layout = (props) => {
   const title = "Holidaze Hotel Booking";
   const [show, setShow] = useState(false);
-  const isBreakpoint = MediaQuery(1200);
+  const isBreakpoint = MediaQuery(991);
 
   return (
     <>
@@ -22,7 +22,7 @@ const Layout = (props) => {
       </Head>
       {isBreakpoint ? (
         <>
-          <Container fluid className="main-mobile">
+          <Container fluid className="main">
             {props.children}
           </Container>
           <MobileNavigation />
@@ -30,7 +30,7 @@ const Layout = (props) => {
       ) : (
         <>
           <DesktopNavigation />
-          <Container fluid className="main-desktop">
+          <Container fluid className="main">
             {props.children}
           </Container>
         </>
