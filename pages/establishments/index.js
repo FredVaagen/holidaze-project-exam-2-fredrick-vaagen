@@ -26,20 +26,20 @@ export default function EstablishmentsPage({ establishments }) {
           key={establishment.id}>
           <Container className="establishment-container">
             <Row className="establishment-specific">
-              <Col xs={6} lg={4}>
+              <Col s={12} md={6} lg={4}>
                 <Image
                   src={establishment.promoteImage.url}
                   width="400"
                   height="200"
                 />
               </Col>
-              <Col xs={6} lg={4}>
+              <Col s={12} md={6} lg={4}>
                 <h3>{establishment.name}</h3>
                 <Badge>{establishment.category}</Badge>
                 <p>{establishment.address}</p>
                 <p className="price">NOK {establishment.price},- per night</p>
               </Col>
-              <Col xs={4} lg={4}>
+              <Col s={4} lg={4}>
                 <SimpleMap {...establishment} />
               </Col>
             </Row>
