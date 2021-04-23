@@ -9,6 +9,7 @@ import ContactSupportIcon from "@material-ui/icons/ContactSupport";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import DashboardIcon from "@material-ui/icons/Dashboard";
+import HomeIcon from '@material-ui/icons/Home';
 import { logout } from "../../lib/auth";
 import AppContext from "../../context/AppContext";
 import Navbar from "react-bootstrap/Navbar";
@@ -38,6 +39,11 @@ const Layout = (props) => {
           </Container>
           <Navbar fixed="bottom" className="appbar" bg="light">
             <Container className="appbar-container">
+            <Link href="/" passHref>
+                <Nav.Link className="establishments-link">
+                  <HomeIcon /> <p>Home</p>
+                </Nav.Link>
+              </Link>
               <Link href="/establishments" passHref>
                 <Nav.Link className="establishments-link">
                   <HotelIcon /> <p>Places</p>
@@ -91,15 +97,12 @@ const Layout = (props) => {
           <style global jsx>
             {`
               .appbar {
-               
                 text-align: center;
               }
 
               .appbar p {
                 margin-top: 3px;
               }
-
-
             `}
           </style>
         </>
