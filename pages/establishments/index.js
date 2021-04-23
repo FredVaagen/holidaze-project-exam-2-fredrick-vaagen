@@ -6,7 +6,8 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Badge from "react-bootstrap/Badge";
 import { BASE_URL } from "./../../constants/api";
-import SortDropdown from "../../components/establishments/sort/SortDropdown"
+import SortDropdown from "../../components/establishments/sort/SortDropdown";
+import SimpleMap from "../../components/establishments/maps/SimpleMap";
 
 export default function EstablishmentsPage({ establishments }) {
   const router = useRouter();
@@ -15,34 +16,31 @@ export default function EstablishmentsPage({ establishments }) {
   }
   return (
     <Container className="establishments">
-      <h1 className="mt-3">Find a place to stay</h1>  
-     <SortDropdown />  
+      <h1 className="mt-3">Find a place to stay</h1>
+      <SortDropdown />
 
       {establishments.map((establishment) => (
         <Link
           href="/establishments/[name]"
           as={`/establishments/${establishment.name}`}
-          key={establishment.id}
-        >
+          key={establishment.id}>
           <Container className="establishment-container">
             <Row className="establishment-specific">
-              <Col xs={12} md={3}>
+              <Col xs={6} lg={4}>
                 <Image
                   src={establishment.promoteImage.url}
-                  width="500"
-                  height="300"
+                  width="400"
+                  height="200"
                 />
               </Col>
-              <Col xs={12} md={9}>
+              <Col xs={6} lg={4}>
                 <h3>{establishment.name}</h3>
-                <p>
-                  {establishment.address}{" "}
-                  <Badge className="ml-3" pill variant="dark">
-                    {establishment.category}
-                  </Badge>
-                </p>
-               
-                <p className="price">NOK {establishment.price},-</p>
+                <Badge>{establishment.category}</Badge>
+                <p>{establishment.address}</p>
+                <p className="price">NOK {establishment.price},- per night</p>
+              </Col>
+              <Col xs={4} lg={4}>
+                <SimpleMap {...establishment} />
               </Col>
             </Row>
           </Container>
@@ -52,11 +50,16 @@ export default function EstablishmentsPage({ establishments }) {
       <style global jsx>
         {`
           .establishment-container {
-            margin-top: 1rem;
+            margin-top: 3rem;
             transition: 0.5s;
             margin-bottom: 3rem;
             border-radius: 50px;
             height: auto;
+           
+          }
+
+          .establishment-specific {
+            margin-bottom: 5rem;
           }
 
           .main {
@@ -64,30 +67,32 @@ export default function EstablishmentsPage({ establishments }) {
           }
 
           .establishment-container:hover {
-            transform: scale(1.01);
+            transform: scale(1.02);
             cursor: pointer;
-            background: #fafafa;
-          }
-
-          .establishment-specific {
-            padding-top: 30px;
           }
 
           h3 {
             font-size: 20px;
+            margin-bottom: 0;
           }
 
-          .badge-pill {
-            font-size: 10px;
+          .badge {
+            background: None;
+            color: black;
+            text-transform: uppercase;
+            font-size: 9px;
+            margin-left: -.3rem;
+        
+            margin-bottom: 1rem;
           }
 
           p {
-            font-size: 13px;
+            font-size: 12px;
           }
 
           .price {
-            text-align: right;
-            font-weight: bold;
+            font-size: 14px;
+            margin-top: 5rem;
           }
 
           img {

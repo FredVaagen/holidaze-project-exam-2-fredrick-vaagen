@@ -14,7 +14,12 @@ a {
   color: black;
   text-decoration: none;
 }
-
 a:hover {
   text-decoration: none;
+  color: black !important;
+  transform: scale(1.11);
+  cursor: pointer;
 }
+
+
+

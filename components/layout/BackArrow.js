@@ -5,7 +5,7 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 function BackArrow() {
   const router = useRouter();
   return (
-    <div onClick={() => router.back()} className="back-arrow">
+    <div onClick={() => router.push("/establishments")} className="back-arrow">
       <ArrowBackIosIcon />
       Back
       <style jsx global>

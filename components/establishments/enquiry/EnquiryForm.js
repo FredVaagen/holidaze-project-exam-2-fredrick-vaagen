@@ -27,7 +27,6 @@ function Enquiry(establishment) {
     };
 
     await fetch([BASE_URL + "/enquiries"], requestOptions);
-    router.push("/enquiry/feedback");
   };
   return (
     <Container>
@@ -69,7 +68,9 @@ function Enquiry(establishment) {
                 rules={{ required: true }}
               />
               {errors.endDate && (
-                <div className="alert-danger">You must pick a checkout date</div>
+                <div className="alert-danger">
+                  You must pick a checkout date
+                </div>
               )}
             </Col>
           </Form.Group>
@@ -87,7 +88,9 @@ function Enquiry(establishment) {
                 {...register("firstname", { required: true, minLength: 2 })}
               />
               {errors.firstname && (
-                <div className="alert-danger">Please enter a first name (Minimum 2 characters)</div>
+                <div className="alert-danger">
+                  Please enter a first name (Minimum 2 characters)
+                </div>
               )}
             </Form.Group>
           </Col>
@@ -102,7 +105,9 @@ function Enquiry(establishment) {
                 {...register("lastname", { required: true, minLength: 2 })}
               />
               {errors.lastname && (
-                <div className="alert-danger">Please enter a last name (Minimum 2 characters)</div>
+                <div className="alert-danger">
+                  Please enter a last name (Minimum 2 characters)
+                </div>
               )}
             </Form.Group>
           </Col>
@@ -115,9 +120,14 @@ function Enquiry(establishment) {
             as="input"
             rows={3}
             placeholder="Enter email"
-            {...register("email", { required: true, pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ })}
+            {...register("email", {
+              required: true,
+              pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            })}
           />
-          {errors.email && <div className="alert-danger">Email is required</div>}
+          {errors.email && (
+            <div className="alert-danger">Email is required</div>
+          )}
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Your message</Form.Label>
@@ -138,6 +148,7 @@ function Enquiry(establishment) {
           {...register("establishmentName")}
         />
       </Form>
+
       <style global jsx>
         {`
           .summary p {
@@ -156,14 +167,11 @@ function Enquiry(establishment) {
             border: 1px solid black;
           }
 
-          
           .button:focus {
             background: black;
             color: white;
-            box-shadow: 0 0 0 0.2rem rgb( 0 0 0 / 50%);
+            box-shadow: 0 0 0 0.2rem rgb(0 0 0 / 50%);
           }
-
-
 
           .alert-danger {
             background: none;

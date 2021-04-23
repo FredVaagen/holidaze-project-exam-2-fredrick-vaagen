@@ -20,7 +20,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const router = useRouter();
-  const isBreakpoint = MediaQuery(991);
+  const isBreakpoint = MediaQuery(1200);
 
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -95,7 +95,9 @@ export default function Establishment({ establishment, images, promoteImage }) {
             </Col>
           </Row>
           <h5 className="subheading">Location </h5>
+          <div className="map">
           <SimpleMap {...establishment} />
+          </div>
         </Container>
 
         <Modal
@@ -128,7 +130,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
 
             .establishment h1 {
               font-size: 26px;
-              font-weight: 400;
+              font-weight: 200;
               margin-bottom: 2rem;
             }
 
@@ -143,21 +145,21 @@ export default function Establishment({ establishment, images, promoteImage }) {
             .button {
               background: none;
               color: black;
-              border: 1px solid black;
+              border: 1px solid rgb(0, 0, 0, 0.3);
               width: 200px;
               margin-bottom: 1rem;
               margin-top: 1rem;
+              border-radius: 7px;
+              padding: 6px;
+              transition: .3s;
+              font-weight: 200;
             }
 
             .button:hover {
               background: black;
               color: white;
-            }
-
-            .button:focus {
-              background: black;
-              color: white;
-              box-shadow: 0 0 0 0.2rem rgb(0 0 0 / 50%);
+              transform: scale(1.1);
+              font-weight: bold;
             }
 
             .details {
@@ -171,6 +173,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
               margin-bottom: 2rem;
               margin-top: 1rem;
               font-size: 14px;
+              font-weight: 200;
             }
 
             .carousel-item img {
@@ -183,7 +186,14 @@ export default function Establishment({ establishment, images, promoteImage }) {
             .subheading {
               font-size: 18px;
               margin-bottom: 1rem;
+              font-weight: 200;
             }
+
+            .map {
+              height: 300px;
+            }
+
+
           `}
         </style>
       </Container>

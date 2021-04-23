@@ -77,12 +77,8 @@ export default function Home({ establishments }) {
             display: flex;
             flex-direction: column;
             padding: 0;
-           
           }
-          a {
-            color: black;
-          }
- 
+          
           .headline-container {
             height: 100%;
             text-align: center;
@@ -95,6 +91,7 @@ export default function Home({ establishments }) {
             font-size: 28px;
             margin-top: 1rem;
           }
+          
           .subheading {
             color: white;
             text-align: center;
