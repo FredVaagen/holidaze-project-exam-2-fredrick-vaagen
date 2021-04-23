@@ -77,7 +77,6 @@ export default function Home({ establishments }) {
             display: flex;
             flex-direction: column;
             padding: 0;
-           
           }
           a {
             color: black;
@@ -111,6 +110,11 @@ export default function Home({ establishments }) {
             height: 50px;
             border-radius: 50px !important;
           }
+
+          .MuiInputBase-input {
+            box-sizing: border-box
+          }
+
           .MuiAutocomplete-clearIndicator {
             visibility: visible;
           }
@@ -119,7 +123,6 @@ export default function Home({ establishments }) {
           }
           .MuiInput-underline:after {
               border-bottom: none !important;
-          }
         }
     `}
           </style>
@@ -203,6 +206,10 @@ export default function Home({ establishments }) {
           .MuiInputBase-root {
             height: 50px;
             border-radius: 50px !important;
+          }
+
+          .MuiInputBase-input {
+            box-sizing: border-box
           }
 
           .MuiAutocomplete-clearIndicator {

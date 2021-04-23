@@ -1,14 +1,12 @@
-import { useState} from "react";
+import { useState } from "react";
 import fetch from "isomorphic-fetch";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Carousel from "react-bootstrap/Carousel";
-import Spinner from "react-bootstrap/Spinner";
 import SimpleMap from "../../components/establishments/maps/SimpleMap";
 import Enquiry from "../../components/establishments/enquiry/EnquiryForm";
 import { BASE_URL } from "../../constants/api";
@@ -25,11 +23,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
   const isBreakpoint = MediaQuery(991);
 
   if (router.isFallback) {
-    return (
-      <Spinner animation="border" role="status">
-        <span className="sr-only">Loading...</span>
-      </Spinner>
-    );
+    return <div>Loading...</div>;
   }
 
   return (
@@ -95,9 +89,9 @@ export default function Establishment({ establishment, images, promoteImage }) {
             <Col>
               <h5 className="subheading">About </h5>
               <p className="description">{establishment.description}</p>
-              <Button className="button" onClick={handleShow}>
+              <button className="button" onClick={handleShow}>
                 Book
-              </Button>
+              </button>
             </Col>
           </Row>
           <h5 className="subheading">Location </h5>
@@ -109,8 +103,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
           size="lg"
           onHide={handleClose}
           backdrop="static"
-          keyboard={false}
-        >
+          keyboard={false}>
           <Modal.Header closeButton>
             <Modal.Title>{establishment.name} Enquiry</Modal.Title>
           </Modal.Header>
