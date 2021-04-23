@@ -14,7 +14,7 @@ import MediaQuery from "../components/layout/MediaQuery";
 
 export default function Home({ establishments }) {
   const [show, setShow] = useState(false);
-  const isBreakpoint = MediaQuery(991);
+  const isBreakpoint = MediaQuery(1200);
   const getEstablishmentName = (name) => {
     JSON.stringify(establishments, (val) => {
       if (val === name) {
