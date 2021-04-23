@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import fetch from "isomorphic-unfetch";
 import Router from "next/router";
 import Link from "next/link";
@@ -29,7 +29,6 @@ export default function Home({ establishments }) {
   };
 
   return (
-
     //////////////MOBILE INDEX PAGE///////////////////
     <>
       {isBreakpoint ? (
@@ -122,8 +121,8 @@ export default function Home({ establishments }) {
     `}
           </style>
         </Container>
-          //////////////END OF MOBILE INDEX PAGE///////////////////
       ) : (
+        //////////////END OF MOBILE INDEX PAGE///////////////////
         /////////////////DESKTOP INDEX PAGE///////////////////////////
         <Container className="headline-container">
           <Link href="/establishments">
@@ -218,7 +217,7 @@ export default function Home({ establishments }) {
         </Container>
       )}
     </>
-       /////////////////END OF DESKTOP INDEX PAGE///////////////////////////
+    /////////////////END OF DESKTOP INDEX PAGE///////////////////////////
   );
 }
 
