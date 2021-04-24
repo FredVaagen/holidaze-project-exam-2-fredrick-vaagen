@@ -119,6 +119,10 @@ export default function Establishment({ establishment, images, promoteImage }) {
               height: auto;
             }
 
+            .MuiSvgIcon-root {
+              opacity: 1;
+            }
+
             .establishment {
               margin-top: 5rem;
               height: auto;
