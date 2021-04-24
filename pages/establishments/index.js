@@ -39,7 +39,7 @@ export default function EstablishmentsPage({ establishments }) {
                 <p>{establishment.address}</p>
                 <p className="price">NOK {establishment.price},- per night</p>
               </Col>
-              <Col s={4} lg={4}>
+              <Col s={4} lg={4} className="map-container">
                 <SimpleMap {...establishment} />
               </Col>
             </Row>
@@ -91,12 +91,21 @@ export default function EstablishmentsPage({ establishments }) {
 
           .price {
             font-size: 14px;
-            
           }
 
           img {
             border-radius: 10px;
           }
+
+          @media only screen and (max-width: 991px){
+            .maps-container  {
+              display: none;
+            }
+  
+          }
+
+
+
         `}
       </style>
     </Container>
