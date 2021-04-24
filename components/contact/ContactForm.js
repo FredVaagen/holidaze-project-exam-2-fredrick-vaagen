@@ -9,9 +9,7 @@ import { BASE_URL } from "./../../constants/api";
 import { useRouter } from "next/router";
 const schema = yup.object().shape({
   firstname: yup.string().required("Please enter a first name").min(2),
-
   lastname: yup.string().required("Please enter a last name").min(3),
-
   email: yup
     .string()
     .required("Please enter a valid email address")
@@ -19,9 +17,7 @@ const schema = yup.object().shape({
       /[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_.~#?&//=]*)/,
       "Please enter a valid email address"
     ),
-
   subject: yup.string().required("Please enter a subject").min(3),
-
   message: yup.string().required("Please enter a message").min(10),
 });
 

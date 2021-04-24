@@ -27,6 +27,10 @@ function Enquiry(establishment) {
     };
 
     await fetch([BASE_URL + "/enquiries"], requestOptions);
+
+    router.push({
+      pathname: "/enquiry/feedback",
+    });
   };
   return (
     <Container>
@@ -46,7 +50,7 @@ function Enquiry(establishment) {
                 )}
                 control={control}
                 name="startDate"
-                rules={{ required: true}}
+                rules={{ required: true }}
                 readonly="readonly"
               />
               {errors.startDate && (
@@ -68,7 +72,7 @@ function Enquiry(establishment) {
                 )}
                 control={control}
                 name="endDate"
-                rules={{ required: true}}
+                rules={{ required: true }}
                 readonly="readonly"
               />
               {errors.endDate && (
