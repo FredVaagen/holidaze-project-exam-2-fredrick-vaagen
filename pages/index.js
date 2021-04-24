@@ -53,7 +53,7 @@ export default function Home({ establishments }) {
                 padding: 0;
               }
               .background-image {
-                height: 90vh;
+                height: 100vh;
                 background: url("/background-desktop.jpg") no-repeat;
                 background-position: center;
                 padding: 0;
