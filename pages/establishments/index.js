@@ -30,6 +30,10 @@ export default function EstablishmentsPage({ establishments, descName, ascPrice,
             padding: 0;
             margin: 0;
           }
+
+          .MuiInputAdornment-root {
+            box-sizing: border-box;
+        }
         `}
       </style>
     </Container>

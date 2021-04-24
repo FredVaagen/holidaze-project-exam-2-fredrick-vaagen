@@ -64,10 +64,8 @@ function SearchBar({ establishments }) {
               width: 100%;
               max-width: 100%;
               z-index: 3;
-            
             }
           }
-
           .MuiInputBase-root {
             height: 50px;
             border-radius: 50px !important;
