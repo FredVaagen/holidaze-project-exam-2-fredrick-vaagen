@@ -24,7 +24,7 @@ function Login() {
 
   return (
     <Container className="login-container">
-      <h1>Login</h1>
+      <h1 className="h1">Login</h1>
       <Form>
         <fieldset disabled={loading}>
           <Form.Group>
@@ -83,6 +83,10 @@ function Login() {
             text-align: left;
 
             
+          }
+
+          .h1 {
+            margin-top: 3rem;
           }
 
           .login-container {
