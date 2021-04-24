@@ -48,7 +48,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
                     <Carousel.Item key={image.id}>
                       <Image
                         className="d-block w-100"
-                        src={image.url}
+                        src={image.formats.small.url}
                         alt={image.name}
                         width="1000"
                         height="auto"
@@ -58,7 +58,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
 
                   <Carousel.Item>
                     <Image
-                      src={promoteImage.url}
+                      src={promoteImage.formats.small.url}
                       alt={establishment.name}
                       width="1000"
                       height="auto"
@@ -71,7 +71,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
             <Row className="no-gutters">
               <Col s={4} md={4} lg={4} className="images mb-3 no-gutters">
                 <Image
-                  src={promoteImage.url}
+                  src={promoteImage.formats.small.url}
                   alt={establishment.name}
                   width="1000"
                   height="auto"
@@ -82,7 +82,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
                   <Image
                     key={image.id}
                     className="detail-images ml-2 mr-2"
-                    src={image.url}
+                    src={image.formats.small.url}
                     alt={image.name}
                     width="auto"
                     height="auto"

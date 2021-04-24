@@ -27,7 +27,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
                   <div>Loading…</div>
                 ) : (
                   <>
-                    <Image src={promoteImage.url} alt={establishment.name} />
+                    <Image src={promoteImage.formats.small.url} alt={establishment.name} />
                   </>
                 )}
               </Carousel.Item>
@@ -39,7 +39,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
                     <>
                       <Image
                         className="d-block w-100"
-                        src={image.url}
+                        src={image.formats.small.url}
                         alt={image.name}
                       />
                     </>

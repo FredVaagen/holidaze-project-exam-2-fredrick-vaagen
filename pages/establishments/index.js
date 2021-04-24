@@ -28,7 +28,7 @@ export default function EstablishmentsPage({ establishments }) {
             <Row className="establishment-specific">
               <Col s={12} md={6} lg={4}>
                 <Image
-                  src={establishment.promoteImage.url}
+                  src={establishment.promoteImage.formats.small.url}
                   width="400"
                   height="200"
                 />
