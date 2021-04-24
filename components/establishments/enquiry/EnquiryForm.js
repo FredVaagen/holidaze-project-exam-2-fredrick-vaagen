@@ -28,10 +28,9 @@ function Enquiry(establishment) {
 
     await fetch([BASE_URL + "/enquiries"], requestOptions);
 
-
     router.push({
       pathname: "/enquiry/feedback",
-      query: {name: establishmentName},
+      query: { name: establishmentName },
     });
   };
   return (
@@ -87,7 +86,7 @@ function Enquiry(establishment) {
         </Row>
         <Row>
           <Col>
-            <Form.Group controlId="firstname"> 
+            <Form.Group controlId="firstname">
               <Form.Label>First name</Form.Label> <span>*</span>
               <Form.Control
                 name="firstname"
@@ -105,7 +104,7 @@ function Enquiry(establishment) {
             </Form.Group>
           </Col>
           <Col>
-            <Form.Group controlId="lastname"> 
+            <Form.Group controlId="lastname">
               <Form.Label>Last name</Form.Label> <span>*</span>
               <Form.Control
                 name="lastname"
@@ -192,8 +191,6 @@ function Enquiry(establishment) {
             color: red;
             font-size: 12px;
           }
-
-
         `}
       </style>
     </Container>
