@@ -46,7 +46,8 @@ function Enquiry(establishment) {
                 )}
                 control={control}
                 name="startDate"
-                rules={{ required: true, readonly}}
+                rules={{ required: true}}
+                readonly="readonly"
               />
               {errors.startDate && (
                 <div className="alert-danger">You must pick a checkin date</div>
@@ -67,7 +68,8 @@ function Enquiry(establishment) {
                 )}
                 control={control}
                 name="endDate"
-                rules={{ required: true, readonly }}
+                rules={{ required: true}}
+                readonly="readonly"
               />
               {errors.endDate && (
                 <div className="alert-danger">
