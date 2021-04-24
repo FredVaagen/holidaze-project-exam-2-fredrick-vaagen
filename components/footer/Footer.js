@@ -82,7 +82,6 @@ export default function Footer() {
           .bottom-footer  {
             margin-bottom: 6rem;
           }
-
         }
 
         @media only screen and (max-width: 591px){

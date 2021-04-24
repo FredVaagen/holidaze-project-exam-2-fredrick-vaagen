@@ -8,7 +8,6 @@ function SortDropdown() {
       <Dropdown.Toggle variant="success" id="dropdown-basic">
         Sort places
       </Dropdown.Toggle>
-
       <Dropdown.Menu>
         <Link href="/establishments/sort/lowest-price">
           <Dropdown.Item href="#/action-1">Lowest price</Dropdown.Item>

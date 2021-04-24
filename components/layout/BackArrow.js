@@ -13,6 +13,12 @@ function BackArrow() {
 
           .back-arrow {
             margin-top: 2rem;
+            transition: .3s;
+          }
+
+          .back-arrow:hover {
+            cursor: pointer;
+            transform: scale(1.01);
           }
           .MuiSvgIcon-root {
             font-size: 1rem;
