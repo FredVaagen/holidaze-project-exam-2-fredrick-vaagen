@@ -7,8 +7,11 @@ import Container from "react-bootstrap/Container";
 import { BASE_URL } from "../../../constants/api";
 
 function CreateEstablishment() {
-  const { register, handleSubmit,     formState: { errors },
-} = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const router = useRouter();
 
   const submitData = async (data, ctx) => {
@@ -60,45 +63,70 @@ function CreateEstablishment() {
       <div className="create-establishment mt-5 mb-5">
         <form
           className="create-establishment-form"
-          onSubmit={handleSubmit(submitData)}
-        >
-       
-            <label>Name</label>
-            <input type="text" {...register("name")} />
-       
-  
-            <label>Description</label>
-            <textarea type="text" {...register("description", { required: true })} />
-            {errors.description && (
-            <div className="alert alert-danger">Required field</div>
+          onSubmit={handleSubmit(submitData)}>
+          <label>Name</label>
+          <input type="text" {...register("name", { required: true })} />
+          {errors.description && (
+            <div className="alert alert-danger">
+              Name of establishment is required
+            </div>
           )}
-         
-     
-            <label>Price per night</label>
-            <input type="number" {...register("price", { required: true })} />
-            {errors.price && (
-            <div className="alert alert-danger">Required field</div>
+
+          <label>Description</label>
+          <textarea
+            type="text"
+            {...register("description", { required: true })}
+          />
+          {errors.description && (
+            <div className="alert alert-danger">
+              Description of establishment is required
+            </div>
           )}
-   
-      
-            <a target="_blank" href="https://www.latlong.net/">
-              <label>Latitude</label>
-            </a>
-            <input {...register("lat")} />
-      
-     
-            <label>Longitude</label>
-            <input {...register("lng")} />
-    
-      
-            <label>Address</label>
-            <input type="text" {...register("address")} />
-      
+
+          <label>Price per night</label>
+          <input type="number" {...register("price", { required: true })} />
+          {errors.price && (
+            <div className="alert alert-danger">
+              Price of establishment is required
+            </div>
+          )}
+
+          <a target="_blank" href="https://www.latlong.net/">
+            <label>Latitude</label>
+          </a>
+          <input {...register("lat", { required: true })} />
+          {errors.lat && (
+            <div className="alert alert-danger">
+              Latitude of establishment is required
+            </div>
+          )}
+
+          <label>Longitude</label>
+          <input {...register("lng", { required: true })} />
+          {errors.lng && (
+            <div className="alert alert-danger">
+              Longitude of establishment is required
+            </div>
+          )}
+
+          <label>Address</label>
+          <input type="text" {...register("address", { required: true })} />
+          {errors.address && (
+            <div className="alert alert-danger">
+              Address of establishment is required
+            </div>
+          )}
+
           <div>
             <label>
               Upload establishment promo/thumbnail image (Maximum of 1)
             </label>
-            <input type="file" {...register("file")} />
+            <input type="file" {...register("file", { required: true })} />
+            {errors.file && (
+              <div className="alert alert-danger">
+                A promomotioan/main image is required
+              </div>
+            )}
           </div>
           <button>Next...</button>
         </form>
@@ -122,7 +150,7 @@ function CreateEstablishment() {
           .create-establishment input,
           textarea {
             width: 100%;
-     
+
             color: black;
           }
 

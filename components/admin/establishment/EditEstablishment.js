@@ -6,6 +6,7 @@ import { BASE_URL } from "./../../../constants/api";
 import axios from "axios";
 import ImageUpload from "./ImageUpload";
 import { useRouter } from "next/router";
+import Establishment from "../../../pages/establishments/[name]";
 
 const EditEstablishment = (props) => {
   const { register, handleSubmit } = useForm();
@@ -72,29 +73,29 @@ const EditEstablishment = (props) => {
         <form onSubmit={handleSubmit(submitData)}>
           <div>
             <label>Name</label>
-            <input type="text" {...register("name")} />
+            <input type="text" {...register("name")} placeholder={props.name} />
           </div>
           <div>
             <label>Description</label>
-            <textarea type="text" {...register("description")} />
+            <textarea type="text" {...register("description")} placeholder={props.description} />
           </div>
           <div>
             <label>Price per night</label>
-            <input type="number" {...register("price")} />
+            <input type="number" {...register("price")} placeholder={props.price}/>
           </div>
           <div>
             <label>
               Latitude <a>https://www.latlong.net/</a>
             </label>
-            <input {...register("lat")} />
+            <input {...register("lat")} placeholder={props.lat}/>
           </div>
           <div>
             <label>Longitude</label>
-            <input {...register("lng")} />
+            <input {...register("lng")} placeholder={props.lng}/>
           </div>
           <div>
             <label>Address</label>
-            <input type="text" {...register("address")} />
+            <input type="text" {...register("address")} placeholder={props.address}/>
           </div>
           <button type="submit">Update</button>
         </form>
@@ -113,6 +114,10 @@ const EditEstablishment = (props) => {
             width: 100%;
             margin-top: 0.1rem;
             margin-bottom: 2rem;
+          }
+
+          .create-establishment textarea {
+            height: 200px;
           }
 
           .create-establishment button {

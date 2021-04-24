@@ -78,17 +78,29 @@ function Login() {
       <style global jsx>
         {`
           .main {
-            height: 90vh;
+            height: 100vh;
+            display: flex;
+            text-align: left;
+
+            
+          }
+
+          .login-container {
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            
+
           }
 
           .login-container form {
-           
             padding: 40px 55px 45px 55px;
-            transition: all .3s;
-
-            box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
-
-       
+            transition: all 0.3s;
+            box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.1);
+            width: 100%;
+          
           }
 
           .form-control {

@@ -16,13 +16,12 @@ export default function Footer() {
         </ul>
       </div>
       <div className="bottom-footer">
-        <div>
-        
+        <div className="bottom-footer-left">
           <a>  &copy; {new Date().getFullYear()} Copyright:{" Holidaze, Inc"}</a>
           <a>Privacy</a>
           <a>Terms</a>
         </div>
-        <div className="socials">
+        <div className="socials bottom-footer-right">
           <a>
             <FacebookIcon />
           </a>
@@ -41,20 +40,17 @@ export default function Footer() {
       <style jsx global>{`
         .footer {
           font-size: 11px;
-          text-align: center;
           display: flex;
-          flex-direction: column;
-          padding: 3rem;
+          padding-top: 3rem;
+          padding-bottom: 3rem;
           border-top: 1px solid rgb(221, 221, 221);
-         
-          
+          justify-content: center;
+          flex: 0 1;
         }
 
         .footer ul {
           list-style-type: none;
-          display: flex;
-          justify-content: space-between;
-         
+          display: flex;   
           
         }
 
@@ -62,14 +58,14 @@ export default function Footer() {
           margin-right: 1rem;
           margin-left: 1rem;
           font-weight: 200;
+       
         }
 
         .bottom-footer {
           font-size: 14px;
           display: flex;
-          justify-content: space-between;
+          justify-content: space-evenly;
           padding: 10px;
-          border-top: 1px solid rgb(221, 221, 221);
           font-weight: 400;
         }
 
@@ -87,6 +83,26 @@ export default function Footer() {
             margin-bottom: 6rem;
           }
 
+        }
+
+        @media only screen and (max-width: 591px){
+
+          .footer {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+          }
+          .bottom-footer {
+            font-size: 14px;
+            flex-diretion: row;
+            flex-wrap: wrap;
+          }
+
+          .socials {
+            margin-top: 1rem;
+          }
+  
+
+          
 
         }
 

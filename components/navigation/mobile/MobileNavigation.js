@@ -84,13 +84,19 @@ function MobileNavigation() {
             background: #fff;
           }
 
+          .appbar-container {
+            display: flex;
+            justify-content: space-between;
+            
+          }
+
           .appbar svg {
-            font-size: 18px;
+            font-size: 20px;
           }
 
           .appbar p {
             margin-top: 3px;
-            font-size: 11px;
+            font-size: 10px;
           }
         `}
       </style>

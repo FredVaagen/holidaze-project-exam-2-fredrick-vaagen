@@ -88,8 +88,8 @@ const Admin = ({ enquiries, contacts, establishments }) => {
             min-height: 100vh;
           }
           .nav-tabs {
-            color: white;
-            background: black;
+            color: black;
+            background: white;
             display: flex;
             justify-content: space-evenly;
             margin-bottom: 5rem;
