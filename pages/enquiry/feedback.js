@@ -1,12 +1,19 @@
 import React from 'react'
-import { BASE_URL } from '../../constants/api';
-
+import { useRouter } from 'next/router'
 
 function feedback() {
+  const router = useRouter()
+
+  const establishment = JSON.stringify(router.query)
+  console.log(establishment);
+
+  const name = establishment.replace(/[{}""]/g, "").slice(5);
+  
+  console.log(name);
 
   return (
     <div className="contact">
-      <h1 className="headline">THANK YOU FOR BOOKING WITH HOLIDAZE.</h1> 
+      <h1 className="headline">Thank you for booking {name} </h1> 
       <style jsx>
     {`
       .contact {
@@ -26,7 +33,4 @@ function feedback() {
 }
 
 export default feedback;
-
-
-
 

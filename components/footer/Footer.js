@@ -64,7 +64,7 @@ export default function Footer() {
         .bottom-footer {
           font-size: 14px;
           display: flex;
-          justify-content: space-evenly;
+          justify-content: space-between;
           padding: 10px;
           font-weight: 400;
         }
@@ -94,10 +94,18 @@ export default function Footer() {
             font-size: 14px;
             flex-diretion: row;
             flex-wrap: wrap;
+            justify-content: space-evenly;
+          }
+
+          .bottom-footer-left {
+            order: 2;
+            margin-top: 1rem;
+            margin-bottom: 0;
           }
 
           .socials {
-            margin-top: 1rem;
+           
+            order: 1;
           }
   
 

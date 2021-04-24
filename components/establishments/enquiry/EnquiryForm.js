@@ -28,8 +28,10 @@ function Enquiry(establishment) {
 
     await fetch([BASE_URL + "/enquiries"], requestOptions);
 
+
     router.push({
       pathname: "/enquiry/feedback",
+      query: {name: establishmentName},
     });
   };
   return (
@@ -37,7 +39,7 @@ function Enquiry(establishment) {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Row>
           <Form.Group>
-            <Form.Label className="ml-3">Check in</Form.Label>
+            <Form.Label className="ml-3">Check in</Form.Label> <span>*</span>
             <Col>
               <Controller
                 render={({ field }) => (
@@ -59,7 +61,7 @@ function Enquiry(establishment) {
             </Col>
           </Form.Group>
           <Form.Group>
-            <Form.Label className="ml-3">Check Out</Form.Label>
+            <Form.Label className="ml-3">Check Out</Form.Label> <span>*</span>
             <Col>
               <Controller
                 render={({ field }) => (
@@ -85,13 +87,13 @@ function Enquiry(establishment) {
         </Row>
         <Row>
           <Col>
-            <Form.Group controlId="firstname">
-              <Form.Label>First name</Form.Label>
+            <Form.Group controlId="firstname"> 
+              <Form.Label>First name</Form.Label> <span>*</span>
               <Form.Control
                 name="firstname"
                 as="input"
                 rows={3}
-                placeholder="Enter first name"
+                placeholder="First name"
                 aria-invalid={errors.firstname ? "true" : "false"}
                 {...register("firstname", { required: true, minLength: 2 })}
               />
@@ -103,13 +105,13 @@ function Enquiry(establishment) {
             </Form.Group>
           </Col>
           <Col>
-            <Form.Group controlId="lastname">
-              <Form.Label>Last name</Form.Label>
+            <Form.Group controlId="lastname"> 
+              <Form.Label>Last name</Form.Label> <span>*</span>
               <Form.Control
                 name="lastname"
                 as="input"
                 rows={3}
-                placeholder="Enter last name"
+                placeholder="Last name"
                 {...register("lastname", { required: true, minLength: 2 })}
               />
               {errors.lastname && (
@@ -121,7 +123,7 @@ function Enquiry(establishment) {
           </Col>
         </Row>
         <Form.Group controlId="ControlEmailInput">
-          <Form.Label>Email</Form.Label>
+          <Form.Label>Email</Form.Label> <span>*</span>
           <Form.Control
             type="email"
             name="email"
@@ -169,6 +171,10 @@ function Enquiry(establishment) {
             margin-right: 3rem;
           }
 
+          span {
+            color: red;
+          }
+
           .button {
             background: none;
             color: black;
@@ -186,6 +192,8 @@ function Enquiry(establishment) {
             color: red;
             font-size: 12px;
           }
+
+
         `}
       </style>
     </Container>

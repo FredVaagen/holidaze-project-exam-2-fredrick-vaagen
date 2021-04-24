@@ -110,7 +110,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
             <Modal.Title>{establishment.name} Enquiry</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Enquiry {...Establishment} />
+            <Enquiry {...establishment} />
           </Modal.Body>
         </Modal>
         <style jsx global>
