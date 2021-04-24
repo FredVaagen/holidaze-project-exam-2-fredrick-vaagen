@@ -83,6 +83,10 @@ function SearchBar({ establishments }) {
           .MuiInput-underline:after {
             border-bottom: none !important;
           }
+
+          .MuiInputAdornment-root {
+            box-sizing: border-box;
+        }
         `}
       </style>
     </Container>
