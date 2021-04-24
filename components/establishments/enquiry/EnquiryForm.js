@@ -41,11 +41,12 @@ function Enquiry(establishment) {
                     onChange={(e) => field.onChange(e)}
                     minDate={new Date()}
                     selected={field.value}
+                    readonly="readonly"
                   />
                 )}
                 control={control}
                 name="startDate"
-                rules={{ required: true }}
+                rules={{ required: true, readonly: "readonly" }}
               />
               {errors.startDate && (
                 <div className="alert-danger">You must pick a checkin date</div>
@@ -61,11 +62,12 @@ function Enquiry(establishment) {
                     selected={field.value}
                     minDate={new Date()}
                     onChange={(e) => field.onChange(e)}
+                    readonly="readonly"
                   />
                 )}
                 control={control}
                 name="endDate"
-                rules={{ required: true }}
+                rules={{ required: true, readonly="readonly" }}
               />
               {errors.endDate && (
                 <div className="alert-danger">
