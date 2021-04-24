@@ -45,7 +45,7 @@ function SearchBar({ establishments }) {
         {`
           .searchbar {
             background: white;
-            border-radius: 20px;
+            border-radius: 15px;
             border: none;
             align-self: center;
             width: 100%;
