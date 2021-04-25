@@ -44,6 +44,6 @@ export async function getStaticProps() {
 
   return {
     props: { establishments },
-    revalidate: 1,
+    revalidate: 5,
   };
 }

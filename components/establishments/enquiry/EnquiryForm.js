@@ -195,6 +195,6 @@ function Enquiry(establishment) {
       </style>
     </Container>
   );
-}
+} 
 
 export default Enquiry;

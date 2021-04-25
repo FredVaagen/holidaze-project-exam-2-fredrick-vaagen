@@ -9,15 +9,26 @@ export default function Footer() {
     <>
       <div className="footer">
         <ul>
-          <li><a>About</a></li>
-          <li><a>Places</a></li>
-          <li><a>Contact</a></li>
-          <li><a>Host</a></li>
+          <li>
+            <a>About</a>
+          </li>
+          <li>
+            <a>Places</a>
+          </li>
+          <li>
+            <a>Contact</a>
+          </li>
+          <li>
+            <a>Host</a>
+          </li>
         </ul>
       </div>
       <div className="bottom-footer">
         <div className="bottom-footer-left">
-          <a>  &copy; {new Date().getFullYear()} Copyright:{" Holidaze, Inc"}</a>
+          <a>
+            {" "}
+            &copy; {new Date().getFullYear()} Copyright:{" Holidaze, Inc"}
+          </a>
           <a>Privacy</a>
           <a>Terms</a>
         </div>
@@ -39,7 +50,7 @@ export default function Footer() {
 
       <style jsx global>{`
         .footer {
-          font-size: 11px;
+          font-size: 16px;
           display: flex;
           padding-top: 3rem;
           padding-bottom: 3rem;
@@ -50,15 +61,13 @@ export default function Footer() {
 
         .footer ul {
           list-style-type: none;
-          display: flex;   
-          
+          display: flex;
         }
 
         .footer li {
           margin-right: 1rem;
           margin-left: 1rem;
           font-weight: 200;
-       
         }
 
         .bottom-footer {
@@ -78,14 +87,13 @@ export default function Footer() {
           font-size: 16px;
         }
 
-        @media only screen and (max-width: 991px){
-          .bottom-footer  {
+        @media only screen and (max-width: 991px) {
+          .bottom-footer {
             margin-bottom: 6rem;
           }
         }
 
-        @media only screen and (max-width: 591px){
-
+        @media only screen and (max-width: 591px) {
           .footer {
             padding-top: 1rem;
             padding-bottom: 1rem;
@@ -104,15 +112,9 @@ export default function Footer() {
           }
 
           .socials {
-           
             order: 1;
           }
-  
-
-          
-
         }
-
       `}</style>
     </>
   );

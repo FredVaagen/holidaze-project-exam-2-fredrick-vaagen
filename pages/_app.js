@@ -14,7 +14,6 @@ const progress = new ProgressBar({
   size: 1,
   color: "#fff",
   className: "bar-of-progress",
- 
 });
 
 Router.events.on("routeChangeStart", progress.start);
@@ -27,18 +26,13 @@ class MyApp extends App {
   };
 
   componentDidMount() {
-    // grab token value from cookie
     const token = Cookie.get("token");
-
     if (token) {
-      // authenticate the token on the server and place set user object
       fetch(`${BASE_URL}/users/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }).then(async (res) => {
-        // if res comes back not valid, token is not valid
-        // delete the token and log the user out on client
         if (!res.ok) {
           Cookie.remove("token");
           this.setState({ user: null });
@@ -56,15 +50,13 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps } = this.props;
-
     return (
       <AppContext.Provider
         value={{
           user: this.state.user,
           isAuthenticated: !!this.state.user,
           setUser: this.setUser,
-        }}
-      >
+        }}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
