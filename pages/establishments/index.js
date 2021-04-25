@@ -9,7 +9,7 @@ import EstablishmentsMobile from "../../components/establishments/layout/mobile/
 
 <MediaQuery />
 
-export default function EstablishmentsPage({ establishments, descName, ascPrice, descPrice }) {
+export default function EstablishmentsPage({ establishments}) {
   const [show, setShow] = useState(false);
   const isBreakpoint = MediaQuery(991);
   const router = useRouter();
@@ -23,19 +23,6 @@ export default function EstablishmentsPage({ establishments, descName, ascPrice,
       {isBreakpoint ? ( 
       <EstablishmentsMobile {...{establishments}} /> ) : (
       <EstablishmentsDesktop {...{establishments}} /> )}
-      <style global jsx>
-        {`
-          .main {
-            height: auto;
-            padding: 0;
-            margin: 0;
-          }
-
-          .MuiInputAdornment-root {
-            box-sizing: border-box;
-        }
-        `}
-      </style>
     </Container>
   );
 }

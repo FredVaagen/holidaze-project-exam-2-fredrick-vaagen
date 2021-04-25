@@ -56,7 +56,6 @@ export default function Footer() {
           padding-bottom: 3rem;
           border-top: 1px solid rgb(221, 221, 221);
           justify-content: center;
-          flex: 0 1;
         }
 
         .footer ul {
@@ -93,26 +92,26 @@ export default function Footer() {
           }
         }
 
-        @media only screen and (max-width: 591px) {
+        @media only screen and (max-width: 500px) {
           .footer {
             padding-top: 1rem;
             padding-bottom: 1rem;
           }
-          .bottom-footer {
-            font-size: 14px;
-            flex-diretion: row;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
-          }
 
-          .bottom-footer-left {
-            order: 2;
-            margin-top: 1rem;
-            margin-bottom: 0;
+          .bottom-footer {
+            flex-wrap: wrap;
+            text-align: center;
           }
 
           .socials {
             order: 1;
+            width: 90%;
+            margin-bottom: 1rem;
+          }
+
+          .bottom-footer-left {
+            order: 2;
+            width: 90%;
           }
         }
       `}</style>

@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 import Badge from "react-bootstrap/Badge";
 import SortDropdown from "../../sort/SortDropdown";
 
-function EstablishmentsMobile({establishments}) {
+function EstablishmentsMobile({ establishments }) {
   return (
     <>
       <h1 className="h1">Find a place to stay</h1>
@@ -36,9 +36,8 @@ function EstablishmentsMobile({establishments}) {
           </Container>
         </Link>
       ))}
-            <style global jsx>
+      <style global jsx>
         {`
-
           .establishment-container {
             margin-top: 3rem;
             transition: 0.5s;
@@ -48,8 +47,8 @@ function EstablishmentsMobile({establishments}) {
           }
 
           .h1 {
-              font-size: 30px;
-              margin-top: 1rem;
+            font-size: 30px;
+            margin-top: 1rem;
           }
 
           .establishment-specific {
@@ -81,7 +80,7 @@ function EstablishmentsMobile({establishments}) {
           }
 
           .price {
-            font-size: 14px;
+            font-weight: bold;
           }
 
           img {
@@ -89,9 +88,8 @@ function EstablishmentsMobile({establishments}) {
           }
 
           .searchbar {
-              position: relative;
+            position: relative;
           }
-
         `}
       </style>
     </>

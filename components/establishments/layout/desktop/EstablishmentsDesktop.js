@@ -56,7 +56,7 @@ function EstablishmentsDesktop({establishments}) {
           }
 
           .establishment-specific {
-            margin-bottom: 5rem;
+            margin-bottom: 8rem;
           }
 
           .establishment-container:hover {
@@ -75,7 +75,6 @@ function EstablishmentsDesktop({establishments}) {
             text-transform: uppercase;
             font-size: 9px;
             margin-left: -0.3rem;
-
             margin-bottom: 1rem;
           }
 
@@ -84,11 +83,14 @@ function EstablishmentsDesktop({establishments}) {
           }
 
           .price {
-            font-size: 14px;
+            font-size: 12px;
+            margin-top: 6rem;
+            font-weight: bold;
           }
 
           img {
             border-radius: 10px;
+            min-height: 200px;
           }
 
           .searchbar {

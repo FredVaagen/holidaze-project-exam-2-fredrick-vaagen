@@ -9,7 +9,7 @@ function Explore() {
       <Container>
         <h3 className="h3">Explore activities around the city of Bergen </h3>
         <CardGroup>
-          <Card >
+          <Card>
             <Card.Img src="/images/activity-1.jpg" />
             <Card.Body>
               <Card.Title>Hiking</Card.Title>
@@ -54,7 +54,6 @@ function Explore() {
             }
 
             .card {
-             
               border: none;
               width: 22rem;
               margin-right: 1rem;
@@ -73,9 +72,16 @@ function Explore() {
               border-radius: 10px;
               border: none;
               height: 400px;
-            
-              
             }
+            @media only screen and (max-width: 700px) {
+              .card {
+                border: none;
+                width: 100%;
+              }
+
+              .explore {
+                overflow: hidden;
+              }
           `}
         </style>
       </Container>

@@ -91,12 +91,12 @@ function MobileNavigation() {
           }
 
           .appbar svg {
-            font-size: 20px;
+            font-size: 16px;
           }
 
           .appbar p {
             margin-top: 3px;
-            font-size: 10px;
+            font-size: 11px;
           }
         `}
       </style>

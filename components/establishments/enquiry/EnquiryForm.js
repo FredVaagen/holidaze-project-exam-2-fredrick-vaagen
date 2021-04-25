@@ -149,7 +149,7 @@ function Enquiry(establishment) {
           />
         </Form.Group>
         <Button className="button" type="submit">
-          Submit
+          Reserve
         </Button>
         <Form.Control
           hidden
@@ -168,10 +168,6 @@ function Enquiry(establishment) {
 
           .react-datepicker__input-container {
             margin-right: 3rem;
-          }
-
-          span {
-            color: red;
           }
 
           .button {
@@ -195,6 +191,6 @@ function Enquiry(establishment) {
       </style>
     </Container>
   );
-} 
+}
 
 export default Enquiry;

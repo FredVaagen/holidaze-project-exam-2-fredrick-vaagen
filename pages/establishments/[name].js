@@ -32,6 +32,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
       <Container className="establishment">
         <Container className="establishment-images">
           <h1>{establishment.name}</h1>
+          <p className="establishment-address">{establishment.address}</p>
           {isBreakpoint ? (
             <Row>
               <Col>
@@ -135,6 +136,12 @@ export default function Establishment({ establishment, images, promoteImage }) {
             .establishment h1 {
               font-size: 26px;
               font-weight: 200;
+              margin-bottom: 1px;
+            }
+
+            .establishment-address {
+              font-size: 10px;
+              margin-top: .5rem;
               margin-bottom: 2rem;
             }
 
@@ -150,7 +157,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
               background: none;
               color: black;
               border: 1px solid rgb(0, 0, 0, 0.3);
-              width: 200px;
+              width: 100%;
               margin-bottom: 1rem;
               margin-top: 1rem;
               border-radius: 7px;
@@ -162,7 +169,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
             .button:hover {
               background: black;
               color: white;
-              transform: scale(1.1);
+              transform: scale(1.01);
               font-weight: bold;
             }
 
@@ -177,7 +184,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
               margin-bottom: 2rem;
               margin-top: 1rem;
               font-size: 14px;
-              font-weight: 200;
+              font-weight: 300;
             }
 
             .carousel-item img {
