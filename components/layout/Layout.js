@@ -9,9 +9,9 @@ import DesktopNavigation from "../navigation/desktop/DesktopNavigation";
 <MediaQuery />;
 
 const Layout = (props) => {
-  const title = "Holidaze Hotel Booking";
   const [show, setShow] = useState(false);
   const isBreakpoint = MediaQuery(991);
+  let title = "Holidaze Hotel Booking";
 
   return (
     <>

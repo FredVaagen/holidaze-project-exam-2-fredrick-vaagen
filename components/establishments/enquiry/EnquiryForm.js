@@ -28,10 +28,10 @@ function Enquiry(establishment) {
 
     await fetch([BASE_URL + "/enquiries"], requestOptions);
 
-    router.push({
-      pathname: "/enquiry/feedback",
-      query: { name: establishmentName },
-    });
+    console.log(data.startDate);
+    console.log(data.endDate)
+
+
   };
   return (
     <Container>
@@ -46,13 +46,13 @@ function Enquiry(establishment) {
                     onChange={(e) => field.onChange(e)}
                     minDate={new Date()}
                     selected={field.value}
-                    readonly="readonly"
+                    isClearable
+                    placeholderText="Check in"
                   />
                 )}
                 control={control}
                 name="startDate"
                 rules={{ required: true }}
-                readonly="readonly"
               />
               {errors.startDate && (
                 <div className="alert-danger">You must pick a checkin date</div>
@@ -65,21 +65,19 @@ function Enquiry(establishment) {
               <Controller
                 render={({ field }) => (
                   <DatePicker
-                    selected={field.value}
-                    minDate={new Date()}
                     onChange={(e) => field.onChange(e)}
-                    readonly="readonly"
+                    minDate={new Date()}
+                    selected={field.value}
+                    isClearable
+                    placeholderText="Check out"
                   />
                 )}
                 control={control}
                 name="endDate"
                 rules={{ required: true }}
-                readonly="readonly"
               />
               {errors.endDate && (
-                <div className="alert-danger">
-                  You must pick a checkout date
-                </div>
+                <div className="alert-danger">You must pick a checkin date</div>
               )}
             </Col>
           </Form.Group>
@@ -138,6 +136,16 @@ function Enquiry(establishment) {
             <div className="alert-danger">Email is required</div>
           )}
         </Form.Group>
+        <Form.Group controlId="exampleForm.ControlSelect1">
+          <Form.Label>Guests</Form.Label>
+          <Form.Control as="select" name="guests" {...register("guests")}>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </Form.Control>
+        </Form.Group>
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Your message</Form.Label>
           <Form.Control
@@ -148,6 +156,7 @@ function Enquiry(establishment) {
             {...register("message")}
           />
         </Form.Group>
+
         <Button className="button" type="submit">
           Reserve
         </Button>
@@ -168,6 +177,10 @@ function Enquiry(establishment) {
 
           .react-datepicker__input-container {
             margin-right: 3rem;
+          }
+
+          react-datepicker__input-container input {
+            color: red;
           }
 
           .button {
