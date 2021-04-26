@@ -19,7 +19,7 @@ const Admin = ({ enquiries, contacts, establishments }) => {
             <h1>Enquiries</h1>
           </Container>
           {enquiries.map((enquiry) => (
-            <EnquiryLayout {...enquiry } />
+            <EnquiryLayout  key={enquiry.id} {...enquiry } />
           ))}
         </Tab>
         <Tab eventKey="contact" title="Contact">
@@ -51,9 +51,8 @@ const Admin = ({ enquiries, contacts, establishments }) => {
             <ListGroup>
               <h2>Edit a establishment</h2>
               {establishments.map((establishment) => (
-                <Container className="establishment-container">
+                <Container className="establishment-container"  key={establishment.id}>
                   <Link
-                    key={establishment.id}
                     href="/admin/edit/[name]"
                     as={`/admin/edit/${establishment.name}`}
                   >

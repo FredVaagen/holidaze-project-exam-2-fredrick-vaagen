@@ -12,6 +12,8 @@ import Enquiry from "../../components/establishments/enquiry/EnquiryForm";
 import { BASE_URL } from "../../constants/api";
 import BackArrow from "../../components/layout/BackArrow";
 import MediaQuery from "../../components/layout/MediaQuery";
+import Button from '@material-ui/core/Button';
+
 
 <MediaQuery />;
 
@@ -90,9 +92,9 @@ export default function Establishment({ establishment, images, promoteImage }) {
             <Col>
               <h5 className="subheading">About </h5>
               <p className="description">{establishment.description}</p>
-              <button className="button" onClick={handleShow}>
+              <Button variant="contained" onClick={handleShow}>
                 Book
-              </button>
+              </Button>
             </Col>
           </Row>
           <h5 className="subheading">Location </h5>
@@ -153,25 +155,9 @@ export default function Establishment({ establishment, images, promoteImage }) {
               height: 306px;
             }
 
-            .button {
-              background: none;
-              color: black;
-              border: 1px solid rgb(0, 0, 0, 0.3);
-              width: 100%;
-              margin-bottom: 1rem;
-              margin-top: 1rem;
-              border-radius: 7px;
-              padding: 6px;
-              transition: .3s;
-              font-weight: 200;
-            }
 
-            .button:hover {
-              background: black;
-              color: white;
-              transform: scale(1.01);
-              font-weight: bold;
-            }
+
+ 
 
             .details {
               height: auto;

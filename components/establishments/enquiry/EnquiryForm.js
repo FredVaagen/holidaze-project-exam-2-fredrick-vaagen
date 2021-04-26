@@ -3,8 +3,9 @@ import React from "react";
 import { useRouter } from "next/router";
 import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
-import { Container, Form, Button, Col, Row } from "react-bootstrap";
+import { Container, Form, Col, Row } from "react-bootstrap";
 import { BASE_URL } from "../../../constants/api";
+import Button from '@material-ui/core/Button';
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -28,11 +29,8 @@ function Enquiry(establishment) {
 
     await fetch([BASE_URL + "/enquiries"], requestOptions);
 
-    console.log(data.startDate);
-    console.log(data.endDate)
-
-
   };
+
   return (
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -157,7 +155,7 @@ function Enquiry(establishment) {
           />
         </Form.Group>
 
-        <Button className="button" type="submit">
+        <Button variant="contained" type="submit">
           Reserve
         </Button>
         <Form.Control
