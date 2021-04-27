@@ -67,6 +67,7 @@ function EstablishmentsDesktop({establishments}) {
           h3 {
             font-size: 20px;
             margin-bottom: 0;
+            font-weight: 300;
           }
 
           .badge {
@@ -76,6 +77,7 @@ function EstablishmentsDesktop({establishments}) {
             font-size: 9px;
             margin-left: -0.3rem;
             margin-bottom: 1rem;
+            font-weight: 300;
           }
 
           p {
@@ -85,7 +87,7 @@ function EstablishmentsDesktop({establishments}) {
           .price {
             font-size: 12px;
             margin-top: 6rem;
-            font-weight: bold;
+            font-weight: 300;
           }
 
           img {

@@ -57,7 +57,6 @@ function Explore() {
               border: none;
               width: 22rem;
               margin-right: 1rem;
-              min-width: 18rem;
             }
 
             .card:hover {
@@ -73,15 +72,6 @@ function Explore() {
               border: none;
               height: 400px;
             }
-            @media only screen and (max-width: 700px) {
-              .card {
-                border: none;
-                width: 100%;
-              }
-
-              .explore {
-                overflow: hidden;
-              }
           `}
         </style>
       </Container>

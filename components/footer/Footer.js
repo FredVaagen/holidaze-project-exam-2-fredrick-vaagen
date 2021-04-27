@@ -8,20 +8,6 @@ export default function Footer() {
   return (
     <>
       <div className="footer">
-        <ul>
-          <li>
-            <a>About</a>
-          </li>
-          <li>
-            <a>Places</a>
-          </li>
-          <li>
-            <a>Contact</a>
-          </li>
-          <li>
-            <a>Host</a>
-          </li>
-        </ul>
       </div>
       <div className="bottom-footer">
         <div className="bottom-footer-left">
@@ -52,8 +38,7 @@ export default function Footer() {
         .footer {
           font-size: 16px;
           display: flex;
-          padding-top: 3rem;
-          padding-bottom: 3rem;
+    
           border-top: 1px solid rgb(221, 221, 221);
           justify-content: center;
         }
@@ -88,7 +73,7 @@ export default function Footer() {
 
         @media only screen and (max-width: 991px) {
           .bottom-footer {
-            margin-bottom: 6rem;
+            margin-bottom: 5rem;
           }
         }
 
@@ -100,7 +85,7 @@ export default function Footer() {
 
           .bottom-footer {
             flex-wrap: wrap;
-            text-align: center;
+           
           }
 
           .socials {

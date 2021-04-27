@@ -12,8 +12,7 @@ import Enquiry from "../../components/establishments/enquiry/EnquiryForm";
 import { BASE_URL } from "../../constants/api";
 import BackArrow from "../../components/layout/BackArrow";
 import MediaQuery from "../../components/layout/MediaQuery";
-import Button from '@material-ui/core/Button';
-
+import Button from "@material-ui/core/Button";
 
 <MediaQuery />;
 
@@ -92,14 +91,14 @@ export default function Establishment({ establishment, images, promoteImage }) {
             <Col>
               <h5 className="subheading">About </h5>
               <p className="description">{establishment.description}</p>
-              <Button variant="contained" onClick={handleShow}>
+              <Button variant="contained" className="button" onClick={handleShow}>
                 Book
               </Button>
             </Col>
           </Row>
           <h5 className="subheading">Location </h5>
           <div className="map">
-          <SimpleMap {...establishment} />
+            <SimpleMap {...establishment} />
           </div>
         </Container>
 
@@ -143,7 +142,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
 
             .establishment-address {
               font-size: 10px;
-              margin-top: .5rem;
+              margin-top: 0.5rem;
               margin-bottom: 2rem;
             }
 
@@ -154,10 +153,6 @@ export default function Establishment({ establishment, images, promoteImage }) {
             .images img {
               height: 306px;
             }
-
-
-
- 
 
             .details {
               height: auto;
@@ -186,11 +181,14 @@ export default function Establishment({ establishment, images, promoteImage }) {
               font-weight: 200;
             }
 
+            .button {
+              width: 100%;
+              margin-bottom: 2rem;
+            }
+
             .map {
               height: 300px;
             }
-
-
           `}
         </style>
       </Container>

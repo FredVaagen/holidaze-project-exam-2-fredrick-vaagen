@@ -80,7 +80,7 @@ function EstablishmentsMobile({ establishments }) {
           }
 
           .price {
-            font-weight: bold;
+            font-weight: 300;
           }
 
           img {

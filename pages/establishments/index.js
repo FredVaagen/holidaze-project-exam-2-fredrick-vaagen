@@ -20,7 +20,7 @@ export default function EstablishmentsPage({ establishments }) {
     return <div>Loading...</div>;
   }
   return (
-    <Container className="establishments">
+    <Container  className="establishments">
       <SearchBar {...{ establishments }} />
       {isBreakpoint ? (
         <EstablishmentsMobile {...{ establishments }} />

@@ -22,59 +22,52 @@ function MobileNavigation() {
         <Container className="appbar-container">
           <Link href="/" passHref>
             <Nav.Link>
-              <FilterHdrIcon /> <p>Home</p>
+              <FilterHdrIcon /> Home
             </Nav.Link>
           </Link>
           <Link href="/establishments" passHref>
             <Nav.Link>
-              <HotelIcon /> <p>Places</p>
-            </Nav.Link>
-          </Link>
-          <Link href="/contact" passHref>
-            <Nav.Link>
-              <ExploreIcon />
-              <p>Explore</p>
+              <HotelIcon /> Places
             </Nav.Link>
           </Link>
           <Link href="/contact" passHref>
             <Nav.Link>
               <ContactSupportIcon />
-              <p>Support</p>
+              Support
             </Nav.Link>
           </Link>
-          <Nav.Item>
-            {user ? (
-              <Link href="/admin">
-                <a>
-                  <DashboardIcon />
-                  <p>Admin</p>
-                </a>
-              </Link>
-            ) : (
-              <></>
-            )}
-          </Nav.Item>
-          <Nav.Item className="login-link">
-            {user ? (
-              <Link href="/">
-                <a
-                  onClick={() => {
-                    logout();
-                    setUser(null);
-                  }}>
-                  <ExitToAppIcon />
-                  <p>Logout</p>
-                </a>
-              </Link>
-            ) : (
-              <Link href="/login">
-                <a>
+
+          {user ? (
+            <>
+              <Nav.Item>
+                <Link href="/admin" passHref>
+                  <Nav.Link><DashboardIcon /> Admin</Nav.Link>
+                </Link>
+              </Nav.Item>
+
+              <Nav.Item>
+                <Link href="/" passHref>
+                  <Nav.Link
+                    onClick={() => {
+                      logout();
+                      setUser(null);
+                    }}>
+                    <ExitToAppIcon />
+                    Logout
+                  </Nav.Link>
+                </Link>
+              </Nav.Item>
+            </>
+          ) : (
+            <Nav.Item>
+              <Link href="/login" passHref>
+                <Nav.Link>
                   <AccountCircleIcon />
-                  <p>Login</p>
-                </a>
+                  Login
+                </Nav.Link>
               </Link>
-            )}
-          </Nav.Item>
+            </Nav.Item>
+          )}
         </Container>
       </Navbar>
       <style global jsx>
@@ -87,17 +80,22 @@ function MobileNavigation() {
           .appbar-container {
             display: flex;
             justify-content: space-between;
-            
           }
 
           .appbar svg {
-            font-size: 16px;
+            font-size: 22px;
+            margin-left: 4px;
+            margin-bottom: 5px;
           }
 
-          .appbar p {
+          .appbar .nav-link {
             margin-top: 3px;
-            font-size: 11px;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
           }
+
+         
         `}
       </style>
     </>
@@ -105,3 +103,12 @@ function MobileNavigation() {
 }
 
 export default MobileNavigation;
+
+//<Nav.Item>
+//<Link href="/admin">
+//<Nav.Link>
+//  <DashboardIcon />
+//  <p>Admin</p>
+//</Nav.Link>
+//</Link>
+//</Nav.Item>

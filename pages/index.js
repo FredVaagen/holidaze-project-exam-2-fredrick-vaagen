@@ -6,7 +6,6 @@ import MediaQuery from "../components/layout/MediaQuery";
 import SearchBar from "../components/establishments/search/SearchBar";
 import HomeMobile from "../components/home/mobile/HomeMobile";
 import HomeDesktop from "../components/home/desktop/HomeDesktop";
-import Explore from "../components/home/explore/Explore";
 
 <MediaQuery />;
 
@@ -63,9 +62,6 @@ export default function Home({ establishments }) {
           </style>
         </Container>
       )}
-      
-      <Explore />
-
     </>
   );
 }
@@ -74,7 +70,7 @@ export async function getStaticProps() {
   const res = await fetch(`${BASE_URL}/establishments?_sort=name:asc`);
   const establishments = await res.json();
   return {
-    props: { establishments},
+    props: { establishments },
     revalidate: 5,
   };
 }

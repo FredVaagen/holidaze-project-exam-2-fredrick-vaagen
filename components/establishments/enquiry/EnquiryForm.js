@@ -5,7 +5,7 @@ import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import { Container, Form, Col, Row } from "react-bootstrap";
 import { BASE_URL } from "../../../constants/api";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -29,6 +29,10 @@ function Enquiry(establishment) {
 
     await fetch([BASE_URL + "/enquiries"], requestOptions);
 
+    router.push({
+      pathname: "/enquiry/feedback",
+      query: { name: establishmentName },
+    });
   };
 
   return (
@@ -45,7 +49,7 @@ function Enquiry(establishment) {
                     minDate={new Date()}
                     selected={field.value}
                     isClearable
-                    placeholderText="Check in"
+                    placeholderText="01/01/2021"
                   />
                 )}
                 control={control}
@@ -67,7 +71,8 @@ function Enquiry(establishment) {
                     minDate={new Date()}
                     selected={field.value}
                     isClearable
-                    placeholderText="Check out"
+                    placeholderText="01/01/2021"
+                  
                   />
                 )}
                 control={control}
@@ -175,11 +180,20 @@ function Enquiry(establishment) {
 
           .react-datepicker__input-container {
             margin-right: 3rem;
+            width: 100%;
           }
 
-          react-datepicker__input-container input {
-            color: red;
+          .react-datepicker__input-container input {
+            width: 100%;
+            border-bottom: 1px solid rgb(221,221,221);
+            border-top: none;
+            border-right: none;
+            border-left: none;
+
+            
           }
+
+
 
           .button {
             background: none;

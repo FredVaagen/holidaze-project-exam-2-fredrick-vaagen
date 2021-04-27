@@ -13,7 +13,7 @@ function feedback() {
 
   return (
     <div className="contact">
-      <h1 className="headline">Thank you for booking {name} </h1> 
+      <p>Thank you for booking {name} </p> 
       <style jsx>
     {`
       .contact {
@@ -23,7 +23,8 @@ function feedback() {
         flex-direction: column;
         justify-content: space-evenly;
       }
-      .contact h1 {
+      .contact p {
+        
       }
 
     `}
