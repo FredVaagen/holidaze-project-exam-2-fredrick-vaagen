@@ -4,6 +4,7 @@ import Image from "next/image";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Button from "@material-ui/core/Button";
 import Badge from "react-bootstrap/Badge";
 import SortDropdown from "../../sort/SortDropdown";
 
@@ -19,18 +20,21 @@ function EstablishmentsMobile({ establishments }) {
           key={establishment.id}>
           <Container className="establishment-container">
             <Row className="establishment-specific">
-              <Col s={12} md={6} lg={4}>
+              <Col s={5} md={5} lg={6}>
                 <Image
                   src={establishment.promoteImage.formats.small.url}
-                  width="400"
+                  width="250"
                   height="200"
                 />
               </Col>
-              <Col s={12} md={6} lg={4}>
+              <Col s={5} md={5} lg>
                 <h3>{establishment.name}</h3>
                 <Badge>{establishment.category}</Badge>
                 <p>{establishment.address}</p>
                 <p className="price">NOK {establishment.price},- per night</p>
+                <Button variant="contained" className="button">
+                  See details
+                </Button>
               </Col>
             </Row>
           </Container>
@@ -39,11 +43,10 @@ function EstablishmentsMobile({ establishments }) {
       <style global jsx>
         {`
           .establishment-container {
-            margin-top: 3rem;
             transition: 0.5s;
-            margin-bottom: 3rem;
-            border-radius: 50px;
-            height: auto;
+            padding: 0;
+            margin-0;
+            margin-top: 3rem;
           }
 
           .h1 {
@@ -52,8 +55,19 @@ function EstablishmentsMobile({ establishments }) {
           }
 
           .establishment-specific {
-            margin-bottom: 3rem;
+            box-shadow: 0 1px 3px rgb(41 51 57 / 50%);
+         
+            padding-right: 0;
+            padding-left: 0;
+            margin-bottom: 2rem;
+            margin: 0 auto;
+           
           }
+
+          .row {
+            flex-wrap: nowrap;
+         
+        }
 
           .establishment-container:hover {
             transform: scale(1.02);
@@ -87,9 +101,43 @@ function EstablishmentsMobile({ establishments }) {
             border-radius: 10px;
           }
 
+          .button {
+            background: RGB(106, 126, 230) !important;
+            color: white !important;
+            font-size: 11px !important;
+          }
+
           .searchbar {
             position: relative;
           }
+
+
+          @media only screen and (max-width: 530px) {
+            .row {
+              flex-wrap: nowrap;
+            }
+            .establishment-specific {
+              margin: 0 auto;
+              padding-bottom: 1rem;
+            }
+
+            img {
+              height: 200px;
+            }
+          }
+
+          @media only screen and (max-width: 400px) {
+            .row {
+              flex-wrap: wrap;
+            }
+            .establishment-specific {
+             
+              padding-bottom: 1rem;
+            }
+          }
+
+
+
         `}
       </style>
     </>

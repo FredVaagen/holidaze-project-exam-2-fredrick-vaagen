@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import Button from "@material-ui/core/Button";
 import { BASE_URL } from "./../../constants/api";
 import { useRouter } from "next/router";
 const schema = yup.object().shape({
@@ -52,7 +52,7 @@ export default function ContactForm() {
       <Form noValidate onSubmit={handleSubmit(onSubmit)}>
         <Form.Group>
           <Form.Label>First name</Form.Label>
-          <Form.Control {...register("firstname")} />
+          <Form.Control {...register("firstname")} placeholder="First name"/>
           {errors.firstname && (
             <div className="alert-danger">{errors.firstname.message}</div>
           )}
@@ -60,7 +60,7 @@ export default function ContactForm() {
 
         <Form.Group>
           <Form.Label>Last name</Form.Label>
-          <Form.Control {...register("lastname")} />
+          <Form.Control {...register("lastname")} placeholder="Last name" />
           {errors.lastname && (
             <div className="alert-danger">{errors.lastname.message}</div>
           )}
@@ -68,7 +68,7 @@ export default function ContactForm() {
 
         <Form.Group>
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" {...register("email")} />
+          <Form.Control type="email" {...register("email")} placeholder="Email address"/>
           {errors.email && (
             <div className="alert-danger">{errors.email.message}</div>
           )}
@@ -76,7 +76,7 @@ export default function ContactForm() {
 
         <Form.Group>
           <Form.Label>Subject</Form.Label>
-          <Form.Control {...register("subject")} />
+          <Form.Control {...register("subject")} placeholder="Subject" />
           {errors.subject && (
             <div className="alert-danger">{errors.subject.message}</div>
           )}
@@ -84,12 +84,12 @@ export default function ContactForm() {
 
         <Form.Group>
           <Form.Label>Message</Form.Label>
-          <Form.Control as="textarea" {...register("message")} />
+          <Form.Control as="textarea" placeholder="Your message" {...register("message")} />
           {errors.message && (
             <div className="alert-danger">{errors.message.message}</div>
           )}
         </Form.Group>
-        <Button variant="dark" type="submit">
+        <Button variant="contained" className="button" type="submit">
           Submit
         </Button>
       </Form>
@@ -99,6 +99,37 @@ export default function ContactForm() {
             background: none;
             color: red;
             font-size: 12px;
+          }
+          .form-group input,
+          .form-group select {
+            border: none;
+            border-bottom: 1px solid rgb(106, 126, 230);
+          }
+
+          .form-group textarea {
+            border: 1px solid rgb(106, 126, 230);
+          }
+
+          .form-label {
+            font-size: 14px;
+            font-weight: 300;
+          }
+
+          .button {
+            width: 200px;
+            margin-bottom: 2rem;
+            background: RGB(106, 126, 230);
+            color: white;
+            font-size: 11px;
+          }
+
+          .button:hover {
+            background: RGB(66, 87, 194);
+          }
+
+          .form-label {
+            font-size: 14px;
+            font-weight: 300;
           }
         `}
       </style>

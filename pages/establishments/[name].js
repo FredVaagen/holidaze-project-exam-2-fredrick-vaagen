@@ -91,7 +91,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
             <Col>
               <h5 className="subheading">About </h5>
               <p className="description">{establishment.description}</p>
-              <Button variant="contained" className="button" onClick={handleShow}>
+              <Button variant="contained" onClick={handleShow}>
                 Book
               </Button>
             </Col>
@@ -109,7 +109,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
           backdrop="static"
           keyboard={false}>
           <Modal.Header closeButton>
-            <Modal.Title>{establishment.name} Enquiry</Modal.Title>
+            <Modal.Title>{establishment.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Enquiry {...establishment} />
@@ -132,6 +132,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
               color: black;
               display: flex;
               flex-direction: column;
+              
             }
 
             .establishment h1 {
@@ -181,9 +182,21 @@ export default function Establishment({ establishment, images, promoteImage }) {
               font-weight: 200;
             }
 
-            .button {
-              width: 100%;
+            .MuiButtonBase-root {
+              width: 200px;
               margin-bottom: 2rem;
+              background: RGB(106, 126, 230);
+              color: white;
+              font-size: 11px;
+            }
+
+            .MuiButtonBase-root:hover {
+              background: RGB(66, 87, 194);
+            }
+
+            .modal-title {
+              font-weight: 300;
+              font-size: 20px;
             }
 
             .map {

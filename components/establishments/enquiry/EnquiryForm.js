@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import { Container, Form, Col, Row } from "react-bootstrap";
-import { BASE_URL } from "../../../constants/api";
 import Button from "@material-ui/core/Button";
+import { BASE_URL } from "../../../constants/api";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -72,7 +72,6 @@ function Enquiry(establishment) {
                     selected={field.value}
                     isClearable
                     placeholderText="01/01/2021"
-                  
                   />
                 )}
                 control={control}
@@ -141,7 +140,8 @@ function Enquiry(establishment) {
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlSelect1">
           <Form.Label>Guests</Form.Label>
-          <Form.Control as="select" name="guests" {...register("guests")}>
+          <Form.Control as="select" name="guests" {...register("guests", {required: true})}>
+            <option></option>
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -149,6 +149,9 @@ function Enquiry(establishment) {
             <option>5</option>
           </Form.Control>
         </Form.Group>
+        {errors.guests && (
+            <div className="alert-danger">Please select number of guests</div>
+          )}
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Your message</Form.Label>
           <Form.Control
@@ -160,7 +163,7 @@ function Enquiry(establishment) {
           />
         </Form.Group>
 
-        <Button variant="contained" type="submit">
+        <Button variant="contained" type="submit" className="button">
           Reserve
         </Button>
         <Form.Control
@@ -183,28 +186,39 @@ function Enquiry(establishment) {
             width: 100%;
           }
 
+          .form-group input,
+          .form-group select {
+            border: none;
+            border-bottom: 1px solid rgb(106, 126, 230);
+          }
+
+          .form-group textarea {
+            border: 1px solid rgb(106, 126, 230);
+          }
+
+          .form-label {
+            font-size: 14px;
+            font-weight: 300;
+          }
+
           .react-datepicker__input-container input {
             width: 100%;
-            border-bottom: 1px solid rgb(221,221,221);
+            border-bottom: 1px solid rgb(106, 126, 230);
             border-top: none;
             border-right: none;
             border-left: none;
-
-            
           }
-
-
 
           .button {
-            background: none;
-            color: black;
-            border: 1px solid black;
+            width: 200px;
+            margin-bottom: 2rem;
+            background: RGB(106, 126, 230);
+            color: white;
+            font-size: 11px;
           }
 
-          .button:focus {
-            background: black;
-            color: white;
-            box-shadow: 0 0 0 0.2rem rgb(0 0 0 / 50%);
+          .button:hover {
+            background: RGB(66, 87, 194);
           }
 
           .alert-danger {

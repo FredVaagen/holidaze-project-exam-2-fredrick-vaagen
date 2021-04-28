@@ -85,18 +85,19 @@ export default function Footer() {
 
           .bottom-footer {
             flex-wrap: wrap;
+            text-align: center;
            
           }
 
           .socials {
             order: 1;
-            width: 90%;
+            width: 100%;
             margin-bottom: 1rem;
           }
 
           .bottom-footer-left {
             order: 2;
-            width: 90%;
+            width: 100%;
           }
         }
       `}</style>
