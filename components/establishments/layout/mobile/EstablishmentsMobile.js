@@ -20,20 +20,20 @@ function EstablishmentsMobile({ establishments }) {
           key={establishment.id}>
           <Container className="establishment-container">
             <Row className="establishment-specific">
-              <Col s={5} md={5} lg={6}>
+              <Col s={5} md={5} lg={6} className="establishment-specific__image-col">
                 <Image
                   src={establishment.promoteImage.formats.small.url}
                   width="250"
                   height="200"
                 />
               </Col>
-              <Col s={5} md={5} lg>
+              <Col s={5} md={5} lg className="details">
                 <h3>{establishment.name}</h3>
                 <Badge>{establishment.category}</Badge>
                 <p>{establishment.address}</p>
-                <p className="price">NOK {establishment.price},- per night</p>
+            
                 <Button variant="contained" className="button">
-                  See details
+                NOK {establishment.price} per night || See more
                 </Button>
               </Col>
             </Row>
@@ -105,10 +105,25 @@ function EstablishmentsMobile({ establishments }) {
             background: RGB(106, 126, 230) !important;
             color: white !important;
             font-size: 11px !important;
+            width: 100%;
+          }
+
+          .details {
+            padding: 10px;
           }
 
           .searchbar {
             position: relative;
+          }
+
+          .establishment-specific__image-col {
+            padding-top: 5px;;
+            padding-left: 6px;
+         
+          }
+
+          img {
+            border-radius: 0;
           }
 
 
