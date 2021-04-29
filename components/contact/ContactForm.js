@@ -52,7 +52,7 @@ export default function ContactForm() {
       <Form noValidate onSubmit={handleSubmit(onSubmit)}>
         <Form.Group>
           <Form.Label>First name</Form.Label>
-          <Form.Control {...register("firstname")} placeholder="First name"/>
+          <Form.Control {...register("firstname")} placeholder="First name" />
           {errors.firstname && (
             <div className="alert-danger">{errors.firstname.message}</div>
           )}
@@ -68,7 +68,11 @@ export default function ContactForm() {
 
         <Form.Group>
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" {...register("email")} placeholder="Email address"/>
+          <Form.Control
+            type="email"
+            {...register("email")}
+            placeholder="Email address"
+          />
           {errors.email && (
             <div className="alert-danger">{errors.email.message}</div>
           )}
@@ -84,7 +88,11 @@ export default function ContactForm() {
 
         <Form.Group>
           <Form.Label>Message</Form.Label>
-          <Form.Control as="textarea" placeholder="Your message" {...register("message")} />
+          <Form.Control
+            as="textarea"
+            placeholder="Your message"
+            {...register("message")}
+          />
           {errors.message && (
             <div className="alert-danger">{errors.message.message}</div>
           )}

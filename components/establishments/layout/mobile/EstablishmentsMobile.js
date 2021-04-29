@@ -126,13 +126,17 @@ function EstablishmentsMobile({ establishments }) {
             }
           }
 
-          @media only screen and (max-width: 400px) {
+          @media only screen and (max-width: 500px) {
             .row {
               flex-wrap: wrap;
             }
             .establishment-specific {
              
               padding-bottom: 1rem;
+            }
+
+            img {
+              width: 450px;
             }
           }
 
