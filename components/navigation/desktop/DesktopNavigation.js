@@ -53,7 +53,7 @@ function DesktopNavigation() {
             </Nav.Item>
             <Nav.Item className="login-link">
               {user ? (
-                <Link href="/">
+                <Link href="/" passHref> 
                   <a
                     onClick={() => {
                       logout();
@@ -63,7 +63,7 @@ function DesktopNavigation() {
                   </a>
                 </Link>
               ) : (
-                <Link href="/login">
+                <Link href="/login" passHref>
                   <Nav.Link><AccountCircleIcon /> Sign in</Nav.Link>
                 </Link>
               )}
