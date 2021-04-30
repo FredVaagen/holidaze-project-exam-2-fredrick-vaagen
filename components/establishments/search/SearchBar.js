@@ -21,7 +21,7 @@ function SearchBar({ establishments }) {
     Router.push(`/establishments/${val}`);
   };
   return (
-    <Container fluid className="searchbar m-0 p-0">
+    <Container fluid className="searchbar">
       <Autocomplete
         className="autocomplete"
         options={establishments.map((option) => option.name)}
