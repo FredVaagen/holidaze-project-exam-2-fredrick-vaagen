@@ -60,6 +60,28 @@ function EnquiryAccordion(enquiry) {
           </Card.Body>
         </Accordion.Collapse>
       </Card>
+      <style global jsx>
+        {`
+          .accordion {
+            display: flex !important;
+            flex-direction: column;
+          }
+
+          .btn {
+            width: 100% !important;
+            text-align: left;
+            color: black;
+          }
+
+          .remove {
+            width: 200px !important;
+            margin-bottom: 2rem !important;
+            background: RGB(106, 126, 230) !important;
+            color: white !important;
+            font-size: 11px !important;
+          }
+        `}
+      </style>
     </Accordion>
   );
 }

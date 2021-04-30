@@ -36,7 +36,7 @@ function ContactAccordion(contact) {
       <Card>
         <Card.Header>
           <Accordion.Toggle as={Button} variant="link" eventKey="0">
-            id: {contact.id} - {contact.subject}
+            id: {contact.id} - Subject: {contact.subject}
           </Accordion.Toggle>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
@@ -48,12 +48,11 @@ function ContactAccordion(contact) {
               <p>Email: {contact.email}</p>
               <p>Message: {contact.message}</p>
               <form onSubmit={handleSubmit(remove)}>
-              <button className="remove" type="submit">
-                Delete
-              </button>
-            </form>
+                <button className="remove" type="submit">
+                  Delete
+                </button>
+              </form>
             </Container>
-  
           </Card.Body>
         </Accordion.Collapse>
       </Card>
@@ -61,6 +60,21 @@ function ContactAccordion(contact) {
         {`
           .accordion {
             display: flex !important;
+            flex-direction: column;
+          }
+
+          .btn {
+            width: 100% !important;
+            text-align: left;
+            color: black;
+          }
+
+          .remove {
+            width: 200px !important;
+            margin-bottom: 2rem !important;
+            background: RGB(106, 126, 230) !important;
+            color: white !important;
+            font-size: 11px !important;
           }
         `}
       </style>

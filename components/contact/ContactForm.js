@@ -42,7 +42,10 @@ export default function ContactForm() {
     const response = await fetch([BASE_URL + "/contacts"], requestOptions);
 
     if (response) {
-      router.push("/contact/feedback");
+      return (
+        router.push("/contact/feedback") 
+       
+      )
     }
   };
 
@@ -133,15 +136,15 @@ export default function ContactForm() {
           }
 
           .MuiButtonBase-root {
-            width: 200px;
-            margin-bottom: 2rem;
-            background: RGB(106, 126, 230);
-            color: white;
-            font-size: 11px;
+            width: 200px !important;
+            margin-bottom: 2rem !important;
+            background: RGB(106, 126, 230) !important;
+            color: white !important;
+            font-size: 11px !important;
           }
 
           .MuiButtonBase-root:hover {
-            background: RGB(66, 87, 194);
+            background: RGB(66, 87, 194) !important;
           }
 
           .form-label {
