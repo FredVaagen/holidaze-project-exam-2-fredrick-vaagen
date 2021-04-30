@@ -85,7 +85,7 @@ function EstablishmentsMobile({ establishments }) {
             text-transform: uppercase;
             font-size: 9px;
             margin-left: -0.3rem;
-
+            text-align: left;
             margin-bottom: 1rem;
           }
 
@@ -106,10 +106,14 @@ function EstablishmentsMobile({ establishments }) {
             color: white !important;
             font-size: 11px !important;
             width: 100%;
+            
           }
 
           .details {
             padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
           }
 
           .searchbar {

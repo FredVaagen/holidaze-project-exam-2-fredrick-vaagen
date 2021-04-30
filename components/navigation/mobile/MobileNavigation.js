@@ -32,7 +32,7 @@ function MobileNavigation() {
           </Link>
           <Link href="/contact" passHref>
             <Nav.Link>
-              <ContactSupportIcon className="contact-svg"/>
+              <ContactSupportIcon/>
               Contact
             </Nav.Link>
           </Link>

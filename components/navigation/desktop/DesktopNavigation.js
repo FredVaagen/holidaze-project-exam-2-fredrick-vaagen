@@ -1,9 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import FilterHdrIcon from "@material-ui/icons/FilterHdr";
+import ExploreIcon from "@material-ui/icons/Explore";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import HotelIcon from "@material-ui/icons/Hotel";
+import ContactSupportIcon from "@material-ui/icons/ContactSupport";
 import { logout } from "../../../lib/auth";
 import AppContext from "../../../context/AppContext";
 
@@ -21,14 +25,20 @@ function DesktopNavigation() {
           <Nav className="m-auto">
             <Link href="/establishments" passHref>
               <Nav.Link>
-                Places to stay
+                <HotelIcon /> Find a place to stay
               </Nav.Link>
             </Link>
             <Link href="/contact" passHref>
-              <Nav.Link>Explore the city</Nav.Link>
+              <Nav.Link>
+                <ExploreIcon /> Explore the city
+              </Nav.Link>
             </Link>
             <Link href="/contact" passHref>
-              <Nav.Link>Contact us</Nav.Link>
+              <Nav.Link>
+                {" "}
+                <ContactSupportIcon />
+                Contact us
+              </Nav.Link>
             </Link>
           </Nav>
           <Nav className="mr login">
@@ -54,7 +64,7 @@ function DesktopNavigation() {
                 </Link>
               ) : (
                 <Link href="/login">
-                  <a>Sign in</a>
+                  <Nav.Link><AccountCircleIcon /> Sign in</Nav.Link>
                 </Link>
               )}
             </Nav.Item>
@@ -65,10 +75,7 @@ function DesktopNavigation() {
         {`
           .navbar-expand-md .navbar-nav .nav-link {
             padding-right: 3rem;
-            
           }
-
-          
         `}
       </style>
     </Container>

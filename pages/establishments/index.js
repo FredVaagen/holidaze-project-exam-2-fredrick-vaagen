@@ -14,13 +14,12 @@ export default function EstablishmentsPage({ establishments }) {
   const [show, setShow] = useState(false);
   const isBreakpoint = MediaQuery(991);
   const router = useRouter();
-  let title = "test";
 
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
   return (
-    <Container  className="establishments">
+    <Container className="establishments">
       <SearchBar {...{ establishments }} />
       {isBreakpoint ? (
         <EstablishmentsMobile {...{ establishments }} />

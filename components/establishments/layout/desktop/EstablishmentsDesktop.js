@@ -88,6 +88,9 @@ function EstablishmentsDesktop({ establishments }) {
 
           .details {
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
            
             
           }
@@ -96,9 +99,10 @@ function EstablishmentsDesktop({ establishments }) {
             color: black;
             text-transform: uppercase;
             font-size: 9px;
+            font-weight: bold;
             margin-left: -0.3rem;
             margin-bottom: 1rem;
-            font-weight: 300;
+            text-align: left;
           }
 
           p {
