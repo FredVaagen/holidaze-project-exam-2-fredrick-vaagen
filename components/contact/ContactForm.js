@@ -103,6 +103,9 @@ export default function ContactForm() {
       </Form>
       <style global jsx>
         {`
+          .main {
+            height: auto;
+          }
           .alert-danger {
             background: none;
             color: red;
@@ -127,8 +130,7 @@ export default function ContactForm() {
           .form-control {
             padding: 0;
             border-radius: 0;
-            
-        }
+          }
 
           .MuiButtonBase-root {
             width: 200px;

@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { parseCookies } from "nookies";
 import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import Button from "@material-ui/core/Button";
 import { BASE_URL } from "../../../constants/api";
 
 function CreateEstablishment() {
@@ -24,7 +26,7 @@ function CreateEstablishment() {
         lat: data.lat,
         lng: data.lng,
         address: data.address,
-        category: data.category
+        category: data.category,
       };
 
       const inputValue = await axios({
@@ -62,118 +64,156 @@ function CreateEstablishment() {
   return (
     <Container>
       <div className="create-establishment mt-5 mb-5">
-        <form
+        <Form
+          noValidate
           className="create-establishment-form"
           onSubmit={handleSubmit(submitData)}>
-          <label>Name</label>
-          <input type="text" {...register("name", { required: true })} />
+          <Form.Group>
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="text"
+              {...register("name", { required: true })}
+            />
+            {errors.description && (
+              <div className="alert-danger">
+                Name of establishment is required
+              </div>
+            )}
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Description</Form.Label>
+            <Form.Control
+              as="textarea"
+              type="text"
+              {...register("description", { required: true })}
+            />
+          </Form.Group>
           {errors.description && (
-            <div className="alert alert-danger">
-              Name of establishment is required
-            </div>
-          )}
-
-          <label>Description</label>
-          <textarea
-            type="text"
-            {...register("description", { required: true })}
-          />
-          {errors.description && (
-            <div className="alert alert-danger">
+            <div className="alert-danger">
               Description of establishment is required
             </div>
           )}
 
-            <div><label>Category</label></div>
-            <select name="category" {...register("category")}>
+          <Form.Group>
+            <Form.Label>Category</Form.Label>
+            <Form.Control as="select" name="category" {...register("category")}>
               <option></option>
               <option>hotel</option>
               <option>guesthouse</option>
               <option>bedandbreakfast</option>
-            </select>
-   
+            </Form.Control>
+          </Form.Group>
 
-          <div><label>Price per night</label></div>
-          <input type="number" {...register("price", { required: true })} />
-          {errors.price && (
-            <div className="alert alert-danger">
-              Price of establishment is required
-            </div>
-          )}
+          <Form.Group>
+            <Form.Label>Price per night</Form.Label>
 
-          <a target="_blank" href="https://www.latlong.net/">
-            <label>Latitude</label>
-          </a>
-          <input {...register("lat", { required: true })} />
-          {errors.lat && (
-            <div className="alert alert-danger">
-              Latitude of establishment is required
-            </div>
-          )}
+            <Form.Control
+              type="number"
+              {...register("price", { required: true })}
+            />
+            {errors.price && (
+              <div className="alert-danger">
+                Price of establishment is required
+              </div>
+            )}
+          </Form.Group>
+          <Form.Group>
+     
+              <Form.Label>Latitude - <a target="_blank" href="https://www.latlong.net/"> Click to find latitude and longitude</a></Form.Label>
+           
+           
+            <Form.Control {...register("lat", { required: true })} />
+            {errors.lat && (
+              <div className="alert-danger">
+                Latitude of establishment is required
+              </div>
+            )}
+          </Form.Group>
 
-          <label>Longitude</label>
-          <input {...register("lng", { required: true })} />
-          {errors.lng && (
-            <div className="alert alert-danger">
-              Longitude of establishment is required
-            </div>
-          )}
+          <Form.Group>
+            <Form.Label>Longitude - <a target="_blank" href="https://www.latlong.net/"> Click to find latitude and longitude</a> </Form.Label>
+            <Form.Control {...register("lng", { required: true })} />
+            {errors.lng && (
+              <div className="alert-danger">
+                Longitude of establishment is required
+              </div>
+            )}
+          </Form.Group>
 
-          <label>Address</label>
-          <input type="text" {...register("address", { required: true })} />
-          {errors.address && (
-            <div className="alert alert-danger">
-              Address of establishment is required
-            </div>
-          )}
+          <Form.Group>
+            <Form.Label>Address</Form.Label>
+            <Form.Control
+              type="text"
+              {...register("address", { required: true })}
+            />
+            {errors.address && (
+              <div className="alert-danger">
+                Address of establishment is required
+              </div>
+            )}
+          </Form.Group>
 
-          <div>
-            <label>
+          <Form.Group>
+            <Form.Label>
               Upload establishment promo/thumbnail image (Maximum of 1)
-            </label>
-            <input type="file" {...register("file", { required: true })} />
+            </Form.Label>
+            <Form.Control
+              type="file"
+              {...register("file", { required: true })}
+            />
             {errors.file && (
-              <div className="alert alert-danger">
+              <div className="alert-danger">
                 A promomotioan/main image is required
               </div>
             )}
-          </div>
-          <button>Next...</button>
-        </form>
+          </Form.Group>
+          <Button variant="contained" type="submit" className="button">Next...</Button>
+        </Form>
       </div>
 
       <style global jsx>
         {`
-          .main {
-            height: auto;
-          }
-
-          .main button {
+          .alert-danger {
             background: none;
+            color: red;
+            font-size: 12px;
+          }
+          .form-group input,
+          .form-group select {
+            border: none;
+            border: 1px solid rgb(106, 126, 230);
           }
 
-          .main h1 {
-            margin-top: 3rem;
-            margin-bottom: 3rem;
+          .form-group textarea {
+            border: 1px solid rgb(106, 126, 230);
+            padding: 10px;
           }
 
-          .create-establishment input,
-          textarea {
-            width: 100%;
-
-            color: black;
+          .form-label {
+            font-size: 14px;
+            font-weight: 300;
           }
 
-          .create-establishment-form {
-            text-align: left;
+          .form-control {
+            padding: 0;
+            border-radius: 0;
           }
 
-          .create-establishment a {
-            color: black;
+          .MuiButtonBase-root {
+            width: 200px !important;
+            margin-bottom: 2rem !important;
+            background: RGB(106, 126, 230) !important;
+            color: white !important;
+            font-size: 11px !important;
           }
 
-          .create-establishment button {
-            width: 150px;
+          .MuiButtonBase-root:hover {
+            background: RGB(66, 87, 194) !important;
+          }
+
+          .form-label {
+            font-size: 14px;
+            font-weight: 300;
           }
         `}
       </style>

@@ -32,8 +32,8 @@ function MobileNavigation() {
           </Link>
           <Link href="/contact" passHref>
             <Nav.Link>
-              <ContactSupportIcon />
-              Support
+              <ContactSupportIcon className="contact-svg"/>
+              Contact
             </Nav.Link>
           </Link>
 
@@ -41,7 +41,9 @@ function MobileNavigation() {
             <>
               <Nav.Item>
                 <Link href="/admin" passHref>
-                  <Nav.Link><DashboardIcon /> Admin</Nav.Link>
+                  <Nav.Link>
+                    <DashboardIcon /> Admin
+                  </Nav.Link>
                 </Link>
               </Nav.Item>
 
@@ -88,14 +90,13 @@ function MobileNavigation() {
             margin-bottom: 5px;
           }
 
+
           .appbar .nav-link {
             margin-top: 3px;
             font-size: 12px;
             display: flex;
             flex-direction: column;
           }
-
-         
         `}
       </style>
     </>
@@ -103,12 +104,3 @@ function MobileNavigation() {
 }
 
 export default MobileNavigation;
-
-//<Nav.Item>
-//<Link href="/admin">
-//<Nav.Link>
-//  <DashboardIcon />
-//  <p>Admin</p>
-//</Nav.Link>
-//</Link>
-//</Nav.Item>

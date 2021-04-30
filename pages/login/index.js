@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
-import { Container,Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 import Button from "@material-ui/core/Button";
 import { login } from "../../lib/auth";
 import AppContext from "../../context/AppContext";
@@ -25,8 +25,8 @@ function Login() {
 
   return (
     <Container className="login-container">
-      <h1 className="h1">Login</h1>
       <Form>
+        <h1 className="h1">Login</h1>
         <fieldset disabled={loading}>
           <Form.Group>
             <Form.Label>Email:</Form.Label>
@@ -61,14 +61,13 @@ function Login() {
                   });
               }}>
               {loading ? (
-                
                 <Spinner
                   as="span"
                   animation="border"
                   size="sm"
                   role="status"
                   aria-hidden="true"
-                /> 
+                />
               ) : (
                 "Login"
               )}
@@ -83,30 +82,24 @@ function Login() {
             height: 100vh;
             display: flex;
             text-align: left;
-
-            
           }
 
           .h1 {
-            margin-top: 3rem;
+            text-align: center;
+            padding-bottom: 2rem;
           }
 
           .login-container {
-            height: 50vh;
             display: flex;
-            justify-content: center;
+            margin-top: 5rem;
             align-items: center;
             flex-direction: column;
-            
-
           }
 
           .login-container form {
-            padding: 40px 55px 45px 55px;
             transition: all 0.3s;
-            box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.1);
-            width: 100%;
-          
+
+            padding: 5rem;
           }
 
           .form-control {

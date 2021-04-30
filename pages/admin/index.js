@@ -2,43 +2,44 @@ import Link from "next/link";
 import { parseCookies } from "nookies";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import ListGroup from "react-bootstrap/ListGroup";
 import Container from "react-bootstrap/Container";
 import { BASE_URL } from "../../constants/api";
 import CreateEstablishment from "../../components/admin/establishment/CreateEstablishment";
-import EnquiryLayout from "../../components/admin/establishment/dashboard/EnquiryAccordion";
+import EnquiryAccordion from "../../components/admin/establishment/dashboard/EnquiryAccordion";
+import ContactAccordion from "../../components/admin/establishment/dashboard/ContactAccordion";
 
 const Admin = ({ enquiries, contacts, establishments }) => {
+
+ let contactTitle = "Contact Messages" 
+ let enquiriesTitle = "Enquiries"
+
+ if (contacts == 0) {
+  contactTitle = "No messages"
+ }
+
+ if (enquiries == 0) {
+  enquiriesTitle = "No enquiries"
+ }
+ 
   return (
     <Container fluid className="p-0">
       <Tabs defaultActiveKey="enquiries">
         <Tab eventKey="enquiries" title="Enquiries">
           <Container>
-            <h1>Enquiries</h1>
+            <h1>{enquiriesTitle}</h1>
+            {enquiries.map((enquiry) => (
+              <EnquiryAccordion key={enquiry.id} {...enquiry} />
+            ))}
           </Container>
-          {enquiries.map((enquiry) => (
-            <EnquiryLayout  key={enquiry.id} {...enquiry } />
-          ))}
         </Tab>
         <Tab eventKey="contact" title="Contact">
           <Container>
-            <h1>Contact messages</h1>
+            <h1>{contactTitle}</h1>
+            {contacts.map((contact) => (
+              <ContactAccordion key={contact.id} {...contact} />
+            ))}
           </Container>
-          {contacts.map((contact) => (
-            <Container key={contact.id} className="establishment-container">
-              <Row className="establishment-specific">
-                <Col xs={12} md={9} className="mt-5">
-                  <p>
-                    Name: {contact.firstname} {contact.lastname}
-                  </p>
-                  <p>Email: {contact.email}</p>
-                  <p>Message: {contact.message}</p>
-                </Col>
-              </Row>
-            </Container>
-          ))}
         </Tab>
         <Tab eventKey="createEstablishment" title="Create new establishment">
           <Container className="create-establishment">
@@ -51,11 +52,12 @@ const Admin = ({ enquiries, contacts, establishments }) => {
             <ListGroup>
               <h2>Edit a establishment</h2>
               {establishments.map((establishment) => (
-                <Container className="establishment-container"  key={establishment.id}>
+                <Container
+                  className="establishment-container"
+                  key={establishment.id}>
                   <Link
                     href="/admin/edit/[name]"
-                    as={`/admin/edit/${establishment.name}`}
-                  >
+                    as={`/admin/edit/${establishment.name}`}>
                     <ListGroup.Item className="editEstablishment-list-item">
                       {establishment.name}
                     </ListGroup.Item>
@@ -85,9 +87,8 @@ const Admin = ({ enquiries, contacts, establishments }) => {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            text-align: center;
+            
           }
-
           .create-establishment-button {
             background: none;
             border: none;
