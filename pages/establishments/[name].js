@@ -183,15 +183,15 @@ export default function Establishment({ establishment, images, promoteImage }) {
             }
 
             .MuiButtonBase-root {
-              width: 200px;
-              margin-bottom: 2rem;
-              background: RGB(106, 126, 230);
+              width: 200px !important;
+              margin-bottom: 2rem !important;
+              background: RGB(106, 126, 230) !important;
               color: white;
-              font-size: 11px;
+              font-size: 11px !important;
             }
 
             .MuiButtonBase-root:hover {
-              background: RGB(66, 87, 194);
+              background: RGB(66, 87, 194) !important;
             }
 
             .modal-title {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import { Container,Form } from "react-bootstrap";
+import Button from "@material-ui/core/Button";
 import { login } from "../../lib/auth";
 import AppContext from "../../context/AppContext";
 import Spinner from "react-bootstrap/Spinner";
@@ -60,13 +61,14 @@ function Login() {
                   });
               }}>
               {loading ? (
+                
                 <Spinner
                   as="span"
                   animation="border"
                   size="sm"
                   role="status"
                   aria-hidden="true"
-                />
+                /> 
               ) : (
                 "Login"
               )}

@@ -6,7 +6,7 @@ import { BASE_URL } from "./../../../constants/api";
 import axios from "axios";
 import ImageUpload from "./ImageUpload";
 import { useRouter } from "next/router";
-import Establishment from "../../../pages/establishments/[name]";
+
 
 const EditEstablishment = (props) => {
   const { register, handleSubmit } = useForm();
@@ -22,6 +22,7 @@ const EditEstablishment = (props) => {
         lat: data.lat || props.lat,
         lng: data.lng || props.lng,
         address: data.address || props.address,
+        category: data.category || props.category,
       };
       console.log(formDataToSend);
 
@@ -41,7 +42,6 @@ const EditEstablishment = (props) => {
     } catch (error) {
       console.log(error);
     }
-  
   };
 
   const removeEstablishment = async (ctx) => {
@@ -77,25 +77,49 @@ const EditEstablishment = (props) => {
           </div>
           <div>
             <label>Description</label>
-            <textarea type="text" {...register("description")} placeholder={props.description} />
+            <textarea
+              type="text"
+              {...register("description")}
+              placeholder={props.description}
+            />
           </div>
           <div>
             <label>Price per night</label>
-            <input type="number" {...register("price")} placeholder={props.price}/>
+            <input
+              type="number"
+              {...register("price")}
+              placeholder={props.price}
+            />
           </div>
           <div>
             <label>
               Latitude <a>https://www.latlong.net/</a>
             </label>
-            <input {...register("lat")} placeholder={props.lat}/>
+            <input {...register("lat")} placeholder={props.lat} />
           </div>
           <div>
             <label>Longitude</label>
-            <input {...register("lng")} placeholder={props.lng}/>
+            <input {...register("lng")} placeholder={props.lng} />
+          </div>
+          <div>
+            <div>
+              {" "}
+              <label>Category - {props.category}</label>
+            </div>
+            <select name="category" {...register("category")}>
+              <option></option>
+              <option>hotel</option>
+              <option>guesthouse</option>
+              <option>bedandbreakfast</option>
+            </select>
           </div>
           <div>
             <label>Address</label>
-            <input type="text" {...register("address")} placeholder={props.address}/>
+            <input
+              type="text"
+              {...register("address")}
+              placeholder={props.address}
+            />
           </div>
           <button type="submit">Update</button>
         </form>

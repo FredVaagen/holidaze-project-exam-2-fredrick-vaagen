@@ -36,9 +36,8 @@ function EstablishmentsDesktop({ establishments }) {
                 <h3>{establishment.name}</h3>
                 <Badge>{establishment.category}</Badge>
                 <p className="address">{establishment.address}</p>
-                <p className="price">NOK {establishment.price},- per night</p>
                 <Button variant="contained" className="button">
-                  See details
+                NOK {establishment.price} per night || See more
                 </Button>
               </Col>
               <Col s={4} lg={5} className="map-container">

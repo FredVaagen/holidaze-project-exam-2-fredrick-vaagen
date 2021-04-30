@@ -116,6 +116,7 @@ export default function ContactForm() {
 
           .form-group textarea {
             border: 1px solid rgb(106, 126, 230);
+            padding: 10px;
           }
 
           .form-label {
@@ -123,7 +124,13 @@ export default function ContactForm() {
             font-weight: 300;
           }
 
-          .button {
+          .form-control {
+            padding: 0;
+            border-radius: 0;
+            
+        }
+
+          .MuiButtonBase-root {
             width: 200px;
             margin-bottom: 2rem;
             background: RGB(106, 126, 230);
@@ -131,7 +138,7 @@ export default function ContactForm() {
             font-size: 11px;
           }
 
-          .button:hover {
+          .MuiButtonBase-root:hover {
             background: RGB(66, 87, 194);
           }
 

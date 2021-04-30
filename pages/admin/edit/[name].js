@@ -1,45 +1,45 @@
-import { useState, useCallback, useEffect } from "react";
-import { useRouter } from "next/router";
-import Image from "next/image";
+import { useState } from "react";
 import fetch from "isomorphic-fetch";
+import { useRouter } from "next/router";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import Carousel from "react-bootstrap/Carousel";
-import Spinner from "react-bootstrap/Spinner";
-import BackArrow from "../../../components/layout/BackArrow";
-import SimpleMap from "../../../components/establishments/maps/SimpleMap";
-import { BASE_URL } from "../../../constants/api";
-import EditEstablishment from "../../../components/admin/establishment/EditEstablishment";
 import Enquiry from "../../../components/establishments/enquiry/EnquiryForm";
+import Carousel from "react-bootstrap/Carousel";
+import { BASE_URL } from "../../../constants/api";
+import SimpleMap from "../../../components/establishments/maps/SimpleMap";
+import ImageUpload from "../../../components/admin/establishment/ImageUpload";
 import MediaQuery from "../../../components/layout/MediaQuery";
+import Button from "@material-ui/core/Button";
+import BackArrow from "../../../components/layout/BackArrow";
+import EditEstablishment from "../../../components/admin/establishment/EditEstablishment";
 
-<MediaQuery />
+<MediaQuery />;
 
 export default function Establishment({ establishment, images, promoteImage }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const router = useRouter();
-
-  const isBreakpoint = MediaQuery(991);
+  const isBreakpoint = MediaQuery(1200);
 
   if (router.isFallback) {
-    return (
-      <Spinner animation="border" role="status">
-        <span className="sr-only">Loading...</span>
-      </Spinner>
-    );
+    return <div>Loading...</div>;
   }
 
   return (
-    <Container fluid>
+    <Container>
       <BackArrow />
+      <Container>
+        <h5 className="h5">Update establishment</h5>
+        <EditEstablishment {...establishment} />
+      </Container>
       <Container className="establishment">
         <Container className="establishment-images">
           <h1>{establishment.name}</h1>
+          <p className="establishment-address">{establishment.address}</p>
           {isBreakpoint ? (
             <Row>
               <Col>
@@ -84,7 +84,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
                     className="detail-images ml-2 mr-2"
                     src={image.formats.small.url}
                     alt={image.name}
-                    width="auto"
+                    width="300"
                     height="auto"
                   />
                 ))}
@@ -97,13 +97,15 @@ export default function Establishment({ establishment, images, promoteImage }) {
             <Col>
               <h5 className="subheading">About </h5>
               <p className="description">{establishment.description}</p>
-              <Button className="button" onClick={handleShow}>
+              <Button variant="contained" onClick={handleShow}>
                 Book
               </Button>
             </Col>
           </Row>
           <h5 className="subheading">Location </h5>
-          <SimpleMap {...establishment} />
+          <div className="map">
+            <SimpleMap {...establishment} />
+          </div>
         </Container>
 
         <Modal
@@ -111,25 +113,28 @@ export default function Establishment({ establishment, images, promoteImage }) {
           size="lg"
           onHide={handleClose}
           backdrop="static"
-          keyboard={false}
-        >
+          keyboard={false}>
           <Modal.Header closeButton>
-            <Modal.Title>{establishment.name} Enquiry</Modal.Title>
+            <Modal.Title>{establishment.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Enquiry {...Establishment} />
+            <Enquiry {...establishment} />
           </Modal.Body>
         </Modal>
-
-        <Container>
-          <h2>Update establishment</h2>
-          <EditEstablishment {...establishment} />
-        </Container>
 
         <style jsx global>
           {`
             .main {
               height: auto;
+            }
+
+            .h5 {
+              font-weight: 300;
+              margin-top: 5rem;
+            }
+
+            .MuiSvgIcon-root {
+              opacity: 1;
             }
 
             .establishment {
@@ -143,7 +148,13 @@ export default function Establishment({ establishment, images, promoteImage }) {
 
             .establishment h1 {
               font-size: 26px;
-              font-weight: 400;
+              font-weight: 200;
+              margin-bottom: 1px;
+            }
+
+            .establishment-address {
+              font-size: 10px;
+              margin-top: 0.5rem;
               margin-bottom: 2rem;
             }
 
@@ -153,20 +164,6 @@ export default function Establishment({ establishment, images, promoteImage }) {
 
             .images img {
               height: 306px;
-            }
-
-            .button {
-              background: none;
-              color: black;
-              border: 1px solid black;
-              width: 200px;
-              margin-bottom: 1rem;
-              margin-top: 1rem;
-            }
-
-            .button:hover {
-              background: black;
-              color: white;
             }
 
             .details {
@@ -180,6 +177,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
               margin-bottom: 2rem;
               margin-top: 1rem;
               font-size: 14px;
+              font-weight: 300;
             }
 
             .carousel-item img {
@@ -192,10 +190,28 @@ export default function Establishment({ establishment, images, promoteImage }) {
             .subheading {
               font-size: 18px;
               margin-bottom: 1rem;
+              font-weight: 200;
             }
-            .form input {
-              display: block;
-              margin-top: 20px;
+
+            .MuiButtonBase-root {
+              width: 200px !important;
+              margin-bottom: 2rem !important;
+              background: RGB(106, 126, 230) !important;
+              color: white !important;
+              font-size: 11px !important;
+            }
+
+            .MuiButtonBase-root:hover {
+              background: RGB(66, 87, 194);
+            }
+
+            .modal-title {
+              font-weight: 300;
+              font-size: 20px;
+            }
+
+            .map {
+              height: 300px;
             }
           `}
         </style>

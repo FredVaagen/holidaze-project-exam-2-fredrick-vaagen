@@ -24,6 +24,7 @@ function CreateEstablishment() {
         lat: data.lat,
         lng: data.lng,
         address: data.address,
+        category: data.category
       };
 
       const inputValue = await axios({
@@ -83,7 +84,16 @@ function CreateEstablishment() {
             </div>
           )}
 
-          <label>Price per night</label>
+            <div><label>Category</label></div>
+            <select name="category" {...register("category")}>
+              <option></option>
+              <option>hotel</option>
+              <option>guesthouse</option>
+              <option>bedandbreakfast</option>
+            </select>
+   
+
+          <div><label>Price per night</label></div>
           <input type="number" {...register("price", { required: true })} />
           {errors.price && (
             <div className="alert alert-danger">

@@ -1,114 +1,216 @@
+import { useState } from "react";
 import fetch from "isomorphic-fetch";
 import { useRouter } from "next/router";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Image from "react-bootstrap/Image";
+import Image from "next/image";
+import Modal from "react-bootstrap/Modal";
+import Enquiry from "../../../components/establishments/enquiry/EnquiryForm";
 import Carousel from "react-bootstrap/Carousel";
 import { BASE_URL } from "../../../constants/api";
 import SimpleMap from "../../../components/establishments/maps/SimpleMap";
 import ImageUpload from "../../../components/admin/establishment/ImageUpload";
+import MediaQuery from "../../../components/layout/MediaQuery";
+import Button from "@material-ui/core/Button";
+import BackArrow from "../../../components/layout/BackArrow";
+
+
+<MediaQuery />;
 
 export default function Establishment({ establishment, images, promoteImage }) {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const router = useRouter();
+  const isBreakpoint = MediaQuery(1200);
+
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
 
   return (
-    <Container className="establishment">
-      <h1>{establishment.name}</h1>
-      <Container className="establishment__imagesAndMaps">
-        <Row>
-          <Col s={12} md={6} className="images mb-3">
-            <Carousel>
-              <Carousel.Item>
-                {router.isFallback ? (
-                  <div>Loading…</div>
-                ) : (
-                  <>
-                    <Image src={promoteImage.formats.small.url} alt={establishment.name} />
-                  </>
-                )}
-              </Carousel.Item>
-              {images.map((image) => (
-                <Carousel.Item key={image.id}>
-                  {router.isFallback ? (
-                    <div>Loading…</div>
-                  ) : (
-                    <>
+    <Container>
+      <BackArrow />
+      <Container className="establishment">
+        <Container className="establishment-images">
+          <h1>{establishment.name}</h1>
+          <p className="establishment-address">{establishment.address}</p>
+          {isBreakpoint ? (
+            <Row>
+              <Col>
+                <Carousel fade indicators={false}>
+                  {images.map((image) => (
+                    <Carousel.Item key={image.id}>
                       <Image
                         className="d-block w-100"
                         src={image.formats.small.url}
                         alt={image.name}
+                        width="1000"
+                        height="auto"
                       />
-                    </>
-                  )}
-                </Carousel.Item>
-              ))}
-            </Carousel>
-          </Col>
-          <Col s={12} md={6}>
-            <SimpleMap className="googlemap" {...establishment} />
-          </Col>
-        </Row>
-      </Container>
-      <Container className="details-container">
-        <Row className="details">
+                    </Carousel.Item>
+                  ))}
+
+                  <Carousel.Item>
+                    <Image
+                      src={promoteImage.formats.small.url}
+                      alt={establishment.name}
+                      width="1000"
+                      height="auto"
+                    />
+                  </Carousel.Item>
+                </Carousel>
+              </Col>
+            </Row>
+          ) : (
+            <Row className="no-gutters">
+              <Col s={4} md={4} lg={4} className="images mb-3 no-gutters">
+                <Image
+                  src={promoteImage.formats.small.url}
+                  alt={establishment.name}
+                  width="1000"
+                  height="auto"
+                />
+              </Col>
+              <Col className="no-gutters" s={8} md={8} lg={8}>
+                {images.slice(0, 4).map((image) => (
+                  <Image
+                    key={image.id}
+                    className="detail-images ml-2 mr-2"
+                    src={image.formats.small.url}
+                    alt={image.name}
+                    width="300"
+                    height="auto"
+                  />
+                ))}
+              </Col>
+            </Row>
+          )}
+        </Container>
+        <Container className="details-container">
+          <Row className="details">
+            <Col>
+              <h5 className="subheading">About </h5>
+              <p className="description">{establishment.description}</p>
+              <Button variant="contained" onClick={handleShow}>
+                Book
+              </Button>
+            </Col>
+          </Row>
+          <h5 className="subheading">Location </h5>
+          <div className="map">
+            <SimpleMap {...establishment} />
+          </div>
           <Col>
-            <p>{establishment.description}</p>
-            <div className="price-location">
-              <p className="price">NOK {establishment.price} per night</p>
-              <p className="location">Location: {establishment.address} </p>
-            </div>
-          </Col>
-        </Row>
-        <Col>
           <h2 className="mt-5">Add detail images</h2>
           <ImageUpload {...establishment} />
         </Col>
+        </Container>
+
+        <Modal
+          show={show}
+          size="lg"
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}>
+          <Modal.Header closeButton>
+            <Modal.Title>{establishment.name}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Enquiry {...establishment} />
+          </Modal.Body>
+        </Modal>
+        <style jsx global>
+          {`
+            .main {
+              height: auto;
+            }
+
+            .MuiSvgIcon-root {
+              opacity: 1;
+            }
+
+            .establishment {
+              margin-top: 5rem;
+              height: auto;
+              margin-bottom: 3rem;
+              color: black;
+              display: flex;
+              flex-direction: column;
+              
+            }
+
+            .establishment h1 {
+              font-size: 26px;
+              font-weight: 200;
+              margin-bottom: 1px;
+            }
+
+            .establishment-address {
+              font-size: 10px;
+              margin-top: 0.5rem;
+              margin-bottom: 2rem;
+            }
+
+            .establishment-images {
+              border-bottom: 1px solid rgb(221, 221, 221);
+            }
+
+            .images img {
+              height: 306px;
+            }
+
+            .details {
+              height: auto;
+              border-bottom: 1px solid rgb(221, 221, 221);
+              margin-top: 3rem;
+              margin-bottom: 2rem;
+            }
+
+            .details .description {
+              margin-bottom: 2rem;
+              margin-top: 1rem;
+              font-size: 14px;
+              font-weight: 300;
+            }
+
+            .carousel-item img {
+              max-height: 300px;
+              min-height: 300px;
+              width: 100%;
+              border-radius: 5px;
+            }
+
+            .subheading {
+              font-size: 18px;
+              margin-bottom: 1rem;
+              font-weight: 200;
+            }
+
+            .MuiButtonBase-root {
+              width: 200px !important;
+              margin-bottom: 2rem !important;
+              background: RGB(106, 126, 230) !important;
+              color: white !important;
+              font-size: 11px !important;
+            }
+
+            .MuiButtonBase-root:hover {
+              background: RGB(66, 87, 194);
+            }
+
+            .modal-title {
+              font-weight: 300;
+              font-size: 20px;
+            }
+
+            .map {
+              height: 300px;
+            }
+          `}
+        </style>
       </Container>
-      <style jsx global>
-        {`
-          .establishment {
-            margin-top: 5%;
-            height: auto;
-            margin-bottom: 5%;
-            color: black;
-            display: flex;
-            flex-direction: column;
-          }
-
-          .establishment h1 {
-            margin-left: 10px;
-          }
-
-          .carousel-item img {
-            max-height: 300px;
-            width: 100%;
-            min-height: 300px;
-          }
-
-          .price-location {
-            display: flex;
-            justify-content: space-between;
-          }
-
-          .button {
-            background: none;
-            color: black;
-            border: 1px solid black;
-            width: 200px;
-            margin-bottom: 1rem;
-            margin-top: 1rem;
-          }
-
-          .button:hover {
-            background: black;
-            color: white;
-          }
-        `}
-      </style>
     </Container>
   );
 }

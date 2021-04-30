@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { parseCookies } from "nookies";
 import Container from "react-bootstrap/Container";
+import Button from "@material-ui/core/Button";
 import { BASE_URL } from "./../../../constants/api";
 
 const ImageUpload = (props) => {
@@ -45,7 +46,7 @@ const ImageUpload = (props) => {
             <label>Upload detail images  (4 images are recommended)</label>
             <input type="file" multiple {...register("file")} />
           </div>
-          <button type="submit">Upload</button>
+          <Button type="submit">Upload</Button>
         </form>
       </div>
       <style global jsx>
