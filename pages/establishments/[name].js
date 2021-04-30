@@ -32,10 +32,10 @@ export default function Establishment({ establishment, images, promoteImage }) {
       <BackArrow />
       <Container className="establishment">
         <Container className="establishment-images">
-          <h1>{establishment.name}</h1>
+          <h1 className="h1">{establishment.name}</h1>
           <p className="establishment-address">{establishment.address}</p>
           {isBreakpoint ? (
-            <Row>
+            <Row className="mb-3">
               <Col>
                 <Carousel fade indicators={false}>
                   {images.map((image) => (
@@ -89,7 +89,6 @@ export default function Establishment({ establishment, images, promoteImage }) {
         <Container className="details-container">
           <Row className="details">
             <Col>
-              <h5 className="subheading">About </h5>
               <p className="description">{establishment.description}</p>
               <Button variant="contained" onClick={handleShow}>
                 Book
@@ -132,12 +131,11 @@ export default function Establishment({ establishment, images, promoteImage }) {
               color: black;
               display: flex;
               flex-direction: column;
-              
             }
 
             .establishment h1 {
-              font-size: 26px;
-              font-weight: 200;
+              font-size: 20px;
+              font-weight: 300;
               margin-bottom: 1px;
             }
 
@@ -158,7 +156,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
             .details {
               height: auto;
               border-bottom: 1px solid rgb(221, 221, 221);
-              margin-top: 3rem;
+              margin-top: 1rem;
               margin-bottom: 2rem;
             }
 
