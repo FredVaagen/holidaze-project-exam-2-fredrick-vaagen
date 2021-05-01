@@ -27,6 +27,7 @@ function Login() {
     <Container className="login-container">
       <Form>
         <h1 className="h1">Login</h1>
+
         <fieldset disabled={loading}>
           <Form.Group>
             <Form.Label>Email:</Form.Label>
@@ -43,7 +44,6 @@ function Login() {
               name="password"
             />
           </Form.Group>
-
           <Form.Group>
             <Button
               className="button"
@@ -74,6 +74,17 @@ function Login() {
             </Button>
           </Form.Group>
         </fieldset>
+        {Object.entries(error).length !== 0 &&
+          error.constructor === Object &&
+          error.message.map((error) => {
+            return (
+              <div key={error.messages[0].id}>
+                <small style={{ color: "red" }}>
+                  {error.messages[0].message}
+                </small>
+              </div>
+            );
+          })}
       </Form>
 
       <style global jsx>
@@ -85,7 +96,7 @@ function Login() {
           }
 
           .h1 {
-            text-align: center;
+            text-align: left;
             padding-bottom: 2rem;
           }
 
@@ -98,6 +109,7 @@ function Login() {
 
           .login-container form {
             transition: all 0.3s;
+            box-shadow: 0 1px 3px rgb(41 51 57 / 50%);
 
             padding: 5rem;
           }

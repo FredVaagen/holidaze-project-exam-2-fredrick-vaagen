@@ -4,28 +4,32 @@ import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import ListGroup from "react-bootstrap/ListGroup";
 import Container from "react-bootstrap/Container";
+import EditIcon from '@material-ui/icons/Edit';
 import { BASE_URL } from "../../constants/api";
 import CreateEstablishment from "../../components/admin/establishment/CreateEstablishment";
 import EnquiryAccordion from "../../components/admin/establishment/dashboard/EnquiryAccordion";
 import ContactAccordion from "../../components/admin/establishment/dashboard/ContactAccordion";
 
-const Admin = ({ enquiries, contacts, establishments }) => {
+const Admin = ({ enquiries, contacts, establishments,enquiriesCount, contactMessageCount }) => {
+  let contactTitle = "Contact Messages";
+  let enquiriesTitle = "Enquiries";
 
- let contactTitle = "Contact Messages" 
- let enquiriesTitle = "Enquiries"
+  if (contacts == 0) {
+    contactTitle = "No messages";
+  }
 
- if (contacts == 0) {
-  contactTitle = "No messages"
- }
+  if (enquiries == 0) {
+    enquiriesTitle = "No enquiries";
+  }
 
- if (enquiries == 0) {
-  enquiriesTitle = "No enquiries"
- }
- 
+
+  const enquiryTabTitle = "Enquiries" + " " + "[" + " " + enquiriesCount + " " + "]";
+  const contactTabTitle = "Contact messsages" + " " + "[" + " " + contactMessageCount + " " + "]";
+
   return (
     <Container fluid className="p-0">
       <Tabs defaultActiveKey="enquiries">
-        <Tab eventKey="enquiries" title="Enquiries">
+        <Tab eventKey="enquiries" title={enquiryTabTitle}>
           <Container>
             <h1>{enquiriesTitle}</h1>
             {enquiries.map((enquiry) => (
@@ -33,7 +37,7 @@ const Admin = ({ enquiries, contacts, establishments }) => {
             ))}
           </Container>
         </Tab>
-        <Tab eventKey="contact" title="Contact">
+        <Tab eventKey="contact" title={contactTabTitle}>
           <Container>
             <h1>{contactTitle}</h1>
             {contacts.map((contact) => (
@@ -42,7 +46,7 @@ const Admin = ({ enquiries, contacts, establishments }) => {
           </Container>
         </Tab>
         <Tab eventKey="createEstablishment" title="Create new establishment">
-          <Container className="create-establishment">
+          <Container>
             <h2>Create establishment</h2>
             <CreateEstablishment />
           </Container>
@@ -50,16 +54,17 @@ const Admin = ({ enquiries, contacts, establishments }) => {
         <Tab eventKey="editEstablishment" title="Edit establishments">
           <Container className="create-establishment">
             <ListGroup>
-              <h2>Edit a establishment</h2>
+              <Container>
+                <h2>Edit a establishment</h2>
+              </Container>
               {establishments.map((establishment) => (
                 <Container
-                  className="establishment-container"
                   key={establishment.id}>
                   <Link
                     href="/admin/edit/[name]"
                     as={`/admin/edit/${establishment.name}`}>
                     <ListGroup.Item className="editEstablishment-list-item">
-                      {establishment.name}
+                      {establishment.name} <EditIcon />
                     </ListGroup.Item>
                   </Link>
                 </Container>
@@ -82,26 +87,17 @@ const Admin = ({ enquiries, contacts, establishments }) => {
             justify-content: space-evenly;
             margin-bottom: 5rem;
           }
-
-          .create-establishment {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            
-          }
-          .create-establishment-button {
-            background: none;
-            border: none;
-          }
-
           .editEstablishment-list-item {
-            transition: 0.3s;
+            transition: 1s;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
           }
 
+   
           .editEstablishment-list-item:hover {
             cursor: pointer;
-            background: black;
-            color: white;
+            transform: scale(1.01);
           }
         `}
       </style>
@@ -110,7 +106,7 @@ const Admin = ({ enquiries, contacts, establishments }) => {
 };
 export async function getServerSideProps(ctx) {
   const token = parseCookies(ctx).token;
-  const [enquiriesRes, contactsRes, establishmentsRes] = await Promise.all([
+  const [enquiriesRes, contactsRes, establishmentsRes, enquiriesResCount, contactMessageResCount] = await Promise.all([
     fetch(`${BASE_URL}/enquiries`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -126,14 +122,26 @@ export async function getServerSideProps(ctx) {
         Authorization: `Bearer ${token}`,
       },
     }),
+    fetch(`${BASE_URL}/enquiries/count`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }),
+    fetch(`${BASE_URL}/contacts/count`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }),
   ]);
-  const [enquiries, contacts, establishments] = await Promise.all([
+  const [enquiries, contacts, establishments, enquiriesCount, contactMessageCount] = await Promise.all([
     enquiriesRes.json(),
     contactsRes.json(),
     establishmentsRes.json(),
+    enquiriesResCount.json(),
+    contactMessageResCount.json(),
   ]);
   return {
-    props: { enquiries, contacts, establishments },
+    props: { enquiries, contacts, establishments,enquiriesCount,contactMessageCount },
   };
 }
 

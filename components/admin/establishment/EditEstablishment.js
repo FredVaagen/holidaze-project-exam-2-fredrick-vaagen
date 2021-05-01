@@ -1,16 +1,21 @@
-import React from "react";
+import { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { parseCookies } from "nookies";
+import Button from "@material-ui/core/Button";
 import Container from "react-bootstrap/Container";
 import { BASE_URL } from "./../../../constants/api";
-import axios from "axios";
 import ImageUpload from "./ImageUpload";
-import { useRouter } from "next/router";
-
 
 const EditEstablishment = (props) => {
   const { register, handleSubmit } = useForm();
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+
+
+
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
@@ -66,8 +71,11 @@ const EditEstablishment = (props) => {
     }
   };
 
+
+
   return (
     <Container>
+      <h2 className="mt-5 mb-5">Update establishment</h2>
       <ImageUpload {...props} />
       <div className="create-establishment">
         <form onSubmit={handleSubmit(submitData)}>
@@ -107,7 +115,6 @@ const EditEstablishment = (props) => {
               <label>Category - {props.category}</label>
             </div>
             <select name="category" {...register("category")}>
-              <option></option>
               <option>hotel</option>
               <option>guesthouse</option>
               <option>bedandbreakfast</option>
@@ -121,7 +128,7 @@ const EditEstablishment = (props) => {
               placeholder={props.address}
             />
           </div>
-          <button type="submit">Update</button>
+          <Button type="submit">Update</Button>
         </form>
       </div>
 
@@ -130,6 +137,7 @@ const EditEstablishment = (props) => {
           Remove establishment
         </button>
       </form>
+
 
       <style global jsx>
         {`
@@ -157,6 +165,18 @@ const EditEstablishment = (props) => {
           .remove:hover {
             background: red;
             color: white;
+          }
+          .MuiButtonBase-root {
+            width: 200px !important;
+            margin-bottom: 2rem !important;
+            background: RGB(106, 126, 230) !important;
+            color: white !important;
+            font-size: 11px !important;
+          }import { useState } from 'react';
+
+
+          .MuiButtonBase-root:hover {
+            background: RGB(66, 87, 194);
           }
         `}
       </style>

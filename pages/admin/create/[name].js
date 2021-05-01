@@ -33,8 +33,13 @@ export default function Establishment({ establishment, images, promoteImage }) {
     <Container>
       <BackArrow />
       <Container className="establishment">
+      <Col>
+          <h2 className="mt-5">Add additional images</h2>
+          <ImageUpload {...establishment} />
+        </Col>
         <Container className="establishment-images">
           <h1>{establishment.name}</h1>
+
           <p className="establishment-address">{establishment.address}</p>
           {isBreakpoint ? (
             <Row>
@@ -102,10 +107,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
           <div className="map">
             <SimpleMap {...establishment} />
           </div>
-          <Col>
-          <h2 className="mt-5">Add detail images</h2>
-          <ImageUpload {...establishment} />
-        </Col>
+
         </Container>
 
         <Modal

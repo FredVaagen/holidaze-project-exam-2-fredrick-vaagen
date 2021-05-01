@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Col from "react-bootstrap/Col";
@@ -8,8 +8,10 @@ import Badge from "react-bootstrap/Badge";
 import Button from "@material-ui/core/Button";
 import SortDropdown from "../../sort/SortDropdown";
 import SimpleMap from "../../maps/SimpleMap";
+import AppContext from "../../../../context/AppContext";
 
 function EstablishmentsDesktop({ establishments }) {
+  const { user } = useContext(AppContext);
   return (
     <>
       <h1 className="h1">Find a place to stay</h1>
@@ -37,8 +39,19 @@ function EstablishmentsDesktop({ establishments }) {
                 <Badge>{establishment.category}</Badge>
                 <p className="address">{establishment.address}</p>
                 <Button variant="contained" className="button">
-                NOK {establishment.price} per night || See more
+                  NOK {establishment.price} per night || See more
                 </Button>
+                {user ? (
+                  <Link
+                    href="/admin/edit/[name]"
+                    as={`/admin/edit/${establishment.name}`}>
+                    <Button variant="contained" className="button">
+                      Edit
+                    </Button>
+                  </Link>
+                ) : (
+                  <></>
+                )}
               </Col>
               <Col s={4} lg={5} className="map-container">
                 <SimpleMap {...establishment} />
