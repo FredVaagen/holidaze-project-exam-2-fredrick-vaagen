@@ -11,9 +11,9 @@ import Carousel from "react-bootstrap/Carousel";
 import { BASE_URL } from "../../../constants/api";
 import SimpleMap from "../../../components/establishments/maps/SimpleMap";
 import ImageUpload from "../../../components/admin/establishment/ImageUpload";
-import MediaQuery from "../../../components/layout/MediaQuery";
+import MediaQuery from "../../../components/utility/MediaQuery";
 import Button from "@material-ui/core/Button";
-import BackArrow from "../../../components/layout/BackArrow";
+import BackArrow from "../../../components/utility/BackArrow";
 
 
 <MediaQuery />;

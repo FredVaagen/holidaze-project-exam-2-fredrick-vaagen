@@ -47,11 +47,13 @@ function EstablishmentsMobile({ establishments }) {
             padding: 0;
             margin-0;
             margin-top: 3rem;
+            margin-bottom: 3rem;
           }
 
           .h1 {
-            font-size: 30px;
+            font-size: 24px;
             margin-top: 1rem;
+            font-weight: 300;
           }
 
           .establishment-specific {

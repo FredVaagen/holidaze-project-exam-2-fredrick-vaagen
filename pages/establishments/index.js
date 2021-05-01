@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import { BASE_URL } from "./../../constants/api";
 import SearchBar from "../../components/establishments/search/SearchBar";
 import EstablishmentsDesktop from "../../components/establishments/layout/desktop/EstablishmentsDesktop";
-import MediaQuery from "../../components/layout/MediaQuery";
+import MediaQuery from "../../components/utility/MediaQuery";
 import EstablishmentsMobile from "../../components/establishments/layout/mobile/EstablishmentsMobile";
 
 <MediaQuery />;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Head from "next/head";
 import { Container } from "react-bootstrap";
 import Footer from "../footer/Footer";
-import MediaQuery from "./MediaQuery";
+import MediaQuery from "../utility/MediaQuery";
 import MobileNavigation from "../navigation/mobile/MobileNavigation";
 import DesktopNavigation from "../navigation/desktop/DesktopNavigation";
 

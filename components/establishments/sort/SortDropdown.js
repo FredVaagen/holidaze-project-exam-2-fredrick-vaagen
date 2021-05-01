@@ -28,6 +28,7 @@ function SortDropdown() {
             background: transparent;
             color: black;
             border: none !important;
+            font-weight: 300;
           }
 
           .btn-success:not(:disabled):not(.disabled) .active:focus, .btn-success:not(:disabled):not(.disabled):active:focus, .show>.btn-success.dropdown-toggle:focus {

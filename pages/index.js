@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import fetch from "isomorphic-unfetch";
 import Container from "react-bootstrap/Container";
 import { BASE_URL } from "../constants/api";
-import MediaQuery from "../components/layout/MediaQuery";
+import MediaQuery from "../components/utility/MediaQuery";
 import SearchBar from "../components/establishments/search/SearchBar";
 import HomeMobile from "../components/home/mobile/HomeMobile";
 import HomeDesktop from "../components/home/desktop/HomeDesktop";
