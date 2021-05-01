@@ -2,11 +2,13 @@ import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { useForm } from "react-hook-form";
 import { parseCookies } from "nookies";
 import { BASE_URL } from "../../../../constants/api";
 import axios from "axios";
 import { useRouter } from "next/router";
+
 
 function ContactAccordion(contact) {
   const { handleSubmit } = useForm();
@@ -33,23 +35,24 @@ function ContactAccordion(contact) {
   };
   return (
     <Accordion>
-      <Card>
+      <Card className="mt-5">
         <Card.Header>
           <Accordion.Toggle as={Button} variant="link" eventKey="0">
-            id: {contact.id} - Subject: {contact.subject}
+            id: {contact.id} - Subject: {contact.subject}{" "}
+
           </Accordion.Toggle>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
           <Card.Body>
-            <Container className="establishment-container">
+            <Container>
               <p>
                 Name: {contact.firstname} {contact.lastname}
               </p>
               <p>Email: {contact.email}</p>
               <p>Message: {contact.message}</p>
-              <form onSubmit={handleSubmit(remove)}>
+              <form className="remove-form" onSubmit={handleSubmit(remove)}>
                 <button className="remove" type="submit">
-                  Delete
+                  <DeleteForeverIcon />
                 </button>
               </form>
             </Container>
@@ -58,23 +61,21 @@ function ContactAccordion(contact) {
       </Card>
       <style global jsx>
         {`
-          .accordion {
-            display: flex !important;
-            flex-direction: column;
-          }
-
-          .btn {
-            width: 100% !important;
-            text-align: left;
-            color: black;
+          .remove-form {
+            position: absolute;
+            top: 55px;
+            right: 0;
           }
 
           .remove {
-            width: 200px !important;
-            margin-bottom: 2rem !important;
-            background: RGB(106, 126, 230) !important;
-            color: white !important;
-            font-size: 11px !important;
+            background: none !important;
+            border: none;
+          }
+
+          .remove svg {
+           color: black;
+           position: absolute;
+           right: 10px;
           }
         `}
       </style>

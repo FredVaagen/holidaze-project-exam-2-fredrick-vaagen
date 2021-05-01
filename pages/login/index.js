@@ -122,17 +122,34 @@ function Login() {
             color: #ab003c;
           }
 
-          .button {
-            background: none;
-            color: black;
-            border: 1px solid black;
-            width: 100%;
+          .MuiButtonBase-root {
+            width: 200px !important;
+            margin-bottom: 2rem !important;
+            background: RGB(106, 126, 230) !important;
+            color: white !important;
+            font-size: 11px !important;
           }
 
-          .button:hover {
-            background: black;
-            color: white;
+          .MuiButtonBase-root:hover {
+            background: RGB(66, 87, 194);
           }
+          
+          @media only screen and (max-width: 900px) {
+            .main {
+              height: auto;
+             
+            }
+
+            .login-container {
+          
+              margin-bottom: 5rem;
+            
+            }
+
+          }
+      
+        
+       
         `}
       </style>
     </Container>

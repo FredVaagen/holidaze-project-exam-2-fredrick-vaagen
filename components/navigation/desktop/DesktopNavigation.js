@@ -15,7 +15,7 @@ function DesktopNavigation() {
   const { user, setUser } = useContext(AppContext);
   return (
     <Container fluid>
-      <Navbar expand="md">
+      <Navbar>
         <Navbar.Brand href="/">
           <FilterHdrIcon />
           Holidaze
@@ -73,7 +73,7 @@ function DesktopNavigation() {
       </Navbar>
       <style global jsx>
         {`
-          .navbar-expand-md .navbar-nav .nav-link {
+          .navbar .navbar-nav .nav-link {
             padding-right: 3rem;
           }
         `}

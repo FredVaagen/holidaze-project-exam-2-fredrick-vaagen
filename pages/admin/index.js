@@ -1,16 +1,30 @@
 import Link from "next/link";
 import { parseCookies } from "nookies";
-import Tabs from "react-bootstrap/Tabs";
+
+// LAYOUT
 import Tab from "react-bootstrap/Tab";
 import ListGroup from "react-bootstrap/ListGroup";
 import Container from "react-bootstrap/Container";
-import EditIcon from '@material-ui/icons/Edit';
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
+// ICONS
+import EditIcon from "@material-ui/icons/Edit";
+
+// MY COMPONENTS
 import { BASE_URL } from "../../constants/api";
 import CreateEstablishment from "../../components/admin/establishment/CreateEstablishment";
 import EnquiryAccordion from "../../components/admin/establishment/dashboard/EnquiryAccordion";
 import ContactAccordion from "../../components/admin/establishment/dashboard/ContactAccordion";
+import Sidebar from "../../components/admin/establishment/dashboard/Sidebar";
 
-const Admin = ({ enquiries, contacts, establishments,enquiriesCount, contactMessageCount }) => {
+const Admin = ({
+  enquiries,
+  contacts,
+  establishments,
+  enquiriesCount,
+  contactMessageCount,
+}) => {
   let contactTitle = "Contact Messages";
   let enquiriesTitle = "Enquiries";
 
@@ -22,70 +36,67 @@ const Admin = ({ enquiries, contacts, establishments,enquiriesCount, contactMess
     enquiriesTitle = "No enquiries";
   }
 
-
-  const enquiryTabTitle = "Enquiries" + " " + "[" + " " + enquiriesCount + " " + "]";
-  const contactTabTitle = "Contact messsages" + " " + "[" + " " + contactMessageCount + " " + "]";
-
   return (
     <Container fluid className="p-0">
-      <Tabs defaultActiveKey="enquiries">
-        <Tab eventKey="enquiries" title={enquiryTabTitle}>
-          <Container>
-            <h1>{enquiriesTitle}</h1>
-            {enquiries.map((enquiry) => (
-              <EnquiryAccordion key={enquiry.id} {...enquiry} />
-            ))}
-          </Container>
-        </Tab>
-        <Tab eventKey="contact" title={contactTabTitle}>
-          <Container>
-            <h1>{contactTitle}</h1>
-            {contacts.map((contact) => (
-              <ContactAccordion key={contact.id} {...contact} />
-            ))}
-          </Container>
-        </Tab>
-        <Tab eventKey="createEstablishment" title="Create new establishment">
-          <Container>
-            <h2>Create establishment</h2>
-            <CreateEstablishment />
-          </Container>
-        </Tab>
-        <Tab eventKey="editEstablishment" title="Edit establishments">
-          <Container className="create-establishment">
-            <ListGroup>
-              <Container>
-                <h2>Edit a establishment</h2>
-              </Container>
-              {establishments.map((establishment) => (
-                <Container
-                  key={establishment.id}>
-                  <Link
-                    href="/admin/edit/[name]"
-                    as={`/admin/edit/${establishment.name}`}>
-                    <ListGroup.Item className="editEstablishment-list-item">
-                      {establishment.name} <EditIcon />
-                    </ListGroup.Item>
-                  </Link>
+      <Tab.Container defaultActiveKey="first">
+        <Row className="p-0 m-0">
+          <Sidebar {...{ enquiriesCount, contactMessageCount }} />
+          <Col md={9}>
+            <Tab.Content>
+              <Tab.Pane eventKey="first">
+                <Container className="mt-5">
+                  <h2>{enquiriesTitle}</h2>
+                  {enquiries.map((enquiry) => (
+                    <EnquiryAccordion key={enquiry.id} {...enquiry} />
+                  ))}
                 </Container>
-              ))}
-            </ListGroup>
-          </Container>
-        </Tab>
-      </Tabs>
+              </Tab.Pane>
+              <Tab.Pane eventKey="second">
+                <Container className="mt-5">
+                  <h2>{contactTitle}</h2>
+                  {contacts.map((contact) => (
+                    <ContactAccordion key={contact.id} {...contact} />
+                  ))}
+                </Container>
+              </Tab.Pane>
+              <Tab.Pane eventKey="third">
+                <Container className="mt-5">
+                  <h2>Create establishment</h2>
+                  <CreateEstablishment />
+                </Container>
+              </Tab.Pane>
+              <Tab.Pane eventKey="fourth">
+                <Container className="create-establishment mt-5">
+                  <ListGroup>
+                    <Container>
+                      {" "}
+                      <h2>Edit a establishment</h2>
+                    </Container>
 
+                    <Container></Container>
+                    {establishments.map((establishment) => (
+                      <Container className="mt-3" key={establishment.id}>
+                        <Link
+                          href="/admin/edit/[name]"
+                          as={`/admin/edit/${establishment.name}`}>
+                          <ListGroup.Item className="editEstablishment-list-item">
+                            {establishment.name} <EditIcon />
+                          </ListGroup.Item>
+                        </Link>
+                      </Container>
+                    ))}
+                  </ListGroup>
+                </Container>
+              </Tab.Pane>
+            </Tab.Content>
+          </Col>
+        </Row>
+      </Tab.Container>
       <style global jsx>
         {`
           .main {
             height: auto;
             min-height: 100vh;
-          }
-          .nav-tabs {
-            color: black;
-            background: white;
-            display: flex;
-            justify-content: space-evenly;
-            margin-bottom: 5rem;
           }
           .editEstablishment-list-item {
             transition: 1s;
@@ -94,7 +105,6 @@ const Admin = ({ enquiries, contacts, establishments,enquiriesCount, contactMess
             justify-content: space-between;
           }
 
-   
           .editEstablishment-list-item:hover {
             cursor: pointer;
             transform: scale(1.01);
@@ -106,7 +116,13 @@ const Admin = ({ enquiries, contacts, establishments,enquiriesCount, contactMess
 };
 export async function getServerSideProps(ctx) {
   const token = parseCookies(ctx).token;
-  const [enquiriesRes, contactsRes, establishmentsRes, enquiriesResCount, contactMessageResCount] = await Promise.all([
+  const [
+    enquiriesRes,
+    contactsRes,
+    establishmentsRes,
+    enquiriesResCount,
+    contactMessageResCount,
+  ] = await Promise.all([
     fetch(`${BASE_URL}/enquiries`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -133,7 +149,13 @@ export async function getServerSideProps(ctx) {
       },
     }),
   ]);
-  const [enquiries, contacts, establishments, enquiriesCount, contactMessageCount] = await Promise.all([
+  const [
+    enquiries,
+    contacts,
+    establishments,
+    enquiriesCount,
+    contactMessageCount,
+  ] = await Promise.all([
     enquiriesRes.json(),
     contactsRes.json(),
     establishmentsRes.json(),
@@ -141,7 +163,13 @@ export async function getServerSideProps(ctx) {
     contactMessageResCount.json(),
   ]);
   return {
-    props: { enquiries, contacts, establishments,enquiriesCount,contactMessageCount },
+    props: {
+      enquiries,
+      contacts,
+      establishments,
+      enquiriesCount,
+      contactMessageCount,
+    },
   };
 }
 

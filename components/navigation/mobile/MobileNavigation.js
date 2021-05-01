@@ -4,7 +4,6 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import HotelIcon from "@material-ui/icons/Hotel";
-import ExploreIcon from "@material-ui/icons/Explore";
 import ContactSupportIcon from "@material-ui/icons/ContactSupport";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
@@ -32,7 +31,7 @@ function MobileNavigation() {
           </Link>
           <Link href="/contact" passHref>
             <Nav.Link>
-              <ContactSupportIcon/>
+              <ContactSupportIcon />
               Contact
             </Nav.Link>
           </Link>
@@ -89,13 +88,23 @@ function MobileNavigation() {
             margin-left: 4px;
             margin-bottom: 5px;
           }
-
-
           .appbar .nav-link {
             margin-top: 3px;
             font-size: 12px;
             display: flex;
             flex-direction: column;
+          }
+
+          @media only screen and (max-width: 400px) {
+            .appbar svg {
+              font-size: 16px;
+            }
+            .appbar .nav-link {
+              font-size: 9px;
+            }
+            .navbar-expand > .container {
+              flex-wrap: wrap;
+            }
           }
         `}
       </style>

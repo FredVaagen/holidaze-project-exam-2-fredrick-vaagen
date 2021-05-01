@@ -2,6 +2,7 @@ import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import dateFormat from "dateformat";
 import { useForm } from "react-hook-form";
 import { parseCookies } from "nookies";
@@ -33,7 +34,7 @@ function EnquiryAccordion(enquiry) {
     }
   };
   return (
-    <Accordion>
+    <Accordion className="mt-5" > 
       <Card>
         <Card.Header>
           <Accordion.Toggle as={Button} variant="link" eventKey="0">
@@ -51,9 +52,9 @@ function EnquiryAccordion(enquiry) {
               <p>Check in: {dateFormat(enquiry.startDate, "d mmmm yyyy")}</p>
               <p>Check out: {dateFormat(enquiry.endDate, "d mmmm yyyy")}</p>
               <p>Message: {enquiry.message}</p>
-              <form onSubmit={handleSubmit(remove)}>
+              <form className="remove-form" onSubmit={handleSubmit(remove)}>
                 <button className="remove" type="submit">
-                  Delete
+                  <DeleteForeverIcon />
                 </button>
               </form>
             </Container>
@@ -62,23 +63,21 @@ function EnquiryAccordion(enquiry) {
       </Card>
       <style global jsx>
         {`
-          .accordion {
-            display: flex !important;
-            flex-direction: column;
-          }
-
-          .btn {
-            width: 100% !important;
-            text-align: left;
-            color: black;
+          .remove-form {
+            position: absolute;
+            top: 55px;
+            right: 0;
           }
 
           .remove {
-            width: 200px !important;
-            margin-bottom: 2rem !important;
-            background: RGB(106, 126, 230) !important;
-            color: white !important;
-            font-size: 11px !important;
+            background: none !important;
+            border: none;
+          }
+
+          .remove svg {
+           color: black;
+           position: absolute;
+           right: 10px;
           }
         `}
       </style>
