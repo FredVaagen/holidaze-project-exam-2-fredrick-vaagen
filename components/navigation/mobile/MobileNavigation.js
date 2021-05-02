@@ -96,12 +96,7 @@ function MobileNavigation() {
           }
 
           @media only screen and (max-width: 400px) {
-            .appbar svg {
-              font-size: 16px;
-            }
-            .appbar .nav-link {
-              font-size: 9px;
-            }
+      
             .navbar-expand > .container {
               flex-wrap: wrap;
             }
