@@ -1,14 +1,14 @@
+import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import { parseCookies } from "nookies";
+import dateFormat from "dateformat";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import dateFormat from "dateformat";
-import { useForm } from "react-hook-form";
-import { parseCookies } from "nookies";
-import { BASE_URL } from "../../../../constants/api";
-import axios from "axios";
-import { useRouter } from "next/router";
+import { BASE_URL } from "../../../constants/api";
 
 function EnquiryAccordion(enquiry) {
   const { handleSubmit } = useForm();

@@ -1,4 +1,3 @@
-import {useContext } from "react";
 // Bootstrap
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";

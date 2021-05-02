@@ -14,9 +14,9 @@ import EditIcon from "@material-ui/icons/Edit";
 // MY COMPONENTS
 import { BASE_URL } from "../../constants/api";
 import CreateEstablishment from "../../components/admin/establishment/CreateEstablishment";
-import EnquiryAccordion from "../../components/admin/establishment/dashboard/EnquiryAccordion";
-import ContactAccordion from "../../components/admin/establishment/dashboard/ContactAccordion";
-import Sidebar from "../../components/admin/establishment/dashboard/Sidebar";
+import EnquiryAccordion from "../../components/admin/dashboard/EnquiryAccordion";
+import ContactAccordion from "../../components/admin/dashboard/ContactAccordion";
+import Sidebar from "../../components/admin/dashboard/Sidebar";
 
 const Admin = ({
   enquiries,
