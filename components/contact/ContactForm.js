@@ -1,12 +1,14 @@
-import React from "react";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "@material-ui/core/Button";
 import { BASE_URL } from "./../../constants/api";
-import { useRouter } from "next/router";
+
+import Spinner from "react-bootstrap/Spinner";
 const schema = yup.object().shape({
   firstname: yup.string().required("Please enter a first name").min(2),
   lastname: yup.string().required("Please enter a last name").min(3),
@@ -30,20 +32,24 @@ export default function ContactForm() {
     resolver: yupResolver(schema),
   });
 
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const onSubmit = async (data) => {
+    setLoading(false);
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     };
 
+    setLoading(false);
     const response = await fetch([BASE_URL + "/contacts"], requestOptions);
 
     if (response) {
       return (
         router.push("/contact/feedback") 
+       
        
       )
     }
@@ -53,6 +59,7 @@ export default function ContactForm() {
     <Container className="mb-5 mt-5">
       <h1 className="mb-5">Contact us</h1>
       <Form noValidate onSubmit={handleSubmit(onSubmit)}>
+      <fieldset disabled={loading}>
         <Form.Group>
           <Form.Label>First name</Form.Label>
           <Form.Control {...register("firstname")} placeholder="First name" />
@@ -101,8 +108,19 @@ export default function ContactForm() {
           )}
         </Form.Group>
         <Button variant="contained" className="button" type="submit">
-          Submit
+        {loading ? (
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+              ) : (
+                "Submit"
+              )}
         </Button>
+        </fieldset>
       </Form>
       <style global jsx>
         {`

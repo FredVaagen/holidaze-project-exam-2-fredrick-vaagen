@@ -79,7 +79,7 @@ const Admin = ({
                         <Link
                           href="/admin/edit/[name]"
                           as={`/admin/edit/${establishment.name}`}>
-                          <ListGroup.Item className="editEstablishment-list-item">
+                          <ListGroup.Item className="edit-list-item">
                             {establishment.name} <EditIcon />
                           </ListGroup.Item>
                         </Link>
@@ -98,14 +98,14 @@ const Admin = ({
             height: auto;
             min-height: 100vh;
           }
-          .editEstablishment-list-item {
+          .edit-list-item {
             transition: 1s;
             padding: 1rem;
             display: flex;
             justify-content: space-between;
           }
 
-          .editEstablishment-list-item:hover {
+          .edit-list-item:hover {
             cursor: pointer;
             transform: scale(1.01);
           }

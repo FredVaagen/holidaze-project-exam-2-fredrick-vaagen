@@ -13,10 +13,6 @@ const EditEstablishment = (props) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-
-
-
-
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
     try {
@@ -70,8 +66,6 @@ const EditEstablishment = (props) => {
       router.reload();
     }
   };
-
-
 
   return (
     <Container>
@@ -137,7 +131,6 @@ const EditEstablishment = (props) => {
           Remove establishment
         </button>
       </form>
-
 
       <style global jsx>
         {`

@@ -9,6 +9,7 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import FilterHdrIcon from "@material-ui/icons/FilterHdr";
+import ExploreIcon from "@material-ui/icons/Explore";
 
 import { logout } from "../../../lib/auth";
 import AppContext from "../../../context/AppContext";
@@ -27,6 +28,11 @@ function MobileNavigation() {
           <Link href="/establishments" passHref>
             <Nav.Link>
               <HotelIcon /> Places
+            </Nav.Link>
+          </Link>
+          <Link href="/exploree" passHref>
+            <Nav.Link>
+              <ExploreIcon /> Explore
             </Nav.Link>
           </Link>
           <Link href="/contact" passHref>

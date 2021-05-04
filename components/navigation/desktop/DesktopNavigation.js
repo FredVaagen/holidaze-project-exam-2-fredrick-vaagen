@@ -28,7 +28,7 @@ function DesktopNavigation() {
                 <HotelIcon /> Find a place to stay
               </Nav.Link>
             </Link>
-            <Link href="/contact" passHref>
+            <Link href="/explore" passHref>
               <Nav.Link>
                 <ExploreIcon /> Explore the city
               </Nav.Link>
