@@ -20,13 +20,20 @@ export default function Home({ establishments }) {
           <HomeMobile />
           <style global jsx>
             {`
+            * {
+              font-family: 'Roboto', sans-serif;
+              @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+              }
+                   
               .main {
                 background: black;
                 width: 100%;
                 display: flex;
                 flex-direction: column;
                 padding: 0;
-              }
+               
+
+         }
 
               .background-image {
                 height: 90vh;

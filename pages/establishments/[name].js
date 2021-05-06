@@ -13,6 +13,7 @@ import { BASE_URL } from "../../constants/api";
 import BackArrow from "../../components/utility/BackArrow";
 import MediaQuery from "../../components/utility/MediaQuery";
 import Button from "@material-ui/core/Button";
+import Facilities from "../../components/specific-establishment/Facilities";
 
 <MediaQuery />;
 
@@ -87,12 +88,10 @@ export default function Establishment({ establishment, images, promoteImage }) {
           )}
         </Container>
         <Container className="details-container">
+          <Facilities {...establishment} />
           <Row className="details">
             <Col>
               <p className="description">{establishment.description}</p>
-              <Button variant="contained" onClick={handleShow}>
-                Book
-              </Button>
             </Col>
           </Row>
           <h5 className="subheading">Location </h5>
@@ -100,6 +99,9 @@ export default function Establishment({ establishment, images, promoteImage }) {
             <SimpleMap {...establishment} />
           </div>
         </Container>
+        <Button variant="contained" onClick={handleShow}>
+                Book
+              </Button>
 
         <Modal
           show={show}
@@ -181,10 +183,11 @@ export default function Establishment({ establishment, images, promoteImage }) {
             }
 
             .MuiButtonBase-root {
-              width: 200px !important;
+              width: 100% !important;
               margin-bottom: 2rem !important;
-              background: RGB(106, 126, 230) !important;
-              color: white;
+              margin-top: 2rem !important;
+              background: #fff !important;
+              color: black !important;
               font-size: 11px !important;
             }
 

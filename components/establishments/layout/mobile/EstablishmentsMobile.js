@@ -104,8 +104,8 @@ function EstablishmentsMobile({ establishments }) {
           }
 
           .button {
-            background: RGB(106, 126, 230) !important;
-            color: white !important;
+            color: black !important;
+            background: #fff !important;
             font-size: 11px !important;
             width: 100%;
             

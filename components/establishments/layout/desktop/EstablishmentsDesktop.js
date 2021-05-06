@@ -128,8 +128,8 @@ function EstablishmentsDesktop({ establishments }) {
           }
 
           .button {
-            background: RGB(106, 126, 230) !important;
-            color: white !important;
+            background: #fff !important;
+            color: black !important;
             font-size: 11px !important;
           }
 

@@ -13,7 +13,7 @@ import { BASE_URL } from "../../../constants/api";
 function EnquiryAccordion(enquiry) {
   const { handleSubmit } = useForm();
   const router = useRouter();
-
+  
   const remove = async (ctx) => {
     const token = parseCookies(ctx).token;
     if (confirm("Are you sure you want to remove this enquiry?")) {
