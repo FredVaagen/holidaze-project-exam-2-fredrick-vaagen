@@ -27,7 +27,7 @@ function Facilities(props) {
   function Accessible() {
     if (accesible) {
       return (
-        <div>
+        <div className="mr-1">
           <AccessibleIcon /> Accsessible
         </div>
       );
@@ -37,7 +37,7 @@ function Facilities(props) {
   function WorkStation() {
     if (workstation) {
       return (
-        <div>
+        <div className="mr-1">
           <ComputerIcon /> Workstation
         </div>
       );
@@ -47,7 +47,7 @@ function Facilities(props) {
   function SmokeFree() {
     if (smokefree) {
       return (
-        <div>
+        <div className="mr-1">
           <SmokeFreeIcon /> Smokefree
         </div>
       );
@@ -66,7 +66,7 @@ function Facilities(props) {
   function AirportShuttle() {
     if (airportshuttle) {
       return (
-        <div>
+        <div className="mr-1">
           <AirportShuttleIcon /> Airport Shuttle
         </div>
       );
@@ -76,7 +76,7 @@ function Facilities(props) {
   function Gym() {
     if (gym) {
       return (
-        <div>
+        <div className="mr-1">
           <FitnessCenterIcon /> Gym
         </div>
       );
@@ -86,7 +86,7 @@ function Facilities(props) {
   function Wifi() {
     if (wifi) {
       return (
-        <div>
+        <div className="mr-1">
           <WifiIcon /> Wifi
         </div>
       );
@@ -96,7 +96,7 @@ function Facilities(props) {
   function Tv() {
     if (tv) {
       return (
-        <div>
+        <div className="mr-1">
           <TvIcon /> TV
         </div>
       );
@@ -105,7 +105,7 @@ function Facilities(props) {
   function HotelBar() {
     if (hotelbar) {
       return (
-        <div>
+        <div className="mr-1">
           <LocalBarIcon /> Bar
         </div>
       );
@@ -147,7 +147,7 @@ function Facilities(props) {
 
           .facilities .row {
             display: flex;
-            justify-content: space-between;
+        
           }
 
           .facilities svg {

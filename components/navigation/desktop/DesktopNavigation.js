@@ -4,7 +4,6 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import FilterHdrIcon from "@material-ui/icons/FilterHdr";
-import ExploreIcon from "@material-ui/icons/Explore";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import HotelIcon from "@material-ui/icons/Hotel";
 import ContactSupportIcon from "@material-ui/icons/ContactSupport";

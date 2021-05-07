@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import { BASE_URL } from "./../../constants/api";
 
 import Spinner from "react-bootstrap/Spinner";
+import BackArrow from "../utility/BackArrow";
 const schema = yup.object().shape({
   firstname: yup.string().required("Please enter a first name").min(2),
   lastname: yup.string().required("Please enter a last name").min(3),
@@ -56,8 +57,10 @@ export default function ContactForm() {
   };
 
   return (
+   
     <Container className="mb-5 mt-5">
-      <h1 className="mb-5">Contact us</h1>
+     <BackArrow /> 
+      <h1 className="mt-5 mb-5">Contact us</h1>
       <Form noValidate onSubmit={handleSubmit(onSubmit)}>
       <fieldset disabled={loading}>
         <Form.Group>
@@ -125,7 +128,14 @@ export default function ContactForm() {
       <style global jsx>
         {`
           .main {
-            height: auto;
+            height: 100vh;
+          }
+
+          @media only screen and (max-height: 700px) {
+      
+            .main {
+             height: auto;
+            }
           }
           .alert-danger {
             background: none;
@@ -156,14 +166,12 @@ export default function ContactForm() {
           .MuiButtonBase-root {
             width: 200px !important;
             margin-bottom: 2rem !important;
-            background: RGB(106, 126, 230) !important;
-            color: white !important;
+            background: #fff !important;
+            color: black !important;
             font-size: 11px !important;
           }
 
-          .MuiButtonBase-root:hover {
-            background: RGB(66, 87, 194) !important;
-          }
+     
 
           .form-label {
             font-size: 14px;
