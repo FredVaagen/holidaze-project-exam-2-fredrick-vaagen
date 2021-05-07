@@ -197,7 +197,7 @@ const EditEstablishment = (props) => {
                   <input
                     type="checkbox"
                     onChange={() => setWifiChecked(!wifiChecked)}
-                    defaultChecked={wifiChecked}
+                    defaultChecked={props.facilities.wifi}
                     {...register("wifi")}
                   />
                   <span className="slider round"></span>
@@ -211,7 +211,7 @@ const EditEstablishment = (props) => {
                   <input
                     type="checkbox"
                     onChange={() => setAccesibleChecked(!accesibleChecked)}
-                    defaultChecked={accesibleChecked}
+                    defaultChecked={props.facilities.accesible}
                     {...register("accesible")}
                   />
                   <span className="slider round"></span>
@@ -225,7 +225,7 @@ const EditEstablishment = (props) => {
                   <input
                     type="checkbox"
                     onChange={() => setWorkstationChecked(!workstationChecked)}
-                    defaultChecked={workstationChecked}
+                    defaultChecked={props.facilities.workstation}
                     {...register("workstation")}
                   />
                   <span className="slider round"></span>
@@ -239,7 +239,7 @@ const EditEstablishment = (props) => {
                   <input
                     type="checkbox"
                     onChange={() => setSmokefreeChecked(!smokefreeChecked)}
-                    defaultChecked={smokefreeChecked}
+                    defaultChecked={props.facilities.smokefree}
                     {...register("smokefree")}
                   />
                   <span className="slider round"></span>
@@ -255,7 +255,7 @@ const EditEstablishment = (props) => {
                     onChange={() =>
                       setAirconditionChecked(!airconditionChecked)
                     }
-                    defaultChecked={airconditionChecked}
+                    defaultChecked={props.facilities.ac}
                     {...register("ac")}
                   />
                   <span className="slider round"></span>
@@ -271,7 +271,7 @@ const EditEstablishment = (props) => {
                     onChange={() =>
                       setAirportshuttleChecked(!airportshuttleChecked)
                     }
-                    defaultChecked={airportshuttleChecked}
+                    defaultChecked={props.facilities.airportshuttle}
                     {...register("airportshuttle")}
                   />
                   <span className="slider round"></span>
@@ -285,7 +285,7 @@ const EditEstablishment = (props) => {
                   <input
                     type="checkbox"
                     onChange={() => setGymChecked(!gymChecked)}
-                    defaultChecked={gymChecked}
+                    defaultChecked={props.facilities.gym}
                     {...register("gym")}
                   />
                   <span className="slider round"></span>
@@ -299,7 +299,7 @@ const EditEstablishment = (props) => {
                   <input
                     type="checkbox"
                     onChange={() => setTvChecked(!tvChecked)}
-                    defaultChecked={tvChecked}
+                    defaultChecked={props.facilities.tv}
                     {...register("tv")}
                   />
                   <span className="slider round"></span>
@@ -313,7 +313,7 @@ const EditEstablishment = (props) => {
                   <input
                     type="checkbox"
                     onChange={() => setHotelBarChecked(!hotelbarChecked)}
-                    defaultChecked={hotelbarChecked}
+                    defaultChecked={props.facilities.hotelbar}
                     {...register("hotelbar")}
                   />
                   <span className="slider round"></span>
