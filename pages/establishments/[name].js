@@ -19,7 +19,10 @@ import Button from "@material-ui/core/Button";
 
 <MediaQuery />;
 
-const DynamicComponent = dynamic(() => import("../../components/specific-establishment/Facilities"))
+const DynamicComponent = dynamic(
+  () => import("../../components/specific-establishment/Facilities"),
+  { ssr: false }
+)
 
 
 export default function Establishment({ establishment, images, promoteImage }) {
