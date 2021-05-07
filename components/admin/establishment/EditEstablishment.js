@@ -13,61 +13,21 @@ const EditEstablishment = (props) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  console.log(typeof(props.facilities.wifi));
+  const [wifiChecked, setWifiChecked] = useState(true);
 
-  let [wifiChecked, setWifiChecked] = useState(true);
-  if (props.facilities.wifi == null || props.facilities.wifi == false) {
-    wifiChecked = false;
-  }
+  const [accesibleChecked, setAccesibleChecked] = useState(true);
 
-  let [accesibleChecked, setAccesibleChecked] = useState(true);
-  if (
-    props.facilities.accesible == null ||
-    props.facilities.accesible == false
-  ) {
-    accesibleChecked = false;
-  }
+  const [workstationChecked, setWorkstationChecked] = useState(true);
 
-  let [workstationChecked, setWorkstationChecked] = useState(true);
-  if (
-    props.facilities.workstation == null ||
-    props.facilities.workstation == false
-  ) {
-    workstationChecked = false;
-  }
-  let [smokefreeChecked, setSmokefreeChecked] = useState(true);
-  if (
-    props.facilities.smokefree == null ||
-    props.facilities.smokefree == false
-  ) {
-    smokefreeChecked = false;
-  }
-  let [airconditionChecked, setAirconditionChecked] = useState(true);
-  if (props.facilities.ac == null || props.facilities.ac == false) {
-    airconditionChecked = false;
-  }
-  let [airportshuttleChecked, setAirportshuttleChecked] = useState(true);
-  if (
-    props.facilities.airportshuttle == null ||
-    props.facilities.airportshuttle == false
-  ) {
-    airportshuttleChecked = false;
-  }
+  const [smokefreeChecked, setSmokefreeChecked] = useState(true);
 
-  let [gymChecked, setGymChecked] = useState(true);
-  if (props.facilities.gym == null || props.facilities.gym == false) {
-    gymChecked = false;
-  }
+  const [airportshuttleChecked, setAirportshuttleChecked] = useState(true);
 
-  let [tvChecked, setTvChecked] = useState(true);
-  if (props.facilities.tv == null || props.facilities.tv == false) {
-    tvChecked = false;
-  }
+  const [gymChecked, setGymChecked] = useState(true);
 
-  let [hotelbarChecked, setHotelBarChecked] = useState(true);
-  if (props.facilities.hotelbar == null || props.facilities.hotelbar == false) {
-    hotelbarChecked = false;
-  }
+  const [tvChecked, setTvChecked] = useState(true);
+
+  const [hotelbarChecked, setHotelBarChecked] = useState(true);
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
@@ -210,7 +170,9 @@ const EditEstablishment = (props) => {
                 <label className="switch">
                   <input
                     type="checkbox"
-                    onChange={() => setAccesibleChecked(!accesibleChecked)}
+                    onChange={() =>
+                      setAccesibleChecked(accesibleChecked => !accesibleChecked)
+                    }
                     defaultChecked={props.facilities.accesible}
                     {...register("accesible")}
                   />
@@ -224,7 +186,7 @@ const EditEstablishment = (props) => {
                 <label className="switch">
                   <input
                     type="checkbox"
-                    onChange={() => setWorkstationChecked(!workstationChecked)}
+                    onChange={() => setWorkstationChecked(workstationChecked => !workstationChecked)}
                     defaultChecked={props.facilities.workstation}
                     {...register("workstation")}
                   />
@@ -238,7 +200,7 @@ const EditEstablishment = (props) => {
                 <label className="switch">
                   <input
                     type="checkbox"
-                    onChange={() => setSmokefreeChecked(!smokefreeChecked)}
+                    onChange={() => setSmokefreeChecked(smokefreeChecked => !smokefreeChecked)}
                     defaultChecked={props.facilities.smokefree}
                     {...register("smokefree")}
                   />
@@ -253,7 +215,7 @@ const EditEstablishment = (props) => {
                   <input
                     type="checkbox"
                     onChange={() =>
-                      setAirconditionChecked(!airconditionChecked)
+                      setAirconditionChecked(airconditionChecked => !airconditionChecked)
                     }
                     defaultChecked={props.facilities.ac}
                     {...register("ac")}
@@ -269,7 +231,7 @@ const EditEstablishment = (props) => {
                   <input
                     type="checkbox"
                     onChange={() =>
-                      setAirportshuttleChecked(!airportshuttleChecked)
+                      setAirportshuttleChecked(airportshuttleChecked => !airportshuttleChecked)
                     }
                     defaultChecked={props.facilities.airportshuttle}
                     {...register("airportshuttle")}
@@ -284,7 +246,7 @@ const EditEstablishment = (props) => {
                 <label className="switch">
                   <input
                     type="checkbox"
-                    onChange={() => setGymChecked(!gymChecked)}
+                    onChange={() => setGymChecked(gymChecked => !gymChecked)}
                     defaultChecked={props.facilities.gym}
                     {...register("gym")}
                   />
@@ -298,7 +260,7 @@ const EditEstablishment = (props) => {
                 <label className="switch">
                   <input
                     type="checkbox"
-                    onChange={() => setTvChecked(!tvChecked)}
+                    onChange={() => setTvChecked(tvChecked => !tvChecked)}
                     defaultChecked={props.facilities.tv}
                     {...register("tv")}
                   />
@@ -312,7 +274,7 @@ const EditEstablishment = (props) => {
                 <label className="switch">
                   <input
                     type="checkbox"
-                    onChange={() => setHotelBarChecked(!hotelbarChecked)}
+                    onChange={() => setHotelBarChecked(hotelbarChecked => !hotelbarChecked)}
                     defaultChecked={props.facilities.hotelbar}
                     {...register("hotelbar")}
                   />
