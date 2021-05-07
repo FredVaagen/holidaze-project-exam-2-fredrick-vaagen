@@ -30,11 +30,6 @@ function MobileNavigation() {
               <HotelIcon /> Places
             </Nav.Link>
           </Link>
-          <Link href="/exploree" passHref>
-            <Nav.Link>
-              <ExploreIcon /> Explore
-            </Nav.Link>
-          </Link>
           <Link href="/contact" passHref>
             <Nav.Link>
               <ContactSupportIcon />
