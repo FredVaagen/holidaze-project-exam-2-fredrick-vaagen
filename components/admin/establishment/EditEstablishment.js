@@ -13,12 +13,12 @@ const EditEstablishment = (props) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  let [wifiChecked, setWifiChecked] = useState(true);
+  const  [wifiChecked, setWifiChecked] = useState(true);
   if (props.facilities.wifi == null || props.facilities.wifi == false) {
     wifiChecked = false;
   }
 
-  let [accesibleChecked, setAccesibleChecked] = useState(true);
+  const  [accesibleChecked, setAccesibleChecked] = useState(true);
   if (
     props.facilities.accesible == null ||
     props.facilities.accesible == false
@@ -26,31 +26,28 @@ const EditEstablishment = (props) => {
     accesibleChecked = false;
   }
 
-  let [workstationChecked, setWorkstationChecked] = useState(true);
+  const  [workstationChecked, setWorkstationChecked] = useState(true);
   if (
     props.facilities.workstation == null ||
     props.facilities.workstation == false
   ) {
     workstationChecked = false;
   }
-
-  let [smokefreeChecked, setSmokefreeChecked] = useState(true);
+  const [smokefreeChecked, setSmokefreeChecked] = useState(true);
   if (
     props.facilities.smokefree == null ||
     props.facilities.smokefree == false
   ) {
     smokefreeChecked = false;
   }
-
-  let [airconditionChecked, setAirconditionChecked] = useState(true);
+  const [airconditionChecked, setAirconditionChecked] = useState(true);
   if (
     props.facilities.ac == null ||
     props.facilities.ac == false
   ) {
     airconditionChecked = false;
   }
-
-  let [airportshuttleChecked, setAirportshuttleChecked] = useState(true);
+  const  [airportshuttleChecked, setAirportshuttleChecked] = useState(true);
   if (
     props.facilities.airportshuttle == null ||
     props.facilities.airportshuttle == false
@@ -58,7 +55,7 @@ const EditEstablishment = (props) => {
     airportshuttleChecked = false;
   }
 
-  let [gymChecked, setGymChecked] = useState(true);
+  const [gymChecked, setGymChecked] = useState(true);
   if (
     props.facilities.gym == null ||
     props.facilities.gym == false
@@ -66,7 +63,7 @@ const EditEstablishment = (props) => {
     gymChecked = false;
   }
 
-  let [tvChecked, setTvChecked] = useState(true);
+  const [tvChecked, setTvChecked] = useState(true);
   if (
     props.facilities.tv == null ||
     props.facilities.tv == false
@@ -74,7 +71,7 @@ const EditEstablishment = (props) => {
     tvChecked = false;
   }
 
-  let [hotelbarChecked, setHotelBarChecked] = useState(true);
+  const [hotelbarChecked, setHotelBarChecked] = useState(true);
   if (
     props.facilities.hotelbar == null ||
     props.facilities.hotelbar == false
@@ -238,7 +235,7 @@ const EditEstablishment = (props) => {
                 <label className="switch">
                   <input
                     type="checkbox"
-                    onChange={() => setworkstationChecked(!workstaionChecked)}
+                    onChange={() => setWorkstationChecked(!workstationChecked)}
                     defaultChecked={workstationChecked}
                     {...register("workstation")}
                   />
