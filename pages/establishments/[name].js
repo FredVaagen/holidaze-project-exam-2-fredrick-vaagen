@@ -1,4 +1,6 @@
 import { useState } from "react";
+import dynamic from 'next/dynamic'
+
 import fetch from "isomorphic-fetch";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -13,17 +15,11 @@ import { BASE_URL } from "../../constants/api";
 import BackArrow from "../../components/utility/BackArrow";
 import MediaQuery from "../../components/utility/MediaQuery";
 import Button from "@material-ui/core/Button";
+import Facilities from "../../components/specific-establishment/Facilities";
 
-//ICONS
-import WifiIcon from "@material-ui/icons/Wifi";
-import TvIcon from "@material-ui/icons/Tv";
-import SmokeFreeIcon from "@material-ui/icons/SmokeFree";
-import AirportShuttleIcon from "@material-ui/icons/AirportShuttle";
-import LocalBarIcon from "@material-ui/icons/LocalBar";
-import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
-import AcUnitIcon from "@material-ui/icons/AcUnit";
-import AccessibleIcon from "@material-ui/icons/Accessible";
-import ComputerIcon from "@material-ui/icons/Computer";
+
+
+
 
 <MediaQuery />;
 
@@ -38,135 +34,11 @@ export default function Establishment({ establishment, images, promoteImage }) {
     return <div>Loading...</div>;
   }
 
-  const wifi = establishment.facilities.wifi;
-  const tv = establishment.facilities.tv;
-  const smokefree = establishment.facilities.smokefree;
-  const airportshuttle = establishment.facilities.airportshuttle;
-  const hotelbar = establishment.facilities.hotelbar;
-  const gym = establishment.facilities.gym;
-  const ac = establishment.facilities.ac;
-  const accesible = establishment.facilities.accesible;
-  const workstation = establishment.facilities.workstation;
+  const DynamicComponentWithNoSSR = dynamic(
+    () => import('../../components/specific-establishment/Facilities'),
+    { ssr: false }
+  )
 
-  console.log(wifi)
-
-  
-  function Accessible() {
-    if (accesible === true) {
-      return (
-        <Col>
-          <AccessibleIcon /> Accessible
-        </Col>
-      );
-    } else if(accesible === false) { 
-      return <></>
-  
-    }
-  }
-
-  function WorkStation() {
-    if (workstation === true) {
-      return (
-        <Col>
-          <ComputerIcon />
-          Workstation
-        </Col>
-      );
-    } else if(workstation === false) { 
-      return <></>
-  
-    }
-  }
-
-  function SmokeFree() {
-    if (smokefree === true) {
-      return (
-        <Col>
-          <SmokeFreeIcon /> Smokefree
-        </Col>
-      );
-    } else if(smokefree === false) { 
-      return <></>
-  
-    }
-  
-  } 
-
-  function AirCondition() {
-    if (ac) {
-      return (
-        <Col>
-          <AcUnitIcon /> Aircondition
-        </Col>
-      );
-    } else if(ac === false) { 
-      return <></>
-  
-    }
-  }
-  function AirportShuttle() {
-    if (airportshuttle) {
-      return (
-        <Col>
-          <AirportShuttleIcon /> Airport Shuttle
-        </Col>
-      );
-    } else if(airportshuttle === false) { 
-      return <></>
-  
-    }
-  }
-
-  function Gym() {
-    if (gym) {
-      return (
-        <Col>
-          <FitnessCenterIcon /> Gym
-        </Col>
-      );
-    } else if(gym === false) { 
-      return <></>
-  
-    }
-  }
-
-  function Wifi() {
-    if (wifi) {
-      return (
-        <Col>
-          <WifiIcon /> Wifi
-        </Col>
-      );
-    } else if(wifi === false) { 
-      return <></>
-  
-    }
-  }
-
-  function Tv() {
-    if (tv) {
-      return (
-        <Col>
-          <TvIcon /> Tv
-        </Col>
-      );
-    } else if(tv === false) { 
-      return <></>
-  
-    }
-  }
-  function HotelBar() {
-    if (hotelbar) {
-      return (
-        <Col>
-          <LocalBarIcon /> Hotel Bar
-        </Col>
-      );
-    } else if(hotelbar === false) { 
-      return <></>
-  
-    }
-  }
 
   return (
     <Container>
@@ -228,31 +100,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
           )}
         </Container>
         <Container className="details-container">
-        <Container className="facilities">
-      <h3>Facilities</h3>
-
-      <Col>
-        <Row>
-          {Accessible()} 
-          {WorkStation()} 
-          {SmokeFree()}
-        </Row>
-      </Col>
-      <Col>
-        <Row>
-          {AirCondition()}
-          {AirportShuttle()} 
-          {Gym()}
-        </Row>
-      </Col>
-      <Col>
-        <Row>
-          {Tv()}
-          {Wifi()}
-          {HotelBar()}
-        </Row>
-      </Col>
-      </Container>
+        <DynamicComponentWithNoSSR {...establishment}/>
           <Row className="details">
             <Col>
               <p className="description">{establishment.description}</p>
@@ -264,8 +112,8 @@ export default function Establishment({ establishment, images, promoteImage }) {
           </div>
         </Container>
         <Button variant="contained" onClick={handleShow}>
-                Book
-              </Button>
+          Book
+        </Button>
 
         <Modal
           show={show}
@@ -398,7 +246,10 @@ export default function Establishment({ establishment, images, promoteImage }) {
       </Container>
     </Container>
   );
+
 }
+
+
 
 export async function getStaticProps({ params: { name } }) {
   const res = await fetch(`${BASE_URL}/establishments/?name=${name}`);
