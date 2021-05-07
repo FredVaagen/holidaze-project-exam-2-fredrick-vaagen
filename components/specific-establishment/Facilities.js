@@ -25,7 +25,7 @@ function Facilities(props) {
   const workstation = props.facilities.workstation;
 
   function Accessible() {
-    if (accesible == true) {
+    if (accesible) {
       return (
         <Col>
           <AccessibleIcon /> Accessible
@@ -35,7 +35,7 @@ function Facilities(props) {
   }
 
   function WorkStation() {
-    if (workstation == true) {
+    if (workstation) {
       return (
         <Col>
           <ComputerIcon />
@@ -46,7 +46,7 @@ function Facilities(props) {
   }
 
   function SmokeFree() {
-    if (smokefree == true) {
+    if (smokefree) {
       return (
         <Col>
           <SmokeFreeIcon /> Smokefree
@@ -56,7 +56,7 @@ function Facilities(props) {
   }
 
   function AirCondition() {
-    if (ac == true) {
+    if (ac) {
       return (
         <Col>
           <AcUnitIcon /> Aircondition
@@ -65,7 +65,7 @@ function Facilities(props) {
     }
   }
   function AirportShuttle() {
-    if (airportshuttle == true) {
+    if (airportshuttle) {
       return (
         <Col>
           <AirportShuttleIcon /> Airport Shuttle
@@ -75,7 +75,7 @@ function Facilities(props) {
   }
 
   function Gym() {
-    if (gym == true) {
+    if (gym) {
       return (
         <Col>
           <FitnessCenterIcon /> Gym
@@ -85,7 +85,7 @@ function Facilities(props) {
   }
 
   function Wifi() {
-    if (wifi == true) {
+    if (wifi) {
       return (
         <Col>
           <WifiIcon /> Wifi
@@ -95,7 +95,7 @@ function Facilities(props) {
   }
 
   function Tv() {
-    if (tv == true) {
+    if (tv) {
       return (
         <Col>
           <TvIcon /> Tv
@@ -104,7 +104,7 @@ function Facilities(props) {
     }
   }
   function HotelBar() {
-    if (hotelbar == true) {
+    if (hotelbar) {
       return (
         <Col>
           <LocalBarIcon /> Hotel Bar
