@@ -13,21 +13,7 @@ const EditEstablishment = (props) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const [wifiChecked, setWifiChecked] = useState();
-
-  const [accesibleChecked, setAccesibleChecked] = useState();
-
-  const [workstationChecked, setWorkstationChecked] = useState();
-
-  const [smokefreeChecked, setSmokefreeChecked] = useState();
-
-  const [airportshuttleChecked, setAirportshuttleChecked] = useState();
-
-  const [gymChecked, setGymChecked] = useState();
-
-  const [tvChecked, setTvChecked] = useState();
-
-  const [hotelbarChecked, setHotelBarChecked] = useState();
+  console.log(props.facilities.wifi);
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
@@ -66,9 +52,7 @@ const EditEstablishment = (props) => {
       if (data.name) {
         router.replace(`/admin/edit/${data.name}`);
       } else router.reload();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const removeEstablishment = async (ctx) => {
@@ -84,9 +68,7 @@ const EditEstablishment = (props) => {
           },
         });
         console.log("Success", res);
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
       router.back();
     } else {
       router.reload();
@@ -153,138 +135,91 @@ const EditEstablishment = (props) => {
             <div>
               <label> WIFI</label>
               <div>
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    onChange={setWifiChecked => {
-                      let newWifiChecked = wifiChecked 
-                      newWifiChecked[0] = true
-                      setWifiChecked(...newWifiChecked);
-                      console.log(newWifiChecked)
-                    }}
-                    defaultChecked={props.facilities.wifi}
-                    {...register("wifi")}
-                  />
-                  <span className="slider round"></span>
-                </label>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.wifi}
+                  {...register("wifi")}
+                />
               </div>
             </div>
             <div>
               <label>Accesible</label>
               <div>
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    onChange={() =>
-                      setAccesibleChecked(!accesibleChecked)
-                    }
-                    defaultChecked={props.facilities.accesible}
-                    {...register("accesible")}
-                  />
-                  <span className="slider round"></span>
-                </label>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.accesible}
+                  {...register("accesible")}
+                />
               </div>
             </div>
             <div>
               <label>Workstation</label>
               <div>
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    onChange={() => setWorkstationChecked(!workstationChecked)}
-                    defaultChecked={props.facilities.workstation}
-                    {...register("workstation")}
-                  />
-                  <span className="slider round"></span>
-                </label>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.workstation}
+                  {...register("workstation")}
+                />
               </div>
             </div>
             <div>
               <label>Smokefree</label>
               <div>
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    onChange={() => setSmokefreeChecked(!smokefreeChecked)}
-                    defaultChecked={props.facilities.smokefree}
-                    {...register("smokefree")}
-                  />
-                  <span className="slider round"></span>
-                </label>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.smokefree}
+                  {...register("smokefree")}
+                />
               </div>
             </div>
             <div>
               <label>Aircondition</label>
               <div>
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    onChange={() =>
-                      setAirconditionChecked(!airconditionChecked)
-                    }
-                    defaultChecked={props.facilities.ac}
-                    {...register("ac")}
-                  />
-                  <span className="slider round"></span>
-                </label>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.ac}
+                  {...register("ac")}
+                />
               </div>
             </div>
             <div>
               <label>Airport Shuttle</label>
               <div>
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    onChange={() =>
-                      setAirportshuttleChecked(!airportshuttleChecked)
-                    }
-                    defaultChecked={props.facilities.airportshuttle}
-                    {...register("airportshuttle")}
-                  />
-                  <span className="slider round"></span>
-                </label>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.airportshuttle}
+                  {...register("airportshuttle")}
+                />
               </div>
             </div>
             <div>
               <label>Gym</label>
               <div>
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    onChange={() => setGymChecked(!gymChecked)}
-                    defaultChecked={props.facilities.gym}
-                    {...register("gym")}
-                  />
-                  <span className="slider round"></span>
-                </label>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.gym}
+                  {...register("gym")}
+                />
               </div>
             </div>
             <div>
               <label>TV</label>
               <div>
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    onChange={() => setTvChecked(!tvChecked)}
-                    defaultChecked={props.facilities.tv}
-                    {...register("tv")}
-                  />
-                  <span className="slider round"></span>
-                </label>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.tv}
+                  {...register("tv")}
+                />
               </div>
             </div>
             <div>
               <label>Hotel Bar</label>
               <div>
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    onChange={() => setHotelBarChecked(!hotelbarChecked)}
-                    defaultChecked={props.facilities.hotelbar}
-                    {...register("hotelbar")}
-                  />
-                  <span className="slider round"></span>
-                </label>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.hotelbar}
+                  {...register("hotelbar")}
+                />
               </div>
             </div>
           </div>
@@ -344,65 +279,6 @@ const EditEstablishment = (props) => {
             flex-wrap: wrap;
             text-align: center;
             margin-bottom: 3rem;
-          }
-
-          .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-          }
-
-          .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-          }
-
-          .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: 0.4s;
-            transition: 0.4s;
-          }
-
-          .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            -webkit-transition: 0.4s;
-            transition: 0.4s;
-          }
-
-          input:checked + .slider {
-            background-color: #2196f3;
-          }
-
-          input:focus + .slider {
-            box-shadow: 0 0 1px #2196f3;
-          }
-
-          input:checked + .slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
-          }
-
-          .slider.round {
-            border-radius: 34px;
-          }
-
-          .slider.round:before {
-            border-radius: 50%;
           }
         `}
       </style>
