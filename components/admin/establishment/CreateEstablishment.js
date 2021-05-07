@@ -27,6 +27,17 @@ function CreateEstablishment() {
         lng: data.lng,
         address: data.address,
         category: data.category,
+        facilities: {
+          accesible: data.accesible,
+          workstation: data.workstation,
+          smokefree: data.smokefree,
+          ac: data.ac,
+          airportshuttle: data.airportshuttle,
+          gym: data.gym,
+          tv: data.tv,
+          wifi: data.wifi,
+          hotelbar: data.hotelbar,
+        },
       };
 
       const inputValue = await axios({
@@ -152,6 +163,99 @@ function CreateEstablishment() {
               </div>
             )}
           </Form.Group>
+          <h3 className="mb-3">Facilites</h3>
+          <div className="facilities">
+            <div>
+              <label> WIFI</label>
+              <div>
+                <input
+                  type="checkbox"
+                 defaultChecked={false}
+                  {...register("wifi")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Accesible</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={false}
+                  {...register("accesible")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Workstation</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={false}
+                  {...register("workstation")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Smokefree</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={false}
+                  {...register("smokefree")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Aircondition</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={false}
+                  {...register("ac")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Airport Shuttle</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={false}
+                  {...register("airportshuttle")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Gym</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={false}
+                  {...register("gym")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>TV</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={false}
+                  {...register("tv")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Hotel Bar</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={false}
+                  {...register("hotelbar")}
+                />
+              </div>
+            </div>
+          </div>
 
           <Form.Group>
             <Form.Label>
@@ -214,6 +318,13 @@ function CreateEstablishment() {
           .form-label {
             font-size: 14px;
             font-weight: 300;
+          }
+          .facilities {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            text-align: center;
+            margin-bottom: 3rem;
           }
         `}
       </style>
