@@ -1,10 +1,6 @@
-
-
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
-
 
 //ICONS
 import WifiIcon from "@material-ui/icons/Wifi";
@@ -27,9 +23,6 @@ function Facilities(props) {
   const ac = props.facilities.ac;
   const accesible = props.facilities.accesible;
   const workstation = props.facilities.workstation;
-
-  console.log(wifi)
-  console.log(tv)
 
   function Accessible() {
     if (accesible) {

@@ -15,10 +15,6 @@ import { BASE_URL } from "../../constants/api";
 import BackArrow from "../../components/utility/BackArrow";
 import MediaQuery from "../../components/utility/MediaQuery";
 import Button from "@material-ui/core/Button";
-import Facilities from "../../components/specific-establishment/Facilities";
-
-
-
 
 
 <MediaQuery />;
@@ -39,6 +35,8 @@ export default function Establishment({ establishment, images, promoteImage }) {
     { ssr: false }
   )
 
+  console.log(establishment.facilities.wifi)
+  console.log(establishment.facilities.tv)
 
   return (
     <Container>
