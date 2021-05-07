@@ -14,8 +14,7 @@ import ImageUpload from "../../../components/admin/establishment/ImageUpload";
 import MediaQuery from "../../../components/utility/MediaQuery";
 import Button from "@material-ui/core/Button";
 import BackArrow from "../../../components/utility/BackArrow";
-
-
+import Facilities from "../../components/specific-establishment/Facilities";
 <MediaQuery />;
 
 export default function Establishment({ establishment, images, promoteImage }) {
@@ -94,21 +93,20 @@ export default function Establishment({ establishment, images, promoteImage }) {
           )}
         </Container>
         <Container className="details-container">
+          <Facilities {...establishment} />
           <Row className="details">
             <Col>
-              <h5 className="subheading">About </h5>
               <p className="description">{establishment.description}</p>
-              <Button variant="contained" onClick={handleShow}>
-                Book
-              </Button>
             </Col>
           </Row>
           <h5 className="subheading">Location </h5>
           <div className="map">
             <SimpleMap {...establishment} />
           </div>
-
         </Container>
+        <Button variant="contained" onClick={handleShow}>
+          Book
+        </Button>
 
         <Modal
           show={show}

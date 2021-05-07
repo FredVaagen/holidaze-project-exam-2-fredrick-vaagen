@@ -1,6 +1,6 @@
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 //ICONS
 import WifiIcon from "@material-ui/icons/Wifi";
@@ -27,9 +27,9 @@ function Facilities(props) {
   function Accessible() {
     if (accesible) {
       return (
-        <Col>
-          <AccessibleIcon /> Accessible
-        </Col>
+        <div>
+          <AccessibleIcon /> Accsessible
+        </div>
       );
     }
   }
@@ -37,10 +37,9 @@ function Facilities(props) {
   function WorkStation() {
     if (workstation) {
       return (
-        <Col>
-          <ComputerIcon />
-          Workstation
-        </Col>
+        <div>
+          <ComputerIcon /> Workstation
+        </div>
       );
     }
   }
@@ -48,9 +47,9 @@ function Facilities(props) {
   function SmokeFree() {
     if (smokefree) {
       return (
-        <Col>
+        <div>
           <SmokeFreeIcon /> Smokefree
-        </Col>
+        </div>
       );
     }
   }
@@ -58,18 +57,18 @@ function Facilities(props) {
   function AirCondition() {
     if (ac) {
       return (
-        <Col>
+        <div>
           <AcUnitIcon /> Aircondition
-        </Col>
+        </div>
       );
     }
   }
   function AirportShuttle() {
     if (airportshuttle) {
       return (
-        <Col>
+        <div>
           <AirportShuttleIcon /> Airport Shuttle
-        </Col>
+        </div>
       );
     }
   }
@@ -77,9 +76,9 @@ function Facilities(props) {
   function Gym() {
     if (gym) {
       return (
-        <Col>
+        <div>
           <FitnessCenterIcon /> Gym
-        </Col>
+        </div>
       );
     }
   }
@@ -87,9 +86,9 @@ function Facilities(props) {
   function Wifi() {
     if (wifi) {
       return (
-        <Col>
+        <div>
           <WifiIcon /> Wifi
-        </Col>
+        </div>
       );
     }
   }
@@ -97,78 +96,65 @@ function Facilities(props) {
   function Tv() {
     if (tv) {
       return (
-        <Col>
-          <TvIcon /> Tv
-        </Col>
+        <div>
+          <TvIcon /> TV
+        </div>
       );
     }
   }
   function HotelBar() {
     if (hotelbar) {
       return (
-        <Col>
-          <LocalBarIcon /> Hotel Bar
-        </Col>
+        <div>
+          <LocalBarIcon /> Bar
+        </div>
       );
     }
   }
 
   return (
-   
-    <Container className="facilities">
-     
+    <Container fluid className="facilities">
       <h3>Facilities</h3>
 
-      <Col>
-        <Row>
-          {Accessible()} 
-          {WorkStation()} 
-          {SmokeFree()}
-        </Row>
-      </Col>
-      <Col>
-        <Row>
-          {AirCondition()}
-          {AirportShuttle()} 
-          {Gym()}
-        </Row>
-      </Col>
-      <Col>
-        <Row>
-          {Tv()}
-          {Wifi()}
-          {HotelBar()}
-        </Row>
-      </Col>
+      <Row>
+        {Accessible()}
+        {WorkStation()}
+        {SmokeFree()}
+        {AirCondition()}
+        {AirportShuttle()}
+        {Gym()}
+        {Tv()}
+        {Wifi()}
+        {HotelBar()}
+      </Row>
 
       <style global jsx>
         {`
-          h3 {
+          .facilities h3 {
             font-weight: 300;
             text-align: left;
             margin-top: 2rem;
             margin-bottom: 2rem;
+            margin-left: -1rem;
           }
-          .facilities {
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            height: auto;
 
+          .facilities {
+            height: auto;
             font-size: 11px;
             font-weight: 300;
             margin-bottom: 2rem;
           }
 
-          .facilities .col {
-            margin-top: 10px;
+          .facilities .row {
+            display: flex;
+            justify-content: space-between;
           }
 
           .facilities svg {
             font-size: 22px;
             opacity: 0.7;
-            margin-right: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
           }
         `}
       </style>

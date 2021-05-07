@@ -1,6 +1,4 @@
 import { useState } from "react";
-import dynamic from "next/dynamic";
-
 import fetch from "isomorphic-fetch";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -15,15 +13,9 @@ import { BASE_URL } from "../../constants/api";
 import BackArrow from "../../components/utility/BackArrow";
 import MediaQuery from "../../components/utility/MediaQuery";
 import Button from "@material-ui/core/Button";
-
+import Facilities from "../../components/specific-establishment/Facilities";
 
 <MediaQuery />;
-
-const DynamicComponent = dynamic(
-  () => import("../../components/specific-establishment/Facilities"),
-  { ssr: false }
-)
-
 
 export default function Establishment({ establishment, images, promoteImage }) {
   const [show, setShow] = useState(false);
@@ -87,7 +79,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
                     className="detail-images ml-2 mr-2"
                     src={image.formats.small.url}
                     alt={image.name}
-                    width="300"
+                    width="350"
                     height="auto"
                   />
                 ))}
@@ -96,7 +88,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
           )}
         </Container>
         <Container className="details-container">
-          <DynamicComponent {...establishment} />
+          <Facilities {...establishment} />
           <Row className="details">
             <Col>
               <p className="description">{establishment.description}</p>
@@ -157,10 +149,14 @@ export default function Establishment({ establishment, images, promoteImage }) {
 
             .establishment-images {
               border-bottom: 1px solid rgb(221, 221, 221);
+              display:  flex;
+              flex-direction: column;
+              
             }
 
             .images img {
               height: 306px;
+              
             }
 
             .details {
@@ -199,9 +195,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
               font-size: 11px !important;
             }
 
-            .MuiButtonBase-root:hover {
-              background: RGB(66, 87, 194) !important;
-            }
+        
 
             .modal-title {
               font-weight: 300;

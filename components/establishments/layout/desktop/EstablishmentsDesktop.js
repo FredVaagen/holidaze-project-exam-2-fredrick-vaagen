@@ -133,10 +133,7 @@ function EstablishmentsDesktop({ establishments }) {
             font-size: 11px !important;
           }
 
-          .button:hover {
-            background: RGB(66, 87, 194) !important;
-            transform: scale(1.01) !important;
-          }
+      
 
           .establishment-specific__image-col {
             padding-top: 5px;;

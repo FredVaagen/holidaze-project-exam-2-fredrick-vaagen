@@ -13,8 +13,6 @@ const EditEstablishment = (props) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  console.log(props.facilities.wifi);
-
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
     try {
@@ -26,17 +24,6 @@ const EditEstablishment = (props) => {
         lng: data.lng || props.lng,
         address: data.address || props.address,
         category: data.category || props.category,
-        facilities: {
-          accesible: data.accesible || props.facilities.accesible,
-          workstation: data.workstation || props.facilities.workstation,
-          smokefree: data.smokefree || props.facilities.smokefree,
-          ac: data.ac || props.facilities.ac,
-          airportshuttle: data.airportshuttle || props.facilities.airportshuttle,
-          gym: data.gym || props.facilities.gym,
-          tv: data.tv || props.facilities.tv,
-          wifi: data.wifi || props.facilities.wifi,
-          hotelbar: data.hotelbar || props.facilities.hotelbar,
-        },
       };
 
       const res = await axios({
@@ -130,100 +117,6 @@ const EditEstablishment = (props) => {
               placeholder={props.address}
             />
           </div>
-          <h3 className="mb-3">Facilites</h3>
-          <div className="facilities">
-            <div>
-              <label> WIFI</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={props.facilities.wifi}
-                  {...register("wifi")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Accesible</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={props.facilities.accesible}
-                  {...register("accesible")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Workstation</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={props.facilities.workstation}
-                  {...register("workstation")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Smokefree</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={props.facilities.smokefree}
-                  {...register("smokefree")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Aircondition</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={props.facilities.ac}
-                  {...register("ac")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Airport Shuttle</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={props.facilities.airportshuttle}
-                  {...register("airportshuttle")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Gym</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={props.facilities.gym}
-                  {...register("gym")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>TV</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={props.facilities.tv}
-                  {...register("tv")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Hotel Bar</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={props.facilities.hotelbar}
-                  {...register("hotelbar")}
-                />
-              </div>
-            </div>
-          </div>
-
           <Button type="submit">Update</Button>
         </form>
       </div>
@@ -271,14 +164,6 @@ const EditEstablishment = (props) => {
 
           .MuiButtonBase-root:hover {
             background: RGB(66, 87, 194);
-          }
-
-          .facilities {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            text-align: center;
-            margin-bottom: 3rem;
           }
         `}
       </style>

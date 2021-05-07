@@ -10,19 +10,21 @@ function BackArrow() {
       Back
       <style jsx global>
         {`
-
           .back-arrow {
             margin-top: 2rem;
-            transition: .3s;
+            transition: 0.3s;
+            margin-left: 1rem;
+            opacity: 0.5;
           }
 
           .back-arrow:hover {
             cursor: pointer;
             transform: scale(1.01);
+            opacity: 1;
           }
           .MuiSvgIcon-root {
             font-size: 1rem;
-            
+
             font-weight: 200;
             opacity: 0.5;
             margin-bottom: 1px;
