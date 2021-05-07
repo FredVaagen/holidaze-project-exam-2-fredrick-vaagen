@@ -16,8 +16,8 @@ const EditEstablishment = (props) => {
   console.log(props.facilities.wifi);
 
   let [wifiChecked, setWifiChecked] = useState(true);
-  if (props.facilities.wifi === null || props.facilities.wifi === false) {
-    wifiChecked = useState(false);
+  if (props.facilities.wifi == null || props.facilities.wifi == false) {
+    wifiChecked = false;
   }
 
   let [accesibleChecked, setAccesibleChecked] = useState(true);
