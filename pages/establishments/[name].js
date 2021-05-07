@@ -13,7 +13,17 @@ import { BASE_URL } from "../../constants/api";
 import BackArrow from "../../components/utility/BackArrow";
 import MediaQuery from "../../components/utility/MediaQuery";
 import Button from "@material-ui/core/Button";
-import Facilities from "../../components/specific-establishment/Facilities";
+
+//ICONS
+import WifiIcon from "@material-ui/icons/Wifi";
+import TvIcon from "@material-ui/icons/Tv";
+import SmokeFreeIcon from "@material-ui/icons/SmokeFree";
+import AirportShuttleIcon from "@material-ui/icons/AirportShuttle";
+import LocalBarIcon from "@material-ui/icons/LocalBar";
+import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
+import AcUnitIcon from "@material-ui/icons/AcUnit";
+import AccessibleIcon from "@material-ui/icons/Accessible";
+import ComputerIcon from "@material-ui/icons/Computer";
 
 <MediaQuery />;
 
@@ -26,6 +36,106 @@ export default function Establishment({ establishment, images, promoteImage }) {
 
   if (router.isFallback) {
     return <div>Loading...</div>;
+  }
+
+  const wifi = establishment.facilities.wifi;
+  const tv = establishment.facilities.tv;
+  const smokefree = establishment.facilities.smokefree;
+  const airportshuttle = establishment.facilities.airportshuttle;
+  const hotelbar = establishment.facilities.hotelbar;
+  const gym = establishment.facilities.gym;
+  const ac = establishment.facilities.ac;
+  const accesible = establishment.facilities.accesible;
+  const workstation = establishment.facilities.workstation;
+
+  
+  function Accessible() {
+    if (accesible) {
+      return (
+        <Col>
+          <AccessibleIcon /> Accessible
+        </Col>
+      );
+    }
+  }
+
+  function WorkStation() {
+    if (workstation) {
+      return (
+        <Col>
+          <ComputerIcon />
+          Workstation
+        </Col>
+      );
+    }
+  }
+
+  function SmokeFree() {
+    if (smokefree) {
+      return (
+        <Col>
+          <SmokeFreeIcon /> Smokefree
+        </Col>
+      );
+    }
+  }
+
+  function AirCondition() {
+    if (ac) {
+      return (
+        <Col>
+          <AcUnitIcon /> Aircondition
+        </Col>
+      );
+    }
+  }
+  function AirportShuttle() {
+    if (airportshuttle) {
+      return (
+        <Col>
+          <AirportShuttleIcon /> Airport Shuttle
+        </Col>
+      );
+    }
+  }
+
+  function Gym() {
+    if (gym) {
+      return (
+        <Col>
+          <FitnessCenterIcon /> Gym
+        </Col>
+      );
+    }
+  }
+
+  function Wifi() {
+    if (wifi) {
+      return (
+        <Col>
+          <WifiIcon /> Wifi
+        </Col>
+      );
+    }
+  }
+
+  function Tv() {
+    if (tv) {
+      return (
+        <Col>
+          <TvIcon /> Tv
+        </Col>
+      );
+    }
+  }
+  function HotelBar() {
+    if (hotelbar) {
+      return (
+        <Col>
+          <LocalBarIcon /> Hotel Bar
+        </Col>
+      );
+    }
   }
 
   return (
@@ -88,7 +198,31 @@ export default function Establishment({ establishment, images, promoteImage }) {
           )}
         </Container>
         <Container className="details-container">
-          <Facilities {...establishment} />
+        <Container className="facilities">
+      <h3>Facilities</h3>
+
+      <Col>
+        <Row>
+          {Accessible()} 
+          {WorkStation()} 
+          {SmokeFree()}
+        </Row>
+      </Col>
+      <Col>
+        <Row>
+          {AirCondition()}
+          {AirportShuttle()} 
+          {Gym()}
+        </Row>
+      </Col>
+      <Col>
+        <Row>
+          {Tv()}
+          {Wifi()}
+          {HotelBar()}
+        </Row>
+      </Col>
+      </Container>
           <Row className="details">
             <Col>
               <p className="description">{establishment.description}</p>
@@ -203,6 +337,32 @@ export default function Establishment({ establishment, images, promoteImage }) {
             .map {
               height: 300px;
             }
+            h3 {
+              font-weight: 300;
+              text-align: left;
+              margin-top: 2rem;
+              margin-bottom: 2rem;
+            }
+            .facilities {
+              display: flex;
+              flex-direction: column;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              height: auto;
+  
+              font-size: 11px;
+              font-weight: 300;
+              margin-bottom: 2rem;
+            }
+  
+            .facilities .col {
+              margin-top: 10px;
+            }
+  
+            .facilities svg {
+              font-size: 22px;
+              opacity: 0.7;
+              margin-
           `}
         </style>
       </Container>

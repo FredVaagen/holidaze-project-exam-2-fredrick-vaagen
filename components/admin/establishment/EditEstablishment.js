@@ -156,7 +156,7 @@ const EditEstablishment = (props) => {
                 <label className="switch">
                   <input
                     type="checkbox"
-                    onChange={() => setWifiChecked(!wifiChecked)}
+                    onChange={() => setWifiChecked(wifiChecked => !wifiChecked)}
                     defaultChecked={props.facilities.wifi}
                     {...register("wifi")}
                   />
