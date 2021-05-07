@@ -48,6 +48,8 @@ export default function Establishment({ establishment, images, promoteImage }) {
   const accesible = establishment.facilities.accesible;
   const workstation = establishment.facilities.workstation;
 
+  console.log(wifi)
+
   
   function Accessible() {
     if (accesible === true) {
