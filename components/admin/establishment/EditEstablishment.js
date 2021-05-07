@@ -82,8 +82,6 @@ const EditEstablishment = (props) => {
     hotelbarChecked = false;
   }
 
-
-
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
     try {
