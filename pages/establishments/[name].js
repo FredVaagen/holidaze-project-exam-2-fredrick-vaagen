@@ -50,35 +50,45 @@ export default function Establishment({ establishment, images, promoteImage }) {
 
   
   function Accessible() {
-    if (accesible) {
+    if (accesible === true) {
       return (
         <Col>
           <AccessibleIcon /> Accessible
         </Col>
       );
+    } else if(accesible === false) { 
+      return <></>
+  
     }
   }
 
   function WorkStation() {
-    if (workstation) {
+    if (workstation === true) {
       return (
         <Col>
           <ComputerIcon />
           Workstation
         </Col>
       );
+    } else if(workstation === false) { 
+      return <></>
+  
     }
   }
 
   function SmokeFree() {
-    if (smokefree) {
+    if (smokefree === true) {
       return (
         <Col>
           <SmokeFreeIcon /> Smokefree
         </Col>
       );
+    } else if(smokefree === false) { 
+      return <></>
+  
     }
-  }
+  
+  } 
 
   function AirCondition() {
     if (ac) {
@@ -87,6 +97,9 @@ export default function Establishment({ establishment, images, promoteImage }) {
           <AcUnitIcon /> Aircondition
         </Col>
       );
+    } else if(ac === false) { 
+      return <></>
+  
     }
   }
   function AirportShuttle() {
@@ -96,6 +109,9 @@ export default function Establishment({ establishment, images, promoteImage }) {
           <AirportShuttleIcon /> Airport Shuttle
         </Col>
       );
+    } else if(airportshuttle === false) { 
+      return <></>
+  
     }
   }
 
@@ -106,6 +122,9 @@ export default function Establishment({ establishment, images, promoteImage }) {
           <FitnessCenterIcon /> Gym
         </Col>
       );
+    } else if(gym === false) { 
+      return <></>
+  
     }
   }
 
@@ -116,6 +135,9 @@ export default function Establishment({ establishment, images, promoteImage }) {
           <WifiIcon /> Wifi
         </Col>
       );
+    } else if(wifi === false) { 
+      return <></>
+  
     }
   }
 
@@ -126,6 +148,9 @@ export default function Establishment({ establishment, images, promoteImage }) {
           <TvIcon /> Tv
         </Col>
       );
+    } else if(tv === false) { 
+      return <></>
+  
     }
   }
   function HotelBar() {
@@ -135,6 +160,9 @@ export default function Establishment({ establishment, images, promoteImage }) {
           <LocalBarIcon /> Hotel Bar
         </Col>
       );
+    } else if(hotelbar === false) { 
+      return <></>
+  
     }
   }
 
