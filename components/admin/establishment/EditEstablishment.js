@@ -13,21 +13,21 @@ const EditEstablishment = (props) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const [wifiChecked, setWifiChecked] = useState(true);
+  const [wifiChecked, setWifiChecked] = useState();
 
-  const [accesibleChecked, setAccesibleChecked] = useState(true);
+  const [accesibleChecked, setAccesibleChecked] = useState();
 
-  const [workstationChecked, setWorkstationChecked] = useState(true);
+  const [workstationChecked, setWorkstationChecked] = useState();
 
-  const [smokefreeChecked, setSmokefreeChecked] = useState(true);
+  const [smokefreeChecked, setSmokefreeChecked] = useState();
 
-  const [airportshuttleChecked, setAirportshuttleChecked] = useState(true);
+  const [airportshuttleChecked, setAirportshuttleChecked] = useState();
 
-  const [gymChecked, setGymChecked] = useState(true);
+  const [gymChecked, setGymChecked] = useState();
 
-  const [tvChecked, setTvChecked] = useState(true);
+  const [tvChecked, setTvChecked] = useState();
 
-  const [hotelbarChecked, setHotelBarChecked] = useState(true);
+  const [hotelbarChecked, setHotelBarChecked] = useState();
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;

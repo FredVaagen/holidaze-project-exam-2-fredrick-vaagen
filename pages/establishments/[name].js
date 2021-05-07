@@ -1,5 +1,5 @@
 import { useState } from "react";
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
 
 import fetch from "isomorphic-fetch";
 import { useRouter } from "next/router";
@@ -15,7 +15,7 @@ import { BASE_URL } from "../../constants/api";
 import BackArrow from "../../components/utility/BackArrow";
 import MediaQuery from "../../components/utility/MediaQuery";
 import Button from "@material-ui/core/Button";
-
+import Facilities from "../../components/specific-establishment/Facilities";
 
 <MediaQuery />;
 
@@ -29,14 +29,6 @@ export default function Establishment({ establishment, images, promoteImage }) {
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-
-  const DynamicComponentWithNoSSR = dynamic(
-    () => import('../../components/specific-establishment/Facilities'),
-    { ssr: false }
-  )
-
-  console.log(establishment.facilities.wifi)
-  console.log(establishment.facilities.tv)
 
   return (
     <Container>
@@ -98,7 +90,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
           )}
         </Container>
         <Container className="details-container">
-        <DynamicComponentWithNoSSR {...establishment}/>
+          <Facilities {...establishment} />
           <Row className="details">
             <Col>
               <p className="description">{establishment.description}</p>
@@ -244,10 +236,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
       </Container>
     </Container>
   );
-
 }
-
-
 
 export async function getStaticProps({ params: { name } }) {
   const res = await fetch(`${BASE_URL}/establishments/?name=${name}`);
