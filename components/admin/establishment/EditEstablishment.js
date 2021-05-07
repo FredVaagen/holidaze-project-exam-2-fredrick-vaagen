@@ -13,7 +13,7 @@ const EditEstablishment = (props) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  console.log(props.facilities.wifi);
+  console.log(typeof(props.facilities.wifi));
 
   let [wifiChecked, setWifiChecked] = useState(true);
   if (props.facilities.wifi == null || props.facilities.wifi == false) {
