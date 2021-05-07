@@ -56,7 +56,7 @@ function EstablishmentsMobile({ establishments }) {
 
           .h1 {
             font-size: 24px;
-            margin-top: 1rem;
+            padding-top: 5rem;
             font-weight: 300;
           }
 
@@ -122,9 +122,7 @@ function EstablishmentsMobile({ establishments }) {
             justify-content: space-between;
           }
 
-          .searchbar {
-            position: relative;
-          }
+     
 
           .establishment-specific__image-col {
             padding-top: 5px;;

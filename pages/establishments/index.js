@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useRouter } from "next/router";
 import Container from "react-bootstrap/Container";
 import { BASE_URL } from "./../../constants/api";
@@ -9,9 +8,7 @@ import EstablishmentsMobile from "../../components/establishments/layout/mobile/
 
 <MediaQuery />;
 
-
 export default function EstablishmentsPage({ establishments }) {
-  const [show, setShow] = useState(false);
   const isBreakpoint = MediaQuery(991);
   const router = useRouter();
 
@@ -19,13 +16,16 @@ export default function EstablishmentsPage({ establishments }) {
     return <div>Loading...</div>;
   }
   return (
-    <Container className="establishments">
-      <SearchBar {...{ establishments }} />
-      {isBreakpoint ? (
-        <EstablishmentsMobile {...{ establishments }} />
-      ) : (
-        <EstablishmentsDesktop {...{ establishments }} />
-      )}
+    <Container>
+      <SearchBar className="searchbar-establishments" {...{ establishments }} />
+      <Container className="establishments">
+        {isBreakpoint ? (
+          <EstablishmentsMobile {...{ establishments }} />
+        ) : (
+          <EstablishmentsDesktop {...{ establishments }} />
+        )}
+      </Container>
+
     </Container>
   );
 }

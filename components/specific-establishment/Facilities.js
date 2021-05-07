@@ -156,6 +156,11 @@ function Facilities(props) {
             margin-right: 10px;
             margin-left: 10px;
           }
+          @media only screen and (max-width: 400px) {
+            .facilities .row {
+              display: block;
+            }
+          }
         `}
       </style>
     </Container>

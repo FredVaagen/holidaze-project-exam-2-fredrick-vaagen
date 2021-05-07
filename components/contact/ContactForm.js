@@ -129,6 +129,7 @@ export default function ContactForm() {
         {`
           .main {
             height: 100vh;
+           
           }
 
           @media only screen and (max-height: 700px) {
@@ -169,6 +170,10 @@ export default function ContactForm() {
             background: #fff !important;
             color: black !important;
             font-size: 11px !important;
+            
+          }
+          .MuiSvgIcon-root {
+            opacity: 1 !important;
           }
 
      

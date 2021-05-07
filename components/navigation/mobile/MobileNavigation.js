@@ -101,6 +101,8 @@ function MobileNavigation() {
             .navbar-expand > .container {
               flex-wrap: wrap;
             }
+       
+  
           }
         `}
       </style>

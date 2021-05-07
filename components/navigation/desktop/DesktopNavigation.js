@@ -29,7 +29,7 @@ function DesktopNavigation() {
             </Link>
             <Link href="/contact" passHref>
               <Nav.Link>
-                {" "}
+    
                 <ContactSupportIcon />
                 Contact us
               </Nav.Link>
@@ -68,8 +68,20 @@ function DesktopNavigation() {
       <style global jsx>
         {`
           .navbar .navbar-nav .nav-link {
+          
             padding-right: 3rem;
+            font-size: 12px;
+            color: black;
+            opacity: .8;
           }
+
+          .navbar svg {
+            margin-right: 5px;
+          }
+
+       
+
+   
         `}
       </style>
     </Container>
