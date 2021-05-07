@@ -15,9 +15,12 @@ import { BASE_URL } from "../../constants/api";
 import BackArrow from "../../components/utility/BackArrow";
 import MediaQuery from "../../components/utility/MediaQuery";
 import Button from "@material-ui/core/Button";
-import Facilities from "../../components/specific-establishment/Facilities";
+
 
 <MediaQuery />;
+
+const DynamicComponent = dynamic(() => import("../../components/specific-establishment/Facilities"))
+
 
 export default function Establishment({ establishment, images, promoteImage }) {
   const [show, setShow] = useState(false);
@@ -90,7 +93,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
           )}
         </Container>
         <Container className="details-container">
-          <Facilities {...establishment} />
+          <DynamicComponent {...establishment} />
           <Row className="details">
             <Col>
               <p className="description">{establishment.description}</p>
