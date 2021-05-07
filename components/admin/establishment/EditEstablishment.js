@@ -156,7 +156,7 @@ const EditEstablishment = (props) => {
                 <label className="switch">
                   <input
                     type="checkbox"
-                    onChange={() => setWifiChecked(wifiChecked => !wifiChecked)}
+                    onChange={() => setWifiChecked(!wifiChecked)}
                     defaultChecked={props.facilities.wifi}
                     {...register("wifi")}
                   />
@@ -171,7 +171,7 @@ const EditEstablishment = (props) => {
                   <input
                     type="checkbox"
                     onChange={() =>
-                      setAccesibleChecked(accesibleChecked => !accesibleChecked)
+                      setAccesibleChecked(!accesibleChecked)
                     }
                     defaultChecked={props.facilities.accesible}
                     {...register("accesible")}
@@ -186,7 +186,7 @@ const EditEstablishment = (props) => {
                 <label className="switch">
                   <input
                     type="checkbox"
-                    onChange={() => setWorkstationChecked(workstationChecked => !workstationChecked)}
+                    onChange={() => setWorkstationChecked(!workstationChecked)}
                     defaultChecked={props.facilities.workstation}
                     {...register("workstation")}
                   />
@@ -200,7 +200,7 @@ const EditEstablishment = (props) => {
                 <label className="switch">
                   <input
                     type="checkbox"
-                    onChange={() => setSmokefreeChecked(smokefreeChecked => !smokefreeChecked)}
+                    onChange={() => setSmokefreeChecked(!smokefreeChecked)}
                     defaultChecked={props.facilities.smokefree}
                     {...register("smokefree")}
                   />
@@ -215,7 +215,7 @@ const EditEstablishment = (props) => {
                   <input
                     type="checkbox"
                     onChange={() =>
-                      setAirconditionChecked(airconditionChecked => !airconditionChecked)
+                      setAirconditionChecked(!airconditionChecked)
                     }
                     defaultChecked={props.facilities.ac}
                     {...register("ac")}
@@ -231,7 +231,7 @@ const EditEstablishment = (props) => {
                   <input
                     type="checkbox"
                     onChange={() =>
-                      setAirportshuttleChecked(airportshuttleChecked => !airportshuttleChecked)
+                      setAirportshuttleChecked(!airportshuttleChecked)
                     }
                     defaultChecked={props.facilities.airportshuttle}
                     {...register("airportshuttle")}
@@ -246,7 +246,7 @@ const EditEstablishment = (props) => {
                 <label className="switch">
                   <input
                     type="checkbox"
-                    onChange={() => setGymChecked(gymChecked => !gymChecked)}
+                    onChange={() => setGymChecked(!gymChecked)}
                     defaultChecked={props.facilities.gym}
                     {...register("gym")}
                   />
@@ -260,7 +260,7 @@ const EditEstablishment = (props) => {
                 <label className="switch">
                   <input
                     type="checkbox"
-                    onChange={() => setTvChecked(tvChecked => !tvChecked)}
+                    onChange={() => setTvChecked(!tvChecked)}
                     defaultChecked={props.facilities.tv}
                     {...register("tv")}
                   />
@@ -274,7 +274,7 @@ const EditEstablishment = (props) => {
                 <label className="switch">
                   <input
                     type="checkbox"
-                    onChange={() => setHotelBarChecked(hotelbarChecked => !hotelbarChecked)}
+                    onChange={() => setHotelBarChecked(!hotelbarChecked)}
                     defaultChecked={props.facilities.hotelbar}
                     {...register("hotelbar")}
                   />
