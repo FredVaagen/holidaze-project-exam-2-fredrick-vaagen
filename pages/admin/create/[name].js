@@ -14,7 +14,7 @@ import ImageUpload from "../../../components/admin/establishment/ImageUpload";
 import MediaQuery from "../../../components/utility/MediaQuery";
 import Button from "@material-ui/core/Button";
 import BackArrow from "../../../components/utility/BackArrow";
-import Facilities from "../../components/specific-establishment/Facilities";
+import Facilities from "../../../components/specific-establishment/Facilities";
 <MediaQuery />;
 
 export default function Establishment({ establishment, images, promoteImage }) {
