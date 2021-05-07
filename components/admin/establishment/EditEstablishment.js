@@ -13,10 +13,11 @@ const EditEstablishment = (props) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  console.log(props.facilities.wifi);
+
   let [wifiChecked, setWifiChecked] = useState(true);
-  if (props.facilities.wifi == null || props.facilities.wifi == false) {  
-  wifiChecked = useState(false);
-  
+  if (props.facilities.wifi === null || props.facilities.wifi === false) {
+    wifiChecked = useState(false);
   }
 
   let [accesibleChecked, setAccesibleChecked] = useState(true);
@@ -27,7 +28,7 @@ const EditEstablishment = (props) => {
     accesibleChecked = false;
   }
 
-  let  [workstationChecked, setWorkstationChecked] = useState(true);
+  let [workstationChecked, setWorkstationChecked] = useState(true);
   if (
     props.facilities.workstation == null ||
     props.facilities.workstation == false
@@ -42,13 +43,10 @@ const EditEstablishment = (props) => {
     smokefreeChecked = false;
   }
   let [airconditionChecked, setAirconditionChecked] = useState(true);
-  if (
-    props.facilities.ac == null ||
-    props.facilities.ac == false
-  ) {
+  if (props.facilities.ac == null || props.facilities.ac == false) {
     airconditionChecked = false;
   }
-  let  [airportshuttleChecked, setAirportshuttleChecked] = useState(true);
+  let [airportshuttleChecked, setAirportshuttleChecked] = useState(true);
   if (
     props.facilities.airportshuttle == null ||
     props.facilities.airportshuttle == false
@@ -57,26 +55,17 @@ const EditEstablishment = (props) => {
   }
 
   let [gymChecked, setGymChecked] = useState(true);
-  if (
-    props.facilities.gym == null ||
-    props.facilities.gym == false
-  ) {
+  if (props.facilities.gym == null || props.facilities.gym == false) {
     gymChecked = false;
   }
 
   let [tvChecked, setTvChecked] = useState(true);
-  if (
-    props.facilities.tv == null ||
-    props.facilities.tv == false
-  ) {
+  if (props.facilities.tv == null || props.facilities.tv == false) {
     tvChecked = false;
   }
 
   let [hotelbarChecked, setHotelBarChecked] = useState(true);
-  if (
-    props.facilities.hotelbar == null ||
-    props.facilities.hotelbar == false
-  ) {
+  if (props.facilities.hotelbar == null || props.facilities.hotelbar == false) {
     hotelbarChecked = false;
   }
 
@@ -201,7 +190,6 @@ const EditEstablishment = (props) => {
           </div>
           <h3 className="mb-3">Facilites</h3>
           <div className="facilities">
-        
             <div>
               <label> WIFI</label>
               <div>
@@ -264,7 +252,9 @@ const EditEstablishment = (props) => {
                 <label className="switch">
                   <input
                     type="checkbox"
-                    onChange={() => setAirconditionChecked(!airconditionChecked)}
+                    onChange={() =>
+                      setAirconditionChecked(!airconditionChecked)
+                    }
                     defaultChecked={airconditionChecked}
                     {...register("ac")}
                   />
@@ -278,7 +268,9 @@ const EditEstablishment = (props) => {
                 <label className="switch">
                   <input
                     type="checkbox"
-                    onChange={() => setAirportshuttleChecked(!airportshuttleChecked)}
+                    onChange={() =>
+                      setAirportshuttleChecked(!airportshuttleChecked)
+                    }
                     defaultChecked={airportshuttleChecked}
                     {...register("airportshuttle")}
                   />
