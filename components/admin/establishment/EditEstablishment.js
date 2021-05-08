@@ -164,7 +164,7 @@ const EditEstablishment = (props) => {
 
           .remove {
             margin-top: 3rem;
-            background: none;
+            
             transistion: 1s;
             border: 1px solid black;
           }
