@@ -38,7 +38,6 @@ export default function Footer() {
         .footer {
           font-size: 16px;
           display: flex;
-    
           border-top: 1px solid rgb(221, 221, 221);
           justify-content: center;
         }

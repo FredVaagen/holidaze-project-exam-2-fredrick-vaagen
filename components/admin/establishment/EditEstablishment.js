@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { parseCookies } from "nookies";
 import Button from "@material-ui/core/Button";
 import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
 import { BASE_URL } from "./../../../constants/api";
 import ImageUpload from "./ImageUpload";
 
@@ -101,9 +102,10 @@ const EditEstablishment = (props) => {
           <div>
             <div>
               {" "}
-              <label>Category - {props.category}</label>
+              <label>Category</label>
             </div>
             <select name="category" {...register("category")}>
+              <option>Current: {props.category}</option>
               <option>hotel</option>
               <option>guesthouse</option>
               <option>bedandbreakfast</option>
@@ -117,14 +119,30 @@ const EditEstablishment = (props) => {
               placeholder={props.address}
             />
           </div>
-          <Button type="submit">Update</Button>
+          <Button variant="contained" type="submit" className="button" onClick={() => {
+                setLoading(true);
+           
+              }}>
+            {loading ? (
+            
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              /> 
+            ) : (
+              "Update establishment..."
+            )}
+          </Button>
         </form>
       </div>
 
       <form onSubmit={handleSubmit(removeEstablishment)}>
-        <button className="remove mb-5" type="submit">
+        <Button className="remove mb-5 button" type="submit">
           Remove establishment
-        </button>
+        </Button>
       </form>
 
       <style global jsx>
@@ -154,11 +172,11 @@ const EditEstablishment = (props) => {
             background: red;
             color: white;
           }
-          .MuiButtonBase-root {
+          .button {
             width: 200px !important;
             margin-bottom: 2rem !important;
-            background: RGB(106, 126, 230) !important;
-            color: white !important;
+            background: #fff !important;
+            color: black !important;
             font-size: 11px !important;
           }
 

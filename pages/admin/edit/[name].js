@@ -18,6 +18,11 @@ export default function Establishment({ establishment, images, promoteImage }) {
       <Container>
         <EditEstablishment {...establishment} />
       </Container>
+      <style jsx>{`
+      .MuiSvgIcon-root {
+        opacity: 1;
+      }
+      `}</style>
     </Container>
   );
 }

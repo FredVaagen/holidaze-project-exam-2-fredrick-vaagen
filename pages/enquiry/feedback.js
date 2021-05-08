@@ -17,11 +17,12 @@ function feedback() {
       <style jsx>
     {`
       .contact {
-        height: 70vh;
+        height: 100vh;
         text-align: center;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+        font-size: 22px;
       }
       .contact p {
         

@@ -285,6 +285,7 @@ function CreateEstablishment() {
           </Form.Group>
           <Button variant="contained" type="submit" className="button" onClick={() => {
                 setLoading(true);
+           
               }}>
             {loading ? (
             
@@ -330,18 +331,15 @@ function CreateEstablishment() {
             border-radius: 0;
           }
 
-          .MuiButtonBase-root {
+          .button {
             width: 200px !important;
             margin-bottom: 2rem !important;
-            background: #fff;
+            background: #fff !important;
             color: black !important;
             font-size: 11px !important;
           }
 
-          .MuiButtonBase-root:hover {
-            background: RGB(66, 87, 194) !important;
-          }
-
+  
           .form-label {
             font-size: 14px;
             font-weight: 300;
