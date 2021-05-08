@@ -195,8 +195,6 @@ export default function Establishment({ establishment, images, promoteImage }) {
               font-size: 11px !important;
             }
 
-        
-
             .modal-title {
               font-weight: 300;
               font-size: 20px;

@@ -175,9 +175,6 @@ export default function ContactForm() {
           .MuiSvgIcon-root {
             opacity: 1 !important;
           }
-
-     
-
           .form-label {
             font-size: 14px;
             font-weight: 300;

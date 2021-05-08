@@ -32,7 +32,8 @@ export default function Establishment({ establishment, images, promoteImage }) {
     <Container>
       <BackArrow />
       <Container className="establishment">
-      <Col>
+        <h1>Preview of {establishment.name}</h1>
+      <Col className="m-0 p-0 mb-5">
           <h2 className="mt-5">Add additional images</h2>
           <ImageUpload {...establishment} />
         </Col>
@@ -84,7 +85,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
                     className="detail-images ml-2 mr-2"
                     src={image.formats.small.url}
                     alt={image.name}
-                    width="300"
+                    width="350"
                     height="auto"
                   />
                 ))}
@@ -138,12 +139,11 @@ export default function Establishment({ establishment, images, promoteImage }) {
               color: black;
               display: flex;
               flex-direction: column;
-              
             }
 
-            .establishment h1 {
+            .establishment h1, h2 {
               font-size: 26px;
-              font-weight: 200;
+              font-weight: 300;
               margin-bottom: 1px;
             }
 
@@ -187,19 +187,14 @@ export default function Establishment({ establishment, images, promoteImage }) {
               margin-bottom: 1rem;
               font-weight: 200;
             }
-
             .MuiButtonBase-root {
-              width: 200px !important;
+              width: 100% !important;
               margin-bottom: 2rem !important;
-              background: RGB(106, 126, 230) !important;
-              color: white !important;
+              margin-top: 2rem !important;
+              background: #fff !important;
+              color: black !important;
               font-size: 11px !important;
             }
-
-            .MuiButtonBase-root:hover {
-              background: RGB(66, 87, 194);
-            }
-
             .modal-title {
               font-weight: 300;
               font-size: 20px;

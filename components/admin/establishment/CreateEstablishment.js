@@ -1,10 +1,11 @@
-import React from "react";
+import { useState} from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { parseCookies } from "nookies";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
+import Spinner from "react-bootstrap/Spinner";
 import Button from "@material-ui/core/Button";
 import { BASE_URL } from "../../../constants/api";
 
@@ -15,6 +16,7 @@ function CreateEstablishment() {
     formState: { errors },
   } = useForm();
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
@@ -129,10 +131,14 @@ function CreateEstablishment() {
             )}
           </Form.Group>
           <Form.Group>
-     
-              <Form.Label>Latitude - <a target="_blank" href="https://www.latlong.net/"> Click to find latitude and longitude</a></Form.Label>
-           
-           
+            <Form.Label>
+              Latitude -{" "}
+              <a target="_blank" href="https://www.latlong.net/">
+                {" "}
+                Click to find latitude and longitude
+              </a>
+            </Form.Label>
+
             <Form.Control {...register("lat", { required: true })} />
             {errors.lat && (
               <div className="alert-danger">
@@ -142,7 +148,13 @@ function CreateEstablishment() {
           </Form.Group>
 
           <Form.Group>
-            <Form.Label>Longitude - <a target="_blank" href="https://www.latlong.net/"> Click to find latitude and longitude</a> </Form.Label>
+            <Form.Label>
+              Longitude -{" "}
+              <a target="_blank" href="https://www.latlong.net/">
+                {" "}
+                Click to find latitude and longitude
+              </a>{" "}
+            </Form.Label>
             <Form.Control {...register("lng", { required: true })} />
             {errors.lng && (
               <div className="alert-danger">
@@ -170,7 +182,7 @@ function CreateEstablishment() {
               <div>
                 <input
                   type="checkbox"
-                 defaultChecked={false}
+                  defaultChecked={false}
                   {...register("wifi")}
                 />
               </div>
@@ -271,7 +283,22 @@ function CreateEstablishment() {
               </div>
             )}
           </Form.Group>
-          <Button variant="contained" type="submit" className="button">Next...</Button>
+          <Button variant="contained" type="submit" className="button" onClick={() => {
+                setLoading(true);
+              }}>
+            {loading ? (
+            
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              /> 
+            ) : (
+              "Next..."
+            )}
+          </Button>
         </Form>
       </div>
 
@@ -306,8 +333,8 @@ function CreateEstablishment() {
           .MuiButtonBase-root {
             width: 200px !important;
             margin-bottom: 2rem !important;
-            background: RGB(106, 126, 230) !important;
-            color: white !important;
+            background: #fff;
+            color: black !important;
             font-size: 11px !important;
           }
 
@@ -322,9 +349,14 @@ function CreateEstablishment() {
           .facilities {
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
             text-align: center;
             margin-bottom: 3rem;
+          }
+          @media only screen and (max-width: 1110px) {
+            .facilities {
+              display: block;
+              text-align: left;
+            }
           }
         `}
       </style>

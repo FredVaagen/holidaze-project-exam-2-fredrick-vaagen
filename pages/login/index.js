@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { Container, Form } from "react-bootstrap";
+import Spinner from "react-bootstrap/Spinner";
 import Button from "@material-ui/core/Button";
 import { login } from "../../lib/auth";
 import AppContext from "../../context/AppContext";
-import Spinner from "react-bootstrap/Spinner";
+
 
 function Login() {
   const [data, updateData] = useState({ identifier: "", password: "" });
@@ -109,7 +110,7 @@ function Login() {
 
           .login-container form {
             transition: all 0.3s;
-            box-shadow: 0 1px 3px rgb(41 51 57 / 50%);
+        
 
             padding: 5rem;
           }
@@ -125,31 +126,20 @@ function Login() {
           .MuiButtonBase-root {
             width: 200px !important;
             margin-bottom: 2rem !important;
-            background: RGB(106, 126, 230) !important;
-            color: white !important;
+            color: black !important;
             font-size: 11px !important;
+            box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%) !important;
           }
 
-          .MuiButtonBase-root:hover {
-            background: RGB(66, 87, 194);
-          }
-          
           @media only screen and (max-width: 900px) {
             .main {
               height: auto;
-             
             }
 
             .login-container {
-          
               margin-bottom: 5rem;
-            
             }
-
           }
-      
-        
-       
         `}
       </style>
     </Container>
