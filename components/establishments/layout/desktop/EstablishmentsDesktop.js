@@ -77,6 +77,7 @@ function EstablishmentsDesktop({ establishments }) {
 
           .h1 {
             margin-top: 2rem;
+            font-weight: 300;
           }
 
           .col-md-6, .col-lg-3, .col-lg-5 {
@@ -84,7 +85,7 @@ function EstablishmentsDesktop({ establishments }) {
             margin: 0;
           }
 
-          h3 {
+          .details h3 {
             font-size: 20px;
             margin-bottom: 0;
             font-weight: 300;

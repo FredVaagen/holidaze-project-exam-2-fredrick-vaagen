@@ -80,9 +80,10 @@ function EstablishmentsMobile({ establishments }) {
             cursor: pointer;
           }
 
-          h3 {
+          .details h3 {
             font-size: 20px;
             margin-bottom: 0;
+            font-weight: 300;
           }
 
           .badge {
