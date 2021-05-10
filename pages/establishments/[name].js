@@ -19,7 +19,9 @@ import BackArrow from "../../components/utility/BackArrow";
 import MediaQuery from "../../components/utility/MediaQuery";
 import Facilities from "../../components/specific-establishment/Facilities";
 
+
 <MediaQuery />;
+
 
 export default function Establishment({ establishment, images, promoteImage }) {
   const [show, setShow] = useState(false);
@@ -181,8 +183,8 @@ export default function Establishment({ establishment, images, promoteImage }) {
             }
 
             .carousel-item img {
-              max-height: 300px;
-              min-height: 300px;
+              max-height: 200px;
+              min-height: 200px;
               width: 100%;
               border-radius: 5px;
             }
