@@ -73,6 +73,16 @@ function DesktopNavigation() {
             font-size: 12px;
             color: black;
             opacity: .8;
+            transition: .3s;
+          }
+
+          .navbar .navbar-nav .nav-link:hover {
+          
+            padding-right: 3rem;
+            font-size: 12px;
+            color: black;
+            opacity: .8;
+            transform: scale(1.05);
           }
 
           .navbar svg {

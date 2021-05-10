@@ -7,7 +7,7 @@ function HomeMobile() {
     <Container className="headline-container">
       <Link href="/establishments">
         <a>
-          <h1 className="headline">HOLIDAZE.</h1>
+          <h1 className="headline">HOLIDAZE</h1>
           <h2 className="subheading">
             Find the perfect accomedation while staying in Bergen, Norway.
           </h2>

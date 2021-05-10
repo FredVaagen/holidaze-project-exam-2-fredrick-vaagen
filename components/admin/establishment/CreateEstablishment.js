@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -283,19 +283,24 @@ function CreateEstablishment() {
               </div>
             )}
           </Form.Group>
-          <Button variant="contained" type="submit" className="button" onClick={() => {
-                setLoading(true);
-           
-              }}>
+          <Button
+            variant="contained"
+            type="submit"
+            className="button"
+            onClick={() => {
+              setLoading(true);
+              if(errors) {
+                setLoading(false)
+              }
+            }}>
             {loading ? (
-            
               <Spinner
                 as="span"
                 animation="border"
                 size="sm"
                 role="status"
                 aria-hidden="true"
-              /> 
+              />
             ) : (
               "Next..."
             )}
@@ -339,7 +344,6 @@ function CreateEstablishment() {
             font-size: 11px !important;
           }
 
-  
           .form-label {
             font-size: 14px;
             font-weight: 300;
