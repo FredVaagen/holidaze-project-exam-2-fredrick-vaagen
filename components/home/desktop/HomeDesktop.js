@@ -24,11 +24,13 @@ function HomeDesktop() {
             color: white;
             font-size: 7rem;
             margin-top: 1rem;
+            font-weight: 300;
           }
           .subheading {
             color: white;
             text-align: center;
             font-size: 20px;
+             font-weight: 300;
           }
         `}
       </style>

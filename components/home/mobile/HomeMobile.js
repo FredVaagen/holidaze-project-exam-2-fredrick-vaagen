@@ -20,18 +20,21 @@ function HomeMobile() {
             text-align: center;
             display: grid;
             align-content: center;
+            
           }
 
           .headline {
             color: white;
             font-size: 28px;
             margin-top: 1rem;
+            font-weight: 300;
           }
 
           .subheading {
             color: white;
             text-align: center;
             font-size: 12px;
+            font-weight: 300;
           }
         `}
       </style>
