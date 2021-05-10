@@ -17,6 +17,14 @@ function Enquiry(establishment) {
     register,
     formState: { errors },
   } = useForm();
+  
+  const datePickers = document.getElementsByClassName(
+    "react-datepicker__input-container"
+  );
+
+  for (let i = 0; i < datePickers.length; i++) {
+    datePickers[i].childNodes[0].setAttribute("readonly", true);
+  }
 
   const establishmentName = establishment.name;
 
