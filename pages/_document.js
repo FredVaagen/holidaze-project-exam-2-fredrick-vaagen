@@ -16,7 +16,7 @@ class MyDocument extends Document {
           />
           <meta
             name="description"
-            content="The quick and easy way to book a hotel for your holiday. Our experts will help you find the hotel of your dreams."
+            content="Holidaze will help you find the perfect accomedation while staying in Bergen, Norway. "
           />
           <meta
             name="keywords"
@@ -24,9 +24,9 @@ class MyDocument extends Document {
           />
           <meta
             property="og:site_name"
-            content="Holidaze - The quick and easy way to book a hotel for your holiday."
+            content="Holidaze - Find the perfect accomedation in Bergen, Norway with Holidaze."
           />
-          <meta property="og:title" content="Holidaze - A hotel booking site" />
+          <meta property="og:title" content="Holidaze - A hotel, guesthouse and bed and breakfast booking site" />
           <meta property="og:type" content="website" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
