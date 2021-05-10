@@ -197,11 +197,11 @@ function Enquiry(establishment) {
           .form-group input,
           .form-group select {
             border: none;
-            border-bottom: 1px solid rgb(106, 126, 230);
+            border-bottom: 1px solid rgb(211,211,211, 0.8);
           }
 
           .form-group textarea {
-            border: 1px solid rgb(106, 126, 230);
+            border: 1px solid rgb(211,211,211, 0.8);
           }
 
           .form-label {
@@ -211,7 +211,7 @@ function Enquiry(establishment) {
 
           .react-datepicker__input-container input {
             width: 100%;
-            border-bottom: 1px solid rgb(106, 126, 230);
+            border-bottom: 1px solid rgb(211,211,211, 0.8);
             border-top: none;
             border-right: none;
             border-left: none;
@@ -220,13 +220,13 @@ function Enquiry(establishment) {
           .button {
             width: 200px;
             margin-bottom: 2rem;
-            background: RGB(106, 126, 230);
+            background: rgb(106, 126, 230);
             color: white;
             font-size: 11px;
           }
 
           .button:hover {
-            background: RGB(66, 87, 194);
+            background:rgb(66, 87, 194);
           }
 
           .alert-danger {

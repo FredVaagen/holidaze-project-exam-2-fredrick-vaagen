@@ -318,11 +318,11 @@ function CreateEstablishment() {
           .form-group input,
           .form-group select {
             border: none;
-            border: 1px solid rgb(106, 126, 230);
+            border: 1px solid rgb(211,211,211, 0.8);
           }
 
           .form-group textarea {
-            border: 1px solid rgb(106, 126, 230);
+            border: 1px solid rgb(211,211,211, 0.8);
             padding: 10px;
           }
 

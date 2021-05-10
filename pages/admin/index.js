@@ -133,7 +133,7 @@ export async function getServerSideProps(ctx) {
         Authorization: `Bearer ${token}`,
       },
     }),
-    fetch(`${BASE_URL}/establishments`, {
+    fetch(`${BASE_URL}/establishments?_sort=name:asc`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
