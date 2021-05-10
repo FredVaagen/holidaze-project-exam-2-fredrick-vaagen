@@ -20,8 +20,6 @@ function HomeMobile() {
             text-align: center;
             display: grid;
             align-content: center;
-            font-family: roboto; 
-            font-weight: 300;
           }
 
           .headline {
