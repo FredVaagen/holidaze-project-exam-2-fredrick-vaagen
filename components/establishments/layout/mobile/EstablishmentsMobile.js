@@ -62,19 +62,15 @@ function EstablishmentsMobile({ establishments }) {
 
           .establishment-specific {
             box-shadow: 0 1px 3px rgb(41 51 57 / 50%);
-         
             padding-right: 0;
             padding-left: 0;
             margin-bottom: 2rem;
             margin: 0 auto;
-           
           }
 
           .row {
             flex-wrap: nowrap;
-         
-        }
-
+          }
           .establishment-container:hover {
             transform: scale(1.02);
             cursor: pointer;
@@ -92,6 +88,7 @@ function EstablishmentsMobile({ establishments }) {
             text-transform: uppercase;
             font-size: 9px;
             margin-left: -0.3rem;
+            margin-top: 10px;
             text-align: left;
             margin-bottom: 1rem;
           }
