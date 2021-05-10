@@ -132,9 +132,8 @@ function EstablishmentsDesktop({ establishments }) {
             background: #fff !important;
             color: black !important;
             font-size: 11px !important;
+            font-weight: 300;
           }
-
-      
 
           .establishment-specific__image-col {
             padding-top: 5px;;
@@ -143,8 +142,7 @@ function EstablishmentsDesktop({ establishments }) {
           }
 
           .establishment-specific__image-col img {
-            height: 100%;
-            
+            height: 100%;     
            
           }
 

@@ -40,17 +40,7 @@ export default function Footer() {
           display: flex;
           border-top: 1px solid rgb(221, 221, 221);
           justify-content: center;
-        }
-
-        .footer ul {
-          list-style-type: none;
-          display: flex;
-        }
-
-        .footer li {
-          margin-right: 1rem;
-          margin-left: 1rem;
-          font-weight: 200;
+  
         }
 
         .bottom-footer {
@@ -58,7 +48,9 @@ export default function Footer() {
           display: flex;
           justify-content: space-between;
           padding: 10px;
-          font-weight: 400;
+   
+          font-family: 'Roboto', sans-serif;
+          font-weight: 300;
         }
 
         .bottom-footer a {
@@ -67,7 +59,8 @@ export default function Footer() {
         }
 
         .socials svg {
-          font-size: 16px;
+          font-size: 14px;
+          opacity: .8;
         }
 
         @media only screen and (max-width: 991px) {

@@ -91,6 +91,7 @@ function EstablishmentsMobile({ establishments }) {
             margin-top: 10px;
             text-align: left;
             margin-bottom: 1rem;
+            font-weight: 300;
           }
 
           p {
@@ -110,6 +111,7 @@ function EstablishmentsMobile({ establishments }) {
             background: #fff !important;
             font-size: 11px !important;
             width: 100%;
+            font-weight: 300;
             
           }
 
@@ -118,6 +120,7 @@ function EstablishmentsMobile({ establishments }) {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            font-weight: 300;
           }
 
      
