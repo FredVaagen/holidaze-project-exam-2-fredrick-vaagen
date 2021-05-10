@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useContext } from "react";
 import Link from "next/link";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -9,8 +9,6 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import FilterHdrIcon from "@material-ui/icons/FilterHdr";
-import ExploreIcon from "@material-ui/icons/Explore";
-
 import { logout } from "../../../lib/auth";
 import AppContext from "../../../context/AppContext";
 
@@ -97,12 +95,15 @@ function MobileNavigation() {
           }
 
           @media only screen and (max-width: 400px) {
-      
             .navbar-expand > .container {
               flex-wrap: wrap;
             }
-       
-  
+            .appbar svg {
+              font-size: 18px;
+            }
+            .appbar .nav-link {
+              font-size: 11px;
+            }
           }
         `}
       </style>

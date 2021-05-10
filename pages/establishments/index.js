@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Head from "next/head";
 import Container from "react-bootstrap/Container";
 import { BASE_URL } from "./../../constants/api";
 import SearchBar from "../../components/establishments/search/SearchBar";
@@ -17,6 +18,9 @@ export default function EstablishmentsPage({ establishments }) {
   }
   return (
     <Container>
+      <Head>
+        <title>Holidaze - Establishments</title>
+      </Head>
       <SearchBar className="searchbar-establishments" {...{ establishments }} />
       <Container className="establishments">
         {isBreakpoint ? (
@@ -25,7 +29,6 @@ export default function EstablishmentsPage({ establishments }) {
           <EstablishmentsDesktop {...{ establishments }} />
         )}
       </Container>
-
     </Container>
   );
 }

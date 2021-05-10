@@ -1,5 +1,6 @@
 import React from "react";
 import App from "next/app";
+import Router from "next/router";
 import Cookie from "js-cookie";
 import fetch from "isomorphic-unfetch";
 import Layout from "../components/layout/Layout";
@@ -8,7 +9,7 @@ import { BASE_URL } from "../constants/api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/globals.css";
 import ProgressBar from "@badrap/bar-of-progress";
-import Router from "next/router";
+
 
 const progress = new ProgressBar({
   size: 1,

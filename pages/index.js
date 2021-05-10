@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import Head from "next/head";
 import fetch from "isomorphic-unfetch";
 import Container from "react-bootstrap/Container";
 import { BASE_URL } from "../constants/api";
@@ -10,30 +10,30 @@ import HomeDesktop from "../components/home/desktop/HomeDesktop";
 <MediaQuery />;
 
 export default function Home({ establishments }) {
-  const [show, setShow] = useState(false);
   const isBreakpoint = MediaQuery(991);
   return (
     <>
+      <Head>
+        <title>Holidaze - Home</title>
+      </Head>
       {isBreakpoint ? (
         <Container fluid className="background-image">
           <SearchBar {...{ establishments }} />
           <HomeMobile />
           <style global jsx>
             {`
-            * {
-              font-family: 'Roboto', sans-serif;
-              @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+              * {
+                font-family: "Roboto", sans-serif;
+                @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap");
               }
-                   
+
               .main {
                 background: black;
                 width: 100%;
                 display: flex;
                 flex-direction: column;
                 padding: 0;
-               
-
-         }
+              }
 
               .background-image {
                 height: 90vh;

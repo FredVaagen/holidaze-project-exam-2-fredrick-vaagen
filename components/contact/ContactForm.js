@@ -7,9 +7,8 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "@material-ui/core/Button";
 import { BASE_URL } from "./../../constants/api";
-
-import Spinner from "react-bootstrap/Spinner";
 import BackArrow from "../utility/BackArrow";
+
 const schema = yup.object().shape({
   firstname: yup.string().required("Please enter a first name").min(2),
   lastname: yup.string().required("Please enter a last name").min(3),
@@ -44,98 +43,86 @@ export default function ContactForm() {
       body: JSON.stringify(data),
     };
 
+    const name = data.firstname;
+
     setLoading(false);
     const response = await fetch([BASE_URL + "/contacts"], requestOptions);
 
     if (response) {
-      return (
-        router.push("/contact/feedback") 
-       
-       
-      )
+      router.push({
+        pathname: "/contact/feedback",
+        query: { name: name },
+      });
     }
   };
 
   return (
-   
     <Container className="mb-5 mt-5">
-     <BackArrow /> 
+      <BackArrow />
       <h1 className="mt-5 mb-5">Contact us</h1>
       <Form noValidate onSubmit={handleSubmit(onSubmit)}>
-      <fieldset disabled={loading}>
-        <Form.Group>
-          <Form.Label>First name</Form.Label>
-          <Form.Control {...register("firstname")} placeholder="First name" />
-          {errors.firstname && (
-            <div className="alert-danger">{errors.firstname.message}</div>
-          )}
-        </Form.Group>
+        <fieldset disabled={loading}>
+          <Form.Group>
+            <Form.Label>First name</Form.Label>
+            <Form.Control {...register("firstname")} placeholder="First name" />
+            {errors.firstname && (
+              <div className="alert-danger">{errors.firstname.message}</div>
+            )}
+          </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Last name</Form.Label>
-          <Form.Control {...register("lastname")} placeholder="Last name" />
-          {errors.lastname && (
-            <div className="alert-danger">{errors.lastname.message}</div>
-          )}
-        </Form.Group>
+          <Form.Group>
+            <Form.Label>Last name</Form.Label>
+            <Form.Control {...register("lastname")} placeholder="Last name" />
+            {errors.lastname && (
+              <div className="alert-danger">{errors.lastname.message}</div>
+            )}
+          </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            {...register("email")}
-            placeholder="Email address"
-          />
-          {errors.email && (
-            <div className="alert-danger">{errors.email.message}</div>
-          )}
-        </Form.Group>
+          <Form.Group>
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="email"
+              {...register("email")}
+              placeholder="Email address"
+            />
+            {errors.email && (
+              <div className="alert-danger">{errors.email.message}</div>
+            )}
+          </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Subject</Form.Label>
-          <Form.Control {...register("subject")} placeholder="Subject" />
-          {errors.subject && (
-            <div className="alert-danger">{errors.subject.message}</div>
-          )}
-        </Form.Group>
+          <Form.Group>
+            <Form.Label>Subject</Form.Label>
+            <Form.Control {...register("subject")} placeholder="Subject" />
+            {errors.subject && (
+              <div className="alert-danger">{errors.subject.message}</div>
+            )}
+          </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Message</Form.Label>
-          <Form.Control
-            as="textarea"
-            placeholder="Your message"
-            {...register("message")}
-          />
-          {errors.message && (
-            <div className="alert-danger">{errors.message.message}</div>
-          )}
-        </Form.Group>
-        <Button variant="contained" className="button" type="submit">
-        {loading ? (
-                <Spinner
-                  as="span"
-                  animation="border"
-                  size="sm"
-                  role="status"
-                  aria-hidden="true"
-                />
-              ) : (
-                "Submit"
-              )}
-        </Button>
+          <Form.Group>
+            <Form.Label>Message</Form.Label>
+            <Form.Control
+              as="textarea"
+              placeholder="Your message"
+              {...register("message")}
+            />
+            {errors.message && (
+              <div className="alert-danger">{errors.message.message}</div>
+            )}
+          </Form.Group>
+          <Button variant="contained" className="button" type="submit" >
+            Submit
+          </Button>
         </fieldset>
       </Form>
       <style global jsx>
         {`
           .main {
             height: 100vh;
-           
           }
 
           @media only screen and (max-height: 700px) {
-      
             .main {
-             height: auto;
+              height: auto;
             }
           }
           .alert-danger {
@@ -170,7 +157,6 @@ export default function ContactForm() {
             background: #fff !important;
             color: black !important;
             font-size: 11px !important;
-            
           }
           .MuiSvgIcon-root {
             opacity: 1 !important;

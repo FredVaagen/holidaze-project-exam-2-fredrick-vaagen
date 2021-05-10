@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import Container from "react-bootstrap/Container";
 import { BASE_URL } from "../../../constants/api";
 import SearchBar from "../../../components/establishments/search/SearchBar";
@@ -7,10 +7,9 @@ import EstablishmentsDesktop from "../../../components/establishments/layout/des
 import MediaQuery from "../../../components/utility/MediaQuery";
 import EstablishmentsMobile from "../../../components/establishments/layout/mobile/EstablishmentsMobile";
 
-<MediaQuery />
+<MediaQuery />;
 
-export default function EstablishmentsPage({ establishments}) {
-  const [show, setShow] = useState(false);
+export default function EstablishmentsPage({ establishments }) {
   const isBreakpoint = MediaQuery(991);
   const router = useRouter();
 
@@ -19,10 +18,15 @@ export default function EstablishmentsPage({ establishments}) {
   }
   return (
     <Container className="establishments">
-      <SearchBar {...{establishments}} />
-      {isBreakpoint ? ( 
-      <EstablishmentsMobile {...{establishments}} /> ) : (
-      <EstablishmentsDesktop {...{establishments}} /> )}
+      <Head>
+        <title>Holidaze - Establishments</title>
+      </Head>
+      <SearchBar {...{ establishments }} />
+      {isBreakpoint ? (
+        <EstablishmentsMobile {...{ establishments }} />
+      ) : (
+        <EstablishmentsDesktop {...{ establishments }} />
+      )}
       <style global jsx>
         {`
           .main {
@@ -35,7 +39,6 @@ export default function EstablishmentsPage({ establishments}) {
     </Container>
   );
 }
-
 
 export async function getStaticProps() {
   const res = await fetch(`${BASE_URL}/establishments?_sort=price:desc`);

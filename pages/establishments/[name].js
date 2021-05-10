@@ -1,18 +1,22 @@
 import { useState } from "react";
-import fetch from "isomorphic-fetch";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import Image from "next/image";
+import fetch from "isomorphic-fetch";
+
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Carousel from "react-bootstrap/Carousel";
+
+import Button from "@material-ui/core/Button";
+
 import SimpleMap from "../../components/establishments/maps/SimpleMap";
 import Enquiry from "../../components/establishments/enquiry/EnquiryForm";
 import { BASE_URL } from "../../constants/api";
 import BackArrow from "../../components/utility/BackArrow";
 import MediaQuery from "../../components/utility/MediaQuery";
-import Button from "@material-ui/core/Button";
 import Facilities from "../../components/specific-establishment/Facilities";
 
 <MediaQuery />;
@@ -30,6 +34,9 @@ export default function Establishment({ establishment, images, promoteImage }) {
 
   return (
     <Container>
+      <Head>
+        <title>Holidaze - {establishment.name}</title>
+      </Head>
       <BackArrow />
       <Container className="establishment">
         <Container className="establishment-images">
