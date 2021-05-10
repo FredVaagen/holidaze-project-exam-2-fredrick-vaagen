@@ -120,6 +120,10 @@ export default function ContactForm() {
             height: 100vh;
           }
 
+          h1 {
+            font-weight: 300;
+          }
+
           @media only screen and (max-height: 700px) {
             .main {
               height: auto;

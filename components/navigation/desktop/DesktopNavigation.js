@@ -3,10 +3,15 @@ import Link from "next/link";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
+
+// ICONS
 import FilterHdrIcon from "@material-ui/icons/FilterHdr";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import HotelIcon from "@material-ui/icons/Hotel";
 import ContactSupportIcon from "@material-ui/icons/ContactSupport";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+
 import { logout } from "../../../lib/auth";
 import AppContext from "../../../context/AppContext";
 
@@ -39,7 +44,7 @@ function DesktopNavigation() {
             <Nav.Item>
               {user ? (
                 <Link href="/admin">
-                  <a className="mr-3">Admin Dashboard</a>
+                  <Nav.Link><DashboardIcon />Dashboard</Nav.Link>
                 </Link>
               ) : (
                 <></>
@@ -48,13 +53,13 @@ function DesktopNavigation() {
             <Nav.Item className="login-link">
               {user ? (
                 <Link href="/" passHref> 
-                  <a
+                  <Nav.Link className="logout"
                     onClick={() => {
                       logout();
                       setUser(null);
                     }}>
-                    Logout
-                  </a>
+                    <ExitToAppIcon /> Logout
+                  </Nav.Link>
                 </Link>
               ) : (
                 <Link href="/login" passHref>
@@ -74,6 +79,8 @@ function DesktopNavigation() {
             color: black;
             opacity: .8;
             transition: .3s;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
           }
 
           .navbar .navbar-nav .nav-link:hover {
@@ -89,9 +96,12 @@ function DesktopNavigation() {
             margin-right: 5px;
           }
 
-       
+          .login  .nav-link  {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 12px;
 
-   
+          }
         `}
       </style>
     </Container>

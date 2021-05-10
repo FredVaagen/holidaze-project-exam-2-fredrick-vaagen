@@ -13,7 +13,7 @@ const Layout = (props) => {
     <>
       {isBreakpoint ? (
         <>
-          <Container fluid className="main p-0 m-0">
+          <Container fluid className="main">
             {props.children}
           </Container>
           <MobileNavigation />
@@ -21,11 +21,29 @@ const Layout = (props) => {
       ) : (
         <>
           <DesktopNavigation />
-          <Container fluid className="main p-0 m-0">
+          <Container fluid className="main">
             {props.children}
           </Container>
         </>
       )}
+      <style global jsx>{`
+      .main {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        }
+        
+        a {
+          color: black;
+          text-decoration: none;
+        }
+        
+        a:hover {
+          text-decoration: none;
+          color: black !important;
+          cursor: pointer;
+        }
+      `}</style>
       <Footer />
     </>
   );

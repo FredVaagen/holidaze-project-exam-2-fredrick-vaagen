@@ -75,6 +75,8 @@ function MobileNavigation() {
           .appbar {
             text-align: center;
             background: #fff;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
           }
 
           .appbar-container {
