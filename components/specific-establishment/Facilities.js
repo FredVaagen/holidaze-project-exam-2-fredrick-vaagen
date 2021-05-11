@@ -1,5 +1,4 @@
 import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
 //ICONS
@@ -12,6 +11,11 @@ import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
 import AcUnitIcon from "@material-ui/icons/AcUnit";
 import AccessibleIcon from "@material-ui/icons/Accessible";
 import ComputerIcon from "@material-ui/icons/Computer";
+import PoolIcon from '@material-ui/icons/Pool';
+import LocalParkingIcon from '@material-ui/icons/LocalParking';
+import KitchenIcon from '@material-ui/icons/Kitchen';
+
+
 
 function Facilities(props) {
   const wifi = props.facilities.wifi;
@@ -23,6 +27,9 @@ function Facilities(props) {
   const ac = props.facilities.ac;
   const accesible = props.facilities.accesible;
   const workstation = props.facilities.workstation;
+  const pool = props.facilites.pool;
+  const parking = props.facilities.parking; 
+  const kitchen = props.facilities.kitchen;
 
   function Accessible() {
     if (accesible) {
@@ -112,6 +119,37 @@ function Facilities(props) {
     }
   }
 
+  function Pool() {
+    if (pool) {
+      return (
+        <div className="mr-1">
+          <PoolIcon /> Pool
+        </div>
+      );
+    }
+  }
+ 
+
+
+  function Parking() {
+    if (parking) {
+      return (
+        <div className="mr-1">
+          <LocalParkingIcon /> Parking
+        </div>
+      );
+    }
+  }
+  function Kitchen() {
+    if (kitchen) {
+      return (
+        <div className="mr-1">
+          < KitchenIcon /> Kitchen
+        </div>
+      );
+    }
+  }
+
   return (
     <Container fluid className="facilities">
       <h3>Facilities</h3>
@@ -126,6 +164,9 @@ function Facilities(props) {
         {Tv()}
         {Wifi()}
         {HotelBar()}
+        {Pool()}
+        {Parking()}
+        {Kitchen()}
       </Row>
 
       <style global jsx>

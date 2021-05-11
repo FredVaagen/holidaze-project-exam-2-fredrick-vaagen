@@ -39,6 +39,9 @@ function CreateEstablishment() {
           tv: data.tv,
           wifi: data.wifi,
           hotelbar: data.hotelbar,
+          pool: data.pool,
+          parking: data.parking,
+          kitchen: data.kithcen,
         },
       };
 
@@ -264,6 +267,36 @@ function CreateEstablishment() {
                   type="checkbox"
                   defaultChecked={false}
                   {...register("hotelbar")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Pool</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={false}
+                  {...register("pool")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Parking</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={false}
+                  {...register("parking")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Kitchen</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={false}
+                  {...register("kitchen")}
                 />
               </div>
             </div>
