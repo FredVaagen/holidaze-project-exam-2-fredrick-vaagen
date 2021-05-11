@@ -27,7 +27,7 @@ function Facilities(props) {
   const ac = props.facilities.ac;
   const accesible = props.facilities.accesible;
   const workstation = props.facilities.workstation;
-  const pool = props.facilites.pool;
+  const pool = props.facilities.pool;
   const parking = props.facilities.parking; 
   const kitchen = props.facilities.kitchen;
 
