@@ -30,8 +30,8 @@ function MobileNavigation() {
           </Link>
           <Link href="/contact" passHref>
             <Nav.Link>
-              <ContactSupportIcon />
-              Contact
+            <span className="mr-2"><ContactSupportIcon /></span>
+             Contact
             </Nav.Link>
           </Link>
 
@@ -101,10 +101,10 @@ function MobileNavigation() {
               flex-wrap: wrap;
             }
             .appbar svg {
-              font-size: 18px;
+              font-size: 14px;
             }
             .appbar .nav-link {
-              font-size: 11px;
+              font-size: 9px;
             }
           }
         `}
