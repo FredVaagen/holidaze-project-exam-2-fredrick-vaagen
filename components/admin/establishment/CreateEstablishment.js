@@ -312,7 +312,7 @@ function CreateEstablishment() {
             />
             {errors.file && (
               <div className="alert-danger">
-                A promomotioan/main image is required
+                A main image of the establishment is required
               </div>
             )}
           </Form.Group>

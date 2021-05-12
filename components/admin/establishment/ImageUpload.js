@@ -36,6 +36,7 @@ const ImageUpload = (props) => {
     });
     console.log("Success", res);
     router.reload();
+    router.reload();
   };
   return (
     <Container>

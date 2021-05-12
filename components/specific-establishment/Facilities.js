@@ -11,11 +11,9 @@ import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
 import AcUnitIcon from "@material-ui/icons/AcUnit";
 import AccessibleIcon from "@material-ui/icons/Accessible";
 import ComputerIcon from "@material-ui/icons/Computer";
-import PoolIcon from '@material-ui/icons/Pool';
-import LocalParkingIcon from '@material-ui/icons/LocalParking';
-import KitchenIcon from '@material-ui/icons/Kitchen';
-
-
+import PoolIcon from "@material-ui/icons/Pool";
+import LocalParkingIcon from "@material-ui/icons/LocalParking";
+import KitchenIcon from "@material-ui/icons/Kitchen";
 
 function Facilities(props) {
   const wifi = props.facilities.wifi;
@@ -28,7 +26,7 @@ function Facilities(props) {
   const accesible = props.facilities.accesible;
   const workstation = props.facilities.workstation;
   const pool = props.facilities.pool;
-  const parking = props.facilities.parking; 
+  const parking = props.facilities.parking;
   const kitchen = props.facilities.kitchen;
 
   function Accessible() {
@@ -128,8 +126,6 @@ function Facilities(props) {
       );
     }
   }
- 
-
 
   function Parking() {
     if (parking) {
@@ -144,7 +140,7 @@ function Facilities(props) {
     if (kitchen) {
       return (
         <div className="mr-1">
-          < KitchenIcon /> Kitchen
+          <KitchenIcon /> Kitchen
         </div>
       );
     }
@@ -188,7 +184,6 @@ function Facilities(props) {
 
           .facilities .row {
             display: flex;
-        
           }
 
           .facilities svg {
