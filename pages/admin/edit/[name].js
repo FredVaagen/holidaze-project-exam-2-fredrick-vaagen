@@ -6,7 +6,7 @@ import { BASE_URL } from "../../../constants/api";
 import BackArrow from "../../../components/utility/BackArrow";
 import EditEstablishment from "../../../components/admin/establishment/EditEstablishment";
 
-export default function Establishment({ establishments}) {
+export default function Establishment({ establishment}) {
   const router = useRouter();
 
   if (router.isFallback) {
