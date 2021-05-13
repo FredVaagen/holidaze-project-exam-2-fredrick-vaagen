@@ -28,7 +28,7 @@ const EditEstablishment = (props) => {
 
       const res = await axios({
         method: "PUT",
-        url: `${BASE_URL}/establishments/:${props.id}`,
+        url: `${BASE_URL}/establishments/${props.id}`,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
