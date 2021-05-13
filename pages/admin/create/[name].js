@@ -24,10 +24,6 @@ export default function Establishment({ establishment, images, promoteImage }) {
   const router = useRouter();
   const isBreakpoint = MediaQuery(1200);
 
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <Container>
       <BackArrow />

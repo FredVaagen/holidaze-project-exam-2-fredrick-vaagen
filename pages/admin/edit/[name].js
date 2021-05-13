@@ -4,20 +4,14 @@ import Container from "react-bootstrap/Container";
 import { BASE_URL } from "../../../constants/api";
 import BackArrow from "../../../components/utility/BackArrow";
 import EditEstablishment from "../../../components/admin/establishment/EditEstablishment";
-import DeleteImage from "../../../components/admin/establishment/DeleteImage";
 
-export default function Establishment({ establishment, images, promoteImage }) {
+export default function Establishment({ establishment}) {
   const router = useRouter();
-
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <Container>
       <BackArrow />
       <Container>
-        <DeleteImage {...{images, promoteImage}} />
         <EditEstablishment {...establishment} />
       </Container>
     </Container>
