@@ -43,7 +43,7 @@ function DesktopNavigation() {
           <Nav className="mr login">
             <Nav.Item>
               {user ? (
-                <Link href="/admin">
+                <Link href="/admin" passHref>
                   <Nav.Link><DashboardIcon />Dashboard</Nav.Link>
                 </Link>
               ) : (
