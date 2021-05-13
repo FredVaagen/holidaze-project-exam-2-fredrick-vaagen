@@ -95,7 +95,7 @@ const EditEstablishment = (props) => {
             <input
               type="number"
               {...register("price")}
-              placeholder={props.price || data.price}
+              placeholder={props.price}
             />
           </div>
           <div>
