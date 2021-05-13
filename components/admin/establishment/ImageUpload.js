@@ -35,8 +35,8 @@ const ImageUpload = (props) => {
       data: formData,
     });
     console.log("Success", res);
-    router.reload();
-    router.reload();
+    setTimeout(router.reload(), 1500);
+    router.reload(); 
   };
   return (
     <Container>
