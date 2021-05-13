@@ -24,6 +24,10 @@ export default function Establishment({ establishment, images, promoteImage }) {
   const router = useRouter();
   const isBreakpoint = MediaQuery(1200);
 
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Container>
       <BackArrow />
@@ -135,6 +139,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
               color: black;
               display: flex;
               flex-direction: column;
+              
             }
 
             .establishment h1, h2 {
@@ -183,6 +188,9 @@ export default function Establishment({ establishment, images, promoteImage }) {
               margin-bottom: 1rem;
               font-weight: 200;
             }
+
+     
+
             .MuiButtonBase-root {
               width: 100% !important;
               margin-bottom: 2rem !important;
