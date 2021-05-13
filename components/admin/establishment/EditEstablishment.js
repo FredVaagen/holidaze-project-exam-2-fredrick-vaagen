@@ -7,8 +7,9 @@ import { parseCookies } from "nookies";
 import Button from "@material-ui/core/Button";
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
-import { BASE_URL } from "./../../../constants/api";
+import { BASE_URL } from "../../../constants/api"
 import ImageUpload from "./ImageUpload";
+
 
 const EditEstablishment = (props) => {
   const { register, handleSubmit } = useForm();
