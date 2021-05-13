@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -8,9 +9,6 @@ import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
 import { BASE_URL } from "./../../../constants/api";
 import ImageUpload from "./ImageUpload";
-import MediaQuery from "../../utility/MediaQuery";
-
-<MediaQuery />;
 
 const EditEstablishment = (props) => {
   const { register, handleSubmit } = useForm();
@@ -48,7 +46,7 @@ const EditEstablishment = (props) => {
 
   const removeEstablishment = async (ctx) => {
     const token = parseCookies(ctx).token;
-    if (confirm("Are you sure you want to remove this props?")) {
+    if (confirm("Are you sure you want to remove this establishment?")) {
       try {
         const res = await axios({
           method: "DELETE",
@@ -68,9 +66,9 @@ const EditEstablishment = (props) => {
 
   return (
     <Container>
-      <h2 className="mt-5 mb-5">Update props</h2>
+      <h2 className="mt-5 mb-5">Update establishment</h2>
       <ImageUpload {...props} />
-      <div className="create-props">
+      <div className="create-establishment">
         <form onSubmit={handleSubmit(submitData)}>
           <div>
             <label>Name</label>
@@ -102,7 +100,6 @@ const EditEstablishment = (props) => {
             <label>Longitude</label>
             <input {...register("lng")} placeholder={props.lng} />
           </div>
-
           <div>
             <div>
               {" "}
@@ -123,21 +120,19 @@ const EditEstablishment = (props) => {
               placeholder={props.address}
             />
           </div>
-          <Button
-            variant="contained"
-            type="submit"
-            className="button"
-            onClick={() => {
-              setLoading(true);
-            }}>
+          <Button variant="contained" type="submit" className="button" onClick={() => {
+                setLoading(true);
+           
+              }}>
             {loading ? (
+            
               <Spinner
                 as="span"
                 animation="border"
                 size="sm"
                 role="status"
                 aria-hidden="true"
-              />
+              /> 
             ) : (
               "Update establishment..."
             )}
@@ -147,44 +142,27 @@ const EditEstablishment = (props) => {
 
       <form onSubmit={handleSubmit(removeEstablishment)}>
         <Button className="remove mb-5 button" type="submit">
-          Remove props
+          Remove establishment
         </Button>
       </form>
 
       <style global jsx>
         {`
-          .create-props input,
+          .create-establishment input,
           textarea {
             width: 100%;
             margin-top: 0.1rem;
             margin-bottom: 2rem;
           }
-          .props-images {
-            border-bottom: 1px solid rgb(221, 221, 221);
-            display: flex;
-            flex-direction: column;
-          }
-
-          .MuiSvgIcon-root {
-            opacity: 1;
-          }
-
-          .images img {
-            height: 306px;
-          }
-
-          .create-props textarea {
+          .create-establishment textarea {
             height: 200px;
           }
-
-          .create-props button {
+          .create-establishment button {
             width: 150px;
           }
-
           .remove {
             margin-top: 3rem;
-            margin-bottom: 2rem;
-
+            
             transistion: 1s;
             border: 1px solid black;
           }
@@ -192,13 +170,15 @@ const EditEstablishment = (props) => {
             background: red;
             color: white;
           }
-
           .button {
             width: 200px !important;
             margin-bottom: 2rem !important;
             background: #fff !important;
             color: black !important;
             font-size: 11px !important;
+          }
+          .MuiButtonBase-root:hover {
+            background: RGB(66, 87, 194);
           }
         `}
       </style>
