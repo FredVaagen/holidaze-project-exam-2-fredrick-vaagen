@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -12,6 +12,13 @@ const EditEstablishment = (props) => {
   const { register, handleSubmit } = useForm();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  const [state, setState] = useState(props);
+
+  useEffect(() => {
+    setState(props);
+  }, [props]);
+
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
@@ -88,7 +95,7 @@ const EditEstablishment = (props) => {
             <input
               type="number"
               {...register("price")}
-              placeholder={props.price}
+              placeholder={props.price || data.price}
             />
           </div>
           <div>
