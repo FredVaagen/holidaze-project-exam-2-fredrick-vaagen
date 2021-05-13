@@ -20,11 +20,11 @@ import DeleteImage from "./DeleteImage";
 
 <MediaQuery />;
 
-const EditEstablishment = ({ establishment, images, promoteImage }) => {
+const EditEstablishment = (establishment) => {
   const { register, handleSubmit } = useForm();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const isBreakpoint = MediaQuery(1200);
+
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
@@ -79,62 +79,6 @@ const EditEstablishment = ({ establishment, images, promoteImage }) => {
     <Container>
       <h2 className="mt-5 mb-5">Update establishment</h2>
       <ImageUpload {...establishment} />
-
-      <Container className="establishment-images">
-        {isBreakpoint ? (
-          <Row className="mb-3">
-            <Col>
-              <Carousel fade indicators={false}>
-                {images.map((image) => (
-                  <Carousel.Item key={image.id}>
-                    <Image
-                      className="d-block w-100"
-                      src={image.formats.small.url}
-                      alt={image.name}
-                      width="1000"
-                      height="auto"
-                    />
-                  </Carousel.Item>
-                ))}
-
-                <Carousel.Item>
-                  <Image
-                    src={promoteImage.formats.small.url}
-                    alt={establishment.name}
-                    width="1000"
-                    height="auto"
-                  />
-                </Carousel.Item>
-              </Carousel>
-            </Col>
-          </Row>
-        ) : (
-          <Row className="no-gutters">
-            <Col s={4} md={4} lg={4} className="images mb-3 no-gutters">
-              <Image
-                src={promoteImage.formats.small.url}
-                alt={promoteImage.name}
-                width="1000"
-                height="auto"
-              />
-            </Col>
-            <Col className="no-gutters" s={8} md={8} lg={8}>
-              {images.slice(0, 4).map((image) => (
-                <Image
-                  key={image.id}
-                  className="detail-images ml-2 mr-2"
-                  src={image.formats.small.url}
-                  alt={image.name}
-                  width="340"
-                  height="auto"
-                />
-              ))}
-            </Col>
-          </Row>
-        )}
-        <DeleteImage {...images} />
-      </Container>
-
       <div className="create-establishment">
         <form onSubmit={handleSubmit(submitData)}>
           <div>

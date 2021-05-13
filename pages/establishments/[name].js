@@ -237,7 +237,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
             .facilities svg {
               font-size: 22px;
               opacity: 0.7;
-              margin-
+              
           `}
         </style>
       </Container>

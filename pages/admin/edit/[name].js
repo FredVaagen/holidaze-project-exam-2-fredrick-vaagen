@@ -5,7 +5,7 @@ import { BASE_URL } from "../../../constants/api";
 import BackArrow from "../../../components/utility/BackArrow";
 import EditEstablishment from "../../../components/admin/establishment/EditEstablishment";
 
-export default function Establishment({ establishment, images, promoteImage }) {
+export default function Establishment({ establishment }) {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -16,7 +16,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
     <Container>
       <BackArrow />
       <Container>
-        <EditEstablishment {...{establishment, images, promoteImage}} />
+        <EditEstablishment {...establishment} />
       </Container>
     </Container>
   );
