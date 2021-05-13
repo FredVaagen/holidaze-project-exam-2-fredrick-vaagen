@@ -4,12 +4,17 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { parseCookies } from "nookies";
 import Button from "@material-ui/core/Button";
+import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
 import { BASE_URL } from "./../../../constants/api";
 import ImageUpload from "./ImageUpload";
 
 const EditEstablishment = (props) => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+
+  } = useForm();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -121,7 +126,26 @@ const EditEstablishment = (props) => {
               placeholder={props.address}
             />
           </div>
-          <Button type="submit">Update</Button>
+          <Button
+            variant="contained"
+            type="submit"
+            className="button"
+            onClick={() => {
+              setLoading(true);
+         
+            }}>
+            {loading ? (
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+            ) : (
+              "Update"
+            )}
+          </Button>
         </form>
       </div>
 
@@ -155,16 +179,14 @@ const EditEstablishment = (props) => {
             background: red;
             color: white;
           }
-          .MuiButtonBase-root {
+          .button {
             width: 200px !important;
             margin-bottom: 2rem !important;
-            background: RGB(106, 126, 230) !important;
-            color: white !important;
+            background: #fff !important;
+            color: black !important;
             font-size: 11px !important;
           }
-          .MuiButtonBase-root:hover {
-            background: RGB(66, 87, 194);
-          }
+    
         `}
       </style>
     </Container>
