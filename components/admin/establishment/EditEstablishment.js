@@ -7,7 +7,6 @@ import Button from "@material-ui/core/Button";
 import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
 import { BASE_URL } from "./../../../constants/api";
-import ImageUpload from "./ImageUpload";
 
 const EditEstablishment = (props) => {
   const { register, handleSubmit } = useForm();
@@ -40,7 +39,7 @@ const EditEstablishment = (props) => {
       console.log("Success", res);
       if (data.name) {
         router.replace(`/admin/edit/${data.name}`);
-      } else setTimeout(location.reload(), 1500);
+      } else setTimeout(router.reload(), 1500);
     } catch (error) {
       console.log(error);
     }
@@ -70,7 +69,6 @@ const EditEstablishment = (props) => {
   return (
     <Container>
       <h2 className="mt-5 mb-5">Update establishment</h2>
-      <ImageUpload {...props} />
       <div className="create-establishment">
         <form onSubmit={handleSubmit(submitData)}>
           <div>

@@ -67,6 +67,7 @@ function EstablishmentsDesktop({ establishments }) {
             padding: 0;
             margin-0;
             margin-top: 3rem;
+            margin-bottom: 3rem;
            
           }
 
