@@ -19,7 +19,6 @@ const EditEstablishment = (props) => {
     setState(props);
   }, [props]);
 
-
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
     try {
@@ -127,24 +126,8 @@ const EditEstablishment = (props) => {
               placeholder={props.address}
             />
           </div>
-          <Button
-            variant="contained"
-            type="submit"
-            className="button"
-            onClick={() => {
-              setLoading(true);
-            }}>
-            {loading ? (
-              <Spinner
-                as="span"
-                animation="border"
-                size="sm"
-                role="status"
-                aria-hidden="true"
-              />
-            ) : (
-              "Update"
-            )}
+          <Button variant="contained" type="submit" className="button">
+            Update
           </Button>
         </form>
       </div>
