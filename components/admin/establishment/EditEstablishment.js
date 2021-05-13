@@ -13,6 +13,10 @@ import Spinner from "react-bootstrap/Spinner";
 import { BASE_URL } from "./../../../constants/api";
 import ImageUpload from "./ImageUpload";
 import MediaQuery from "../../utility/MediaQuery";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
+import DeleteImage from "./DeleteImage";
 
 <MediaQuery />;
 
@@ -75,6 +79,7 @@ const EditEstablishment = ({ establishment, images, promoteImage }) => {
     <Container>
       <h2 className="mt-5 mb-5">Update establishment</h2>
       <ImageUpload {...establishment} />
+
       <Container className="establishment-images">
         {isBreakpoint ? (
           <Row className="mb-3">
@@ -108,7 +113,7 @@ const EditEstablishment = ({ establishment, images, promoteImage }) => {
             <Col s={4} md={4} lg={4} className="images mb-3 no-gutters">
               <Image
                 src={promoteImage.formats.small.url}
-                alt={establishment.name}
+                alt={promoteImage.name}
                 width="1000"
                 height="auto"
               />
@@ -127,6 +132,7 @@ const EditEstablishment = ({ establishment, images, promoteImage }) => {
             </Col>
           </Row>
         )}
+        <DeleteImage {...images} />
       </Container>
 
       <div className="create-establishment">
@@ -246,6 +252,7 @@ const EditEstablishment = ({ establishment, images, promoteImage }) => {
 
           .remove {
             margin-top: 3rem;
+            margin-bottom: 2rem;
 
             transistion: 1s;
             border: 1px solid black;
@@ -262,6 +269,8 @@ const EditEstablishment = ({ establishment, images, promoteImage }) => {
             color: black !important;
             font-size: 11px !important;
           }
+
+  
         `}
       </style>
     </Container>
