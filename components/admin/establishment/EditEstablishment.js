@@ -1,47 +1,38 @@
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { parseCookies } from "nookies";
 import Button from "@material-ui/core/Button";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Carousel from "react-bootstrap/Carousel";
 import Spinner from "react-bootstrap/Spinner";
 import { BASE_URL } from "./../../../constants/api";
 import ImageUpload from "./ImageUpload";
 import MediaQuery from "../../utility/MediaQuery";
-import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
-import DeleteImage from "./DeleteImage";
 
 <MediaQuery />;
 
-const EditEstablishment = (establishment) => {
+const EditEstablishment = (props) => {
   const { register, handleSubmit } = useForm();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
     try {
       const formDataToSend = {
-        description: data.description || establishment.description,
-        name: data.name || establishment.name,
-        price: data.price || establishment.price,
-        lat: data.lat || establishment.lat,
-        lng: data.lng || establishment.lng,
-        address: data.address || establishment.address,
-        category: data.category || establishment.category,
+        description: data.description || props.description,
+        name: data.name || props.name,
+        price: data.price || props.price,
+        lat: data.lat || props.lat,
+        lng: data.lng || props.lng,
+        address: data.address || props.address,
+        category: data.category || props.category,
       };
 
       const res = await axios({
         method: "PUT",
-        url: `${BASE_URL}/establishments/${establishment.id}`,
+        url: `${BASE_URL}/establishments/${props.id}`,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -57,11 +48,11 @@ const EditEstablishment = (establishment) => {
 
   const removeEstablishment = async (ctx) => {
     const token = parseCookies(ctx).token;
-    if (confirm("Are you sure you want to remove this establishment?")) {
+    if (confirm("Are you sure you want to remove this props?")) {
       try {
         const res = await axios({
           method: "DELETE",
-          url: `${BASE_URL}/establishments/${establishment.id}`,
+          url: `${BASE_URL}/establishments/${props.id}`,
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -77,24 +68,20 @@ const EditEstablishment = (establishment) => {
 
   return (
     <Container>
-      <h2 className="mt-5 mb-5">Update establishment</h2>
-      <ImageUpload {...establishment} />
-      <div className="create-establishment">
+      <h2 className="mt-5 mb-5">Update props</h2>
+      <ImageUpload {...props} />
+      <div className="create-props">
         <form onSubmit={handleSubmit(submitData)}>
           <div>
             <label>Name</label>
-            <input
-              type="text"
-              {...register("name")}
-              placeholder={establishment.name}
-            />
+            <input type="text" {...register("name")} placeholder={props.name} />
           </div>
           <div>
             <label>Description</label>
             <textarea
               type="text"
               {...register("description")}
-              placeholder={establishment.description}
+              placeholder={props.description}
             />
           </div>
           <div>
@@ -102,18 +89,18 @@ const EditEstablishment = (establishment) => {
             <input
               type="number"
               {...register("price")}
-              placeholder={establishment.price}
+              placeholder={props.price}
             />
           </div>
           <div>
             <label>
               Latitude <a>https://www.latlong.net/</a>
             </label>
-            <input {...register("lat")} placeholder={establishment.lat} />
+            <input {...register("lat")} placeholder={props.lat} />
           </div>
           <div>
             <label>Longitude</label>
-            <input {...register("lng")} placeholder={establishment.lng} />
+            <input {...register("lng")} placeholder={props.lng} />
           </div>
 
           <div>
@@ -122,7 +109,7 @@ const EditEstablishment = (establishment) => {
               <label>Category</label>
             </div>
             <select name="category" {...register("category")}>
-              <option>Current: {establishment.category}</option>
+              <option>Current: {props.category}</option>
               <option>hotel</option>
               <option>guesthouse</option>
               <option>bedandbreakfast</option>
@@ -133,7 +120,7 @@ const EditEstablishment = (establishment) => {
             <input
               type="text"
               {...register("address")}
-              placeholder={establishment.address}
+              placeholder={props.address}
             />
           </div>
           <Button
@@ -160,19 +147,19 @@ const EditEstablishment = (establishment) => {
 
       <form onSubmit={handleSubmit(removeEstablishment)}>
         <Button className="remove mb-5 button" type="submit">
-          Remove establishment
+          Remove props
         </Button>
       </form>
 
       <style global jsx>
         {`
-          .create-establishment input,
+          .create-props input,
           textarea {
             width: 100%;
             margin-top: 0.1rem;
             margin-bottom: 2rem;
           }
-          .establishment-images {
+          .props-images {
             border-bottom: 1px solid rgb(221, 221, 221);
             display: flex;
             flex-direction: column;
@@ -186,11 +173,11 @@ const EditEstablishment = (establishment) => {
             height: 306px;
           }
 
-          .create-establishment textarea {
+          .create-props textarea {
             height: 200px;
           }
 
-          .create-establishment button {
+          .create-props button {
             width: 150px;
           }
 
@@ -213,8 +200,6 @@ const EditEstablishment = (establishment) => {
             color: black !important;
             font-size: 11px !important;
           }
-
-  
         `}
       </style>
     </Container>
