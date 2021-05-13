@@ -14,15 +14,13 @@ function contactFeedback() {
         <Head>
           <title>Holidaze - Feedback</title>
         </Head>
-        <h2>Thank you for contacting us {name}.</h2>
-        <p>We will respond to your message as soon as possible!</p>
+        <p>
+          Thank you for contacting us {name}. We will answer you as soon as
+          possible.
+        </p>
+
         <style jsx>
           {`
-            * {
-              font-family: "Roboto", sans-serif;
-              @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap");
-            }
-
             .contact {
               height: 100vh;
               display: flex;
@@ -31,10 +29,9 @@ function contactFeedback() {
               justify-content: center;
             }
 
-            .contact h2,
-            p {
+            .contact p {
               text-align: center;
-              text-transform: uppercase;
+              font-weight: 300;
             }
           `}
         </style>
