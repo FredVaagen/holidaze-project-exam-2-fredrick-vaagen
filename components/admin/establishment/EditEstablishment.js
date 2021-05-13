@@ -31,8 +31,7 @@ const EditEstablishment = (props) => {
         address: data.address || props.address,
         category: data.category || props.category,
       };
-      console.log(formDataToSend);
-
+ 
       const res = await axios({
         method: "PUT",
         url: `${BASE_URL}/establishments/${props.id}`,
@@ -42,10 +41,10 @@ const EditEstablishment = (props) => {
         },
         data: formDataToSend,
       });
-      console.log("Success", res);
+      console.log(props)
       if (data.name) {
         router.replace(`/admin/edit/${data.name}`);
-      } else setTimeout(router.reload(), 1500);
+      }
     } catch (error) {
       console.log(error);
     }
