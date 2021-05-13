@@ -40,7 +40,7 @@ const EditEstablishment = (props) => {
       console.log("Success", res);
       if (data.name) {
         router.replace(`/admin/edit/${data.name}`);
-      } else router.reload();
+      } else setTimeout(location.reload(), 1500);
     } catch (error) {
       console.log(error);
     }

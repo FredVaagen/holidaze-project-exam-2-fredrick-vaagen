@@ -16,7 +16,7 @@ function Login() {
 
   useEffect(() => {
     if (appContext.isAuthenticated) {
-      router.prefetch("/admin");
+      router.push("/admin");
     }
   }, []);
 
