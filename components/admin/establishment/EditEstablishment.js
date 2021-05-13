@@ -50,7 +50,8 @@ const EditEstablishment = (props) => {
       }
 
       if(data.price) {
-        
+        props.price = data.price
+
       }
     } catch (error) {
       console.log(error);
