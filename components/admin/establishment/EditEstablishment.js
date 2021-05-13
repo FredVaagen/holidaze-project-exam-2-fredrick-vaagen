@@ -133,10 +133,6 @@ const EditEstablishment = (props) => {
             className="button"
             onClick={() => {
               setLoading(true);
-             
-              setTimeout(function () {
-                router.reload();
-              }, 1500) 
             }}>
             {loading ? (
               <Spinner
