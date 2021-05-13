@@ -5,12 +5,12 @@ import { useForm } from "react-hook-form";
 import { parseCookies } from "nookies";
 import Button from "@material-ui/core/Button";
 import Container from "react-bootstrap/Container";
-
-import { BASE_URL } from "../../../constants/api"
+import { BASE_URL } from "./../../../constants/api";
 import ImageUpload from "./ImageUpload";
 
 const EditEstablishment = (props) => {
   const { register, handleSubmit } = useForm();
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const submitData = async (data, ctx) => {
@@ -25,6 +25,7 @@ const EditEstablishment = (props) => {
         address: data.address || props.address,
         category: data.category || props.category,
       };
+      console.log(formDataToSend);
 
       const res = await axios({
         method: "PUT",
@@ -36,12 +37,11 @@ const EditEstablishment = (props) => {
         data: formDataToSend,
       });
       console.log("Success", res);
-     
       if (data.name) {
         router.replace(`/admin/edit/${data.name}`);
       } else router.reload();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -58,13 +58,14 @@ const EditEstablishment = (props) => {
           },
         });
         console.log("Success", res);
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
       router.back();
     } else {
       router.reload();
     }
   };
-
   return (
     <Container>
       <h2 className="mt-5 mb-5">Update establishment</h2>
@@ -104,10 +105,9 @@ const EditEstablishment = (props) => {
           <div>
             <div>
               {" "}
-              <label>Category</label>
+              <label>Category - {props.category}</label>
             </div>
             <select name="category" {...register("category")}>
-              <option>Current: {props.category}</option>
               <option>hotel</option>
               <option>guesthouse</option>
               <option>bedandbreakfast</option>
@@ -121,16 +121,14 @@ const EditEstablishment = (props) => {
               placeholder={props.address}
             />
           </div>
-          <Button variant="contained" type="submit" className="button">
-            Update
-          </Button>
+          <Button type="submit">Update</Button>
         </form>
       </div>
 
       <form onSubmit={handleSubmit(removeEstablishment)}>
-        <Button className="remove mb-5 button" type="submit">
+        <button className="remove" type="submit">
           Remove establishment
-        </Button>
+        </button>
       </form>
 
       <style global jsx>
@@ -149,7 +147,7 @@ const EditEstablishment = (props) => {
           }
           .remove {
             margin-top: 3rem;
-            
+            background: none;
             transistion: 1s;
             border: 1px solid black;
           }
@@ -157,11 +155,11 @@ const EditEstablishment = (props) => {
             background: red;
             color: white;
           }
-          .button {
+          .MuiButtonBase-root {
             width: 200px !important;
             margin-bottom: 2rem !important;
-            background: #fff !important;
-            color: black !important;
+            background: RGB(106, 126, 230) !important;
+            color: white !important;
             font-size: 11px !important;
           }
           .MuiButtonBase-root:hover {
