@@ -30,8 +30,10 @@ function MobileNavigation() {
           </Link>
           <Link href="/contact" passHref>
             <Nav.Link>
-            <span className="mr-2"><ContactSupportIcon /></span>
-             Contact
+              <span className="mr-2">
+                <ContactSupportIcon />
+              </span>
+              Contact
             </Nav.Link>
           </Link>
 
@@ -75,7 +77,7 @@ function MobileNavigation() {
           .appbar {
             text-align: center;
             background: #fff;
-            font-family: 'Roboto', sans-serif;
+            font-family: "Roboto", sans-serif;
             font-weight: 300;
           }
 

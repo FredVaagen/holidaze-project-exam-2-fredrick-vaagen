@@ -146,7 +146,8 @@ function EstablishmentsMobile({ establishments }) {
             }
 
             img {
-              height: 200px;
+              height: 185px;
+            
             }
           }
 
@@ -161,6 +162,8 @@ function EstablishmentsMobile({ establishments }) {
 
             img {
               width: 450px;
+              padding-left: 7px !important;
+              padding-top: 5px !important;
             }
           }
 
