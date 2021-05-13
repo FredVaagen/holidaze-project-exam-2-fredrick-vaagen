@@ -5,15 +5,12 @@ import { useForm } from "react-hook-form";
 import { parseCookies } from "nookies";
 import Button from "@material-ui/core/Button";
 import Container from "react-bootstrap/Container";
-import Spinner from "react-bootstrap/Spinner";
+
 import { BASE_URL } from "../../../constants/api"
 import ImageUpload from "./ImageUpload";
 
-
-
 const EditEstablishment = (props) => {
   const { register, handleSubmit } = useForm();
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const submitData = async (data, ctx) => {
@@ -39,10 +36,13 @@ const EditEstablishment = (props) => {
         data: formDataToSend,
       });
       console.log("Success", res);
+     
       if (data.name) {
         router.replace(`/admin/edit/${data.name}`);
       } else router.reload();
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   const removeEstablishment = async (ctx) => {
@@ -121,22 +121,8 @@ const EditEstablishment = (props) => {
               placeholder={props.address}
             />
           </div>
-          <Button variant="contained" type="submit" className="button" onClick={() => {
-                setLoading(true);
-           
-              }}>
-            {loading ? (
-            
-              <Spinner
-                as="span"
-                animation="border"
-                size="sm"
-                role="status"
-                aria-hidden="true"
-              /> 
-            ) : (
-              "Update establishment..."
-            )}
+          <Button variant="contained" type="submit" className="button">
+            Update
           </Button>
         </form>
       </div>
