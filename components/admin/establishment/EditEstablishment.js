@@ -48,6 +48,10 @@ const EditEstablishment = (props) => {
       if (data.name) {
         router.replace(`/admin/edit/${data.name}`);
       }
+
+      if(data.price) {
+        
+      }
     } catch (error) {
       console.log(error);
     }
