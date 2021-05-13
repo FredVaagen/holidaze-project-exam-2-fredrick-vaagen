@@ -10,11 +10,7 @@ import { BASE_URL } from "./../../../constants/api";
 import ImageUpload from "./ImageUpload";
 
 const EditEstablishment = (props) => {
-  const {
-    register,
-    handleSubmit,
-
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -132,7 +128,6 @@ const EditEstablishment = (props) => {
             className="button"
             onClick={() => {
               setLoading(true);
-         
             }}>
             {loading ? (
               <Spinner
@@ -186,7 +181,6 @@ const EditEstablishment = (props) => {
             color: black !important;
             font-size: 11px !important;
           }
-    
         `}
       </style>
     </Container>
