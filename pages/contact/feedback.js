@@ -19,8 +19,11 @@ function contactFeedback() {
           possible.
         </p>
 
-        <style jsx>
+        <style global jsx>
           {`
+            .MuiSvgIcon-root  {
+              opacity: 1 !important;
+            }
             .contact {
               height: 100vh;
               display: flex;

@@ -46,11 +46,12 @@ const ImageUpload = (props) => {
             <input hidden type="text" {...register("name")} />
           </div>
           <div>
-            <label>Upload detail images  (4 images are recommended)</label>
+            <label>Upload detail images  (Four images are recommended).</label>
             <input type="file" multiple className="input-file" {...register("file")} />
           </div>
           <Button variant="contained" type="submit" className="button" onClick={() => {
                 setLoading(true);
+               
               }}>
             {loading ? (
             
@@ -63,7 +64,7 @@ const ImageUpload = (props) => {
               /> 
             ) : (
               "Upload"
-            )}
+            )} 
           </Button>
         </form>
       </div>

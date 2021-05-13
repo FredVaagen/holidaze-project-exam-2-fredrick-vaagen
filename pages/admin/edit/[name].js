@@ -16,7 +16,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
     <Container>
       <BackArrow />
       <Container>
-        <EditEstablishment {...establishment} />
+        <EditEstablishment {...{establishment, images, promoteImage}} />
       </Container>
     </Container>
   );

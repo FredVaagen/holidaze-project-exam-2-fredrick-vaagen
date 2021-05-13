@@ -1,35 +1,43 @@
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { parseCookies } from "nookies";
 import Button from "@material-ui/core/Button";
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Carousel from "react-bootstrap/Carousel";
 import Spinner from "react-bootstrap/Spinner";
 import { BASE_URL } from "./../../../constants/api";
 import ImageUpload from "./ImageUpload";
+import MediaQuery from "../../utility/MediaQuery";
 
-const EditEstablishment = (props) => {
+<MediaQuery />;
+
+const EditEstablishment = ({ establishment, images, promoteImage }) => {
   const { register, handleSubmit } = useForm();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const isBreakpoint = MediaQuery(1200);
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
     try {
       const formDataToSend = {
-        description: data.description || props.description,
-        name: data.name || props.name,
-        price: data.price || props.price,
-        lat: data.lat || props.lat,
-        lng: data.lng || props.lng,
-        address: data.address || props.address,
-        category: data.category || props.category,
+        description: data.description || establishment.description,
+        name: data.name || establishment.name,
+        price: data.price || establishment.price,
+        lat: data.lat || establishment.lat,
+        lng: data.lng || establishment.lng,
+        address: data.address || establishment.address,
+        category: data.category || establishment.category,
       };
 
       const res = await axios({
         method: "PUT",
-        url: `${BASE_URL}/establishments/${props.id}`,
+        url: `${BASE_URL}/establishments/${establishment.id}`,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -49,7 +57,7 @@ const EditEstablishment = (props) => {
       try {
         const res = await axios({
           method: "DELETE",
-          url: `${BASE_URL}/establishments/${props.id}`,
+          url: `${BASE_URL}/establishments/${establishment.id}`,
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -66,19 +74,77 @@ const EditEstablishment = (props) => {
   return (
     <Container>
       <h2 className="mt-5 mb-5">Update establishment</h2>
-      <ImageUpload {...props} />
+      <ImageUpload {...establishment} />
+      <Container className="establishment-images">
+        {isBreakpoint ? (
+          <Row className="mb-3">
+            <Col>
+              <Carousel fade indicators={false}>
+                {images.map((image) => (
+                  <Carousel.Item key={image.id}>
+                    <Image
+                      className="d-block w-100"
+                      src={image.formats.small.url}
+                      alt={image.name}
+                      width="1000"
+                      height="auto"
+                    />
+                  </Carousel.Item>
+                ))}
+
+                <Carousel.Item>
+                  <Image
+                    src={promoteImage.formats.small.url}
+                    alt={establishment.name}
+                    width="1000"
+                    height="auto"
+                  />
+                </Carousel.Item>
+              </Carousel>
+            </Col>
+          </Row>
+        ) : (
+          <Row className="no-gutters">
+            <Col s={4} md={4} lg={4} className="images mb-3 no-gutters">
+              <Image
+                src={promoteImage.formats.small.url}
+                alt={establishment.name}
+                width="1000"
+                height="auto"
+              />
+            </Col>
+            <Col className="no-gutters" s={8} md={8} lg={8}>
+              {images.slice(0, 4).map((image) => (
+                <Image
+                  key={image.id}
+                  className="detail-images ml-2 mr-2"
+                  src={image.formats.small.url}
+                  alt={image.name}
+                  width="340"
+                  height="auto"
+                />
+              ))}
+            </Col>
+          </Row>
+        )}
+      </Container>
+
       <div className="create-establishment">
         <form onSubmit={handleSubmit(submitData)}>
           <div>
             <label>Name</label>
-            <input type="text" {...register("name")} placeholder={props.name} />
+            <input
+              type="text"
+              {...register("name")}
+              placeholder={establishment.name}
+            />
           </div>
           <div>
             <label>Description</label>
             <textarea
               type="text"
               {...register("description")}
-              placeholder={props.description}
+              placeholder={establishment.description}
             />
           </div>
           <div>
@@ -86,26 +152,27 @@ const EditEstablishment = (props) => {
             <input
               type="number"
               {...register("price")}
-              placeholder={props.price}
+              placeholder={establishment.price}
             />
           </div>
           <div>
             <label>
               Latitude <a>https://www.latlong.net/</a>
             </label>
-            <input {...register("lat")} placeholder={props.lat} />
+            <input {...register("lat")} placeholder={establishment.lat} />
           </div>
           <div>
             <label>Longitude</label>
-            <input {...register("lng")} placeholder={props.lng} />
+            <input {...register("lng")} placeholder={establishment.lng} />
           </div>
+
           <div>
             <div>
               {" "}
               <label>Category</label>
             </div>
             <select name="category" {...register("category")}>
-              <option>Current: {props.category}</option>
+              <option>Current: {establishment.category}</option>
               <option>hotel</option>
               <option>guesthouse</option>
               <option>bedandbreakfast</option>
@@ -116,22 +183,24 @@ const EditEstablishment = (props) => {
             <input
               type="text"
               {...register("address")}
-              placeholder={props.address}
+              placeholder={establishment.address}
             />
           </div>
-          <Button variant="contained" type="submit" className="button" onClick={() => {
-                setLoading(true);
-           
-              }}>
+          <Button
+            variant="contained"
+            type="submit"
+            className="button"
+            onClick={() => {
+              setLoading(true);
+            }}>
             {loading ? (
-            
               <Spinner
                 as="span"
                 animation="border"
                 size="sm"
                 role="status"
                 aria-hidden="true"
-              /> 
+              />
             ) : (
               "Update establishment..."
             )}
@@ -153,6 +222,19 @@ const EditEstablishment = (props) => {
             margin-top: 0.1rem;
             margin-bottom: 2rem;
           }
+          .establishment-images {
+            border-bottom: 1px solid rgb(221, 221, 221);
+            display: flex;
+            flex-direction: column;
+          }
+
+          .MuiSvgIcon-root {
+            opacity: 1;
+          }
+
+          .images img {
+            height: 306px;
+          }
 
           .create-establishment textarea {
             height: 200px;
@@ -164,7 +246,7 @@ const EditEstablishment = (props) => {
 
           .remove {
             margin-top: 3rem;
-            
+
             transistion: 1s;
             border: 1px solid black;
           }
@@ -172,16 +254,13 @@ const EditEstablishment = (props) => {
             background: red;
             color: white;
           }
+
           .button {
             width: 200px !important;
             margin-bottom: 2rem !important;
             background: #fff !important;
             color: black !important;
             font-size: 11px !important;
-          }
-
-          .MuiButtonBase-root:hover {
-            background: RGB(66, 87, 194);
           }
         `}
       </style>
