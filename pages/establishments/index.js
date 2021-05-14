@@ -33,7 +33,7 @@ export default function EstablishmentsPage({ establishments }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const resAscName = await fetch(`${BASE_URL}/establishments?_sort=name:asc`);
   const resDescName = await fetch(`${BASE_URL}/establishments?_sort=name:desc`);
   const resAscPrice = await fetch(`${BASE_URL}/establishments?_sort=price:asc`);
