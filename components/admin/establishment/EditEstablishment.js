@@ -11,8 +11,6 @@ const EditEstablishment = (props) => {
   const { register, handleSubmit } = useForm();
   const router = useRouter();
 
-  const [theData, setTheData] = React.useState(props);
-
   const refreshData = () => {
     router.replace(router.asPath);
   };
@@ -44,9 +42,6 @@ const EditEstablishment = (props) => {
         refreshData();
       }
 
-      if (data.name) {
-        router.replace(`/admin/edit/${data.name}`);
-      }
     } catch (error) {
       console.log(error);
     }
