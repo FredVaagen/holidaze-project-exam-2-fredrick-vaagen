@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { parseCookies } from "nookies";
 import Button from "@material-ui/core/Button";
-import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
 import { BASE_URL } from "./../../../constants/api";
 
@@ -13,11 +12,8 @@ const EditEstablishment = (props) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const [state, setState] = useState(props);
+  const [price, setPrice] = useState(props.price);
 
-  useEffect(() => {
-    setState(props);
-  }, [props]);
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
@@ -41,22 +37,17 @@ const EditEstablishment = (props) => {
         },
         data: formDataToSend,
       });
-      console.log(props)
-      if (res) {
-        router.reload()
-      } 
       if (data.name) {
         router.replace(`/admin/edit/${data.name}`);
-      }
-
-      if(data.price) {
-        props.price = data.price
-
+      } if (res) {
+       setTimeout(router.reload(), 1100)
+       setPrice(data.price)
       }
     } catch (error) {
       console.log(error);
     }
   };
+
 
   const removeEstablishment = async (ctx) => {
     const token = parseCookies(ctx).token;
@@ -85,7 +76,7 @@ const EditEstablishment = (props) => {
       <div className="create-establishment">
         <form onSubmit={handleSubmit(submitData)}>
           <div>
-            <label>Name</label>
+            <label>Name - {props.name}</label>
             <input type="text" {...register("name")} placeholder={props.name} />
           </div>
           <div>
@@ -97,21 +88,22 @@ const EditEstablishment = (props) => {
             />
           </div>
           <div>
-            <label>Price per night</label>
+            <label>Price per night - {price}</label>
             <input
               type="number"
               {...register("price")}
-              placeholder={props.price}
+              placeholder={price}
             />
           </div>
           <div>
+            <div className="mb-3">Find  longtide and latitude - <a>https://www.latlong.net/</a></div>
             <label>
-              Latitude <a>https://www.latlong.net/</a>
+              Latitude - {props.lat}
             </label>
             <input {...register("lat")} placeholder={props.lat} />
           </div>
           <div>
-            <label>Longitude</label>
+            <label>Longitude - {props.lng}</label>
             <input {...register("lng")} placeholder={props.lng} />
           </div>
           <div>
@@ -126,7 +118,7 @@ const EditEstablishment = (props) => {
             </select>
           </div>
           <div>
-            <label>Address</label>
+            <label className="mt-3">Address - {props.address}</label>
             <input
               type="text"
               {...register("address")}

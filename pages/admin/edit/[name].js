@@ -6,8 +6,6 @@ import BackArrow from "../../../components/utility/BackArrow";
 import EditEstablishment from "../../../components/admin/establishment/EditEstablishment";
 
 export default function Establishment({ establishment}) {
-  const router = useRouter();
-
   return (
     <Container>
       <BackArrow />
