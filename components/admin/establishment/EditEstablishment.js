@@ -12,9 +12,6 @@ const EditEstablishment = (props) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const [price, setPrice] = useState(props.price);
-  const [name, setName] = useState(props.name);
-  
   const refreshData = () => {
     router.replace(router.asPath);
   }
@@ -41,14 +38,12 @@ const EditEstablishment = (props) => {
         },
         data: formDataToSend,
       });
-      if (name) {
-        router.replace(`/admin/edit/${data.name}`);
-        setName(data.name)
-      } if (res) {
-       setPrice(data.price)
+      
+      if (res) {
        refreshData();
       }
-    } catch (error) {
+    } 
+    catch (error) {
       console.log(error);
     }
   };
@@ -81,8 +76,8 @@ const EditEstablishment = (props) => {
       <div className="create-establishment">
         <form onSubmit={handleSubmit(submitData)}>
           <div>
-            <label>Name - {name}</label>
-            <input type="text" {...register("name")} placeholder={name} />
+            <label>Name</label>
+            <input type="text" {...register("name")} placeholder={props.name} />
           </div>
           <div>
             <label>Description</label>
@@ -93,11 +88,11 @@ const EditEstablishment = (props) => {
             />
           </div>
           <div>
-            <label>Price per night - {price}</label>
+            <label>Price per night</label>
             <input
               type="number"
               {...register("price")}
-              placeholder={price}
+              placeholder={props.price}
             />
           </div>
           <div>
