@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -11,9 +11,11 @@ const EditEstablishment = (props) => {
   const { register, handleSubmit } = useForm();
   const router = useRouter();
 
+  const [theData, setTheData] = React.useState(props);
+
   const refreshData = () => {
     router.replace(router.asPath);
-  }
+  };
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
@@ -27,7 +29,7 @@ const EditEstablishment = (props) => {
         address: data.address || props.address,
         category: data.category || props.category,
       };
- 
+
       const res = await axios({
         method: "PUT",
         url: `${BASE_URL}/establishments/${props.id}`,
@@ -37,16 +39,18 @@ const EditEstablishment = (props) => {
         },
         data: formDataToSend,
       });
-      
+
       if (res) {
-       refreshData();
+        refreshData();
       }
-    } 
-    catch (error) {
+
+      if (data.name) {
+        router.replace(`/admin/edit/${data.name}`);
+      }
+    } catch (error) {
       console.log(error);
     }
   };
-
 
   const removeEstablishment = async (ctx) => {
     const token = parseCookies(ctx).token;
@@ -95,10 +99,10 @@ const EditEstablishment = (props) => {
             />
           </div>
           <div>
-            <div className="mb-3">Find  longtide and latitude - <a>https://www.latlong.net/</a></div>
-            <label>
-              Latitude
-            </label>
+            <div className="mb-3">
+              Find longtide and latitude - <a>https://www.latlong.net/</a>
+            </div>
+            <label>Latitude</label>
             <input {...register("lat")} placeholder={props.lat} />
           </div>
           <div>
