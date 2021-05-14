@@ -38,6 +38,10 @@ const EditEstablishment = (props) => {
         data: formDataToSend,
       });
 
+      if (data.name) {
+        router.replace(`/admin/edit/${data.name}`);
+      }
+
       if (res) {
         refreshData();
       }
