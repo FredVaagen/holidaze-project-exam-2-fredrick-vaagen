@@ -13,7 +13,11 @@ const EditEstablishment = (props) => {
   const router = useRouter();
 
   const [price, setPrice] = useState(props.price);
-
+  const [name, setName] = useState(props.name);
+  
+  const refreshData = () => {
+    router.replace(router.asPath);
+  }
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
@@ -37,11 +41,12 @@ const EditEstablishment = (props) => {
         },
         data: formDataToSend,
       });
-      if (data.name) {
+      if (name) {
         router.replace(`/admin/edit/${data.name}`);
+        setName(data.name)
       } if (res) {
-       setTimeout(router.reload(), 1100)
-       setPrice(...data.price)
+       setPrice(data.price)
+       refreshData();
       }
     } catch (error) {
       console.log(error);
@@ -76,8 +81,8 @@ const EditEstablishment = (props) => {
       <div className="create-establishment">
         <form onSubmit={handleSubmit(submitData)}>
           <div>
-            <label>Name - {props.name}</label>
-            <input type="text" {...register("name")} placeholder={props.name} />
+            <label>Name - {name}</label>
+            <input type="text" {...register("name")} placeholder={name} />
           </div>
           <div>
             <label>Description</label>
@@ -167,7 +172,8 @@ const EditEstablishment = (props) => {
             background: #fff !important;
             color: black !important;
             font-size: 11px !important;
-          }
+          }import { useState } from 'react';
+
         `}
       </style>
     </Container>

@@ -1,5 +1,4 @@
 import fetch from "isomorphic-fetch";
-import { useRouter } from "next/router";
 import Container from "react-bootstrap/Container";
 import { BASE_URL } from "../../../constants/api";
 import BackArrow from "../../../components/utility/BackArrow";
