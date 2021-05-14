@@ -42,11 +42,10 @@ export default function EstablishmentsPage({ establishments }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch(`${BASE_URL}/establishments?_sort=price:asc`);
   const establishments = await res.json();
   return {
     props: { establishments },
-    revalidate: 1,
   };
 }

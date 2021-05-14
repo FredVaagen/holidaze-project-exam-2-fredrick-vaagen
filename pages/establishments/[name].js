@@ -19,9 +19,7 @@ import BackArrow from "../../components/utility/BackArrow";
 import MediaQuery from "../../components/utility/MediaQuery";
 import Facilities from "../../components/specific-establishment/Facilities";
 
-
 <MediaQuery />;
-
 
 export default function Establishment({ establishment, images, promoteImage }) {
   const [show, setShow] = useState(false);
@@ -245,7 +243,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
   );
 }
 
-export async function getStaticProps({ params: { name } }) {
+export async function getServerSideProps({ params: { name } }) {
   const res = await fetch(`${BASE_URL}/establishments/?name=${name}`);
   const specificEstablishment = await res.json();
 
@@ -259,7 +257,7 @@ export async function getStaticProps({ params: { name } }) {
   };
 }
 
-export async function getStaticPaths() {
+export async function getServerSidePaths() {
   const res = await fetch(`${BASE_URL}/establishments`);
   const establishments = await res.json();
   return {
