@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,  } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -14,6 +14,9 @@ const EditEstablishment = (props) => {
   const refreshData = () => {
     router.replace(router.asPath);
   };
+
+  const [price, setPrice] = useState(props.price)
+  const [address, setAddress] = useState(props.address)
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
@@ -44,8 +47,9 @@ const EditEstablishment = (props) => {
 
       if (res) {
         refreshData();
+        setPrice(data.price);
+        setAddress(data.address)
       }
-
     } catch (error) {
       console.log(error);
     }
@@ -90,12 +94,12 @@ const EditEstablishment = (props) => {
             />
           </div>
           <div>
-            <label>Price per night</label>
+            <label>Price per night - NOK {price}</label>
             <input
               type="number"
               {...register("price")}
               placeholder={props.price}
-            />
+            /> 
           </div>
           <div>
             <div className="mb-3">
@@ -120,7 +124,7 @@ const EditEstablishment = (props) => {
             </select>
           </div>
           <div>
-            <label className="mt-3">Address - {props.address}</label>
+            <label className="mt-3">Address - {address}</label>
             <input
               type="text"
               {...register("address")}
