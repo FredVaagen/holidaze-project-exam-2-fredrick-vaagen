@@ -33,7 +33,7 @@ export default function ContactForm() {
   });
 
   const [name, setName] = useState(0);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   const onSubmit = async (data) => {
     const requestOptions = {
@@ -44,7 +44,6 @@ export default function ContactForm() {
 
     const response = await fetch([BASE_URL + "/contacts"], requestOptions);
     setShow(true);
-    console.log(data);
     setName(data.firstname);
   };
 
@@ -104,7 +103,7 @@ export default function ContactForm() {
           Submit
         </Button>
       </Form>
-      <Alert variant="warning" show={show}>
+      <Alert variant="primary" show={show}>
         <div className="booking-confirmation-alert">
           Thank you for contacting us {name}.
         </div>
