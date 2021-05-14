@@ -1,9 +1,10 @@
 import fetch from "isomorphic-fetch";
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import { Container, Form, Col, Row } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
 import Button from "@material-ui/core/Button";
 import { BASE_URL } from "../../../constants/api";
 
@@ -17,14 +18,9 @@ function Enquiry(establishment) {
     register,
     formState: { errors },
   } = useForm();
-  
-  const datePickers = document.getElementsByClassName(
-    "react-datepicker__input-container"
-  );
 
-  for (let i = 0; i < datePickers.length; i++) {
-    datePickers[i].childNodes[0].setAttribute("readonly", true);
-  }
+  const [email, setEmail] = useState(0)
+  const [show, setShow] = useState(false);
 
   const establishmentName = establishment.name;
 
@@ -36,11 +32,10 @@ function Enquiry(establishment) {
     };
 
     await fetch([BASE_URL + "/enquiries"], requestOptions);
+    setShow(true);
+    console.log(data);
+    setEmail(data.email);
 
-    router.push({
-      pathname: "/enquiry/feedback",
-      query: { name: establishmentName },
-    });
   };
 
   return (
@@ -139,7 +134,8 @@ function Enquiry(establishment) {
             placeholder="Enter email"
             {...register("email", {
               required: true,
-              pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              pattern:
+                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
             })}
           />
           {errors.email && (
@@ -148,7 +144,10 @@ function Enquiry(establishment) {
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlSelect1">
           <Form.Label>Guests</Form.Label>
-          <Form.Control as="select" name="guests" {...register("guests", {required: true})}>
+          <Form.Control
+            as="select"
+            name="guests"
+            {...register("guests", { required: true })}>
             <option></option>
             <option>1</option>
             <option>2</option>
@@ -158,8 +157,8 @@ function Enquiry(establishment) {
           </Form.Control>
         </Form.Group>
         {errors.guests && (
-            <div className="alert-danger">Please select number of guests</div>
-          )}
+          <div className="alert-danger">Please select number of guests</div>
+        )}
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Your message</Form.Label>
           <Form.Control
@@ -179,7 +178,14 @@ function Enquiry(establishment) {
           value={establishmentName}
           {...register("establishmentName")}
         />
+
       </Form>
+
+      <Alert show={show}>
+          <div className="booking-confirmation-alert">Thank you for booking {establishmentName}.</div>
+          <p className="booking-confirmation-alert">Confirmation sent to {email}</p>
+
+        </Alert>
 
       <style global jsx>
         {`
@@ -197,11 +203,11 @@ function Enquiry(establishment) {
           .form-group input,
           .form-group select {
             border: none;
-            border-bottom: 1px solid rgb(211,211,211, 0.8);
+            border-bottom: 1px solid rgb(211, 211, 211, 0.8);
           }
 
           .form-group textarea {
-            border: 1px solid rgb(211,211,211, 0.8);
+            border: 1px solid rgb(211, 211, 211, 0.8);
           }
 
           .form-label {
@@ -211,7 +217,7 @@ function Enquiry(establishment) {
 
           .react-datepicker__input-container input {
             width: 100%;
-            border-bottom: 1px solid rgb(211,211,211, 0.8);
+            border-bottom: 1px solid rgb(211, 211, 211, 0.8);
             border-top: none;
             border-right: none;
             border-left: none;
@@ -226,13 +232,18 @@ function Enquiry(establishment) {
           }
 
           .button:hover {
-            background:rgb(66, 87, 194);
+            background: rgb(66, 87, 194);
           }
 
           .alert-danger {
             background: none;
             color: red;
             font-size: 12px;
+          }
+
+          .booking-confirmation-alert {
+            font-weight: 300;
+            text-align: center;
           }
         `}
       </style>

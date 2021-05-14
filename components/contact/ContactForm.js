@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
 import Form from "react-bootstrap/Form";
 import Button from "@material-ui/core/Button";
 import { BASE_URL } from "./../../constants/api";
@@ -32,28 +32,20 @@ export default function ContactForm() {
     resolver: yupResolver(schema),
   });
 
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
+  const [name, setName] = useState(0);
+  const [show, setShow] = useState(false);
 
   const onSubmit = async (data) => {
-    setLoading(false);
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     };
 
-    const name = data.firstname;
-
-    setLoading(false);
     const response = await fetch([BASE_URL + "/contacts"], requestOptions);
-
-    if (response) {
-      router.push({
-        pathname: "/contact/feedback",
-        query: { name: name },
-      });
-    }
+    setShow(true);
+    console.log(data);
+    setName(data.firstname);
   };
 
   return (
@@ -61,59 +53,62 @@ export default function ContactForm() {
       <BackArrow />
       <h1 className="mt-5 mb-5">Contact us</h1>
       <Form noValidate onSubmit={handleSubmit(onSubmit)}>
-        <fieldset disabled={loading}>
-          <Form.Group>
-            <Form.Label>First name</Form.Label>
-            <Form.Control {...register("firstname")} placeholder="First name" />
-            {errors.firstname && (
-              <div className="alert-danger">{errors.firstname.message}</div>
-            )}
-          </Form.Group>
+        <Form.Group>
+          <Form.Label>First name</Form.Label>
+          <Form.Control {...register("firstname")} placeholder="First name" />
+          {errors.firstname && (
+            <div className="alert-danger">{errors.firstname.message}</div>
+          )}
+        </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Last name</Form.Label>
-            <Form.Control {...register("lastname")} placeholder="Last name" />
-            {errors.lastname && (
-              <div className="alert-danger">{errors.lastname.message}</div>
-            )}
-          </Form.Group>
+        <Form.Group>
+          <Form.Label>Last name</Form.Label>
+          <Form.Control {...register("lastname")} placeholder="Last name" />
+          {errors.lastname && (
+            <div className="alert-danger">{errors.lastname.message}</div>
+          )}
+        </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              {...register("email")}
-              placeholder="Email address"
-            />
-            {errors.email && (
-              <div className="alert-danger">{errors.email.message}</div>
-            )}
-          </Form.Group>
+        <Form.Group>
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            {...register("email")}
+            placeholder="Email address"
+          />
+          {errors.email && (
+            <div className="alert-danger">{errors.email.message}</div>
+          )}
+        </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Subject</Form.Label>
-            <Form.Control {...register("subject")} placeholder="Subject" />
-            {errors.subject && (
-              <div className="alert-danger">{errors.subject.message}</div>
-            )}
-          </Form.Group>
+        <Form.Group>
+          <Form.Label>Subject</Form.Label>
+          <Form.Control {...register("subject")} placeholder="Subject" />
+          {errors.subject && (
+            <div className="alert-danger">{errors.subject.message}</div>
+          )}
+        </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Message</Form.Label>
-            <Form.Control
-              as="textarea"
-              placeholder="Your message"
-              {...register("message")}
-            />
-            {errors.message && (
-              <div className="alert-danger">{errors.message.message}</div>
-            )}
-          </Form.Group>
-          <Button variant="contained" className="button" type="submit" >
-            Submit
-          </Button>
-        </fieldset>
+        <Form.Group>
+          <Form.Label>Message</Form.Label>
+          <Form.Control
+            as="textarea"
+            placeholder="Your message"
+            {...register("message")}
+          />
+          {errors.message && (
+            <div className="alert-danger">{errors.message.message}</div>
+          )}
+        </Form.Group>
+        <Button variant="contained" className="button" type="submit">
+          Submit
+        </Button>
       </Form>
+      <Alert variant="warning" show={show}>
+        <div className="booking-confirmation-alert">
+          Thank you for contacting us {name}.
+        </div>
+      </Alert>
       <style global jsx>
         {`
           .main {
@@ -137,11 +132,11 @@ export default function ContactForm() {
           .form-group input,
           .form-group select {
             border: none;
-            border-bottom: 1px solid rgb(211,211,211, 0.8);
+            border-bottom: 1px solid rgb(211, 211, 211, 0.8);
           }
 
           .form-group textarea {
-            border: 1px solid rgb(211,211,211, 0.8);
+            border: 1px solid rgb(211, 211, 211, 0.8);
             padding: 10px;
           }
 
@@ -168,6 +163,10 @@ export default function ContactForm() {
           .form-label {
             font-size: 14px;
             font-weight: 300;
+          }
+          .booking-confirmation-alert {
+            font-weight: 300;
+            text-align: center;
           }
         `}
       </style>
