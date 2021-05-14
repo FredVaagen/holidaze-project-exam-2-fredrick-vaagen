@@ -41,7 +41,7 @@ const EditEstablishment = (props) => {
         router.replace(`/admin/edit/${data.name}`);
       } if (res) {
        setTimeout(router.reload(), 1100)
-       setPrice(data.price)
+       setPrice(...data.price)
       }
     } catch (error) {
       console.log(error);
