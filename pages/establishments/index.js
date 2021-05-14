@@ -48,6 +48,6 @@ export async function getServerSideProps() {
 
   return {
     props: { establishments, descName, ascPrice, descPrice },
-    revalidate: 1,
+    
   };
 }
