@@ -9,7 +9,6 @@ import { BASE_URL } from "./../../../constants/api";
 
 const EditEstablishment = (props) => {
   const { register, handleSubmit } = useForm();
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const refreshData = () => {
@@ -98,12 +97,12 @@ const EditEstablishment = (props) => {
           <div>
             <div className="mb-3">Find  longtide and latitude - <a>https://www.latlong.net/</a></div>
             <label>
-              Latitude - {props.lat}
+              Latitude
             </label>
             <input {...register("lat")} placeholder={props.lat} />
           </div>
           <div>
-            <label>Longitude - {props.lng}</label>
+            <label>Longitude</label>
             <input {...register("lng")} placeholder={props.lng} />
           </div>
           <div>
