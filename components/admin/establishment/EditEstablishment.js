@@ -6,6 +6,9 @@ import { parseCookies } from "nookies";
 import Button from "@material-ui/core/Button";
 import Container from "react-bootstrap/Container";
 import { BASE_URL } from "./../../../constants/api";
+import ImageUpload from "./ImageUpload";
+
+
 
 const EditEstablishment = (props) => {
   const { register, handleSubmit } = useForm();
@@ -79,6 +82,7 @@ const EditEstablishment = (props) => {
   return (
     <Container>
       <h2 className="mt-5 mb-5">Update establishment</h2>
+      <ImageUpload {...props} />
       <div className="create-establishment">
         <form onSubmit={handleSubmit(submitData)}>
           <div>
@@ -151,6 +155,10 @@ const EditEstablishment = (props) => {
             margin-top: 0.1rem;
             margin-bottom: 2rem;
           }
+          .MuiSvgIcon-root {
+            opacity: 1;
+          }
+
           .create-establishment textarea {
             height: 200px;
           }
@@ -159,9 +167,11 @@ const EditEstablishment = (props) => {
           }
           .remove {
             margin-top: 3rem;
+            margin-bottom: 3rem;
             background: none;
             transistion: 1s;
             border: 1px solid black;
+            
           }
           .remove:hover {
             background: red;
@@ -174,6 +184,7 @@ const EditEstablishment = (props) => {
             color: black !important;
             font-size: 11px !important;
           }import { useState } from 'react';
+import ImageUpload from './ImageUpload';
 
         `}
       </style>

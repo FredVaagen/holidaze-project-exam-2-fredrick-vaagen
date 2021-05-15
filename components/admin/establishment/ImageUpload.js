@@ -23,6 +23,11 @@ const ImageUpload = (props) => {
     formData.append("files", data.file[2]);
     formData.append("files", data.file[3]);
     formData.append("files", data.file[4]);
+    formData.append("files", data.file[5]);
+    formData.append("files", data.file[6]);
+    formData.append("files", data.file[7]);
+    formData.append("files", data.file[8]);
+    formData.append("files", data.file[9]);
     formData.append("ref", "establishments"); //name of content type
     formData.append("refId", id); //id of content type
     formData.append("field", "images");
@@ -46,7 +51,7 @@ const ImageUpload = (props) => {
             <input hidden type="text" {...register("name")} />
           </div>
           <div>
-            <label>Upload detail images (Four images are recommended).</label>
+            <label>Upload more images (Max 10 images each upload)</label>
             <input
               type="file"
               multiple

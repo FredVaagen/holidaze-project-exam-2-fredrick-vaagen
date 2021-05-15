@@ -7,6 +7,7 @@ import { parseCookies } from "nookies";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
+import Spinner from "react-bootstrap/Spinner";
 import Button from "@material-ui/core/Button";
 import { BASE_URL } from "../../../constants/api";
 
@@ -83,15 +84,9 @@ function CreateEstablishment() {
         data: formData,
       });
       console.log("Success", res);
-    } catch (error) {
-      console.log(error);
-      if (error) {
-        setLoading(false);
-      }
-    }
+    } catch (error) {}
     setShowSubmitButton(false);
     setShow(true);
-    setLoading(true);
   };
 
   return (
