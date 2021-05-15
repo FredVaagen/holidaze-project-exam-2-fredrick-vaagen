@@ -1,16 +1,13 @@
 import Link from "next/link";
 import { parseCookies } from "nookies";
-
 // LAYOUT
 import Tab from "react-bootstrap/Tab";
 import ListGroup from "react-bootstrap/ListGroup";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
 // ICONS
 import EditIcon from "@material-ui/icons/Edit";
-
 // MY COMPONENTS
 import { BASE_URL } from "../../constants/api";
 import CreateEstablishment from "../../components/admin/establishment/CreateEstablishment";

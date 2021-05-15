@@ -40,7 +40,6 @@ const ImageUpload = (props) => {
       data: formData,
     });
     console.log("Success", res);
-    setTimeout(router.reload(), 1500);
     router.reload();
   };
   return (
@@ -62,9 +61,11 @@ const ImageUpload = (props) => {
           <Button
             variant="contained"
             type="submit"
-            className="button"
+            className="button mt-3"
             onClick={() => {
-              setLoading(true);
+              if (isValid) {
+                setLoading(true);
+              }
             }}>
             {loading ? (
               <Spinner

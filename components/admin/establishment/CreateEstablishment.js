@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { useRouter } from "next/router";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 import { parseCookies } from "nookies";
 import Container from "react-bootstrap/Container";
@@ -15,11 +14,12 @@ function CreateEstablishment() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm();
-  const router = useRouter();
+
   const [showSubmitButton, setShowSubmitButton] = useState(true);
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
@@ -83,8 +83,8 @@ function CreateEstablishment() {
         url: `${BASE_URL}/upload`,
         data: formData,
       });
-      console.log("Success", res);
     } catch (error) {}
+
     setShowSubmitButton(false);
     setShow(true);
   };
@@ -94,6 +94,7 @@ function CreateEstablishment() {
       <div className="create-establishment mt-5 mb-5">
         <Form
           noValidate
+          isValid={true}
           className="create-establishment-form"
           onSubmit={handleSubmit(submitData)}>
           <Form.Group>
@@ -124,17 +125,22 @@ function CreateEstablishment() {
 
           <Form.Group>
             <Form.Label>Category</Form.Label>
-            <Form.Control as="select" name="category" {...register("category")}>
+            <Form.Control
+              as="select"
+              name="category"
+              {...register("category", { required: true })}>
               <option></option>
               <option>hotel</option>
               <option>guesthouse</option>
               <option>bedandbreakfast</option>
             </Form.Control>
+            {errors.category && (
+              <div className="alert-danger">Category is required</div>
+            )}
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Price per night</Form.Label>
-
             <Form.Control
               type="number"
               {...register("price", { required: true })}
@@ -328,8 +334,26 @@ function CreateEstablishment() {
             )}
           </Form.Group>
           {showSubmitButton ? (
-            <Button variant="contained" className="button" type="submit">
-              Submit
+            <Button
+              variant="contained"
+              className="button"
+              type="submit"
+              onClick={() => {
+                if (isValid) {
+                  setLoading(true);
+                }
+              }}>
+              {loading ? (
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+              ) : (
+                "Create"
+              )}
             </Button>
           ) : (
             <></>
@@ -337,7 +361,7 @@ function CreateEstablishment() {
         </Form>
         <Alert show={show}>
           <Link href="/establishments">
-            <div className="created-confirmation">
+            <div variant="contained" className="created-confirmation">
               The establishmentwas created. Click to go to establishments.
             </div>
           </Link>
@@ -395,6 +419,9 @@ function CreateEstablishment() {
             text-align: center;
             box-shadow: 0 1px 3px rgb(41 51 57 / 50%);
             padding: 1rem;
+          }
+          .created-confirmation:hover {
+            cursor: pointer;
           }
           @media only screen and (max-width: 1110px) {
             .facilities {

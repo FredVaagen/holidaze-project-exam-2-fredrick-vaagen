@@ -1,4 +1,4 @@
-import React, { useState,  } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -8,8 +8,6 @@ import Container from "react-bootstrap/Container";
 import { BASE_URL } from "./../../../constants/api";
 import ImageUpload from "./ImageUpload";
 
-
-
 const EditEstablishment = (props) => {
   const { register, handleSubmit } = useForm();
   const router = useRouter();
@@ -18,8 +16,8 @@ const EditEstablishment = (props) => {
     router.replace(router.asPath);
   };
 
-  const [price, setPrice] = useState(props.price)
-  const [address, setAddress] = useState(props.address)
+  const [price, setPrice] = useState(props.price);
+  const [address, setAddress] = useState(props.address);
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
@@ -51,7 +49,7 @@ const EditEstablishment = (props) => {
       if (res) {
         refreshData();
         setPrice(data.price);
-        setAddress(data.address)
+        setAddress(data.address);
       }
     } catch (error) {
       console.log(error);
@@ -103,7 +101,7 @@ const EditEstablishment = (props) => {
               type="number"
               {...register("price")}
               placeholder={props.price}
-            /> 
+            />
           </div>
           <div>
             <div className="mb-3">
@@ -171,7 +169,6 @@ const EditEstablishment = (props) => {
             background: none;
             transistion: 1s;
             border: 1px solid black;
-            
           }
           .remove:hover {
             background: red;
@@ -184,8 +181,6 @@ const EditEstablishment = (props) => {
             color: black !important;
             font-size: 11px !important;
           }
-
-
         `}
       </style>
     </Container>
