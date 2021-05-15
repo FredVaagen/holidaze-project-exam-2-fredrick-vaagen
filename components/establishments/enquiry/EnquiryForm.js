@@ -5,6 +5,7 @@ import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import { Container, Form, Col, Row } from "react-bootstrap";
 import Alert from "react-bootstrap/Alert";
+import Spinner from "react-bootstrap/Spinner";
 import Button from "@material-ui/core/Button";
 import { BASE_URL } from "../../../constants/api";
 import "react-datepicker/dist/react-datepicker.css";
@@ -15,11 +16,13 @@ function Enquiry(establishment) {
     control,
     handleSubmit,
     register,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm();
 
   const [show, setShow] = useState(false);
   const [button, setButton] = useState(true)
+  const [loading, setLoading] = useState(false);
+  const[modal, setModal] = useState(true)
 
   const establishmentName = establishment.name;
 
@@ -38,7 +41,7 @@ function Enquiry(establishment) {
 
   return (
     <Container>
-      <Form className="form" onSubmit={handleSubmit(onSubmit)}>
+       {modal ? (<Form className="form" onSubmit={handleSubmit(onSubmit)}>
         <Row>
           <Form.Group>
             <Form.Label className="ml-3">Check in</Form.Label> <span>*</span>
@@ -175,9 +178,28 @@ function Enquiry(establishment) {
         </Alert>
 
         {button ? (
-          <Button variant="contained" type="submit" className="button">
-            Book {establishmentName}
-          </Button>
+         <Button
+         variant="contained"
+         className="button"
+         type="submit"
+         onClick={() => {
+           if (isValid) {
+             setLoading(true);
+             setModal(false)
+           }
+         }}>
+         {loading ? (
+           <Spinner
+             as="span"
+             animation="border"
+             size="sm"
+             role="status"
+             aria-hidden="true"
+           />
+         ) : (
+           `Book ${establishmentName}`
+         )}
+       </Button>
         ) : (
           <></>
         )}
@@ -186,7 +208,7 @@ function Enquiry(establishment) {
           value={establishmentName}
           {...register("establishmentName")}
         />
-      </Form>
+      </Form>) : (<div>Thank you for booking {establishmentName}</div>)}
 
       <style global jsx>
         {`

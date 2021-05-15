@@ -25,6 +25,7 @@ function SearchBar({ establishments }) {
       <Autocomplete
         className="autocomplete"
         options={establishments.map((option) => option.name)}
+       
         onChange={goToEstablishment}
         renderInput={(params) => (
           <TextField

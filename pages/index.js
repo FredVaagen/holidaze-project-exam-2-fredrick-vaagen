@@ -22,7 +22,6 @@ export default function Home({ establishments }) {
           <HomeMobile />
           <style global jsx>
             {`
-
               .main {
                 background: black;
                 width: 100%;
