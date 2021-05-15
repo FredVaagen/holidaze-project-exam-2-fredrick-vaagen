@@ -17,7 +17,7 @@ import BackArrow from "../../../components/utility/BackArrow";
 import Facilities from "../../../components/specific-establishment/Facilities";
 <MediaQuery />;
 
-export default function Establishment({ establishment, images, promoteImage }) {
+export default function Establishment({ establishment, images, }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -216,7 +216,7 @@ export async function getStaticProps({ params: { name } }) {
     props: {
       establishment: specificEstablishment[0],
       images: specificEstablishment[0].images,
-      promoteImage: specificEstablishment[0].promoteImage,
+   
     },
     revalidate: 1,
   };
