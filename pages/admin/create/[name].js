@@ -203,7 +203,7 @@ export default function Establishment({ establishment, images }) {
   );
 }
 
-export async function getStaticProps({ params: { name } }) {
+export async function getServersideProps({ params: { name } }) {
   const establishment_res = await fetch(
     `${BASE_URL}/establishments/?name=${name}`
   );
@@ -218,7 +218,7 @@ export async function getStaticProps({ params: { name } }) {
   };
 }
 
-export async function getStaticPaths() {
+export async function getServerSidePaths() {
   const establishments_res = await fetch(`${BASE_URL}/establishments`);
   const establishments = await establishments_res.json();
   return {
