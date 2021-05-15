@@ -33,7 +33,8 @@ export default function ContactForm() {
   });
 
   const [name, setName] = useState(0);
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
+  const [showSubmitButton, setShowSubmitButton] = useState(true);
 
   const onSubmit = async (data) => {
     const requestOptions = {
@@ -45,6 +46,7 @@ export default function ContactForm() {
     const response = await fetch([BASE_URL + "/contacts"], requestOptions);
     setShow(true);
     setName(data.firstname);
+    setShowSubmitButton(false);
   };
 
   return (
@@ -99,11 +101,15 @@ export default function ContactForm() {
             <div className="alert-danger">{errors.message.message}</div>
           )}
         </Form.Group>
-        <Button variant="contained" className="button" type="submit">
-          Submit
-        </Button>
+        {showSubmitButton ? (
+          <Button variant="contained" className="button" type="submit">
+            Submit
+          </Button>
+        ) : (
+          <></>
+        )}
       </Form>
-      <Alert variant="primary" show={show}>
+      <Alert show={show}>
         <div className="booking-confirmation-alert">
           Thank you for contacting us {name}.
         </div>
@@ -166,6 +172,8 @@ export default function ContactForm() {
           .booking-confirmation-alert {
             font-weight: 300;
             text-align: center;
+            box-shadow: 0 1px 3px rgb(41 51 57 / 50%);
+            padding: 1rem;
           }
         `}
       </style>

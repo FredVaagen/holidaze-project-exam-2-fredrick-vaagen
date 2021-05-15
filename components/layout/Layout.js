@@ -27,17 +27,17 @@ const Layout = (props) => {
         </>
       )}
       <style global jsx>{`
-      .main {
-        font-family: 'Roboto', sans-serif;
-        margin: 0;
-        padding: 0;
+        .main {
+          font-family: "Roboto", sans-serif;
+          margin: 0;
+          padding: 0;
         }
-        
+
         a {
           color: black;
           text-decoration: none;
         }
-        
+
         a:hover {
           text-decoration: none;
           color: black !important;

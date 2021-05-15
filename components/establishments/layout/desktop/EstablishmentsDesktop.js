@@ -4,19 +4,22 @@ import Image from "next/image";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Carousel from "react-bootstrap/Carousel";
 import Badge from "react-bootstrap/Badge";
 import Button from "@material-ui/core/Button";
 import SortDropdown from "../../sort/SortDropdown";
 import SimpleMap from "../../maps/SimpleMap";
 import AppContext from "../../../../context/AppContext";
 
-function EstablishmentsDesktop({ establishments }) {
+function EstablishmentsDesktop({ establishments}) {
   const { user } = useContext(AppContext);
+
   return (
     <>
       <h1 className="h1">Find a place to stay</h1>
       <SortDropdown />
       {establishments.map((establishment) => (
+      
         <Link
           href="/establishments/[name]"
           as={`/establishments/${establishment.name}`}
@@ -28,18 +31,27 @@ function EstablishmentsDesktop({ establishments }) {
                 md={6}
                 lg={3}
                 className="establishment-specific__image-col">
-                <Image
-                  src={establishment.promoteImage.formats.small.url}
-                  width="400"
-                  height="200"
-                />
+              <Carousel fade indicators={false} interval={null}>
+                  {establishment.images.map((image) => (
+                    <Carousel.Item key={image.id}>
+                      <Image
+                        className="d-block w-100"
+                        src={image.formats.small.url}
+                        alt={image.name}
+                        width="1000"
+                        height="auto"
+                      />
+                    </Carousel.Item>
+                  ))}
+                  </Carousel>
+                
               </Col>
               <Col s={12} md={6} lg={4} className="details">
                 <h3>{establishment.name}</h3>
                 <Badge>{establishment.category}</Badge>
                 <p className="address">{establishment.address}</p>
                 <Button variant="contained" className="button">
-                  NOK {establishment.price} per night || See more
+                  NOK {establishment.price} per night
                 </Button>
                 {user ? (
                   <Link
@@ -133,7 +145,8 @@ function EstablishmentsDesktop({ establishments }) {
             background: #fff !important;
             color: black !important;
             font-size: 11px !important;
-            font-weight: 300;
+            font-weight: 300;import Establishment from './../../../../pages/admin/edit/[name]';
+
           }
 
           .establishment-specific__image-col {

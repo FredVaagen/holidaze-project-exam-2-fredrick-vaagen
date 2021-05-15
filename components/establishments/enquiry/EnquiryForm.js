@@ -7,7 +7,6 @@ import { Container, Form, Col, Row } from "react-bootstrap";
 import Alert from "react-bootstrap/Alert";
 import Button from "@material-ui/core/Button";
 import { BASE_URL } from "../../../constants/api";
-
 import "react-datepicker/dist/react-datepicker.css";
 
 function Enquiry(establishment) {
@@ -19,8 +18,8 @@ function Enquiry(establishment) {
     formState: { errors },
   } = useForm();
 
-  const [email, setEmail] = useState(0)
   const [show, setShow] = useState(false);
+  const [button, setButton] = useState(true)
 
   const establishmentName = establishment.name;
 
@@ -33,14 +32,13 @@ function Enquiry(establishment) {
 
     await fetch([BASE_URL + "/enquiries"], requestOptions);
     setShow(true);
+    setButton(false)
     console.log(data);
-    setEmail(data.email);
-
   };
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form className="form" onSubmit={handleSubmit(onSubmit)}>
         <Row>
           <Form.Group>
             <Form.Label className="ml-3">Check in</Form.Label> <span>*</span>
@@ -170,22 +168,25 @@ function Enquiry(establishment) {
           />
         </Form.Group>
 
-        <Button variant="contained" type="submit" className="button">
-          Reserve
-        </Button>
+        <Alert show={show}>
+          <div className="booking-confirmation-alert">
+            Thank you for booking {establishmentName}.
+          </div>
+        </Alert>
+
+        {button ? (
+          <Button variant="contained" type="submit" className="button">
+            Book {establishmentName}
+          </Button>
+        ) : (
+          <></>
+        )}
         <Form.Control
           hidden
           value={establishmentName}
           {...register("establishmentName")}
         />
-
       </Form>
-
-      <Alert show={show}>
-          <div className="booking-confirmation-alert">Thank you for booking {establishmentName}.</div>
-          <p className="booking-confirmation-alert">Confirmation sent to {email}</p>
-
-        </Alert>
 
       <style global jsx>
         {`
@@ -244,6 +245,8 @@ function Enquiry(establishment) {
           .booking-confirmation-alert {
             font-weight: 300;
             text-align: center;
+            box-shadow: 0 1px 3px rgb(41 51 57 / 50%);
+            padding: 1rem;
           }
         `}
       </style>

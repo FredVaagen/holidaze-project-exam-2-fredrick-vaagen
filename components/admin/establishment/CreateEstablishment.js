@@ -60,7 +60,7 @@ function CreateEstablishment() {
       formData.append("files", data.file[0]);
       formData.append("ref", "establishments"); //name of content type
       formData.append("refId", id); //id of content type
-      formData.append("field", "promoteImage");
+      formData.append("field", "images");
 
       const res = await axios({
         method: "POST",

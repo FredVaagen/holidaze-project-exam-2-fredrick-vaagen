@@ -9,9 +9,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Carousel from "react-bootstrap/Carousel";
-
 import Button from "@material-ui/core/Button";
-
 import SimpleMap from "../../components/establishments/maps/SimpleMap";
 import Enquiry from "../../components/establishments/enquiry/EnquiryForm";
 import { BASE_URL } from "../../constants/api";
@@ -21,7 +19,7 @@ import Facilities from "../../components/specific-establishment/Facilities";
 
 <MediaQuery />;
 
-export default function Establishment({ establishment, images, promoteImage }) {
+export default function Establishment({ establishment, images}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -47,7 +45,7 @@ export default function Establishment({ establishment, images, promoteImage }) {
               <Col>
                 <Carousel fade indicators={false}>
                   {images.map((image) => (
-                    <Carousel.Item key={image.id}>
+                    <Carousel.Item  key={image.id}>
                       <Image
                         className="d-block w-100"
                         src={image.formats.small.url}
@@ -57,40 +55,21 @@ export default function Establishment({ establishment, images, promoteImage }) {
                       />
                     </Carousel.Item>
                   ))}
-
-                  <Carousel.Item>
-                    <Image
-                      src={promoteImage.formats.small.url}
-                      alt={establishment.name}
-                      width="1000"
-                      height="auto"
-                    />
-                  </Carousel.Item>
                 </Carousel>
               </Col>
             </Row>
           ) : (
             <Row className="no-gutters">
-              <Col s={4} md={4} lg={4} className="images mb-3 no-gutters">
+              {images.slice(0, 4).map((image) => (
                 <Image
-                  src={promoteImage.formats.small.url}
-                  alt={establishment.name}
-                  width="1000"
-                  height="auto"
+                  key={image.id}
+                  className="detail-images p-1"
+                  src={image.formats.small.url}
+                  alt={image.name}
+                  width="450"
+                  height="220"
                 />
-              </Col>
-              <Col className="no-gutters" s={8} md={8} lg={8}>
-                {images.slice(0, 4).map((image) => (
-                  <Image
-                    key={image.id}
-                    className="detail-images ml-2 mr-2"
-                    src={image.formats.small.url}
-                    alt={image.name}
-                    width="350"
-                    height="auto"
-                  />
-                ))}
-              </Col>
+              ))}
             </Row>
           )}
         </Container>
@@ -155,17 +134,12 @@ export default function Establishment({ establishment, images, promoteImage }) {
             }
 
             .establishment-images {
-              border-bottom: 1px solid rgb(221, 221, 221);
+              
               display:  flex;
               flex-direction: column;
-              
             }
 
-            .images img {
-              height: 306px;
-              
-            }
-
+  
             .details {
               height: auto;
               border-bottom: 1px solid rgb(221, 221, 221);
@@ -251,9 +225,7 @@ export async function getServerSideProps({ params: { name } }) {
     props: {
       establishment: specificEstablishment[0],
       images: specificEstablishment[0].images,
-      promoteImage: specificEstablishment[0].promoteImage,
     },
-    
   };
 }
 

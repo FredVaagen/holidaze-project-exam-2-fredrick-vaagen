@@ -9,9 +9,12 @@ import EstablishmentsMobile from "../../components/establishments/layout/mobile/
 
 <MediaQuery />;
 
-export default function EstablishmentsPage({ establishments }) {
+
+
+export default function EstablishmentsPage({ establishments}) {
   const isBreakpoint = MediaQuery(991);
   const router = useRouter();
+
 
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -26,7 +29,7 @@ export default function EstablishmentsPage({ establishments }) {
         {isBreakpoint ? (
           <EstablishmentsMobile {...{ establishments }} />
         ) : (
-          <EstablishmentsDesktop {...{ establishments }} />
+          <EstablishmentsDesktop {...{ establishments}} />
         )}
       </Container>
     </Container>
@@ -47,7 +50,7 @@ export async function getStaticProps() {
   const descPrice = await resDescPrice.json();
 
   return {
-    props: { establishments, descName, ascPrice, descPrice },
+    props: { establishments, descName, ascPrice, descPrice},
     revalidate: 1,
   };
 }

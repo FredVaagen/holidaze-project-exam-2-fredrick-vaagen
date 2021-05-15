@@ -4,6 +4,7 @@ import Image from "next/image";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Carousel from "react-bootstrap/Carousel";
 import Button from "@material-ui/core/Button";
 import Badge from "react-bootstrap/Badge";
 import SortDropdown from "../../sort/SortDropdown";
@@ -25,11 +26,19 @@ function EstablishmentsMobile({ establishments }) {
                 md={5}
                 lg={6}
                 className="establishment-specific__image-col">
-                <Image
-                  src={establishment.promoteImage.formats.small.url}
-                  width="250"
-                  height="200"
-                />
+              <Carousel fade indicators={false}>
+                  {establishment.images.map((image) => (
+                    <Carousel.Item key={image.id}>
+                      <Image
+                        className="d-block w-100"
+                        src={image.formats.small.url}
+                        alt={image.name}
+                        width="1000"
+                        height="auto"
+                      />
+                    </Carousel.Item>
+                  ))}
+                  </Carousel>
               </Col>
               <Col s={5} md={5} lg className="details">
                 <h3>{establishment.name}</h3>
@@ -37,7 +46,7 @@ function EstablishmentsMobile({ establishments }) {
                 <p>{establishment.address}</p>
 
                 <Button variant="contained" className="button">
-                  NOK {establishment.price} per night || See more
+                  NOK {establishment.price} per night
                 </Button>
               </Col>
             </Row>

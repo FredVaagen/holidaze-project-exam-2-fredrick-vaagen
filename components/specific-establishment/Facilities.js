@@ -179,7 +179,7 @@ function Facilities(props) {
             height: auto;
             font-size: 11px;
             font-weight: 300;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
           }
 
           .facilities .row {
