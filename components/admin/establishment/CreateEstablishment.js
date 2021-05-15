@@ -1,24 +1,24 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import axios from "axios";
 import { parseCookies } from "nookies";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
-import Spinner from "react-bootstrap/Spinner";
+import Alert from "react-bootstrap/Alert";
 import Button from "@material-ui/core/Button";
 import { BASE_URL } from "../../../constants/api";
-import ImageUpload from "./ImageUpload";
 
-
-function CreateEstablishment(establishments) {
+function CreateEstablishment() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
+  const [showSubmitButton, setShowSubmitButton] = useState(true);
+  const [show, setShow] = useState(false);
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
@@ -46,7 +46,7 @@ function CreateEstablishment(establishments) {
           kitchen: data.kithcen,
         },
       };
-    
+
       const inputValue = await axios({
         url: `${BASE_URL}/establishments`,
         method: "POST",
@@ -85,8 +85,13 @@ function CreateEstablishment(establishments) {
       console.log("Success", res);
     } catch (error) {
       console.log(error);
+      if (error) {
+        setLoading(false);
+      }
     }
-    router.push({ pathname: `/admin/edit/${data.name}` });
+    setShowSubmitButton(false);
+    setShow(true);
+    setLoading(true);
   };
 
   return (
@@ -315,11 +320,10 @@ function CreateEstablishment(establishments) {
           </div>
 
           <Form.Group>
-            <Form.Label>
-              Upload establishment images
-            </Form.Label>
+            <Form.Label>Upload establishment images</Form.Label>
             <Form.Control
-              type="file" multiple
+              type="file"
+              multiple
               {...register("file", { required: true })}
             />
             {errors.file && (
@@ -328,29 +332,21 @@ function CreateEstablishment(establishments) {
               </div>
             )}
           </Form.Group>
-          <Button
-            variant="contained"
-            type="submit"
-            className="button"
-            onClick={() => {
-              setLoading(true);
-              if(errors) {
-                setLoading(false)
-              }
-            }}>
-            {loading ? (
-              <Spinner
-                as="span"
-                animation="border"
-                size="sm"
-                role="status"
-                aria-hidden="true"
-              />
-            ) : (
-              "Next..."
-            )}
-          </Button>
+          {showSubmitButton ? (
+            <Button variant="contained" className="button" type="submit">
+              Submit
+            </Button>
+          ) : (
+            <></>
+          )}
         </Form>
+        <Alert show={show}>
+          <Link href="/establishments">
+            <div className="created-confirmation">
+              The establishmentwas created. Click to go to establishments.
+            </div>
+          </Link>
+        </Alert>
       </div>
 
       <style global jsx>
@@ -363,11 +359,11 @@ function CreateEstablishment(establishments) {
           .form-group input,
           .form-group select {
             border: none;
-            border: 1px solid rgb(211,211,211, 0.8);
+            border: 1px solid rgb(211, 211, 211, 0.8);
           }
 
           .form-group textarea {
-            border: 1px solid rgb(211,211,211, 0.8);
+            border: 1px solid rgb(211, 211, 211, 0.8);
             padding: 10px;
           }
 
@@ -398,6 +394,12 @@ function CreateEstablishment(establishments) {
             justify-content: space-between;
             text-align: center;
             margin-bottom: 3rem;
+          }
+          .created-confirmation {
+            font-weight: 300;
+            text-align: center;
+            box-shadow: 0 1px 3px rgb(41 51 57 / 50%);
+            padding: 1rem;
           }
           @media only screen and (max-width: 1110px) {
             .facilities {

@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 import fetch from "isomorphic-fetch";
-
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -19,12 +18,11 @@ import Facilities from "../../components/specific-establishment/Facilities";
 
 <MediaQuery />;
 
-export default function Establishment({ establishment, images}) {
+export default function Establishment({ establishment, images }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const router = useRouter();
-  const isBreakpoint = MediaQuery(1200);
 
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -40,38 +38,24 @@ export default function Establishment({ establishment, images}) {
         <Container className="establishment-images">
           <h1 className="h1">{establishment.name}</h1>
           <p className="establishment-address">{establishment.address}</p>
-          {isBreakpoint ? (
-            <Row className="mb-3">
-              <Col>
-                <Carousel fade indicators={false}>
-                  {images.map((image) => (
-                    <Carousel.Item  key={image.id}>
-                      <Image
-                        className="d-block w-100"
-                        src={image.formats.small.url}
-                        alt={image.name}
-                        width="1000"
-                        height="auto"
-                      />
-                    </Carousel.Item>
-                  ))}
-                </Carousel>
-              </Col>
-            </Row>
-          ) : (
-            <Row className="no-gutters">
-              {images.slice(0, 4).map((image) => (
-                <Image
-                  key={image.id}
-                  className="detail-images p-1"
-                  src={image.formats.small.url}
-                  alt={image.name}
-                  width="450"
-                  height="220"
-                />
-              ))}
-            </Row>
-          )}
+
+          <Row className="mb-3">
+            <Col>
+              <Carousel fade indicators={false}>
+                {images.map((image) => (
+                  <Carousel.Item key={image.id}>
+                    <Image
+                      className="d-block w-100"
+                      src={image.formats.small.url}
+                      alt={image.name}
+                      width="1000"
+                      height="auto"
+                    />
+                  </Carousel.Item>
+                ))}
+              </Carousel>
+            </Col>
+          </Row>
         </Container>
         <Container className="details-container">
           <Facilities {...establishment} />
@@ -132,13 +116,6 @@ export default function Establishment({ establishment, images}) {
               margin-top: 0.5rem;
               margin-bottom: 2rem;
             }
-
-            .establishment-images {
-              
-              display:  flex;
-              flex-direction: column;
-            }
-
   
             .details {
               height: auto;
@@ -155,10 +132,21 @@ export default function Establishment({ establishment, images}) {
             }
 
             .carousel-item img {
-              max-height: 200px;
-              min-height: 200px;
+              height: 400px;
               width: 100%;
-              border-radius: 5px;
+  
+            }
+
+            @media only screen and (max-width: 800px) {
+              .carousel-item img {
+                height: 300px;
+              }
+            }
+
+            @media only screen and (max-width: 500px) {
+              .carousel-item img {
+                height: 200px;
+              }
             }
 
             .subheading {
@@ -184,6 +172,7 @@ export default function Establishment({ establishment, images}) {
             .map {
               height: 300px;
             }
+
             h3 {
               font-weight: 300;
               text-align: left;
