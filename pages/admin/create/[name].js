@@ -70,14 +70,6 @@ export default function Establishment({ establishment, images, promoteImage }) {
             </Row>
           ) : (
             <Row className="no-gutters">
-              <Col s={4} md={4} lg={4} className="images mb-3 no-gutters">
-                <Image
-                  src={promoteImage.formats.small.url}
-                  alt={establishment.name}
-                  width="1000"
-                  height="auto"
-                />
-              </Col>
               <Col className="no-gutters" s={8} md={8} lg={8}>
                 {images.slice(0, 4).map((image) => (
                   <Image
