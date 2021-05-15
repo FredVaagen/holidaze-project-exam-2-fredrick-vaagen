@@ -86,7 +86,7 @@ function CreateEstablishment(establishments) {
     } catch (error) {
       console.log(error);
     }
-    router.push({ pathname: `/admin/create/${data.name}` });
+    router.push({ pathname: `/admin/edit/${data.name}` });
   };
 
   return (
