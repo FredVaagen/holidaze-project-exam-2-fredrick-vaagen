@@ -183,8 +183,8 @@ const EditEstablishment = (props) => {
             background: #fff !important;
             color: black !important;
             font-size: 11px !important;
-          }import { useState } from 'react';
-import ImageUpload from './ImageUpload';
+          }
+
 
         `}
       </style>
