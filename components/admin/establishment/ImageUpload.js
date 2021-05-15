@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -36,7 +36,7 @@ const ImageUpload = (props) => {
     });
     console.log("Success", res);
     setTimeout(router.reload(), 1500);
-    router.reload(); 
+    router.reload();
   };
   return (
     <Container>
@@ -46,25 +46,32 @@ const ImageUpload = (props) => {
             <input hidden type="text" {...register("name")} />
           </div>
           <div>
-            <label>Upload detail images  (Four images are recommended).</label>
-            <input type="file" multiple className="input-file" {...register("file")} />
+            <label>Upload detail images (Four images are recommended).</label>
+            <input
+              type="file"
+              multiple
+              className="input-file"
+              {...register("file")}
+            />
           </div>
-          <Button variant="contained" type="submit" className="button" onClick={() => {
-                setLoading(true);
-               
-              }}>
+          <Button
+            variant="contained"
+            type="submit"
+            className="button"
+            onClick={() => {
+              setLoading(true);
+            }}>
             {loading ? (
-            
               <Spinner
                 as="span"
                 animation="border"
                 size="sm"
                 role="status"
                 aria-hidden="true"
-              /> 
+              />
             ) : (
               "Upload"
-            )} 
+            )}
           </Button>
         </form>
       </div>
@@ -77,7 +84,6 @@ const ImageUpload = (props) => {
           .fileUpload label {
             font-weight: 300;
           }
-          
 
           .fileUpload input {
             width: 100%;
@@ -90,9 +96,9 @@ const ImageUpload = (props) => {
             background: #fff;
             color: black !important;
             font-size: 11px !important;
-            box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%) !important;
+            box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+              0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%) !important;
           }
-   
         `}
       </style>
     </Container>

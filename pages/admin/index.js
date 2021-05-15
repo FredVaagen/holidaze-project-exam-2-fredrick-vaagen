@@ -62,7 +62,7 @@ const Admin = ({
               <Tab.Pane eventKey="third">
                 <Container className="mt-5">
                   <h2>Create establishment</h2>
-                  <CreateEstablishment />
+                  <CreateEstablishment {...establishments} />
                 </Container>
               </Tab.Pane>
               <Tab.Pane eventKey="fourth">
@@ -72,7 +72,6 @@ const Admin = ({
                       {" "}
                       <h2>Edit a establishment</h2>
                     </Container>
-
                     <Container></Container>
                     {establishments.map((establishment) => (
                       <Container className="mt-3" key={establishment.id}>

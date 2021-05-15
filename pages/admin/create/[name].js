@@ -17,7 +17,7 @@ import BackArrow from "../../../components/utility/BackArrow";
 import Facilities from "../../../components/specific-establishment/Facilities";
 <MediaQuery />;
 
-export default function Establishment({ establishment, images, }) {
+export default function Establishment({ establishment, images }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -33,13 +33,12 @@ export default function Establishment({ establishment, images, }) {
       <BackArrow />
       <Container className="establishment">
         <h1>Preview of {establishment.name}</h1>
-      <Col className="m-0 p-0 mb-5">
-          <h2 className="mt-5">Add additional images</h2>
+        <Col className="m-0 p-0 mb-5">
+          <h2 className="mt-5">Add more images</h2>
           <ImageUpload {...establishment} />
         </Col>
         <Container className="establishment-images">
           <h1>{establishment.name}</h1>
-
           <p className="establishment-address">{establishment.address}</p>
           {isBreakpoint ? (
             <Row>
@@ -131,10 +130,10 @@ export default function Establishment({ establishment, images, }) {
               color: black;
               display: flex;
               flex-direction: column;
-              
             }
 
-            .establishment h1, h2 {
+            .establishment h1,
+            h2 {
               font-size: 26px;
               font-weight: 300;
               margin-bottom: 1px;
@@ -181,8 +180,6 @@ export default function Establishment({ establishment, images, }) {
               font-weight: 200;
             }
 
-     
-
             .MuiButtonBase-root {
               width: 100% !important;
               margin-bottom: 2rem !important;
@@ -216,7 +213,6 @@ export async function getStaticProps({ params: { name } }) {
     props: {
       establishment: specificEstablishment[0],
       images: specificEstablishment[0].images,
-   
     },
     revalidate: 1,
   };

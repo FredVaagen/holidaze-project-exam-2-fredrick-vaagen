@@ -8,8 +8,10 @@ import Form from "react-bootstrap/Form";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "@material-ui/core/Button";
 import { BASE_URL } from "../../../constants/api";
+import ImageUpload from "./ImageUpload";
 
-function CreateEstablishment() {
+
+function CreateEstablishment(establishments) {
   const {
     register,
     handleSubmit,
@@ -44,7 +46,7 @@ function CreateEstablishment() {
           kitchen: data.kithcen,
         },
       };
-
+    
       const inputValue = await axios({
         url: `${BASE_URL}/establishments`,
         method: "POST",
@@ -58,6 +60,16 @@ function CreateEstablishment() {
       const id = inputValue.data.id;
       const formData = new FormData();
       formData.append("files", data.file[0]);
+      formData.append("files", data.file[1]);
+      formData.append("files", data.file[2]);
+      formData.append("files", data.file[3]);
+      formData.append("files", data.file[4]);
+      formData.append("files", data.file[5]);
+      formData.append("files", data.file[6]);
+      formData.append("files", data.file[7]);
+      formData.append("files", data.file[8]);
+      formData.append("files", data.file[9]);
+      formData.append("files", data.file[10]);
       formData.append("ref", "establishments"); //name of content type
       formData.append("refId", id); //id of content type
       formData.append("field", "images");
@@ -304,15 +316,15 @@ function CreateEstablishment() {
 
           <Form.Group>
             <Form.Label>
-              Upload establishment promo/thumbnail image (Maximum of 1)
+              Upload establishment images
             </Form.Label>
             <Form.Control
-              type="file"
+              type="file" multiple
               {...register("file", { required: true })}
             />
             {errors.file && (
               <div className="alert-danger">
-                A main image of the establishment is required
+                Atleast one image of the establishment is required
               </div>
             )}
           </Form.Group>
