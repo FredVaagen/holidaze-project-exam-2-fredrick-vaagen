@@ -22,7 +22,9 @@ function EstablishmentsDesktop({ establishments,nameDesc,priceAsc,priceDesc,sort
         variant="contained"
         className="button sort"
         onClick={() => {
+         
           setSortEstaeblishments(establishments);
+          
         }}>
         Sort by name (a-z)
       </Button>
@@ -30,6 +32,7 @@ function EstablishmentsDesktop({ establishments,nameDesc,priceAsc,priceDesc,sort
         variant="contained"
         className="button sort"
         onClick={() => {
+         
           setSortEstaeblishments(nameDesc);
         }}>
         Sort by name (z-a)
@@ -202,7 +205,12 @@ function EstablishmentsDesktop({ establishments,nameDesc,priceAsc,priceDesc,sort
           }
 
           .sort {
-            margin: 5px;
+            margin: 5px !important;
+          }
+
+          .sort-active {
+            background: black !important;
+            color: white !important;
           }
         `}
       </style>
