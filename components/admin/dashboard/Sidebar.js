@@ -20,23 +20,23 @@ function Sidebar({enquiriesCount, contactMessageCount}) {
       <h2>Dashboard</h2>
       <Nav variant="pills" className="flex-column">
         <Nav.Item>
-          <Nav.Link eventKey="first">
+          <Nav.Link href="#/enquiries" eventKey="first">
             <HotelIcon /> {enquiryTabTitle}
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="second">
+          <Nav.Link href="#/contact" eventKey="second">
             {" "}
             <MailOutlineIcon /> {contactTabTitle}
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="third">
+          <Nav.Link href="#/create-establishment" eventKey="third">
             <AddIcon /> Create
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="fourth">
+          <Nav.Link href="#/edit-establishment" eventKey="fourth">
             <EditIcon /> Edit
           </Nav.Link>
         </Nav.Item>
