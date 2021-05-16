@@ -7,13 +7,11 @@ import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
 import Button from "@material-ui/core/Button";
 import Badge from "react-bootstrap/Badge";
-import SortDropdown from "../../sort/SortDropdown";
 
 function EstablishmentsMobile({ establishments }) {
   return (
     <>
       <h1>Find a place to stay</h1>
-      <SortDropdown />
       {establishments.map((establishment) => (
         <Link
           href="/establishments/[name]"

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Col from "react-bootstrap/Col";
@@ -7,18 +7,75 @@ import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
 import Badge from "react-bootstrap/Badge";
 import Button from "@material-ui/core/Button";
-import SortDropdown from "../../sort/SortDropdown";
 import SimpleMap from "../../maps/SimpleMap";
 import AppContext from "../../../../context/AppContext";
 
-function EstablishmentsDesktop({ establishments }) {
+function EstablishmentsDesktop({ establishments,nameDesc,priceAsc,priceDesc,sortByHotel,sortByGuesthouse,sortByBedAndBreakfast }) {
   const { user } = useContext(AppContext);
+  const [sortEstablishments, setSortEstaeblishments] = useState(establishments);
 
   return (
     <>
       <h1>Find a place to stay</h1>
-      <SortDropdown />
-      {establishments.map((establishment) => (
+      <Container>
+      <Button
+        variant="contained"
+        className="button sort"
+        onClick={() => {
+          setSortEstaeblishments(establishments);
+        }}>
+        Sort by name (a-z)
+      </Button>
+      <Button
+        variant="contained"
+        className="button sort"
+        onClick={() => {
+          setSortEstaeblishments(nameDesc);
+        }}>
+        Sort by name (z-a)
+      </Button>
+      <Button
+        variant="contained"
+        className="button sort"
+        onClick={() => {
+          setSortEstaeblishments(priceAsc);
+        }}>
+        Sort by price (High-Low)
+      </Button>
+      <Button
+        variant="contained"
+        className="button sort"
+        onClick={() => {
+          setSortEstaeblishments(priceDesc);
+        }}>
+         Sort by price (Low-High)
+      </Button>
+      <Button
+        variant="contained"
+        className="button sort"
+        onClick={() => {
+          setSortEstaeblishments(sortByHotel);
+        }}>
+         Sort by Hotels
+      </Button>
+      <Button
+        variant="contained"
+        className="button sort"
+        onClick={() => {
+          setSortEstaeblishments(sortByGuesthouse);
+        }}>
+         Sort by Guesthouses
+      </Button>
+      <Button
+        variant="contained"
+        className="button sort"
+        onClick={() => {
+          setSortEstaeblishments(sortByBedAndBreakfast);
+        }}>
+         Sort by Bed and Breakfasts
+      </Button>
+      </Container>
+      {sortEstablishments.map((establishment) => (
         <Link
           href="/establishments/[name]"
           as={`/establishments/${establishment.name}`}
@@ -143,6 +200,10 @@ function EstablishmentsDesktop({ establishments }) {
           }
           .searchbar {
             max-width: 100%;
+          }
+
+          .sort {
+            margin: 5px;
           }
         `}
       </style>
