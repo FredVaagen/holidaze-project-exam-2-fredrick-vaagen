@@ -9,9 +9,9 @@ import HomeDesktop from "../components/home/desktop/HomeDesktop";
 
 <MediaQuery />;
 
-export default function Home({ establishments, guesthouses }) {
+export default function Home({ establishments}) {
   const isBreakpoint = MediaQuery(991);
-  const [establishments, setEstablishments] = useState(0);
+
   return (
     <>
       <Head>
@@ -71,7 +71,6 @@ export default function Home({ establishments, guesthouses }) {
 
 export async function getStaticProps() {
   const res = await fetch(`${BASE_URL}/establishments?_sort=name:asc`);
-  const resGuesthouse = await fetch(`${BASE_URL}/establishments?category=guesthouse`);
   const establishments = await res.json();
 
   return {
