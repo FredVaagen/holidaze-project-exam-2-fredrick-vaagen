@@ -10,21 +10,27 @@ import Button from "@material-ui/core/Button";
 import SimpleMap from "../../maps/SimpleMap";
 import AppContext from "../../../../context/AppContext";
 
-function EstablishmentsDesktop({ establishments,nameDesc,priceAsc,priceDesc,sortByHotel,sortByGuesthouse,sortByBedAndBreakfast }) {
+function EstablishmentsDesktop({
+  establishments,
+  nameDesc,
+  priceAsc,
+  priceDesc,
+  sortByHotel,
+  sortByGuesthouse,
+  sortByBedAndBreakfast,
+}) {
   const { user } = useContext(AppContext);
   const [sortEstablishments, setSortEstaeblishments] = useState(establishments);
 
   return (
     <>
       <h1>Find a place to stay</h1>
-  
+
       <Button
         variant="contained"
         className="button sort"
         onClick={() => {
-         
           setSortEstaeblishments(establishments);
-          
         }}>
         Sort by name (a-z)
       </Button>
@@ -32,7 +38,6 @@ function EstablishmentsDesktop({ establishments,nameDesc,priceAsc,priceDesc,sort
         variant="contained"
         className="button sort"
         onClick={() => {
-         
           setSortEstaeblishments(nameDesc);
         }}>
         Sort by name (z-a)
@@ -51,7 +56,7 @@ function EstablishmentsDesktop({ establishments,nameDesc,priceAsc,priceDesc,sort
         onClick={() => {
           setSortEstaeblishments(priceDesc);
         }}>
-         Sort by price (Low-High)
+        Sort by price (Low-High)
       </Button>
       <Button
         variant="contained"
@@ -59,7 +64,7 @@ function EstablishmentsDesktop({ establishments,nameDesc,priceAsc,priceDesc,sort
         onClick={() => {
           setSortEstaeblishments(sortByHotel);
         }}>
-         Sort by Hotels
+        Sort by Hotels
       </Button>
       <Button
         variant="contained"
@@ -67,7 +72,7 @@ function EstablishmentsDesktop({ establishments,nameDesc,priceAsc,priceDesc,sort
         onClick={() => {
           setSortEstaeblishments(sortByGuesthouse);
         }}>
-         Sort by Guesthouses
+        Sort by Guesthouses
       </Button>
       <Button
         variant="contained"
@@ -75,7 +80,7 @@ function EstablishmentsDesktop({ establishments,nameDesc,priceAsc,priceDesc,sort
         onClick={() => {
           setSortEstaeblishments(sortByBedAndBreakfast);
         }}>
-         Sort by Bed and Breakfasts
+        Sort by Bed and Breakfasts
       </Button>
       {sortEstablishments.map((establishment) => (
         <Link
