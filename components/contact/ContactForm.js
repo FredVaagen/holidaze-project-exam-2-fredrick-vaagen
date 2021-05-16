@@ -27,14 +27,13 @@ export default function ContactForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitSuccessful	 },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
   const [name, setName] = useState(0);
-  const [show, setShow] = useState(false);
-  const [showSubmitButton, setShowSubmitButton] = useState(true);
+  const [showForm, setShowForm] = useState(true);
 
   const onSubmit = async (data) => {
     const requestOptions = {
@@ -44,76 +43,89 @@ export default function ContactForm() {
     };
 
     const response = await fetch([BASE_URL + "/contacts"], requestOptions);
-    setShow(true);
+  
     setName(data.firstname);
-    setShowSubmitButton(false);
+    setShowForm(false);
   };
 
   return (
     <Container className="mb-5 mt-5">
       <BackArrow />
       <h1 className="mt-5 mb-5">Contact us</h1>
-      <Form noValidate onSubmit={handleSubmit(onSubmit)}>
-        <Form.Group>
-          <Form.Label>First name</Form.Label>
-          <Form.Control {...register("firstname")} placeholder="First name" />
-          {errors.firstname && (
-            <div className="alert-danger">{errors.firstname.message}</div>
-          )}
-        </Form.Group>
+      {showForm ? (
+        <Form noValidate onSubmit={handleSubmit(onSubmit)}>
+          <Form.Group>
+            <Form.Label>First name</Form.Label>
+            <Form.Control {...register("firstname")} defaultValue="" placeholder="First name" />
+            {errors.firstname && (
+              <div className="alert-danger">{errors.firstname.message}</div>
+            )}
+          </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Last name</Form.Label>
-          <Form.Control {...register("lastname")} placeholder="Last name" />
-          {errors.lastname && (
-            <div className="alert-danger">{errors.lastname.message}</div>
-          )}
-        </Form.Group>
+          <Form.Group>
+            <Form.Label>Last name</Form.Label>
+            <Form.Control {...register("lastname")} defaultValue="" placeholder="Last name" />
+            {errors.lastname && (
+              <div className="alert-danger">{errors.lastname.message}</div>
+            )}
+          </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            {...register("email")}
-            placeholder="Email address"
-          />
-          {errors.email && (
-            <div className="alert-danger">{errors.email.message}</div>
-          )}
-        </Form.Group>
+          <Form.Group>
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="email"
+              {...register("email")}
+              placeholder="Email address"
+              defaultValue=""
+            />
+            {errors.email && (
+              <div className="alert-danger">{errors.email.message}</div>
+            )}
+          </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Subject</Form.Label>
-          <Form.Control {...register("subject")} placeholder="Subject" />
-          {errors.subject && (
-            <div className="alert-danger">{errors.subject.message}</div>
-          )}
-        </Form.Group>
+          <Form.Group>
+            <Form.Label>Subject</Form.Label>
+            <Form.Control {...register("subject")} defaultValue="" placeholder="Subject" />
+            {errors.subject && (
+              <div className="alert-danger">{errors.subject.message}</div>
+            )}
+          </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Message</Form.Label>
-          <Form.Control
-            as="textarea"
-            placeholder="Your message"
-            {...register("message")}
-          />
-          {errors.message && (
-            <div className="alert-danger">{errors.message.message}</div>
-          )}
-        </Form.Group>
-        {showSubmitButton ? (
-          <Button variant="contained" className="button" type="submit">
+          <Form.Group>
+            <Form.Label>Message</Form.Label>
+            <Form.Control
+              as="textarea"
+              placeholder="Your message"
+              defaultValue=""
+              {...register("message")}
+            />
+            {errors.message && (
+              <div className="alert-danger">{errors.message.message}</div>
+            )}
+          </Form.Group>
+
+          <Button
+            variant="contained"
+            className="button"
+            type="submit"
+            onClick={() => {
+              // If form fields are touched/filled and form is submitted hide modal form and show confirmation message.
+              if (isSubmitSuccessful) {
+                setShowForm(false);
+              }
+            }}>
             Submit
           </Button>
-        ) : (
-          <></>
-        )}
-      </Form>
-      <Alert show={show}>
-        <div className="booking-confirmation-alert">
-          Thank you for contacting us {name}.
+        </Form>
+      ) : (
+        <div>
+          <p>
+            Thank you for contacting us. We will answer your question as soon as
+            possible.
+          </p>
         </div>
-      </Alert>
+      )}
+
       <style global jsx>
         {`
           .main {

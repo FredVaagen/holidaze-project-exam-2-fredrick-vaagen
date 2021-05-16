@@ -132,9 +132,7 @@ export default function Establishment({ establishment, images }) {
             }
 
             .carousel-item img {
-              height: 400px;
-              width: 100%;
-  
+              height: 450px;
             }
 
             @media only screen and (max-width: 800px) {
