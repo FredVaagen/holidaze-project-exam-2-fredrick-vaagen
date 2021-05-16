@@ -5,6 +5,8 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 import Badge from "react-bootstrap/Badge";
 import Button from "@material-ui/core/Button";
 import SimpleMap from "../../maps/SimpleMap";
@@ -25,63 +27,58 @@ function EstablishmentsDesktop({
   return (
     <>
       <h1>Find a place to stay</h1>
+      <DropdownButton className="mt-3" id="dropdown-basic-button" title="Sort places">
+        <Dropdown.Item
+          href="#/a-z"
+          onClick={() => {
+            setSortEstaeblishments(establishments);
+          }}>
+          A-Z
+        </Dropdown.Item>
+        <Dropdown.Item
+          href="#/z-a"
+          onClick={() => {
+            setSortEstaeblishments(nameDesc);
+          }}>
+         Z-A
+        </Dropdown.Item>
+        <Dropdown.Item
+          href="#/higher-lower"
+          onClick={() => {
+            setSortEstaeblishments(priceAsc);
+          }}>
+          Pricer (Higher-Lower)
+        </Dropdown.Item>
+        <Dropdown.Item
+          href="#/lower-higher"
+          onClick={() => {
+            setSortEstaeblishments(priceDesc);
+          }}>
+          Price (Lower-Higher)
+        </Dropdown.Item>
+        <Dropdown.Item
+          href="#/hotels"
+          onClick={() => {
+            setSortEstaeblishments(sortByHotel);
+          }}>
+          Hotels
+        </Dropdown.Item>
+        <Dropdown.Item
+          href="#/guesthouses"
+          onClick={() => {
+            setSortEstaeblishments(sortByGuesthouse);
+          }}>
+          Guesthouses
+        </Dropdown.Item>
+        <Dropdown.Item
+          href="#/bedandbreakfast"
+          onClick={() => {
+            setSortEstaeblishments(sortByBedAndBreakfast);
+          }}>
+          Bed and Breakfast
+        </Dropdown.Item>
+      </DropdownButton>
 
-      <Button
-        variant="contained"
-        className="button sort"
-        onClick={() => {
-          setSortEstaeblishments(establishments);
-        }}>
-        Sort by name (a-z)
-      </Button>
-      <Button
-        variant="contained"
-        className="button sort"
-        onClick={() => {
-          setSortEstaeblishments(nameDesc);
-        }}>
-        Sort by name (z-a)
-      </Button>
-      <Button
-        variant="contained"
-        className="button sort"
-        onClick={() => {
-          setSortEstaeblishments(priceAsc);
-        }}>
-        Sort by price (High-Low)
-      </Button>
-      <Button
-        variant="contained"
-        className="button sort"
-        onClick={() => {
-          setSortEstaeblishments(priceDesc);
-        }}>
-        Sort by price (Low-High)
-      </Button>
-      <Button
-        variant="contained"
-        className="button sort"
-        onClick={() => {
-          setSortEstaeblishments(sortByHotel);
-        }}>
-        Sort by Hotels
-      </Button>
-      <Button
-        variant="contained"
-        className="button sort"
-        onClick={() => {
-          setSortEstaeblishments(sortByGuesthouse);
-        }}>
-        Sort by Guesthouses
-      </Button>
-      <Button
-        variant="contained"
-        className="button sort"
-        onClick={() => {
-          setSortEstaeblishments(sortByBedAndBreakfast);
-        }}>
-        Sort by Bed and Breakfasts
-      </Button>
       {sortEstablishments.map((establishment) => (
         <Link
           href="/establishments/[name]"
@@ -209,14 +206,25 @@ function EstablishmentsDesktop({
             max-width: 100%;
           }
 
-          .sort {
-            margin: 5px !important;
-          }
+          //OVERRIDING DROPDOWNBUTTON CSS FROM BOOTSTRAP -> 
 
-          .sort-active {
-            background: black !important;
-            color: white !important;
-          }
+          .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+            color: black !important;
+            background-color: #fff;
+            border-color: #005cbf;
+        }
+
+        .btn-primary {
+          color: black !important;
+          background-color: #fff !important;
+          border: none !important;
+          box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+        }
+
+        .dropdown-item:active {
+        color: black !important;
+        background: none !important;
+        } 
         `}
       </style>
     </>

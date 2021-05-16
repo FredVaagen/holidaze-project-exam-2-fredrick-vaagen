@@ -1,18 +1,80 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
-import Button from "@material-ui/core/Button";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 import Badge from "react-bootstrap/Badge";
+import Button from "@material-ui/core/Button";
 
-function EstablishmentsMobile({ establishments }) {
+function EstablishmentsMobile({
+  establishments,
+  nameDesc,
+  priceAsc,
+  priceDesc,
+  sortByHotel,
+  sortByGuesthouse,
+  sortByBedAndBreakfast,
+}) {
+  const [sortEstablishments, setSortEstaeblishments] = useState(establishments);
   return (
     <>
       <h1>Find a place to stay</h1>
-      {establishments.map((establishment) => (
+      <DropdownButton className="mt-3" id="dropdown-basic-button" title="Sort places">
+        <Dropdown.Item
+          href="#/a-z"
+          onClick={() => {
+            setSortEstaeblishments(establishments);
+          }}>
+          A-Z
+        </Dropdown.Item>
+        <Dropdown.Item
+          href="#/z-a"
+          onClick={() => {
+            setSortEstaeblishments(nameDesc);
+          }}>
+          Z-A
+        </Dropdown.Item>
+        <Dropdown.Item
+          href="#/higher-lower"
+          onClick={() => {
+            setSortEstaeblishments(priceAsc);
+          }}>
+          Pricer (Higher-Lower)
+        </Dropdown.Item>
+        <Dropdown.Item
+          href="#/lower-higher"
+          onClick={() => {
+            setSortEstaeblishments(priceDesc);
+          }}>
+          Price (Lower-Higher)
+        </Dropdown.Item>
+        <Dropdown.Item
+          href="#/hotels"
+          onClick={() => {
+            setSortEstaeblishments(sortByHotel);
+          }}>
+          Hotels
+        </Dropdown.Item>
+        <Dropdown.Item
+          href="#/guesthouses"
+          onClick={() => {
+            setSortEstaeblishments(sortByGuesthouse);
+          }}>
+          Guesthouses
+        </Dropdown.Item>
+        <Dropdown.Item
+          href="#/bedandbreakfast"
+          onClick={() => {
+            setSortEstaeblishments(sortByBedAndBreakfast);
+          }}>
+          Bed and Breakfast
+        </Dropdown.Item>
+      </DropdownButton>
+      {sortEstablishments.map((establishment) => (
         <Link
           href="/establishments/[name]"
           as={`/establishments/${establishment.name}`}
@@ -129,19 +191,14 @@ function EstablishmentsMobile({ establishments }) {
             justify-content: space-between;
             font-weight: 300;
           }
-
-     
-
           .establishment-specific__image-col {
             padding-top: 5px;;
             padding-left: 6px;
-         
           }
 
           img {
             border-radius: 0;
           }
-
 
           @media only screen and (max-width: 530px) {
             .row {
@@ -157,13 +214,25 @@ function EstablishmentsMobile({ establishments }) {
             
             }
           }
+          //OVERRIDING DROPDOWNBUTTON CSS FROM BOOTSTRAP -> 
+          .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+            color: black !important;
+            background-color: #fff;
+            border-color: #005cbf;
+          }
+
+          .btn-primary {
+            color: black !important;
+            background-color: #fff !important;
+            border: none !important;
+            box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+          }
 
           @media only screen and (max-width: 500px) {
             .row {
               flex-wrap: wrap;
             }
             .establishment-specific {
-             
               padding-bottom: 1rem;
             }
 
@@ -173,8 +242,6 @@ function EstablishmentsMobile({ establishments }) {
               padding-top: 5px !important;
             }
           }
-
-
 
         `}
       </style>
