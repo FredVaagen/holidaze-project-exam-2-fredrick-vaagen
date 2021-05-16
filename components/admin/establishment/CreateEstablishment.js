@@ -83,7 +83,7 @@ function CreateEstablishment() {
     } catch (error) {}
 
     setShowForm(false);
-    setName(data.name)
+    setName(data.name);
   };
 
   return (
@@ -346,12 +346,11 @@ function CreateEstablishment() {
             </Button>
           </Form>
         ) : (
-          <Link href="/establishments/[name]"
-          as={`/establishments/${name}`}>
-          <div variant="contained" className="created-confirmation">
-            {" "}
-            The establishmentwas created. Click to go to {name}.
-          </div>
+          <Link href="/establishments/[name]" as={`/establishments/${name}`}>
+            <div variant="contained" className="created-confirmation">
+              {" "}
+              The establishmentwas created. Click to go to {name}.
+            </div>
           </Link>
         )}
       </div>

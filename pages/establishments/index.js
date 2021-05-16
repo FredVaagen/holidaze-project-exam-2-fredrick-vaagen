@@ -29,20 +29,12 @@ export default function EstablishmentsPage({ establishments}) {
 }
 
 export async function getStaticProps() {
-  const resAscName = await fetch(`${BASE_URL}/establishments?_sort=name:asc`);
-  const resDescName = await fetch(`${BASE_URL}/establishments?_sort=name:desc`);
-  const resAscPrice = await fetch(`${BASE_URL}/establishments?_sort=price:asc`);
-  const resDescPrice = await fetch(
-    `${BASE_URL}/establishments?_sort=price:desc`
-  );
+  const res = await fetch(`${BASE_URL}/establishments?_sort=name:asc`);
+  const establishments = await res.json();
 
-  const establishments = await resAscName.json();
-  const descName = await resDescName.json();
-  const ascPrice = await resAscPrice.json();
-  const descPrice = await resDescPrice.json();
 
   return {
-    props: { establishments, descName, ascPrice, descPrice},
+    props: { establishments},
     revalidate: 1,
   };
 }

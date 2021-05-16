@@ -132,7 +132,7 @@ function EstablishmentsDesktop({ establishments }) {
             background: #fff !important;
             color: black !important;
             font-size: 11px !important;
-            font-weight: 300;
+            font-weight: 300 !important;
           }
           .establishment-specific__image-col {
             padding-top: 10px;;
