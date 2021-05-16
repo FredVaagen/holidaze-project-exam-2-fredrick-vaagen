@@ -16,7 +16,7 @@ function Enquiry(establishment) {
     control,
     handleSubmit,
     register,
-    formState: { errors, isValid },
+    formState: { errors, isDirty },
   } = useForm();
 
   const [show, setShow] = useState(false);
@@ -183,7 +183,7 @@ function Enquiry(establishment) {
          className="button"
          type="submit"
          onClick={() => {
-           if (isValid) {
+           if (isDirty) {
              setLoading(true);
              setModal(false)
            }
