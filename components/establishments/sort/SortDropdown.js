@@ -6,10 +6,10 @@ function SortDropdown() {
   return (
     <Dropdown>
       <Dropdown.Toggle variant="success" id="dropdown-basic">
-        Sort places
+      Sort places
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Link href="/establishments/sort/lowest-price">
+        <Link href="/establishments/sort/lowest-price" >
           <Dropdown.Item href="#/action-1">Lowest price</Dropdown.Item>
         </Link>
         <Link href="/establishments/sort/highest-price">
