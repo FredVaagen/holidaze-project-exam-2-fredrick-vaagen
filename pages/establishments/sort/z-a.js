@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { useRouter } from "next/router";
 import Head from "next/head";
 import Container from "react-bootstrap/Container";
 import { BASE_URL } from "../../../constants/api";
@@ -11,13 +9,8 @@ import EstablishmentsMobile from "../../../components/establishments/layout/mobi
 <MediaQuery />;
 
 export default function EstablishmentsPage({ establishments }) {
-  const [show, setShow] = useState(false);
   const isBreakpoint = MediaQuery(991);
-  const router = useRouter();
 
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
   return (
     <Container className="establishments">
       <Head>

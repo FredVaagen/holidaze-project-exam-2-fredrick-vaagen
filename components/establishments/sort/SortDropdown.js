@@ -21,6 +21,15 @@ function SortDropdown() {
         <Link href="/establishments/sort/z-a">
           <Dropdown.Item href="#/action-1">z-a</Dropdown.Item>
         </Link>
+        <Link href="/establishments/sort/hotel">
+          <Dropdown.Item href="#/action-1">Hotel</Dropdown.Item>
+        </Link>
+        <Link href="/establishments/sort/guesthouse">
+          <Dropdown.Item href="#/action-1">Guesthouse</Dropdown.Item>
+        </Link>
+        <Link href="/establishments/sort/bedandbreakfast">
+          <Dropdown.Item href="#/action-1">Bed and Breakfast</Dropdown.Item>
+        </Link>
       </Dropdown.Menu>
       <style global jsx>
         {`
