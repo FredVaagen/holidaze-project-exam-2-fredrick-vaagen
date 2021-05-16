@@ -34,6 +34,7 @@ function ContactAccordion(contact) {
       } catch (error) {
         console.log(error);
       }
+      router.reload();
     }
   };
   return (

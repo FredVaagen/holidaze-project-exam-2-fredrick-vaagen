@@ -68,12 +68,8 @@ const Admin = ({
               </Tab.Pane>
               <Tab.Pane eventKey="fourth">
                 <Container className="create-establishment mt-5">
-                  <ListGroup>
-                    <Container>
-                      {" "}
-                      <h2>Edit a establishment</h2>
-                    </Container>
-                    <Container></Container>
+                  <ListGroup className="mb-5">
+                    <h2>Edit a establishment</h2>
                     {establishments.map((establishment) => (
                       <Container className="mt-3" key={establishment.id}>
                         <Link
