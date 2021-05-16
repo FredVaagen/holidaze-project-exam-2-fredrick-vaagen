@@ -13,7 +13,7 @@ import { BASE_URL } from "../../../constants/api";
 function EnquiryAccordion(enquiry) {
   const { handleSubmit } = useForm();
   const router = useRouter();
-  
+
   const remove = async (ctx) => {
     const token = parseCookies(ctx).token;
     if (confirm("Are you sure you want to remove this enquiry?")) {
@@ -51,7 +51,8 @@ function EnquiryAccordion(enquiry) {
               <p>Email: {enquiry.email}</p>
               <p>Check in: {dateFormat(enquiry.startDate, "d mmmm yyyy")}</p>
               <p>Check out: {dateFormat(enquiry.endDate, "d mmmm yyyy")}</p>
-              <p>Message: {enquiry.message}</p>
+              <p>Number of guests: {enquiry.guests}</p>
+              {enquiry.message ? <p>Message: {enquiry.message}</p> : <></>}
               <form className="remove-form" onSubmit={handleSubmit(remove)}>
                 <button className="remove" type="submit">
                   <DeleteForeverIcon />

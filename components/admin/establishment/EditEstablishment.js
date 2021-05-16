@@ -96,7 +96,7 @@ const EditEstablishment = (props) => {
             />
           </div>
           <div>
-            <label>Price per night - NOK {price}</label>
+            <label>Price per night</label>
             <input
               type="number"
               {...register("price")}
@@ -117,16 +117,17 @@ const EditEstablishment = (props) => {
           <div>
             <div>
               {" "}
-              <label>Category - {props.category}</label>
+              <label>Category</label>
             </div>
             <select name="category" {...register("category")}>
+              <option>{props.category}</option>
               <option>hotel</option>
               <option>guesthouse</option>
               <option>bedandbreakfast</option>
             </select>
           </div>
           <div>
-            <label className="mt-3">Address - {address}</label>
+            <label className="mt-3">Address</label>
             <input
               type="text"
               {...register("address")}
@@ -147,6 +148,9 @@ const EditEstablishment = (props) => {
 
       <style global jsx>
         {`
+          h2 {
+            font-weight: 300;
+          }
           .create-establishment input,
           textarea {
             width: 100%;

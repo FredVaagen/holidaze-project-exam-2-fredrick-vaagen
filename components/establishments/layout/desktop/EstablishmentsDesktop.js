@@ -11,15 +11,14 @@ import SortDropdown from "../../sort/SortDropdown";
 import SimpleMap from "../../maps/SimpleMap";
 import AppContext from "../../../../context/AppContext";
 
-function EstablishmentsDesktop({ establishments}) {
+function EstablishmentsDesktop({ establishments }) {
   const { user } = useContext(AppContext);
 
   return (
     <>
-      <h1 className="h1">Find a place to stay</h1>
+      <h1>Find a place to stay</h1>
       <SortDropdown />
       {establishments.map((establishment) => (
-      
         <Link
           href="/establishments/[name]"
           as={`/establishments/${establishment.name}`}
@@ -31,7 +30,7 @@ function EstablishmentsDesktop({ establishments}) {
                 md={6}
                 lg={3}
                 className="establishment-specific__image-col">
-              <Carousel fade indicators={false} interval={null}>
+                <Carousel fade indicators={false} interval={null}>
                   {establishment.images.map((image) => (
                     <Carousel.Item key={image.id}>
                       <Image
@@ -43,8 +42,7 @@ function EstablishmentsDesktop({ establishments}) {
                       />
                     </Carousel.Item>
                   ))}
-                  </Carousel>
-                
+                </Carousel>
               </Col>
               <Col s={12} md={6} lg={4} className="details">
                 <h3>{establishment.name}</h3>
@@ -57,7 +55,7 @@ function EstablishmentsDesktop({ establishments}) {
                   <Link
                     href="/admin/edit/[name]"
                     as={`/admin/edit/${establishment.name}`}>
-                    <Button variant="contained" className="button">
+                    <Button variant="contained" className="button mt-2">
                       Edit
                     </Button>
                   </Link>
@@ -85,7 +83,8 @@ function EstablishmentsDesktop({ establishments}) {
             transform: scale(1.01);
             cursor: pointer;
           }
-          .h1 {
+
+          h1 {
             margin-top: 2rem;
             font-weight: 300;
           }
@@ -117,7 +116,7 @@ function EstablishmentsDesktop({ establishments}) {
             color: black;
             text-transform: uppercase;
             font-size: 9px;
-            font-weight: bold;
+            font-weight: 400;
             margin-top: 10px;
             margin-bottom: 1rem;
             text-align: left;
@@ -136,8 +135,8 @@ function EstablishmentsDesktop({ establishments}) {
             font-weight: 300;
           }
           .establishment-specific__image-col {
-            padding-top: 5px;;
-            padding-left: 6px;
+            padding-top: 10px;;
+            padding-left: 10px;
           }
           .establishment-specific__image-col img {
             height: 100%;     

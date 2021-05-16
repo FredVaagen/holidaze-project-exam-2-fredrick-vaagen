@@ -7,12 +7,9 @@ import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
 import { BASE_URL } from "../../../constants/api";
-
-
 
 function ContactAccordion(contact) {
   const { handleSubmit } = useForm();
@@ -43,7 +40,6 @@ function ContactAccordion(contact) {
         <Card.Header>
           <Accordion.Toggle as={Button} variant="link" eventKey="0">
             id: {contact.id} - Subject: {contact.subject}{" "}
-
           </Accordion.Toggle>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
@@ -77,9 +73,9 @@ function ContactAccordion(contact) {
           }
 
           .remove svg {
-           color: black;
-           position: absolute;
-           right: 10px;
+            color: black;
+            position: absolute;
+            right: 10px;
           }
         `}
       </style>

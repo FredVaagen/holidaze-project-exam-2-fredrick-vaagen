@@ -12,7 +12,7 @@ import SortDropdown from "../../sort/SortDropdown";
 function EstablishmentsMobile({ establishments }) {
   return (
     <>
-      <h1 className="h1">Find a place to stay</h1>
+      <h1>Find a place to stay</h1>
       <SortDropdown />
       {establishments.map((establishment) => (
         <Link
@@ -63,7 +63,7 @@ function EstablishmentsMobile({ establishments }) {
             margin-bottom: 3rem;
           }
 
-          .h1 {
+           h1 {
             font-size: 24px;
             padding-top: 5rem;
             font-weight: 300;

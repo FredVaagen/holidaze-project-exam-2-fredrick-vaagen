@@ -5,8 +5,6 @@ import axios from "axios";
 import { parseCookies } from "nookies";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
-import Alert from "react-bootstrap/Alert";
-import Spinner from "react-bootstrap/Spinner";
 import Button from "@material-ui/core/Button";
 import { BASE_URL } from "../../../constants/api";
 
@@ -14,12 +12,11 @@ function CreateEstablishment() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isSubmitSuccessful },
   } = useForm();
 
-  const [showSubmitButton, setShowSubmitButton] = useState(true);
-  const [show, setShow] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [showForm, setShowForm] = useState(true);
+  const [name, setName] = useState(0);
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
@@ -85,287 +82,278 @@ function CreateEstablishment() {
       });
     } catch (error) {}
 
-    setShowSubmitButton(false);
-    setShow(true);
+    setShowForm(false);
+    setName(data.name)
   };
 
   return (
     <Container>
       <div className="create-establishment mt-5 mb-5">
-        <Form
-          noValidate
-          isValid={true}
-          className="create-establishment-form"
-          onSubmit={handleSubmit(submitData)}>
-          <Form.Group>
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="text"
-              {...register("name", { required: true })}
-            />
+        {showForm ? (
+          <Form
+            noValidate
+            isValid={true}
+            className="create-establishment-form"
+            onSubmit={handleSubmit(submitData)}>
+            <Form.Group>
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                {...register("name", { required: true })}
+              />
+              {errors.description && (
+                <div className="alert-danger">
+                  Name of establishment is required
+                </div>
+              )}
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                type="text"
+                {...register("description", { required: true })}
+              />
+            </Form.Group>
             {errors.description && (
               <div className="alert-danger">
-                Name of establishment is required
+                Description of establishment is required
               </div>
             )}
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Description</Form.Label>
-            <Form.Control
-              as="textarea"
-              type="text"
-              {...register("description", { required: true })}
-            />
-          </Form.Group>
-          {errors.description && (
-            <div className="alert-danger">
-              Description of establishment is required
-            </div>
-          )}
 
-          <Form.Group>
-            <Form.Label>Category</Form.Label>
-            <Form.Control
-              as="select"
-              name="category"
-              {...register("category", { required: true })}>
-              <option></option>
-              <option>hotel</option>
-              <option>guesthouse</option>
-              <option>bedandbreakfast</option>
-            </Form.Control>
-            {errors.category && (
-              <div className="alert-danger">Category is required</div>
-            )}
-          </Form.Group>
+            <Form.Group>
+              <Form.Label>Category</Form.Label>
+              <Form.Control
+                as="select"
+                name="category"
+                {...register("category", { required: true })}>
+                <option></option>
+                <option>hotel</option>
+                <option>guesthouse</option>
+                <option>bedandbreakfast</option>
+              </Form.Control>
+              {errors.category && (
+                <div className="alert-danger">Category is required</div>
+              )}
+            </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Price per night</Form.Label>
-            <Form.Control
-              type="number"
-              {...register("price", { required: true })}
-            />
-            {errors.price && (
-              <div className="alert-danger">
-                Price of establishment is required
-              </div>
-            )}
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>
-              Latitude -{" "}
-              <a target="_blank" href="https://www.latlong.net/">
-                {" "}
-                Click to find latitude and longitude
-              </a>
-            </Form.Label>
+            <Form.Group>
+              <Form.Label>Price per night</Form.Label>
+              <Form.Control
+                type="number"
+                {...register("price", { required: true })}
+              />
+              {errors.price && (
+                <div className="alert-danger">
+                  Price of establishment is required
+                </div>
+              )}
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>
+                Latitude -{" "}
+                <a target="_blank" href="https://www.latlong.net/">
+                  {" "}
+                  Click to find latitude and longitude
+                </a>
+              </Form.Label>
 
-            <Form.Control {...register("lat", { required: true })} />
-            {errors.lat && (
-              <div className="alert-danger">
-                Latitude of establishment is required
-              </div>
-            )}
-          </Form.Group>
+              <Form.Control {...register("lat", { required: true })} />
+              {errors.lat && (
+                <div className="alert-danger">
+                  Latitude of establishment is required
+                </div>
+              )}
+            </Form.Group>
 
-          <Form.Group>
-            <Form.Label>
-              Longitude -{" "}
-              <a target="_blank" href="https://www.latlong.net/">
-                {" "}
-                Click to find latitude and longitude
-              </a>{" "}
-            </Form.Label>
-            <Form.Control {...register("lng", { required: true })} />
-            {errors.lng && (
-              <div className="alert-danger">
-                Longitude of establishment is required
-              </div>
-            )}
-          </Form.Group>
+            <Form.Group>
+              <Form.Label>
+                Longitude -{" "}
+                <a target="_blank" href="https://www.latlong.net/">
+                  {" "}
+                  Click to find latitude and longitude
+                </a>{" "}
+              </Form.Label>
+              <Form.Control {...register("lng", { required: true })} />
+              {errors.lng && (
+                <div className="alert-danger">
+                  Longitude of establishment is required
+                </div>
+              )}
+            </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Address</Form.Label>
-            <Form.Control
-              type="text"
-              {...register("address", { required: true })}
-            />
-            {errors.address && (
-              <div className="alert-danger">
-                Address of establishment is required
-              </div>
-            )}
-          </Form.Group>
-          <h3 className="mb-3">Facilites</h3>
-          <div className="facilities">
-            <div>
-              <label> WIFI</label>
+            <Form.Group>
+              <Form.Label>Address</Form.Label>
+              <Form.Control
+                type="text"
+                {...register("address", { required: true })}
+              />
+              {errors.address && (
+                <div className="alert-danger">
+                  Address of establishment is required
+                </div>
+              )}
+            </Form.Group>
+            <h3 className="mb-3">Facilites</h3>
+            <div className="facilities">
               <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={false}
-                  {...register("wifi")}
-                />
+                <label> WIFI</label>
+                <div>
+                  <input
+                    type="checkbox"
+                    defaultChecked={false}
+                    {...register("wifi")}
+                  />
+                </div>
+              </div>
+              <div>
+                <label>Accesible</label>
+                <div>
+                  <input
+                    type="checkbox"
+                    defaultChecked={false}
+                    {...register("accesible")}
+                  />
+                </div>
+              </div>
+              <div>
+                <label>Workstation</label>
+                <div>
+                  <input
+                    type="checkbox"
+                    defaultChecked={false}
+                    {...register("workstation")}
+                  />
+                </div>
+              </div>
+              <div>
+                <label>Smokefree</label>
+                <div>
+                  <input
+                    type="checkbox"
+                    defaultChecked={false}
+                    {...register("smokefree")}
+                  />
+                </div>
+              </div>
+              <div>
+                <label>Aircondition</label>
+                <div>
+                  <input
+                    type="checkbox"
+                    defaultChecked={false}
+                    {...register("ac")}
+                  />
+                </div>
+              </div>
+              <div>
+                <label>Airport Shuttle</label>
+                <div>
+                  <input
+                    type="checkbox"
+                    defaultChecked={false}
+                    {...register("airportshuttle")}
+                  />
+                </div>
+              </div>
+              <div>
+                <label>Gym</label>
+                <div>
+                  <input
+                    type="checkbox"
+                    defaultChecked={false}
+                    {...register("gym")}
+                  />
+                </div>
+              </div>
+              <div>
+                <label>TV</label>
+                <div>
+                  <input
+                    type="checkbox"
+                    defaultChecked={false}
+                    {...register("tv")}
+                  />
+                </div>
+              </div>
+              <div>
+                <label>Hotel Bar</label>
+                <div>
+                  <input
+                    type="checkbox"
+                    defaultChecked={false}
+                    {...register("hotelbar")}
+                  />
+                </div>
+              </div>
+              <div>
+                <label>Pool</label>
+                <div>
+                  <input
+                    type="checkbox"
+                    defaultChecked={false}
+                    {...register("pool")}
+                  />
+                </div>
+              </div>
+              <div>
+                <label>Parking</label>
+                <div>
+                  <input
+                    type="checkbox"
+                    defaultChecked={false}
+                    {...register("parking")}
+                  />
+                </div>
+              </div>
+              <div>
+                <label>Kitchen</label>
+                <div>
+                  <input
+                    type="checkbox"
+                    defaultChecked={false}
+                    {...register("kitchen")}
+                  />
+                </div>
               </div>
             </div>
-            <div>
-              <label>Accesible</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={false}
-                  {...register("accesible")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Workstation</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={false}
-                  {...register("workstation")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Smokefree</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={false}
-                  {...register("smokefree")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Aircondition</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={false}
-                  {...register("ac")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Airport Shuttle</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={false}
-                  {...register("airportshuttle")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Gym</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={false}
-                  {...register("gym")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>TV</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={false}
-                  {...register("tv")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Hotel Bar</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={false}
-                  {...register("hotelbar")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Pool</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={false}
-                  {...register("pool")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Parking</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={false}
-                  {...register("parking")}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Kitchen</label>
-              <div>
-                <input
-                  type="checkbox"
-                  defaultChecked={false}
-                  {...register("kitchen")}
-                />
-              </div>
-            </div>
-          </div>
 
-          <Form.Group>
-            <Form.Label>Upload establishment images</Form.Label>
-            <Form.Control
-              type="file"
-              multiple
-              {...register("file", { required: true })}
-            />
-            {errors.file && (
-              <div className="alert-danger">
-                Atleast one image of the establishment is required
-              </div>
-            )}
-          </Form.Group>
-          {showSubmitButton ? (
+            <Form.Group>
+              <Form.Label>Upload establishment images</Form.Label>
+              <Form.Control
+                type="file"
+                multiple
+                {...register("file", { required: false })}
+              />
+              {errors.file && (
+                <div className="alert-danger">
+                  Atleast one image of the establishment is required
+                </div>
+              )}
+            </Form.Group>
+
             <Button
               variant="contained"
               className="button"
               type="submit"
               onClick={() => {
-                if (isValid) {
-                  setLoading(true);
+                // If form fields are touched/filled and form is submitted hide modal form and show confirmation message.
+                if (isSubmitSuccessful) {
+                  setShowForm(false);
                 }
               }}>
-              {loading ? (
-                <Spinner
-                  as="span"
-                  animation="border"
-                  size="sm"
-                  role="status"
-                  aria-hidden="true"
-                />
-              ) : (
-                "Create"
-              )}
+              Submit
             </Button>
-          ) : (
-            <></>
-          )}
-        </Form>
-        <Alert show={show}>
-          <Link href="/establishments">
-            <div variant="contained" className="created-confirmation">
-              The establishmentwas created. Click to go to establishments.
-            </div>
+          </Form>
+        ) : (
+          <Link href="/establishments/[name]"
+          as={`/establishments/${name}`}>
+          <div variant="contained" className="created-confirmation">
+            {" "}
+            The establishmentwas created. Click to go to {name}.
+          </div>
           </Link>
-        </Alert>
+        )}
       </div>
 
       <style global jsx>
