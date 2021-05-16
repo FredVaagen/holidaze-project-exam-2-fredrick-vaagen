@@ -25,7 +25,6 @@ function SearchBar({ establishments }) {
       <Autocomplete
         className="autocomplete"
         options={establishments.map((option) => option.name)}
-       
         onChange={goToEstablishment}
         renderInput={(params) => (
           <TextField
@@ -53,8 +52,8 @@ function SearchBar({ establishments }) {
             max-width: 800px;
             min-width: 200px;
             margin-top: 1rem;
-          }     
-          @media only screen and (max-width: 990px){
+          }
+          @media only screen and (max-width: 990px) {
             .searchbar {
               border-radius: 0;
               background: white;
@@ -85,7 +84,7 @@ function SearchBar({ establishments }) {
 
           .MuiInputAdornment-root {
             box-sizing: border-box;
-        }
+          }
         `}
       </style>
     </Container>

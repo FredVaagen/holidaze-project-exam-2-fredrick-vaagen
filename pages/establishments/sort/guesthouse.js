@@ -10,7 +10,7 @@ import EstablishmentsMobile from "../../../components/establishments/layout/mobi
 
 export default function EstablishmentsPage({ establishments }) {
   const isBreakpoint = MediaQuery(991);
-  
+
   return (
     <Container className="establishments">
       <Head>

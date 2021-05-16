@@ -7,8 +7,7 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 export default function Footer() {
   return (
     <>
-      <div className="footer">
-      </div>
+      <div className="footer"></div>
       <div className="bottom-footer">
         <div className="bottom-footer-left">
           <a>
@@ -40,7 +39,6 @@ export default function Footer() {
           display: flex;
           border-top: 1px solid rgb(221, 221, 221);
           justify-content: center;
-  
         }
 
         .bottom-footer {
@@ -48,8 +46,8 @@ export default function Footer() {
           display: flex;
           justify-content: space-between;
           padding: 10px;
-   
-          font-family: 'Roboto', sans-serif;
+
+          font-family: "Roboto", sans-serif;
           font-weight: 300;
         }
 
@@ -60,7 +58,7 @@ export default function Footer() {
 
         .socials svg {
           font-size: 14px;
-          opacity: .8;
+          opacity: 0.8;
         }
 
         @media only screen and (max-width: 991px) {
@@ -78,7 +76,6 @@ export default function Footer() {
           .bottom-footer {
             flex-wrap: wrap;
             text-align: center;
-           
           }
 
           .socials {

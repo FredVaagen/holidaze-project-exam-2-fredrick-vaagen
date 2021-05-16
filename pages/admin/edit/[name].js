@@ -4,7 +4,7 @@ import { BASE_URL } from "../../../constants/api";
 import BackArrow from "../../../components/utility/BackArrow";
 import EditEstablishment from "../../../components/admin/establishment/EditEstablishment";
 
-export default function Establishment({ establishment}) {
+export default function Establishment({ establishment }) {
   return (
     <Container>
       <BackArrow />
@@ -24,9 +24,7 @@ export async function getServerSideProps({ params: { name } }) {
   return {
     props: {
       establishment: specificEstablishment[0],
- 
     },
-    
   };
 }
 

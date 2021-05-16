@@ -26,7 +26,7 @@ export default function ContactForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitSuccessful	 },
+    formState: { errors, isSubmitSuccessful },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -42,7 +42,7 @@ export default function ContactForm() {
     };
 
     const response = await fetch([BASE_URL + "/contacts"], requestOptions);
-  
+
     setName(data.firstname);
     setShowForm(false);
   };
@@ -55,7 +55,11 @@ export default function ContactForm() {
         <Form noValidate onSubmit={handleSubmit(onSubmit)}>
           <Form.Group>
             <Form.Label>First name</Form.Label>
-            <Form.Control {...register("firstname")} defaultValue="" placeholder="First name" />
+            <Form.Control
+              {...register("firstname")}
+              defaultValue=""
+              placeholder="First name"
+            />
             {errors.firstname && (
               <div className="alert-danger">{errors.firstname.message}</div>
             )}
@@ -63,7 +67,11 @@ export default function ContactForm() {
 
           <Form.Group>
             <Form.Label>Last name</Form.Label>
-            <Form.Control {...register("lastname")} defaultValue="" placeholder="Last name" />
+            <Form.Control
+              {...register("lastname")}
+              defaultValue=""
+              placeholder="Last name"
+            />
             {errors.lastname && (
               <div className="alert-danger">{errors.lastname.message}</div>
             )}
@@ -84,7 +92,11 @@ export default function ContactForm() {
 
           <Form.Group>
             <Form.Label>Subject</Form.Label>
-            <Form.Control {...register("subject")} defaultValue="" placeholder="Subject" />
+            <Form.Control
+              {...register("subject")}
+              defaultValue=""
+              placeholder="Subject"
+            />
             {errors.subject && (
               <div className="alert-danger">{errors.subject.message}</div>
             )}
@@ -117,8 +129,7 @@ export default function ContactForm() {
           </Button>
         </Form>
       ) : (
-
-        // If form is submitted -> 
+        // If form is submitted ->
         <div>
           <p>
             Thank you for contacting us. We will answer your question as soon as

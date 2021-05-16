@@ -34,7 +34,6 @@ function DesktopNavigation() {
             </Link>
             <Link href="/contact" passHref>
               <Nav.Link>
-    
                 <ContactSupportIcon />
                 Contact us
               </Nav.Link>
@@ -44,7 +43,10 @@ function DesktopNavigation() {
             <Nav.Item>
               {user ? (
                 <Link href="/admin" passHref>
-                  <Nav.Link><DashboardIcon />Dashboard</Nav.Link>
+                  <Nav.Link>
+                    <DashboardIcon />
+                    Dashboard
+                  </Nav.Link>
                 </Link>
               ) : (
                 <></>
@@ -52,8 +54,9 @@ function DesktopNavigation() {
             </Nav.Item>
             <Nav.Item className="login-link">
               {user ? (
-                <Link href="/" passHref> 
-                  <Nav.Link className="logout"
+                <Link href="/" passHref>
+                  <Nav.Link
+                    className="logout"
                     onClick={() => {
                       logout();
                       setUser(null);
@@ -63,7 +66,9 @@ function DesktopNavigation() {
                 </Link>
               ) : (
                 <Link href="/login" passHref>
-                  <Nav.Link><AccountCircleIcon /> Sign in</Nav.Link>
+                  <Nav.Link>
+                    <AccountCircleIcon /> Sign in
+                  </Nav.Link>
                 </Link>
               )}
             </Nav.Item>
@@ -73,22 +78,20 @@ function DesktopNavigation() {
       <style global jsx>
         {`
           .navbar .navbar-nav .nav-link {
-          
             padding-right: 3rem;
             font-size: 12px;
             color: black;
-            opacity: .8;
-            transition: .3s;
-            font-family: 'Roboto', sans-serif;
+            opacity: 0.8;
+            transition: 0.3s;
+            font-family: "Roboto", sans-serif;
             font-weight: 300;
           }
 
           .navbar .navbar-nav .nav-link:hover {
-          
             padding-right: 3rem;
             font-size: 12px;
             color: black;
-            opacity: .8;
+            opacity: 0.8;
             transform: scale(1.05);
           }
 
@@ -96,11 +99,10 @@ function DesktopNavigation() {
             margin-right: 5px;
           }
 
-          .login  .nav-link  {
-            font-family: 'Roboto', sans-serif;
+          .login .nav-link {
+            font-family: "Roboto", sans-serif;
             font-weight: 300;
             font-size: 12px;
-
           }
         `}
       </style>

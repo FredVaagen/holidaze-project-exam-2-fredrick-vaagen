@@ -10,7 +10,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/globals.css";
 import ProgressBar from "@badrap/bar-of-progress";
 
-
 const progress = new ProgressBar({
   size: 1,
   color: "#fff",

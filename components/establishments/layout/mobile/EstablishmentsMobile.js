@@ -26,7 +26,7 @@ function EstablishmentsMobile({ establishments }) {
                 md={5}
                 lg={6}
                 className="establishment-specific__image-col">
-              <Carousel fade indicators={false}>
+                <Carousel fade indicators={false}>
                   {establishment.images.map((image) => (
                     <Carousel.Item key={image.id}>
                       <Image
@@ -38,7 +38,7 @@ function EstablishmentsMobile({ establishments }) {
                       />
                     </Carousel.Item>
                   ))}
-                  </Carousel>
+                </Carousel>
               </Col>
               <Col s={5} md={5} lg className="details">
                 <h3>{establishment.name}</h3>

@@ -120,7 +120,7 @@ function Login() {
             .form-control {
               width: 100%;
             }
-            
+
             .button {
               width: 200px !important;
               margin-bottom: 2rem !important;

@@ -8,7 +8,7 @@ import EstablishmentsMobile from "../../components/establishments/layout/mobile/
 
 <MediaQuery />;
 
-export default function EstablishmentsPage({ establishments}) {
+export default function EstablishmentsPage({ establishments }) {
   const isBreakpoint = MediaQuery(991);
 
   return (
@@ -21,7 +21,7 @@ export default function EstablishmentsPage({ establishments}) {
         {isBreakpoint ? (
           <EstablishmentsMobile {...{ establishments }} />
         ) : (
-          <EstablishmentsDesktop {...{ establishments}} />
+          <EstablishmentsDesktop {...{ establishments }} />
         )}
       </Container>
     </Container>
@@ -32,9 +32,8 @@ export async function getStaticProps() {
   const res = await fetch(`${BASE_URL}/establishments?_sort=name:asc`);
   const establishments = await res.json();
 
-
   return {
-    props: { establishments},
+    props: { establishments },
     revalidate: 1,
   };
 }

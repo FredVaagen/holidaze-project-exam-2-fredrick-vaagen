@@ -30,7 +30,7 @@ function HomeDesktop() {
             color: white;
             text-align: center;
             font-size: 20px;
-             font-weight: 300;
+            font-weight: 300;
           }
         `}
       </style>

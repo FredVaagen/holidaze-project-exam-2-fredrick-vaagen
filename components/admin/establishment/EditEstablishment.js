@@ -16,9 +16,6 @@ const EditEstablishment = (props) => {
     router.replace(router.asPath);
   };
 
-  const [price, setPrice] = useState(props.price);
-  const [address, setAddress] = useState(props.address);
-
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
     try {

@@ -38,7 +38,6 @@ export default function Establishment({ establishment, images }) {
         <Container className="establishment-images">
           <h1 className="h1">{establishment.name}</h1>
           <p className="establishment-address">{establishment.address}</p>
-
           <Row className="mb-3">
             <Col>
               <Carousel fade indicators={false}>
@@ -72,7 +71,6 @@ export default function Establishment({ establishment, images }) {
         <Button variant="contained" onClick={handleShow}>
           Book
         </Button>
-
         <Modal
           show={show}
           size="lg"

@@ -10,7 +10,7 @@ import EstablishmentsMobile from "../../../components/establishments/layout/mobi
 
 export default function EstablishmentsPage({ establishments }) {
   const isBreakpoint = MediaQuery(991);
-  
+
   return (
     <Container className="establishments">
       <Head>
@@ -36,7 +36,9 @@ export default function EstablishmentsPage({ establishments }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`${BASE_URL}/establishments?category=bedandbreakfast`);
+  const res = await fetch(
+    `${BASE_URL}/establishments?category=bedandbreakfast`
+  );
   const establishments = await res.json();
   return {
     props: { establishments },

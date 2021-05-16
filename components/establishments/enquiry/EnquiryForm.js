@@ -17,9 +17,8 @@ function Enquiry(establishment) {
 
   // USED to show/hide modal form. UseState is false when form is submitted.
   const [showModal, setShowModal] = useState(true);
-  const [email, setEmail] = useState(0)
+  const [email, setEmail] = useState(0);
   const establishmentName = establishment.name;
-
 
   const onSubmit = async (data) => {
     const requestOptions = {
@@ -30,7 +29,7 @@ function Enquiry(establishment) {
 
     await fetch([BASE_URL + "/enquiries"], requestOptions);
     setShowModal(false);
-    setEmail(data.email)
+    setEmail(data.email);
   };
 
   return (
@@ -188,7 +187,7 @@ function Enquiry(establishment) {
           />
         </Form>
       ) : (
-            // If form is submitted -> 
+        // If form is submitted ->
         <div className="booking-confirmation">
           <p>Thank you for booking {establishmentName}.</p>
           <p>A confirmation is sent to {email}. </p>

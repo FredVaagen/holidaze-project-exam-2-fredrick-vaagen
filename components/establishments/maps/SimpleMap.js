@@ -39,7 +39,6 @@ const SimpleMap = (props) => {
           lng={longitude}
           name={props.address}
           color="blue"
-          
         />
       </GoogleMapReact>
     </div>

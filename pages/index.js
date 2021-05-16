@@ -9,7 +9,7 @@ import HomeDesktop from "../components/home/desktop/HomeDesktop";
 
 <MediaQuery />;
 
-export default function Home({ establishments}) {
+export default function Home({ establishments }) {
   const isBreakpoint = MediaQuery(991);
 
   return (

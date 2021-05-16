@@ -8,7 +8,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang='en'>
+      <Html lang="en">
         <Head>
           <meta
             name="viewport"
@@ -26,7 +26,10 @@ class MyDocument extends Document {
             property="og:site_name"
             content="Holidaze - Find the perfect accomedation in Bergen, Norway with Holidaze."
           />
-          <meta property="og:title" content="Holidaze - A hotel, guesthouse and bed and breakfast booking site." />
+          <meta
+            property="og:title"
+            content="Holidaze - A hotel, guesthouse and bed and breakfast booking site."
+          />
           <meta property="og:type" content="website" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
