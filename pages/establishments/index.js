@@ -20,7 +20,7 @@ export default function EstablishmentsPage({
   const isBreakpoint = MediaQuery(991);
 
   return (
-    <>
+    <Container>
       <Head>
         <title>Holidaze - Establishments</title>
       </Head>
@@ -52,7 +52,7 @@ export default function EstablishmentsPage({
           />
         )}
       </Container>
-    </>
+    </Container>
   );
 }
 
