@@ -185,7 +185,7 @@ function Enquiry(establishment) {
           />
         </Form>
       ) : (
-        // REPLACES MODAL FORM WITH A CONFIRMATION MESSAGE
+            // If form is submitted -> 
         <div className="booking-confirmation">
           Thank you for booking {establishmentName}.
         </div>
@@ -219,18 +219,6 @@ function Enquiry(establishment) {
             border-top: none;
             border-right: none;
             border-left: none;
-          }
-
-          .button {
-            width: 200px;
-            margin-bottom: 2rem;
-            background: rgb(106, 126, 230);
-            color: white;
-            font-size: 11px;
-          }
-
-          .button:hover {
-            background: rgb(66, 87, 194);
           }
 
           .alert-danger {

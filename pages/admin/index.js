@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Head from "next/head";
 import { parseCookies } from "nookies";
 // LAYOUT
 import Tab from "react-bootstrap/Tab";
@@ -35,6 +36,9 @@ const Admin = ({
 
   return (
     <Container fluid className="p-0">
+      <Head>
+        <title>Holidaze - Admin Dashboard</title>
+      </Head>
       <Tab.Container defaultActiveKey="first">
         <Row className="p-0 m-0">
           <Sidebar {...{ enquiriesCount, contactMessageCount }} />

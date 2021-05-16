@@ -80,30 +80,24 @@ function EstablishmentsDesktop({ establishments}) {
             margin-0;
             margin-top: 3rem;
             margin-bottom: 3rem;
-           
           }
-
           .establishment-container:hover {
             transform: scale(1.01);
             cursor: pointer;
           }
-
           .h1 {
             margin-top: 2rem;
             font-weight: 300;
           }
-
           .col-md-6, .col-lg-3, .col-lg-5 {
             padding: 0;
             margin: 0;
           }
-
           .details h3 {
             font-size: 20px;
             margin-bottom: 0;
             font-weight: 300;
           }
-
           .establishment-specific {
             box-shadow: 0 1px 3px rgb(41 51 57 / 50%);
             margin: 0 auto;
@@ -112,14 +106,11 @@ function EstablishmentsDesktop({ establishments}) {
             margin-bottom: 2rem;
             padding: 0;
           }
-
           .details {
             padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-           
-            
           }
           .badge {
             background: None;
@@ -127,45 +118,33 @@ function EstablishmentsDesktop({ establishments}) {
             text-transform: uppercase;
             font-size: 9px;
             font-weight: bold;
-            margin-left: -0.3rem;
+            margin-top: 10px;
             margin-bottom: 1rem;
             text-align: left;
           }
-
           p {
             font-size: 12px;
           }
-
           .price, .address {
             font-size: 12px;
             font-weight: 300;
           }
-
           .button {
             background: #fff !important;
             color: black !important;
             font-size: 11px !important;
-            font-weight: 300;import Establishment from './../../../../pages/admin/edit/[name]';
-
+            font-weight: 300;
           }
-
           .establishment-specific__image-col {
             padding-top: 5px;;
             padding-left: 6px;
-         
           }
-
           .establishment-specific__image-col img {
             height: 100%;     
-           
           }
-
           .searchbar {
             max-width: 100%;
           }
-
-     
-
         `}
       </style>
     </>

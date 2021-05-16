@@ -30,7 +30,6 @@ function EnquiryAccordion(enquiry) {
       } catch (error) {
         console.log(error);
       }
-      router.reload();
     }
   };
   return (
