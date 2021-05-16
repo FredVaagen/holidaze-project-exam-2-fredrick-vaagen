@@ -17,7 +17,7 @@ function EstablishmentsDesktop({ establishments,nameDesc,priceAsc,priceDesc,sort
   return (
     <>
       <h1>Find a place to stay</h1>
-      <Container>
+  
       <Button
         variant="contained"
         className="button sort"
@@ -74,7 +74,6 @@ function EstablishmentsDesktop({ establishments,nameDesc,priceAsc,priceDesc,sort
         }}>
          Sort by Bed and Breakfasts
       </Button>
-      </Container>
       {sortEstablishments.map((establishment) => (
         <Link
           href="/establishments/[name]"
