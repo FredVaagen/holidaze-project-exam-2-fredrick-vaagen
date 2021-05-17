@@ -8,17 +8,16 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 
 function SearchBar({ establishments }) {
   const getEstablishmentName = (name) => {
-    console.log(establishments);
-    JSON.stringify(establishments, (val) => {
-      if (val === name) {
+    JSON.stringify(establishments, (value) => {
+      if (value === name) {
       }
-      return val;
+      return value;
     });
   };
 
-  const goToEstablishment = async (e, val) => {
+  const goToEstablishment = async (event, value) => {
     await getEstablishmentName();
-    Router.push(`/establishment/${val}`);
+    Router.push(`/establishment/${value}`);
   };
   return (
     <Container fluid className="searchbar">

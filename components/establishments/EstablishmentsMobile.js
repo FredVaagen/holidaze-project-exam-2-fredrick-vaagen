@@ -116,7 +116,6 @@ function EstablishmentsMobile({
                 <h3>{establishment.name}</h3>
                 <Badge>{establishment.category}</Badge>
                 <p>{establishment.address}</p>
-
                 <Button variant="contained" className="button">
                   NOK {establishment.price} per night
                 </Button>

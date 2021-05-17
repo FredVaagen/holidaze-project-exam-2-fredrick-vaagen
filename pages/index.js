@@ -49,8 +49,7 @@ export default function Home({ establishments }) {
           <style global jsx>
             {`
               .main {
-                background: black;
-                width: 100%;
+             
                 display: flex;
                 flex-direction: column;
                 padding: 0;
@@ -66,6 +65,7 @@ export default function Home({ establishments }) {
           </style>
         </Container>
       )}
+
     </>
   );
 }
