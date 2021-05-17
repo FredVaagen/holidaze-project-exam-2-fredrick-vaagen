@@ -5,15 +5,23 @@ import { useForm } from "react-hook-form";
 import { parseCookies } from "nookies";
 import Button from "@material-ui/core/Button";
 import Container from "react-bootstrap/Container";
+import Toast from "react-bootstrap/Toast";
 import { BASE_URL } from "./../../../constants/api";
 import ImageUpload from "./ImageUpload";
 
 const EditEstablishment = (props) => {
   //React hook form
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitSuccessful },
+  } = useForm();
   const router = useRouter();
-
-  //Used to update the prop data when editing establishments. 
+  //Checks if there is an update to the form -> 
+  const [update, setUpdate] = useState(false);
+  //Toast show if updated -> 
+  const [show, setShow] = useState(false);
+  //Used to update the prop data when editing establishments.
   const refreshData = () => {
     router.replace(router.asPath);
   };
@@ -31,7 +39,7 @@ const EditEstablishment = (props) => {
         address: data.address || props.address,
         category: data.category || props.category,
       };
-      // Makes a PUT request to update establishment data. 
+      // Makes a PUT request to update establishment data.
       const res = await axios({
         method: "PUT",
         url: `${BASE_URL}/establishments/${props.id}`,
@@ -43,12 +51,13 @@ const EditEstablishment = (props) => {
       });
 
       if (data.name) {
-        //If you change the name of the establishment -> Update the URL 
+        //If you change the name of the establishment -> Update the URL
         router.replace(`/admin/edit/${data.name}`);
       }
-      // If request is ok -> refreshData 
+      // If request is ok -> refreshData
       if (res) {
         refreshData();
+        setUpdate(true);
       }
     } catch (error) {
       console.log(error);
@@ -57,7 +66,7 @@ const EditEstablishment = (props) => {
   //Function to remove/delete a establishment
   const removeEstablishment = async (ctx) => {
     const token = parseCookies(ctx).token;
-    //If you press confirm on the alert box -> 
+    //If you press confirm on the alert box ->
     if (confirm("Are you sure you want to remove this establishment?")) {
       try {
         const res = await axios({
@@ -68,13 +77,10 @@ const EditEstablishment = (props) => {
             Authorization: `Bearer ${token}`,
           },
         });
-        
-      } catch (error) {
-   
-      }
+      } catch (error) {}
       //If delete request ok -> goes back to all the establishments edit page ->
       router.back();
-      //If you press NO reload page. 
+      //If you press NO reload page.
     } else {
       router.reload();
     }
@@ -122,7 +128,7 @@ const EditEstablishment = (props) => {
               <label>Category</label>
             </div>
             <select name="category" {...register("category")}>
-              <option>Current: {props.category}</option>
+              <option>{props.category}</option>
               <option>hotel</option>
               <option>guesthouse</option>
               <option>bedandbreakfast</option>
@@ -136,9 +142,30 @@ const EditEstablishment = (props) => {
               placeholder={props.address}
             />
           </div>
-          <Button variant="contained" type="submit" className="button">
+          <Button
+            variant="contained"
+            type="submit"
+            className="button"
+            onClick={() => {
+              if (isSubmitSuccessful) {
+                setUpdate(true);
+                setShow(true)
+              }
+            }}>
             Update
           </Button>
+
+          {update ? (
+            <>
+              <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
+                <Toast.Body>
+                  Establishment has been updated.
+                </Toast.Body>
+              </Toast>
+            </>
+          ) : (
+            <></>
+          )}
         </form>
       </div>
 
@@ -162,6 +189,7 @@ const EditEstablishment = (props) => {
           .MuiSvgIcon-root {
             opacity: 1;
           }
+
           .create-establishment textarea {
             height: 200px;
           }
