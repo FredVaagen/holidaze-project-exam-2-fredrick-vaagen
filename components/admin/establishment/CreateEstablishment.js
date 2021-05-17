@@ -323,7 +323,7 @@ function CreateEstablishment() {
               <Form.Control
                 type="file"
                 multiple
-                {...register("file", { required: false })}
+                {...register("file", { required: true })}
               />
               {errors.file && (
                 <div className="alert-danger">
