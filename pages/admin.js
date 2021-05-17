@@ -10,11 +10,11 @@ import Col from "react-bootstrap/Col";
 // ICONS
 import EditIcon from "@material-ui/icons/Edit";
 // MY COMPONENTS
-import { BASE_URL } from "../../constants/api";
-import CreateEstablishment from "../../components/admin/establishment/CreateEstablishment";
-import EnquiryMessages from "../../components/admin/dashboard/EnquiryMessages";
-import ContactMessages from "../../components/admin/dashboard/ContactMessages";
-import Sidebar from "../../components/admin/dashboard/Sidebar";
+import { BASE_URL } from "../constants/api";
+import CreateEstablishment from "../components/admin/establishment/CreateEstablishment";
+import EnquiryMessages from "../components/admin/dashboard/EnquiryMessages";
+import ContactMessages from "../components/admin/dashboard/ContactMessages";
+import Sidebar from "../components/admin/dashboard/Sidebar";
 
 const Admin = ({
   enquiries,

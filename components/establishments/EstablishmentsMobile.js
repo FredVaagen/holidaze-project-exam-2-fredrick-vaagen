@@ -88,8 +88,8 @@ function EstablishmentsMobile({
       </DropdownButton>
       {sortEstablishments.map((establishment) => (
         <Link
-          href="/establishments/[name]"
-          as={`/establishments/${establishment.name}`}
+          href="/establishment/[name]"
+          as={`/establishment/${establishment.name}`}
           key={establishment.id}>
           <Container className="establishment-container">
             <Row className="establishment-specific">

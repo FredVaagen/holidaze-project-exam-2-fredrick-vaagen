@@ -1,16 +1,15 @@
 import Head from "next/head";
-import Container from "react-bootstrap/Container";
 import { BASE_URL } from "../../constants/api";
-import SpecificEstablishmentCard from "../../components/specific-establishment/SpecificEstablishmentCard";
+import SpecificEstablishmentCard from "../../components/specific-establishment/SpecificEstablishment";
 
 export default function Establishment({ establishment, images }) {
   return (
-    <Container>
+    <>
       <Head>
         <title>Holidaze - {establishment.name}</title>
       </Head>
       <SpecificEstablishmentCard {...{ establishment, images }} />
-    </Container>
+    </>
   );
 }
 

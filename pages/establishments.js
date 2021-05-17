@@ -1,10 +1,10 @@
 import Head from "next/head";
 import Container from "react-bootstrap/Container";
-import { BASE_URL } from "./../../constants/api";
-import SearchBar from "../../components/establishments/search/SearchBar";
-import EstablishmentsDesktop from "../../components/establishments/EstablishmentsDesktop";
-import MediaQuery from "../../components/utility/MediaQuery";
-import EstablishmentsMobile from "../../components/establishments/EstablishmentsMobile";
+import { BASE_URL } from "../constants/api";
+import SearchBar from "../components/establishments/search/SearchBar";
+import EstablishmentsDesktop from "../components/establishments/EstablishmentsDesktop";
+import MediaQuery from "../components/utility/MediaQuery";
+import EstablishmentsMobile from "../components/establishments/EstablishmentsMobile";
 
 <MediaQuery />;
 
