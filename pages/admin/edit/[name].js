@@ -1,4 +1,3 @@
-import fetch from "isomorphic-fetch";
 import Container from "react-bootstrap/Container";
 import { BASE_URL } from "../../../constants/api";
 import BackArrow from "../../../components/utility/BackArrow";

@@ -1,4 +1,3 @@
-import fetch from "isomorphic-fetch";
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
