@@ -12,7 +12,7 @@ export default function Establishment({ establishment, images }) {
     </>
   );
 }
-
+//(Server-side Rendering): Fetch data on each request. ->
 export async function getServerSideProps({ params: { name } }) {
   const res = await fetch(`${BASE_URL}/establishments/?name=${name}`);
   const specificEstablishment = await res.json();
@@ -24,13 +24,14 @@ export async function getServerSideProps({ params: { name } }) {
     },
   };
 }
-
+//create params to be used in getServerSideProps ->
 export async function getServerSidePaths() {
   const res = await fetch(`${BASE_URL}/establishments`);
   const establishments = await res.json();
   return {
-    paths: establishments.map((el) => ({
-      params: { name: String(el.name) },
+    paths: establishments.map((establishment) => ({
+      //Stringify the value ->
+      params: { name: String(establishment.name) },
     })),
 
     fallback: true,

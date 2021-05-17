@@ -18,7 +18,7 @@ function Enquiry(establishment) {
   const [showModal, setShowModal] = useState(true);
   const [email, setEmail] = useState(0);
   const establishmentName = establishment.name;
-
+ //If submitting form and no error -> 
   const onSubmit = async (data) => {
     const requestOptions = {
       method: "POST",
@@ -27,7 +27,9 @@ function Enquiry(establishment) {
     };
 
     await fetch([BASE_URL + "/enquiries"], requestOptions);
+    //Sets modal state to false when form is ok -> 
     setShowModal(false);
+    //Set email state to the inputted email address -> 
     setEmail(data.email);
   };
 

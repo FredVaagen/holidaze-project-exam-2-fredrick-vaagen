@@ -6,9 +6,11 @@ import EstablishmentsDesktop from "../components/establishments/EstablishmentsDe
 import MediaQuery from "../components/utility/MediaQuery";
 import EstablishmentsMobile from "../components/establishments/EstablishmentsMobile";
 
+//MediaQuery component to measure width of page -> 
 <MediaQuery />;
 
 export default function EstablishmentsPage({
+  //Page props
   establishments,
   nameDesc,
   priceAsc,
@@ -17,6 +19,7 @@ export default function EstablishmentsPage({
   sortByGuesthouse,
   sortByBedAndBreakfast,
 }) {
+  //Sets the mediaquery breakpoint to 991px -> 
   const isBreakpoint = MediaQuery(991);
 
   return (
@@ -56,21 +59,24 @@ export default function EstablishmentsPage({
   );
 }
 
+//Fetching static data from the server -> 
 export async function getStaticProps() {
+  //Fetching all establihsments with ascending name -> 
   const resNameAsc = await fetch(`${BASE_URL}/establishments?_sort=name:asc`);
+  //Fetching all establihsments with descending name -> 
   const resNameDesc = await fetch(`${BASE_URL}/establishments?_sort=name:desc`);
+  //Fetching all establihsments with ascending price -> 
   const resPriceAsc = await fetch(`${BASE_URL}/establishments?_sort=price:asc`);
-  const resPriceDesc = await fetch(
-    `${BASE_URL}/establishments?_sort=price:desc`
-  );
+  //Fetching all establihsments with ascending price -> 
+  const resPriceDesc = await fetch( `${BASE_URL}/establishments?_sort=price:desc`);
+  //Fetching all establihsments with hotel category ->
   const resHotels = await fetch(`${BASE_URL}/establishments?category=hotel`);
-  const resGuesthouse = await fetch(
-    `${BASE_URL}/establishments?category=guesthouse`
-  );
-  const resBedAndBreakfast = await fetch(
-    `${BASE_URL}/establishments?category=bedandbreakfast`
-  );
+  //Fetching all establihsments with guesthouse category ->
+  const resGuesthouse = await fetch(`${BASE_URL}/establishments?category=guesthouse`);
+   //Fetching all establihsments with bed and breakfast category ->
+  const resBedAndBreakfast = await fetch(`${BASE_URL}/establishments?category=bedandbreakfast`);
 
+  //Constants set for each fetch value -> 
   const establishments = await resNameAsc.json();
   const nameDesc = await resNameDesc.json();
   const priceAsc = await resPriceAsc.json();
@@ -80,6 +86,7 @@ export async function getStaticProps() {
   const sortByBedAndBreakfast = await resBedAndBreakfast.json();
 
   return {
+    //Props sent to components
     props: {
       establishments,
       nameDesc,
@@ -89,6 +96,7 @@ export async function getStaticProps() {
       sortByGuesthouse,
       sortByBedAndBreakfast,
     },
+     //Page revalidates (Updates) each second to make it more dynamic. 
     revalidate: 1,
   };
 }

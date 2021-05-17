@@ -7,18 +7,25 @@ import { login } from "../../lib/auth";
 import AppContext from "../../context/AppContext";
 
 function LoginForm() {
+  //Set state of login information -> 
   const [data, updateData] = useState({ identifier: "", password: "" });
+  //Set loading state of login page -> 
   const [loading, setLoading] = useState(false);
+  //Set error state -> 
   const [error, setError] = useState(false);
+  //router is used to route to another page -> 
   const router = useRouter();
+  //app context to check if user is validated -> 
   const appContext = useContext(AppContext);
 
+  //If user is authenticated - Send user to admin page ->
   useEffect(() => {
     if (appContext.isAuthenticated) {
       router.push("/admin");
     }
   }, []);
 
+  //Function to update the login name and password to the value that the user input -> 
   function onChange(event) {
     updateData({ ...data, [event.target.name]: event.target.value });
   }
@@ -27,7 +34,6 @@ function LoginForm() {
     <Container className="login-container">
       <Form>
         <h1 className="h1">Login</h1>
-
         <fieldset disabled={loading}>
           <Form.Group>
             <Form.Label>Email:</Form.Label>
@@ -39,6 +45,7 @@ function LoginForm() {
           <Form.Group style={{ marginBottom: 30 }}>
             <Form.Label>Password:</Form.Label>
             <Form.Control
+            //Function to fetch input passworc -> 
               onChange={(event) => onChange(event)}
               type="password"
               name="password"
@@ -49,15 +56,23 @@ function LoginForm() {
               className="button"
               variant="contained"
               onClick={() => {
+                //When user clicks login (Loading spinner) ->
                 setLoading(true);
+                //If username and password is ok -> 
                 login(data.identifier, data.password)
                   .then((res) => {
+                    //Sets loading state to false (No spinner) -> 
                     setLoading(false);
+                    //if login info is valid -> 
                     appContext.setUser(res.data.user);
+                    //Send user to admin page -> 
                     if (res.ok) router.push("/admin");
                   })
+                  //If there is an error -> 
                   .catch((error) => {
+                    //Set error message->
                     setError(error.response.data);
+                    // Set loading to false (Removes loadingspinner) -> 
                     setLoading(false);
                   });
               }}>

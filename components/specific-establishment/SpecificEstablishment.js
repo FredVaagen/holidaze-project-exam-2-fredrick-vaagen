@@ -12,8 +12,11 @@ import Enquiry from "./enquiry/EnquiryForm";
 import Facilities from "./facilities/Facilities";
 
 function SpecificEstablishmentCard({ establishment, images }) {
+  //set modal show state to false -> 
   const [show, setShow] = useState(false);
+  //When you click close on the modal -> 
   const handleClose = () => setShow(false);
+  //When handleShow is called set modal to true -> 
   const handleShow = () => setShow(true);
   return (
     <>

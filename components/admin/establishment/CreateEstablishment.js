@@ -9,15 +9,19 @@ import Button from "@material-ui/core/Button";
 import { BASE_URL } from "../../../constants/api";
 
 function CreateEstablishment() {
+   //React hook form - Errors for form validation, isSubmitSuccsessful = Used for my useState function to detect if form is submitted. 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
   } = useForm();
 
+  // Shows the state of the form. When the form is submitted setShowForm is set to false to hide the form. 
   const [showForm, setShowForm] = useState(true);
+  //Sets the state of the name of the establishment. setName is set to the form input of the name when form is submitted. 
   const [name, setName] = useState(0);
 
+  // Function to send the form data and create a new establishment. 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
     try {
@@ -44,7 +48,7 @@ function CreateEstablishment() {
           kitchen: data.kithcen,
         },
       };
-
+      // Make a post request to upload formdata from the input fields (Not the images). 
       const inputValue = await axios({
         url: `${BASE_URL}/establishments`,
         method: "POST",
@@ -55,6 +59,7 @@ function CreateEstablishment() {
         data: formDataToSend,
       });
 
+      //input value = the files(images) added to the file input 
       const id = inputValue.data.id;
       const formData = new FormData();
       formData.append("files", data.file[0]);
@@ -68,10 +73,11 @@ function CreateEstablishment() {
       formData.append("files", data.file[8]);
       formData.append("files", data.file[9]);
       formData.append("files", data.file[10]);
-      formData.append("ref", "establishments"); //name of content type
-      formData.append("refId", id); //id of content type
+      formData.append("ref", "establishments");
+      formData.append("refId", id); 
       formData.append("field", "images");
 
+      //Make a post request to upload images
       const res = await axios({
         method: "POST",
         headers: {
@@ -82,6 +88,7 @@ function CreateEstablishment() {
       });
     } catch (error) {}
 
+    // if post request is ok -> Sets the value of the showForm to false and hides the form. 
     setShowForm(false);
     setName(data.name);
   };
@@ -94,6 +101,7 @@ function CreateEstablishment() {
             noValidate
             isValid={true}
             className="create-establishment-form"
+            //when form is submitted -> fire handleSubmit and submitData, if there are no errors. 
             onSubmit={handleSubmit(submitData)}>
             <Form.Group>
               <Form.Label>Name</Form.Label>

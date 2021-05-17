@@ -7,7 +7,6 @@ import HotelIcon from "@material-ui/icons/Hotel";
 import AddIcon from "@material-ui/icons/Add";
 import EditIcon from "@material-ui/icons/Edit";
 
-
 function Sidebar({enquiriesCount, contactMessageCount}) {
 
   const enquiryTabTitle =

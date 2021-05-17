@@ -15,8 +15,11 @@ function EnquiryMessages(enquiry) {
   const router = useRouter();
 
   const remove = async (ctx) => {
+    //Gets token from cookies -> 
     const token = parseCookies(ctx).token;
+    // If you press confirm on alert box to delete message ->
     if (confirm("Are you sure you want to remove this enquiry?")) {
+      //Delete request fires when you press "ok/confirm"
       try {
         const res = await axios({
           method: "DELETE",

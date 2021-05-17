@@ -9,14 +9,17 @@ import { BASE_URL } from "./../../../constants/api";
 import ImageUpload from "./ImageUpload";
 
 const EditEstablishment = (props) => {
+  //React hook form
   const { register, handleSubmit } = useForm();
   const router = useRouter();
 
+  //Used to update the prop data when editing establishments. 
   const refreshData = () => {
     router.replace(router.asPath);
   };
 
   const submitData = async (data, ctx) => {
+    //Gets token
     const token = parseCookies(ctx).token;
     try {
       const formDataToSend = {
@@ -28,7 +31,7 @@ const EditEstablishment = (props) => {
         address: data.address || props.address,
         category: data.category || props.category,
       };
-
+      // Makes a PUT request to update establishment data. 
       const res = await axios({
         method: "PUT",
         url: `${BASE_URL}/establishments/${props.id}`,
@@ -40,21 +43,21 @@ const EditEstablishment = (props) => {
       });
 
       if (data.name) {
+        //If you change the name of the establishment -> Update the URL 
         router.replace(`/admin/edit/${data.name}`);
       }
-
+      // If request is ok -> refreshData 
       if (res) {
         refreshData();
-        setPrice(data.price);
-        setAddress(data.address);
       }
     } catch (error) {
       console.log(error);
     }
   };
-
+  //Function to remove/delete a establishment
   const removeEstablishment = async (ctx) => {
     const token = parseCookies(ctx).token;
+    //If you press confirm on the alert box -> 
     if (confirm("Are you sure you want to remove this establishment?")) {
       try {
         const res = await axios({
@@ -65,11 +68,13 @@ const EditEstablishment = (props) => {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log("Success", res);
+        
       } catch (error) {
-        console.log(error);
+   
       }
+      //If delete request ok -> goes back to all the establishments edit page ->
       router.back();
+      //If you press NO reload page. 
     } else {
       router.reload();
     }

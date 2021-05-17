@@ -12,9 +12,9 @@ export default function ContactForm() {
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
   } = useForm();
-
+  //sets the state of the form to TRUE -> 
   const [showForm, setShowForm] = useState(true);
-
+  // When submitting form with no error -> 
   const onSubmit = async (data) => {
     const requestOptions = {
       method: "POST",
@@ -23,7 +23,7 @@ export default function ContactForm() {
     };
 
     const response = await fetch([BASE_URL + "/contacts"], requestOptions);
-
+    // if the form is submitted set the state of form to FALSE (Hidden) -> 
     setShowForm(false);
   };
 
@@ -111,7 +111,7 @@ export default function ContactForm() {
             </Button>
           </Form>
         ) : (
-          // If form is submitted ->
+          // If form is submitted the form is replaced with this div ->
           <div>
             <p>
               Thank you for contacting us. We will answer your question as soon

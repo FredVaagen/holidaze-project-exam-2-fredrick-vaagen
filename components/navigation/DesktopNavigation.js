@@ -3,7 +3,6 @@ import Link from "next/link";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
-
 // ICONS
 import FilterHdrIcon from "@material-ui/icons/FilterHdr";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";

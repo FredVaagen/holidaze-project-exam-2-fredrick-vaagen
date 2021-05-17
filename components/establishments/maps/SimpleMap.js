@@ -6,8 +6,8 @@ import { GOOGLE_API } from "../../../constants/api";
 const SimpleMap = (props) => {
   const longitude = props.lng;
   const latitude = props.lat;
-
-  const getMapOptions = (maps, map) => {
+  // Functions from the Google API Maps Docs -> 
+  const getMapOptions = () => {
     return {
       disableDefaultUI: true,
       mapTypeControl: true,
@@ -22,10 +22,11 @@ const SimpleMap = (props) => {
     };
   };
 
-  const [center, setCenter] = useState({ lat: latitude, lng: longitude });
-  const [zoom, setZoom] = useState(11);
+  const center =  {lat: latitude, lng: longitude};
+  const zoom = 11;
 
   return (
+    // Functions from the Google API Maps Docs -> 
     <div style={{ height: "100%", width: "100%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: GOOGLE_API }}

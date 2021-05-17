@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 function BackArrow() {
+  //Funtion to return the user to the last page they were on -> 
   const router = useRouter();
   return (
     <div onClick={() => router.back()} className="back-arrow">

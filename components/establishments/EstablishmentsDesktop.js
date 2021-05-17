@@ -13,6 +13,7 @@ import SimpleMap from "./maps/SimpleMap";
 import AppContext from "../../context/AppContext";
 
 function EstablishmentsDesktop({
+  //Props from getServerSideProps
   establishments,
   nameDesc,
   priceAsc,
@@ -21,8 +22,11 @@ function EstablishmentsDesktop({
   sortByGuesthouse,
   sortByBedAndBreakfast,
 }) {
+  // Checks if the admin is logged in -> 
   const { user } = useContext(AppContext);
+  // Set the state sortEstablishments used to map the establishment. If you wanna sort by hotels set state of establishments to sortByHotels for.ex. -> 
   const [sortEstablishments, setSortEstaeblishments] = useState(establishments);
+  //Used to change the name of the sort places to matching sort category for UX purposes->
   const [sortName, setSortName] = useState("Sort places");
 
   return (
@@ -35,6 +39,7 @@ function EstablishmentsDesktop({
         <Dropdown.Item
           href="#/a-z"
           onClick={() => {
+            //on click set new state ->
             setSortEstaeblishments(establishments);
             setSortName("Sort places: a-z");
           }}>
@@ -43,6 +48,7 @@ function EstablishmentsDesktop({
         <Dropdown.Item
           href="#/z-a"
           onClick={() => {
+            //on click set new state ->
             setSortEstaeblishments(nameDesc);
             setSortName("Sort places: z-a");
           }}>
@@ -51,6 +57,7 @@ function EstablishmentsDesktop({
         <Dropdown.Item
           href="#/Lower-Higher"
           onClick={() => {
+            //on click set new state ->
             setSortEstaeblishments(priceAsc);
             setSortName("Sort places: Lower - higher");
           }}>
@@ -59,6 +66,7 @@ function EstablishmentsDesktop({
         <Dropdown.Item
           href="#/lower-higher"
           onClick={() => {
+            //on click set new state ->
             setSortEstaeblishments(priceDesc);
             setSortName("Sort places: Higher - lower");
           }}>
@@ -67,6 +75,7 @@ function EstablishmentsDesktop({
         <Dropdown.Item
           href="#/hotels"
           onClick={() => {
+            //on click set new state ->
             setSortEstaeblishments(sortByHotel);
             setSortName("Sort places: Hotels");
           }}>
@@ -75,6 +84,7 @@ function EstablishmentsDesktop({
         <Dropdown.Item
           href="#/guesthouses"
           onClick={() => {
+            //on click set new state ->
             setSortEstaeblishments(sortByGuesthouse);
             setSortName("Sort places: Guesthouses");
           }}>
@@ -83,14 +93,17 @@ function EstablishmentsDesktop({
         <Dropdown.Item
           href="#/bedandbreakfast"
           onClick={() => {
+            //on click set new state ->
             setSortEstaeblishments(sortByBedAndBreakfast);
             setSortName("Sort places: Bed and Breakfast");
           }}>
           Bed and Breakfast
         </Dropdown.Item>
       </DropdownButton>
-
+          
       {sortEstablishments.map((establishment) => (
+        //sortEstablishments value get set by the useState function [sortEstablishments, setSortEstaeblishments] = useState(establishments));
+        // onClick functions above changes the state to the desired value (ex. sortByGuesthouse)
         <Link
           href="/establishment/[name]"
           as={`/establishment/${establishment.name}`}

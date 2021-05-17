@@ -23,13 +23,16 @@ const Admin = ({
   enquiriesCount,
   contactMessageCount,
 }) => {
+  //title of contact message -> 
   let contactTitle = "Contact Messages";
+  //title of enquiries -> 
   let enquiriesTitle = "Enquiries";
 
+  //if there are no contact messages -> 
   if (contacts == 0) {
     contactTitle = "No messages";
   }
-
+ //if there are no enquiries -> 
   if (enquiries == 0) {
     enquiriesTitle = "No enquiries";
   }
@@ -110,7 +113,9 @@ const Admin = ({
     </Container>
   );
 };
+//Fetch all the admin data -> 
 export async function getServerSideProps(ctx) {
+  //Needs valid token to get data -> 
   const token = parseCookies(ctx).token;
   const [
     enquiriesRes,
@@ -118,6 +123,7 @@ export async function getServerSideProps(ctx) {
     establishmentsRes,
     enquiriesResCount,
     contactMessageResCount,
+    //Fetch all the data -> 
   ] = await Promise.all([
     fetch(`${BASE_URL}/enquiries`, {
       headers: {

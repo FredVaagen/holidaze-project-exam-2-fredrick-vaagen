@@ -15,8 +15,11 @@ function ContactMessages(contact) {
   const router = useRouter();
 
   const remove = async (ctx) => {
+    //Gets token from cookies -> 
     const token = parseCookies(ctx).token;
+    // If you press confirm on alert box to delete message -> 
     if (confirm("Are you sure you want to remove this contact message?")) {
+      //Delete request fires when you press "ok/confirm" 
       try {
         const res = await axios({
           method: "DELETE",
@@ -26,10 +29,11 @@ function ContactMessages(contact) {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log("Success", res);
+      
       } catch (error) {
         console.log(error);
       }
+      // If sucsess -> Reload page. 
       router.reload();
     }
   };

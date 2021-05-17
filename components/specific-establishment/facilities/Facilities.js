@@ -29,6 +29,8 @@ function Facilities(props) {
   const parking = props.facilities.parking;
   const kitchen = props.facilities.kitchen;
 
+  //All these functions work the same way. If the (value) is there -> Return the icon + text -> 
+
   function Accessible() {
     if (accesible) {
       return (
@@ -149,7 +151,6 @@ function Facilities(props) {
   return (
     <Container fluid className="facilities">
       <h3>Facilities</h3>
-
       <Row>
         {Accessible()}
         {WorkStation()}

@@ -7,14 +7,18 @@ import SearchIcon from "@material-ui/icons/Search";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
 function SearchBar({ establishments }) {
+  //Function to match the value of the establishment with the value of the searchbar
   const getEstablishmentName = (name) => {
+    //Converts to string
     JSON.stringify(establishments, (value) => {
       if (value === name) {
       }
+      //If the value === the name -> 
       return value;
     });
   };
 
+  // If you click the establishment on the serchbar pushes you to the detail page of the establishment -> 
   const goToEstablishment = async (event, value) => {
     await getEstablishmentName();
     Router.push(`/establishment/${value}`);
