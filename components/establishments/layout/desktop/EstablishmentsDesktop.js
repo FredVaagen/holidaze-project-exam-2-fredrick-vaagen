@@ -23,15 +23,17 @@ function EstablishmentsDesktop({
 }) {
   const { user } = useContext(AppContext);
   const [sortEstablishments, setSortEstaeblishments] = useState(establishments);
+  const [sortName, setSortName] = useState("Sort places")
 
   return (
     <>
       <h1>Find a place to stay</h1>
-      <DropdownButton className="mt-3" id="dropdown-basic-button" title="Sort places">
+      <DropdownButton className="mt-3" id="dropdown-basic-button" title={sortName}>
         <Dropdown.Item
           href="#/a-z"
           onClick={() => {
             setSortEstaeblishments(establishments);
+            setSortName("Sort places: a-z")
           }}>
           A-Z
         </Dropdown.Item>
@@ -39,6 +41,7 @@ function EstablishmentsDesktop({
           href="#/z-a"
           onClick={() => {
             setSortEstaeblishments(nameDesc);
+            setSortName("Sort places: z-a")
           }}>
          Z-A
         </Dropdown.Item>
@@ -46,6 +49,8 @@ function EstablishmentsDesktop({
           href="#/higher-lower"
           onClick={() => {
             setSortEstaeblishments(priceAsc);
+            setSortName("Sort places: Higher-Lower")
+            
           }}>
           Pricer (Higher-Lower)
         </Dropdown.Item>
@@ -53,6 +58,7 @@ function EstablishmentsDesktop({
           href="#/lower-higher"
           onClick={() => {
             setSortEstaeblishments(priceDesc);
+            setSortName("Sort places: Lower-Higher")
           }}>
           Price (Lower-Higher)
         </Dropdown.Item>
@@ -60,6 +66,7 @@ function EstablishmentsDesktop({
           href="#/hotels"
           onClick={() => {
             setSortEstaeblishments(sortByHotel);
+            setSortName("Sort places: Hotels")
           }}>
           Hotels
         </Dropdown.Item>
@@ -67,6 +74,7 @@ function EstablishmentsDesktop({
           href="#/guesthouses"
           onClick={() => {
             setSortEstaeblishments(sortByGuesthouse);
+            setSortName("Sort places: Guesthouses")
           }}>
           Guesthouses
         </Dropdown.Item>
@@ -74,6 +82,7 @@ function EstablishmentsDesktop({
           href="#/bedandbreakfast"
           onClick={() => {
             setSortEstaeblishments(sortByBedAndBreakfast);
+            setSortName("Sort places: Bed and Breakfast")
           }}>
           Bed and Breakfast
         </Dropdown.Item>
@@ -206,7 +215,7 @@ function EstablishmentsDesktop({
             max-width: 100%;
           }
 
-          //OVERRIDING DROPDOWNBUTTON CSS FROM BOOTSTRAP -> 
+          ///////////OVERRIDING DROPDOWNBUTTON CSS FROM BOOTSTRAP ////////////////
 
           .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
             color: black !important;
@@ -225,6 +234,8 @@ function EstablishmentsDesktop({
         color: black !important;
         background: none !important;
         } 
+
+        ///////////////////////END////////////////////////////////////
         `}
       </style>
     </>

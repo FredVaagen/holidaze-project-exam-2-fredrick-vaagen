@@ -1,5 +1,5 @@
 import Head from "next/head";
-import fetch from "isomorphic-unfetch";
+import fetch from "isomorphic-fetch";
 import Container from "react-bootstrap/Container";
 import { BASE_URL } from "../constants/api";
 import MediaQuery from "../components/utility/MediaQuery";
