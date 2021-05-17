@@ -124,6 +124,7 @@ export default function ContactForm() {
           {`
             .main {
               height: 100vh;
+              min-height: 1000px;
             }
 
             h1 {

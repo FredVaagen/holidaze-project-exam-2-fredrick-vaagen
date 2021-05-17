@@ -23,7 +23,7 @@ function EstablishmentsDesktop({
 }) {
   const { user } = useContext(AppContext);
   const [sortEstablishments, setSortEstaeblishments] = useState(establishments);
-  const [sortName, setSortName] = useState("Sort places")
+  const [sortName, setSortName] = useState("Sort places");
 
   return (
     <>
@@ -46,7 +46,7 @@ function EstablishmentsDesktop({
             setSortEstaeblishments(nameDesc);
             setSortName("Sort places: z-a");
           }}>
-           Name: z - a
+          Name: z - a
         </Dropdown.Item>
         <Dropdown.Item
           href="#/Lower-Higher"
@@ -144,6 +144,9 @@ function EstablishmentsDesktop({
       ))}
       <style global jsx>
         {`
+          .main {
+            min-height: 1000px;
+          }
           .establishment-container {
             transition: 0.5s;
             padding: 0;

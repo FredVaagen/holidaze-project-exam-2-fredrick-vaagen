@@ -127,7 +127,10 @@ function EstablishmentsMobile({
       ))}
       <style global jsx>
         {`
-          
+          .main {
+            min-height: 1000px;
+          }
+        
           .establishment-container {
             transition: 0.5s;
             padding: 0;
