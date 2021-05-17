@@ -13,7 +13,6 @@ export default function ContactForm() {
     formState: { errors, isSubmitSuccessful },
   } = useForm();
 
-  const [name, setName] = useState(0);
   const [showForm, setShowForm] = useState(true);
 
   const onSubmit = async (data) => {
@@ -25,7 +24,6 @@ export default function ContactForm() {
 
     const response = await fetch([BASE_URL + "/contacts"], requestOptions);
 
-    setName(data.firstname);
     setShowForm(false);
   };
 
