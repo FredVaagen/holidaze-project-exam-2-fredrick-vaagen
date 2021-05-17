@@ -49,9 +49,10 @@ function SearchBar({ establishments }) {
             border: none;
             align-self: center;
             width: 100%;
-            max-width: 800px;
+            max-width: 1280px;
             min-width: 200px;
             margin-top: 1rem;
+
           }
           @media only screen and (max-width: 990px) {
             .searchbar {
@@ -64,6 +65,7 @@ function SearchBar({ establishments }) {
               width: 100%;
               max-width: 100%;
               z-index: 3;
+              
             }
           }
           .MuiInputBase-root {

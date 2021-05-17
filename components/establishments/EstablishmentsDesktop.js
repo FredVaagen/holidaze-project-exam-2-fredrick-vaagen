@@ -27,7 +27,7 @@ function EstablishmentsDesktop({
 
   return (
     <>
-      <h1>Find a place to stay</h1>
+      <h1 className="mt-5 mb-5">Find a place to stay</h1>
       <DropdownButton
         className="mt-3"
         id="dropdown-basic-button"

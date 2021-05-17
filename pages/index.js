@@ -28,10 +28,11 @@ export default function Home({ establishments }) {
                 display: flex;
                 flex-direction: column;
                 padding: 0;
+                min-height: 100vh;
               }
 
               .background-image {
-                height: 90vh;
+                height: 100vh;
                 background: url("/background-mobile.jpg") no-repeat;
                 background-position: center;
                 padding: 0;
@@ -53,6 +54,7 @@ export default function Home({ establishments }) {
                 display: flex;
                 flex-direction: column;
                 padding: 0;
+                min-height: 100vh;
               }
               .background-image {
                 height: 100vh;

@@ -20,11 +20,11 @@ function EstablishmentsMobile({
   sortByBedAndBreakfast,
 }) {
   const [sortEstablishments, setSortEstaeblishments] = useState(establishments);
-  const [sortName, setSortName] = useState("Sort places")
+  const [sortName, setSortName] = useState("Sort places");
 
   return (
     <>
-      <h1>Find a place to stay</h1>
+      <h1 className="mb-5" >Find a place to stay</h1>
       <DropdownButton
         className="mt-3"
         id="dropdown-basic-button"
@@ -43,7 +43,7 @@ function EstablishmentsMobile({
             setSortEstaeblishments(nameDesc);
             setSortName("Sort places: z-a");
           }}>
-           Name: z - a
+          Name: z - a
         </Dropdown.Item>
         <Dropdown.Item
           href="#/Lower-Higher"
@@ -127,6 +127,7 @@ function EstablishmentsMobile({
       ))}
       <style global jsx>
         {`
+          
           .establishment-container {
             transition: 0.5s;
             padding: 0;
