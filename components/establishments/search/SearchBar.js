@@ -18,7 +18,7 @@ function SearchBar({ establishments }) {
 
   const goToEstablishment = async (e, val) => {
     await getEstablishmentName();
-    Router.push(`/establishments/${val}`);
+    Router.push(`/establishment/${val}`);
   };
   return (
     <Container fluid className="searchbar">
