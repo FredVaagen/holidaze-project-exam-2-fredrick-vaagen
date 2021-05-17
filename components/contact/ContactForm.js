@@ -43,7 +43,7 @@ export default function ContactForm() {
                 placeholder="First name"
               />
               {errors.firstname && (
-                <div className="alert-danger">A first name is required</div>
+                <div className="alert-danger">First name is required</div>
               )}
             </Form.Group>
 
@@ -81,7 +81,7 @@ export default function ContactForm() {
                 placeholder="Subject"
               />
               {errors.subject && (
-                <div className="alert-danger">A subject is required</div>
+                <div className="alert-danger">Subject is required</div>
               )}
             </Form.Group>
 
@@ -94,7 +94,7 @@ export default function ContactForm() {
               />
               {errors.message && (
                 <div className="alert-danger">
-                  A message is required (min 10 letters)
+                  Message is required (min 10 letters)
                 </div>
               )}
             </Form.Group>
