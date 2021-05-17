@@ -99,7 +99,6 @@ function CreateEstablishment() {
         {showForm ? (
           <Form
             noValidate
-            isValid={true}
             className="create-establishment-form"
             //when form is submitted -> fire handleSubmit and submitData, if there are no errors. 
             onSubmit={handleSubmit(submitData)}>
@@ -331,7 +330,7 @@ function CreateEstablishment() {
               <Form.Control
                 type="file"
                 multiple
-                {...register("file", { required: true })}
+                {...register("file", { required: false })}
               />
               {errors.file && (
                 <div className="alert-danger">

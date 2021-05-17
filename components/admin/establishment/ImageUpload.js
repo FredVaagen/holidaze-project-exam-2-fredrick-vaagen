@@ -64,7 +64,7 @@ const ImageUpload = (props) => {
               name="file"
               multiple
               className="input-file"
-              {...register("file")}
+              {...register("file", { required: true })}
             />
           </div>
           {error ? (

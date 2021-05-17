@@ -122,7 +122,7 @@ const EditEstablishment = (props) => {
               <label>Category</label>
             </div>
             <select name="category" {...register("category")}>
-              <option>{props.category}</option>
+              <option>Current: {props.category}</option>
               <option>hotel</option>
               <option>guesthouse</option>
               <option>bedandbreakfast</option>
@@ -162,7 +162,6 @@ const EditEstablishment = (props) => {
           .MuiSvgIcon-root {
             opacity: 1;
           }
-
           .create-establishment textarea {
             height: 200px;
           }
