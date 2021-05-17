@@ -12,8 +12,8 @@ import ContactSupportIcon from "@material-ui/icons/ContactSupport";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-import { logout } from "../../../lib/auth";
-import AppContext from "../../../context/AppContext";
+import { logout } from "../../lib/auth";
+import AppContext from "../../context/AppContext";
 
 function DesktopNavigation() {
   const { user, setUser } = useContext(AppContext);

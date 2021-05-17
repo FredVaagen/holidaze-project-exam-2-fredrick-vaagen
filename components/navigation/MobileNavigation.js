@@ -1,16 +1,19 @@
 import { useContext } from "react";
 import Link from "next/link";
+//Bootstrap imports
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+// My components
+import { logout } from "../../lib/auth";
+import AppContext from "../../context/AppContext";
+// Material UI icons 
 import HotelIcon from "@material-ui/icons/Hotel";
 import ContactSupportIcon from "@material-ui/icons/ContactSupport";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import FilterHdrIcon from "@material-ui/icons/FilterHdr";
-import { logout } from "../../../lib/auth";
-import AppContext from "../../../context/AppContext";
 
 function MobileNavigation() {
   const { user, setUser } = useContext(AppContext);

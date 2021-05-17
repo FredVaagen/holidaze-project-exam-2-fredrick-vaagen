@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Head from "next/head";
 import Image from "next/image";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -19,9 +18,6 @@ function SpecificEstablishmentCard({ establishment, images }) {
   const handleShow = () => setShow(true);
   return (
     <>
-      <Head>
-        <title>Holidaze - {establishment.name}</title>
-      </Head>
       <BackArrow />
       <Container className="establishment">
         <Container className="establishment-images">

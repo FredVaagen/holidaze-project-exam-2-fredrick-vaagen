@@ -1,8 +1,8 @@
 import { Container } from "react-bootstrap";
 import Footer from "../footer/Footer";
 import MediaQuery from "../utility/MediaQuery";
-import MobileNavigation from "../navigation/mobile/MobileNavigation";
-import DesktopNavigation from "../navigation/desktop/DesktopNavigation";
+import MobileNavigation from "../navigation/MobileNavigation";
+import DesktopNavigation from "../navigation/DesktopNavigation";
 
 <MediaQuery />;
 
