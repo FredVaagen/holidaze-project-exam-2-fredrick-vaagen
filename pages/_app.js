@@ -19,7 +19,7 @@ Router.events.on("routeChangeStart", progress.start);
 Router.events.on("routeChangeComplete", progress.finish);
 Router.events.on("routeChangeError", progress.finish);
 
-//set state of app ->
+//set default state of app ->
 class MyApp extends App {
   state = {
     user: null,
@@ -50,7 +50,7 @@ class MyApp extends App {
       });
     }
   }
-
+  //if token - set the state from null to user ->
   setUser = (user) => {
     this.setState({ user });
   };
