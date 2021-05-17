@@ -7,7 +7,7 @@ function Login() {
       <Head>
         <title>Holidaze - Login</title>
       </Head>
-      <LoginForm />;
+      <LoginForm />
     </>
   );
 }
