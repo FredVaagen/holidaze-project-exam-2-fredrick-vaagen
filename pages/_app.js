@@ -1,7 +1,6 @@
 import React from "react";
 import App from "next/app";
 import Router from "next/router";
-import Cookie from "js-cookie";
 import ProgressBar from "@badrap/bar-of-progress";
 import Layout from "../components/layout/Layout";
 import AppContext from "../context/AppContext";
@@ -23,8 +22,8 @@ class MyApp extends App {
     user: null,
   };
 
-  componentDidMount() {
-    const token = Cookie.get("token");
+  componentDidMount(ctx) {
+    const token = parseCookies(ctx).token;
     if (token) {
       fetch(`${BASE_URL}/users/me`, {
         headers: {

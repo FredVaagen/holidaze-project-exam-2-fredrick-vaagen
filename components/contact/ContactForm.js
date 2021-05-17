@@ -1,14 +1,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "@material-ui/core/Button";
 import { BASE_URL } from "./../../constants/api";
 import BackArrow from "../utility/BackArrow";
-
-
 
 export default function ContactForm() {
   const {
