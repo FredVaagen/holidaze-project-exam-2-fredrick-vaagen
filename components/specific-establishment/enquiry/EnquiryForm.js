@@ -195,11 +195,6 @@ function Enquiry(establishment) {
 
       <style global jsx>
         {`
-          .react-datepicker__input-container {
-            margin-right: 3rem;
-            width: 100%;
-          }
-
           .form-group input,
           .form-group select {
             border: none;
@@ -215,12 +210,27 @@ function Enquiry(establishment) {
             font-weight: 300;
           }
 
+          .react-datepicker__input-container {
+            margin-right: 3rem;
+            width: 100%;
+          }
+
           .react-datepicker__input-container input {
             width: 100%;
             border-bottom: 1px solid rgb(211, 211, 211, 0.8);
             border-top: none;
             border-right: none;
             border-left: none;
+          }
+
+          .button {
+            width: 100% !important;
+            margin-bottom: 2rem !important;
+            margin-top: 2rem !important;
+            background: #fff !important;
+            color: black !important;
+            font-size: 11px !important;
+            font-weight: 300 !important;
           }
 
           .alert-danger {

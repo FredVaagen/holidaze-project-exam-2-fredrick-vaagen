@@ -17,7 +17,6 @@
     "bootstrap": "^4.6.0",
     "dateformat": "^4.5.1",
     "google-map-react": "^2.1.9",
-    "js-cookie": "^2.2.1",
     "next": "^10.0.3",
     "next-images": "^1.7.0",
     "nookies": "^2.5.2",
@@ -25,7 +24,6 @@
     "react-bootstrap": "^1.5.2",
     "react-datepicker": "^3.7.0",
     "react-dom": "16.13.1",
-    "react-hook-form": "^7.0.5",
-    "yup": "^0.32.9"
+    "react-hook-form": "^7.0.5"
   }
 }

@@ -11,7 +11,6 @@ import SimpleMap from "../establishments/maps/SimpleMap";
 import Enquiry from "./enquiry/EnquiryForm";
 import Facilities from "./facilities/Facilities";
 
-
 function SpecificEstablishmentCard({ establishment, images }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -21,25 +20,21 @@ function SpecificEstablishmentCard({ establishment, images }) {
       <BackArrow />
       <Container className="establishment">
         <Container className="establishment-images">
-          <h1 className="h1">{establishment.name}</h1>
+          <h1>{establishment.name}</h1>
           <p className="establishment-address">{establishment.address}</p>
-          <Row className="mb-3">
-            <Col>
               <Carousel fade indicators={false}>
                 {images.map((image) => (
                   <Carousel.Item key={image.id}>
                     <Image
                       className="d-block w-100"
-                      src={image.formats.small.url}
+                      src={image.url}
                       alt={image.name}
-                      width="1000"
+                      width="1280"
                       height="auto"
                     />
                   </Carousel.Item>
                 ))}
               </Carousel>
-            </Col>
-          </Row>
         </Container>
         <Container className="details-container">
           <Facilities {...establishment} />
@@ -48,14 +43,16 @@ function SpecificEstablishmentCard({ establishment, images }) {
               <p className="description">{establishment.description}</p>
             </Col>
           </Row>
-          <h5 className="subheading">Location </h5>
+          <h3>Location </h3>
+          <p className="establishment-address">{establishment.address}</p>
           <div className="map">
             <SimpleMap {...establishment} />
           </div>
-        </Container>
-        <Button variant="contained" onClick={handleShow}>
-          Book
+          <Button className="button" variant="contained" onClick={handleShow}>
+          Book {establishment.name}
         </Button>
+        </Container>
+
         <Modal
           show={show}
           size="lg"
@@ -75,10 +72,6 @@ function SpecificEstablishmentCard({ establishment, images }) {
               height: auto;
             }
 
-            .MuiSvgIcon-root {
-              opacity: 1;
-            }
-
             .establishment {
               margin-top: 5rem;
               height: auto;
@@ -88,34 +81,22 @@ function SpecificEstablishmentCard({ establishment, images }) {
               flex-direction: column;
             }
 
-            .establishment h1 {
+            h1 {
               font-size: 20px;
               font-weight: 300;
               margin-bottom: 1px;
             }
 
-            .establishment-address {
-              font-size: 10px;
-              margin-top: 0.5rem;
-              margin-bottom: 2rem;
-            }
-  
-            .details {
-              height: auto;
-              border-bottom: 1px solid rgb(221, 221, 221);
-              margin-top: 1rem;
-              margin-bottom: 2rem;
-            }
-
-            .details .description {
-              margin-bottom: 2rem;
-              margin-top: 1rem;
-              font-size: 14px;
+            h3 {
               font-weight: 300;
+              text-align: left;
+              margin-top: 2rem;
+              margin-bottom: 2rem;
             }
 
             .carousel-item img {
               height: 450px;
+              width: 100%;
             }
 
             @media only screen and (max-width: 800px) {
@@ -130,19 +111,24 @@ function SpecificEstablishmentCard({ establishment, images }) {
               }
             }
 
-            .subheading {
-              font-size: 18px;
-              margin-bottom: 1rem;
-              font-weight: 200;
+            .details {
+              height: auto;
+              border-bottom: 1px solid rgb(221, 221, 221);
+              margin-top: 1rem;
+              margin-bottom: 2rem;
             }
 
-            .MuiButtonBase-root {
-              width: 100% !important;
-              margin-bottom: 2rem !important;
-              margin-top: 2rem !important;
-              background: #fff !important;
-              color: black !important;
-              font-size: 11px !important;
+            .details .description {
+              margin-bottom: 2rem;
+              margin-top: 1rem;
+              font-size: 14px;
+              font-weight: 300;
+            }
+
+            .establishment-address {
+              font-size: 10px;
+              margin-top: 0.5rem;
+              margin-bottom: 2rem;
             }
 
             .modal-title {
@@ -154,32 +140,19 @@ function SpecificEstablishmentCard({ establishment, images }) {
               height: 300px;
             }
 
-            h3 {
-              font-weight: 300;
-              text-align: left;
-              margin-top: 2rem;
-              margin-bottom: 2rem;
+            .MuiSvgIcon-root {
+              opacity: 1;
             }
-            .facilities {
-              display: flex;
-              flex-direction: column;
-              flex-wrap: wrap;
-              justify-content: space-between;
-              height: auto;
-  
-              font-size: 11px;
-              font-weight: 300;
-              margin-bottom: 2rem;
+
+            .button {
+              width: 100% !important;
+              margin-bottom: 2rem !important;
+              margin-top: 2rem !important;
+              background: #fff !important;
+              color: black !important;
+              font-size: 11px !important;
+              font-weight: 300 !important;
             }
-  
-            .facilities .col {
-              margin-top: 10px;
-            }
-  
-            .facilities svg {
-              font-size: 22px;
-              opacity: 0.7;
-              
           `}
         </style>
       </Container>

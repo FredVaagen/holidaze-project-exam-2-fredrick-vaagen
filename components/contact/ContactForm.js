@@ -8,28 +8,14 @@ import Button from "@material-ui/core/Button";
 import { BASE_URL } from "./../../constants/api";
 import BackArrow from "../utility/BackArrow";
 
-const schema = yup.object().shape({
-  firstname: yup.string().required("Please enter a first name").min(2),
-  lastname: yup.string().required("Please enter a last name").min(3),
-  email: yup
-    .string()
-    .required("Please enter a valid email address")
-    .matches(
-      /[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_.~#?&//=]*)/,
-      "Please enter a valid email address"
-    ),
-  subject: yup.string().required("Please enter a subject").min(3),
-  message: yup.string().required("Please enter a message").min(10),
-});
+
 
 export default function ContactForm() {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  } = useForm();
 
   const [name, setName] = useState(0);
   const [showForm, setShowForm] = useState(true);
@@ -52,28 +38,28 @@ export default function ContactForm() {
       <BackArrow />
       <h1 className="mt-5 mb-5">Contact us</h1>
       {showForm ? (
-        <Form noValidate onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group>
             <Form.Label>First name</Form.Label>
             <Form.Control
-              {...register("firstname")}
-              defaultValue=""
+              {...register("firstname", { required: true, minLength: 2 })}
+              
               placeholder="First name"
             />
             {errors.firstname && (
-              <div className="alert-danger">{errors.firstname.message}</div>
+              <div className="alert-danger">A first name is required</div>
             )}
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Last name</Form.Label>
             <Form.Control
-              {...register("lastname")}
-              defaultValue=""
+              {...register("lastname", { required: true, minLength: 2 })}
+              
               placeholder="Last name"
             />
             {errors.lastname && (
-              <div className="alert-danger">{errors.lastname.message}</div>
+              <div className="alert-danger">Last name is required</div>
             )}
           </Form.Group>
 
@@ -81,24 +67,28 @@ export default function ContactForm() {
             <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
-              {...register("email")}
+              {...register("email", {
+                required: true,
+                pattern:
+                  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              })}
               placeholder="Email address"
-              defaultValue=""
+              
             />
             {errors.email && (
-              <div className="alert-danger">{errors.email.message}</div>
+              <div className="alert-danger">Email is required</div>
             )}
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Subject</Form.Label>
             <Form.Control
-              {...register("subject")}
-              defaultValue=""
+              {...register("subject", { required: true, minLength: 4 })}
+             
               placeholder="Subject"
             />
             {errors.subject && (
-              <div className="alert-danger">{errors.subject.message}</div>
+              <div className="alert-danger">A subject is required</div>
             )}
           </Form.Group>
 
@@ -107,11 +97,11 @@ export default function ContactForm() {
             <Form.Control
               as="textarea"
               placeholder="Your message"
-              defaultValue=""
-              {...register("message")}
+            
+              {...register("message", { required: true, minLength: 10 })}
             />
             {errors.message && (
-              <div className="alert-danger">{errors.message.message}</div>
+              <div className="alert-danger">A message is required (min 10 letters)</div>
             )}
           </Form.Group>
 
