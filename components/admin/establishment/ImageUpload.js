@@ -82,8 +82,8 @@ const ImageUpload = (props) => {
                 setLoading(true);
               } else setLoading(false);
 
-              if (errors, 400) {
-                console.log("Empty");
+              if (errors) {
+               
                 setError(true);
                 setLoading(false);
                 
