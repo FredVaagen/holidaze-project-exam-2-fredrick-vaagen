@@ -44,9 +44,7 @@ const ImageUpload = (props) => {
       url: `${BASE_URL}/upload`,
       data: formData,
     });
-    if (error) {
-      console.log("HELP");
-    }
+
     if (res) {
       console.log("Success", res);
       router.reload();
@@ -88,7 +86,7 @@ const ImageUpload = (props) => {
                 console.log("Empty");
                 setError(true);
                 setLoading(false);
-                setTimeout(router.reload(), 2000)
+                
               }
             }}>
             {loading ? (
