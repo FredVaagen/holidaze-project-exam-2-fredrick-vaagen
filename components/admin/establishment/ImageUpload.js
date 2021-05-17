@@ -10,9 +10,14 @@ import { BASE_URL } from "./../../../constants/api";
 
 const ImageUpload = (props) => {
   const id = props.id;
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitSuccessful },
+  } = useForm();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
@@ -39,8 +44,13 @@ const ImageUpload = (props) => {
       url: `${BASE_URL}/upload`,
       data: formData,
     });
-    console.log("Success", res);
-    router.reload();
+    if (error) {
+      console.log("HELP");
+    }
+    if (res) {
+      console.log("Success", res);
+      router.reload();
+    }
   };
   return (
     <Container>
@@ -53,18 +63,32 @@ const ImageUpload = (props) => {
             <label>Upload more images (Max 10 images each upload)</label>
             <input
               type="file"
+              name="file"
               multiple
               className="input-file"
               {...register("file")}
             />
           </div>
+          {error ? (
+            <div className="alert-danger">Image cannot be empty</div>
+          ) : (
+            <></>
+          )}
+
           <Button
             variant="contained"
             type="submit"
             className="button mt-3"
             onClick={() => {
-              if (isValid) {
+              if (isSubmitSuccessful) {
                 setLoading(true);
+              } else setLoading(false);
+
+              if (errors, 400) {
+                console.log("Empty");
+                setError(true);
+                setLoading(false);
+                setTimeout(router.reload(), 2000)
               }
             }}>
             {loading ? (
@@ -83,6 +107,11 @@ const ImageUpload = (props) => {
       </div>
       <style global jsx>
         {`
+          .alert-danger {
+            background: none;
+            color: red;
+            font-size: 12px;
+          }
           .fileUpload {
             margin-top: 1rem;
           }
