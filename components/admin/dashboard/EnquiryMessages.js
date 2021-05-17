@@ -10,7 +10,7 @@ import Button from "react-bootstrap/Button";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import { BASE_URL } from "../../../constants/api";
 
-function EnquiryAccordion(enquiry) {
+function EnquiryMessages(enquiry) {
   const { handleSubmit } = useForm();
   const router = useRouter();
 
@@ -86,4 +86,4 @@ function EnquiryAccordion(enquiry) {
   );
 }
 
-export default EnquiryAccordion;
+export default EnquiryMessages;

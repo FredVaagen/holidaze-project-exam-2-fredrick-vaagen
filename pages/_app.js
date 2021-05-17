@@ -2,7 +2,6 @@ import React from "react";
 import App from "next/app";
 import Router from "next/router";
 import Cookie from "js-cookie";
-import fetch from "isomorphic-fetch";
 import ProgressBar from "@badrap/bar-of-progress";
 import Layout from "../components/layout/Layout";
 import AppContext from "../context/AppContext";

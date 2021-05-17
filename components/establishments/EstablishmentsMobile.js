@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Col from "react-bootstrap/Col";
@@ -9,10 +9,8 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import Badge from "react-bootstrap/Badge";
 import Button from "@material-ui/core/Button";
-import SimpleMap from "../../maps/SimpleMap";
-import AppContext from "../../../../context/AppContext";
 
-function EstablishmentsDesktop({
+function EstablishmentsMobile({
   establishments,
   nameDesc,
   priceAsc,
@@ -21,52 +19,53 @@ function EstablishmentsDesktop({
   sortByGuesthouse,
   sortByBedAndBreakfast,
 }) {
-  const { user } = useContext(AppContext);
   const [sortEstablishments, setSortEstaeblishments] = useState(establishments);
   const [sortName, setSortName] = useState("Sort places")
 
   return (
     <>
       <h1>Find a place to stay</h1>
-      <DropdownButton className="mt-3" id="dropdown-basic-button" title={sortName}>
+      <DropdownButton
+        className="mt-3"
+        id="dropdown-basic-button"
+        title={sortName}>
         <Dropdown.Item
           href="#/a-z"
           onClick={() => {
             setSortEstaeblishments(establishments);
-            setSortName("Sort places: a-z")
+            setSortName("Sort places: a-z");
           }}>
-          A-Z
+          Name: a - z
         </Dropdown.Item>
         <Dropdown.Item
           href="#/z-a"
           onClick={() => {
             setSortEstaeblishments(nameDesc);
-            setSortName("Sort places: z-a")
+            setSortName("Sort places: z-a");
           }}>
-         Z-A
+           Name: z - a
         </Dropdown.Item>
         <Dropdown.Item
-          href="#/higher-lower"
+          href="#/Lower-Higher"
           onClick={() => {
             setSortEstaeblishments(priceAsc);
-            setSortName("Sort places: Higher-Lower")
-            
+            setSortName("Sort places: Lower - higher");
           }}>
-          Pricer (Higher-Lower)
+          Price: Lower - higher
         </Dropdown.Item>
         <Dropdown.Item
           href="#/lower-higher"
           onClick={() => {
             setSortEstaeblishments(priceDesc);
-            setSortName("Sort places: Lower-Higher")
+            setSortName("Sort places: Higher - lower");
           }}>
-          Price (Lower-Higher)
+          Price: Higher - lower
         </Dropdown.Item>
         <Dropdown.Item
           href="#/hotels"
           onClick={() => {
             setSortEstaeblishments(sortByHotel);
-            setSortName("Sort places: Hotels")
+            setSortName("Sort places: Hotels");
           }}>
           Hotels
         </Dropdown.Item>
@@ -74,7 +73,7 @@ function EstablishmentsDesktop({
           href="#/guesthouses"
           onClick={() => {
             setSortEstaeblishments(sortByGuesthouse);
-            setSortName("Sort places: Guesthouses")
+            setSortName("Sort places: Guesthouses");
           }}>
           Guesthouses
         </Dropdown.Item>
@@ -82,12 +81,11 @@ function EstablishmentsDesktop({
           href="#/bedandbreakfast"
           onClick={() => {
             setSortEstaeblishments(sortByBedAndBreakfast);
-            setSortName("Sort places: Bed and Breakfast")
+            setSortName("Sort places: Bed and Breakfast");
           }}>
           Bed and Breakfast
         </Dropdown.Item>
       </DropdownButton>
-
       {sortEstablishments.map((establishment) => (
         <Link
           href="/establishments/[name]"
@@ -96,11 +94,11 @@ function EstablishmentsDesktop({
           <Container className="establishment-container">
             <Row className="establishment-specific">
               <Col
-                s={12}
-                md={6}
-                lg={3}
+                s={5}
+                md={5}
+                lg={6}
                 className="establishment-specific__image-col">
-                <Carousel fade indicators={false} interval={null}>
+                <Carousel fade indicators={false}>
                   {establishment.images.map((image) => (
                     <Carousel.Item key={image.id}>
                       <Image
@@ -114,27 +112,14 @@ function EstablishmentsDesktop({
                   ))}
                 </Carousel>
               </Col>
-              <Col s={12} md={6} lg={4} className="details">
+              <Col s={5} md={5} lg className="details">
                 <h3>{establishment.name}</h3>
                 <Badge>{establishment.category}</Badge>
-                <p className="address">{establishment.address}</p>
+                <p>{establishment.address}</p>
+
                 <Button variant="contained" className="button">
                   NOK {establishment.price} per night
                 </Button>
-                {user ? (
-                  <Link
-                    href="/admin/edit/[name]"
-                    as={`/admin/edit/${establishment.name}`}>
-                    <Button variant="contained" className="button mt-2">
-                      Edit
-                    </Button>
-                  </Link>
-                ) : (
-                  <></>
-                )}
-              </Col>
-              <Col s={4} lg={5} className="map-container">
-                <SimpleMap {...establishment} />
               </Col>
             </Row>
           </Container>
@@ -149,97 +134,131 @@ function EstablishmentsDesktop({
             margin-top: 3rem;
             margin-bottom: 3rem;
           }
+
+           h1 {
+            font-size: 24px;
+            padding-top: 5rem;
+            font-weight: 300;
+          }
+
+          .establishment-specific {
+            box-shadow: 0 1px 3px rgb(41 51 57 / 50%);
+            padding-right: 0;
+            padding-left: 0;
+            margin-bottom: 2rem;
+            margin: 0 auto;
+          }
+
+          .row {
+            flex-wrap: nowrap;
+          }
           .establishment-container:hover {
-            transform: scale(1.01);
+            transform: scale(1.02);
             cursor: pointer;
           }
 
-          h1 {
-            margin-top: 2rem;
-            font-weight: 300;
-          }
-          .col-md-6, .col-lg-3, .col-lg-5 {
-            padding: 0;
-            margin: 0;
-          }
           .details h3 {
             font-size: 20px;
             margin-bottom: 0;
             font-weight: 300;
           }
-          .establishment-specific {
-            box-shadow: 0 1px 3px rgb(41 51 57 / 50%);
-            margin: 0 auto;
-            padding-right: 0;
-            padding-left: 0;
-            margin-bottom: 2rem;
-            padding: 0;
-          }
-          .details {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-          }
+
           .badge {
             background: None;
             color: black;
             text-transform: uppercase;
             font-size: 9px;
-            font-weight: 400;
+            margin-left: -0.3rem;
             margin-top: 10px;
-            margin-bottom: 1rem;
             text-align: left;
+            margin-bottom: 1rem;
+            font-weight: 300;
           }
+
           p {
             font-size: 12px;
           }
-          .price, .address {
-            font-size: 12px;
+
+          .price {
             font-weight: 300;
           }
+
+          img {
+            border-radius: 10px;
+          }
+
           .button {
-            background: #fff !important;
             color: black !important;
+            background: #fff !important;
             font-size: 11px !important;
-            font-weight: 300 !important;
+            width: 100%;
+            font-weight: 300;
+            
+          }
+
+          .details {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-weight: 300;
           }
           .establishment-specific__image-col {
-            padding-top: 10px;;
-            padding-left: 10px;
-          }
-          .establishment-specific__image-col img {
-            height: 100%;     
-          }
-          .searchbar {
-            max-width: 100%;
+            padding-top: 5px;;
+            padding-left: 6px;
           }
 
-          ///////////OVERRIDING DROPDOWNBUTTON CSS FROM BOOTSTRAP ////////////////
+          img {
+            border-radius: 0;
+          }
 
+          @media only screen and (max-width: 530px) {
+            .row {
+              flex-wrap: nowrap;
+            }
+            .establishment-specific {
+              margin: 0 auto;
+              padding-bottom: 1rem;
+            }
+
+            img {
+              height: 185px;
+            
+            }
+          }
+          //OVERRIDING DROPDOWNBUTTON CSS FROM BOOTSTRAP -> 
           .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
             color: black !important;
             background-color: #fff;
             border-color: #005cbf;
-        }
+          }
 
-        .btn-primary {
-          color: black !important;
-          background-color: #fff !important;
-          border: none !important;
-          box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-        }
+          .btn-primary {
+            color: black !important;
+            background-color: #fff !important;
+            border: none !important;
+            box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+          }
 
-        .dropdown-item:active {
-        color: black !important;
-        background: none !important;
-        } 
+          @media only screen and (max-width: 500px) {
+            .row {
+              flex-wrap: wrap;
+            }
+            .establishment-specific {
+              padding-bottom: 1rem;
+            }
 
-        ///////////////////////END////////////////////////////////////
+            img {
+              width: 450px;
+              padding-left: 7px !important;
+              padding-top: 5px !important;
+            }
+          }
+
         `}
       </style>
     </>
   );
 }
 
-export default EstablishmentsDesktop;
+export default EstablishmentsMobile;

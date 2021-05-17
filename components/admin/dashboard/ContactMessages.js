@@ -10,7 +10,7 @@ import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
 import { BASE_URL } from "../../../constants/api";
 
-function ContactAccordion(contact) {
+function ContactMessages(contact) {
   const { handleSubmit } = useForm();
   const router = useRouter();
 
@@ -82,4 +82,4 @@ function ContactAccordion(contact) {
   );
 }
 
-export default ContactAccordion;
+export default ContactMessages;

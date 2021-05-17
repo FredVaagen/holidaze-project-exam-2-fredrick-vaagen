@@ -12,8 +12,8 @@ import EditIcon from "@material-ui/icons/Edit";
 // MY COMPONENTS
 import { BASE_URL } from "../../constants/api";
 import CreateEstablishment from "../../components/admin/establishment/CreateEstablishment";
-import EnquiryAccordion from "../../components/admin/dashboard/EnquiryAccordion";
-import ContactAccordion from "../../components/admin/dashboard/ContactAccordion";
+import EnquiryMessages from "../../components/admin/dashboard/EnquiryMessages";
+import ContactMessages from "../../components/admin/dashboard/ContactMessages";
 import Sidebar from "../../components/admin/dashboard/Sidebar";
 
 const Admin = ({
@@ -48,7 +48,7 @@ const Admin = ({
                 <Container className="mt-5">
                   <h2>{enquiriesTitle}</h2>
                   {enquiries.map((enquiry) => (
-                    <EnquiryAccordion key={enquiry.id} {...enquiry} />
+                    <EnquiryMessages key={enquiry.id} {...enquiry} />
                   ))}
                 </Container>
               </Tab.Pane>
@@ -56,7 +56,7 @@ const Admin = ({
                 <Container className="mt-5">
                   <h2>{contactTitle}</h2>
                   {contacts.map((contact) => (
-                    <ContactAccordion key={contact.id} {...contact} />
+                    <ContactMessages key={contact.id} {...contact} />
                   ))}
                 </Container>
               </Tab.Pane>
