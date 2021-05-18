@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { parseCookies } from "nookies";
 import Container from "react-bootstrap/Container";
-import Spinner from "react-bootstrap/Spinner";
 import Button from "@material-ui/core/Button";
 import { BASE_URL } from "./../../../constants/api";
 

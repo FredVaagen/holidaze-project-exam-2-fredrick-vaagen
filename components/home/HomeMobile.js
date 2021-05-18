@@ -1,10 +1,14 @@
 import React from "react";
 import Link from "next/link";
 import Container from "react-bootstrap/Container";
+import SearchBar from "../establishments/search/SearchBar";
 
-function HomeMobile() {
+function HomeMobile(establishments) {
   return (
-    <Container className="headline-container">
+    
+    <Container fluid className="background-image">
+      <SearchBar {...establishments} />
+      <Container className="headline-container">
       <Link href="/establishments">
         <a>
           <h1 className="headline">HOLIDAZE</h1>
@@ -13,13 +17,31 @@ function HomeMobile() {
           </h2>
         </a>
       </Link>
+      </Container>
       <style global jsx>
         {`
+          .main {
+            background: black;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            min-height: 100vh;
+          }
+
           .headline-container {
             height: 100%;
             text-align: center;
             display: grid;
             align-content: center;
+          }
+          
+
+          .background-image {
+            height: 100vh;
+            background: url("/background-mobile.jpg") no-repeat;
+            background-position: center;
+            padding: 0;
           }
 
           .headline {
