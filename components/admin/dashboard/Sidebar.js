@@ -9,8 +9,10 @@ import EditIcon from "@material-ui/icons/Edit";
 
 function Sidebar({enquiriesCount, contactMessageCount}) {
 
+  //Sidebar title for enquiry + number of enquiries -> 
   const enquiryTabTitle =
   "Enquiries" + " " + "[" + " " + enquiriesCount + " " + "]";
+   //Sidebar title for contact messages + number of contact messages -> 
   const contactTabTitle =
   "Contact messsages" + " " + "[" + " " + contactMessageCount + " " + "]";
   

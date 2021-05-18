@@ -11,6 +11,7 @@ import { BASE_URL } from "../../../constants/api";
 function CreateEstablishment() {
    //React hook form - Errors for form validation, isSubmitSuccsessful = Used for my useState function to detect if form is submitted. 
   const {
+    //react-hook-form validation -> 
     register,
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
@@ -25,6 +26,7 @@ function CreateEstablishment() {
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
     try {
+      //Form  value inputs to be sent to server -> 
       const formDataToSend = {
         name: data.name,
         description: data.description,

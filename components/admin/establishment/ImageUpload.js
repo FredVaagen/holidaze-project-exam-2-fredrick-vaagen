@@ -10,19 +10,23 @@ import { BASE_URL } from "./../../../constants/api";
 
 const ImageUpload = (props) => {
   const id = props.id;
+  //react-hook-form validation ->
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
   } = useForm();
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+
+  //Image confirmation upload confirmation message. Fires if upload is complete -> 
+  const [imageConfirmationMessage, setImageConfirmationMessage] =
+    useState(false);
 
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
 
     const formData = new FormData();
+    //appends the data files (images) ->
     formData.append("files", data.file[0]);
     formData.append("files", data.file[1]);
     formData.append("files", data.file[2]);
@@ -36,6 +40,7 @@ const ImageUpload = (props) => {
     formData.append("ref", "establishments"); //name of content type
     formData.append("refId", id); //id of content type
     formData.append("field", "images");
+    //Make post request to server/upload with token ->
     const res = await axios({
       method: "POST",
       headers: {
@@ -44,10 +49,10 @@ const ImageUpload = (props) => {
       url: `${BASE_URL}/upload`,
       data: formData,
     });
-
+    //If ok -> reload page
     if (res) {
       console.log("Success", res);
-      router.reload();
+      setImageConfirmationMessage(true);
     }
   };
   return (
@@ -67,40 +72,25 @@ const ImageUpload = (props) => {
               {...register("file", { required: true })}
             />
           </div>
-          {error ? (
-            <div className="alert-danger">Image cannot be empty</div>
-          ) : (
-            <></>
-          )}
-
           <Button
             variant="contained"
             type="submit"
             className="button mt-3"
             onClick={() => {
               if (isSubmitSuccessful) {
-                setLoading(true);
-              } else setLoading(false);
-
-              if (errors) {
-               
-                setError(true);
-                setLoading(false);
-                
+                setImageConfirmationMessage(true);
               }
             }}>
-            {loading ? (
-              <Spinner
-                as="span"
-                animation="border"
-                size="sm"
-                role="status"
-                aria-hidden="true"
-              />
-            ) : (
-              "Upload"
-            )}
+            Upload image(s)
           </Button>
+          {errors.file && (
+            <div className="alert-danger">Image input cannot be empty.</div>
+          )}
+          {imageConfirmationMessage ? (
+            <div className="alert-success pl-3 pb-3">Image was uploaded</div>
+          ) : (
+            <></>
+          )}
         </form>
       </div>
       <style global jsx>
@@ -108,6 +98,11 @@ const ImageUpload = (props) => {
           .alert-danger {
             background: none;
             color: red;
+            font-size: 12px;
+          }
+          .alert-success {
+            background: none;
+            color: green;
             font-size: 12px;
           }
           .fileUpload {

@@ -10,17 +10,17 @@ import { BASE_URL } from "./../../../constants/api";
 import ImageUpload from "./ImageUpload";
 
 const EditEstablishment = (props) => {
-  //React hook form
+  //react-hook-form validation -> 
   const {
     register,
     handleSubmit,
     formState: { isSubmitSuccessful },
   } = useForm();
   const router = useRouter();
-  //Checks if there is an update to the form -> 
+  //Checks if there is an update to the form ->
   const [update, setUpdate] = useState(false);
-  //Toast show if updated -> 
-  const [show, setShow] = useState(false);
+  //Toast message box (show) is set to true  if the page is updated ->
+  const [showToast, setShowToast] = useState(false);
   //Used to update the prop data when editing establishments.
   const refreshData = () => {
     router.replace(router.asPath);
@@ -30,6 +30,7 @@ const EditEstablishment = (props) => {
     //Gets token
     const token = parseCookies(ctx).token;
     try {
+      //The form data of the edit form. Push new data if there is new, or push the old. 
       const formDataToSend = {
         description: data.description || props.description,
         name: data.name || props.name,
@@ -149,7 +150,7 @@ const EditEstablishment = (props) => {
             onClick={() => {
               if (isSubmitSuccessful) {
                 setUpdate(true);
-                setShow(true)
+                setShowToast(true);
               }
             }}>
             Update
@@ -157,10 +158,12 @@ const EditEstablishment = (props) => {
 
           {update ? (
             <>
-              <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
-                <Toast.Body>
-                  Establishment has been updated.
-                </Toast.Body>
+              <Toast
+                onClose={() => setShowToast(false)}
+                show={showToast}
+                delay={3000}
+                autohide>
+                <Toast.Body>Establishment has been updated.</Toast.Body>
               </Toast>
             </>
           ) : (
