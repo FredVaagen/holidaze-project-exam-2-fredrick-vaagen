@@ -59,7 +59,7 @@ function ContactMessages(contact) {
             eventKey="0"
             onClick={() => {setNewMessage(true)}}>
             id: {contact.id} - Subject: {contact.subject}{" "}
-            {newMessage ? (
+            {!newMessage ? (
               <>
                 <MarkunreadIcon />
               </>
