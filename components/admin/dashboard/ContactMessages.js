@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { parseCookies, setCookie} from "nookies";
-import nookies from 'nookies'
+import { parseCookies} from "nookies";
 import { useForm } from "react-hook-form";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
@@ -16,16 +15,6 @@ import DraftsIcon from "@material-ui/icons/Drafts";
 function ContactMessages(contact) {
   const { handleSubmit } = useForm();
   const router = useRouter();
-  const [newMessage, setNewMessage] = useState(true);
-
-  useEffect((ctx) => {
-    const parsedMessage = Boolean(nookies.get(ctx))
-    setNewMessage(parsedMessage);
-  }, []);
-
-  useEffect((ctx) => {
-    nookies.set(ctx, "Message", newMessage)
-  }, [newMessage]);
 
   const remove = async (ctx) => {
     //Gets token from cookies ->
@@ -56,18 +45,10 @@ function ContactMessages(contact) {
           <Accordion.Toggle
             as={Button}
             variant="link"
-            eventKey="0"
-            onClick={(ctx) => {setNewMessage(false), nookies.set(ctx, "Message", false)}}>
+            eventKey="0">
+           
             id: {contact.id} - Subject: {contact.subject}{" "}
-            {newMessage ? (
-              <>
-                <MarkunreadIcon />
-              </>
-            ) : (
-              <>
-                <DraftsIcon />
-              </>
-            )}
+           
           </Accordion.Toggle>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
