@@ -1,25 +1,38 @@
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { parseCookies } from "nookies";
+import { parseCookies, setCookie } from "nookies";
 import { useForm } from "react-hook-form";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-
 import { BASE_URL } from "../../../constants/api";
+import MarkunreadIcon from "@material-ui/icons/Markunread";
+import DraftsIcon from "@material-ui/icons/Drafts";
 
 function ContactMessages(contact) {
   const { handleSubmit } = useForm();
   const router = useRouter();
+  const [newMessage, setNewMessage] = useState(true);
+
+  useEffect((ctx) => {
+    const parsedMessage = Boolean(parseCookies(ctx).parsedMessage);
+    console.log({parsedMessage})
+    setNewMessage(parsedMessage);
+  }, []);
+
+  useEffect((ctx) => {
+    setCookie(ctx, "Message", newMessage);
+  }, [newMessage]);
 
   const remove = async (ctx) => {
-    //Gets token from cookies -> 
+    //Gets token from cookies ->
     const token = parseCookies(ctx).token;
-    // If you press confirm on alert box to delete message -> 
+    // If you press confirm on alert box to delete message ->
     if (confirm("Are you sure you want to remove this contact message?")) {
-      //Delete request fires when you press "ok/confirm" 
+      //Delete request fires when you press "ok/confirm"
       try {
         const res = await axios({
           method: "DELETE",
@@ -29,11 +42,10 @@ function ContactMessages(contact) {
             Authorization: `Bearer ${token}`,
           },
         });
-      
       } catch (error) {
         console.log(error);
       }
-      // If sucsess -> Reload page. 
+      // If sucsess -> Reload page.
       router.reload();
     }
   };
@@ -41,8 +53,21 @@ function ContactMessages(contact) {
     <Accordion>
       <Card className="mt-5">
         <Card.Header>
-          <Accordion.Toggle as={Button} variant="link" eventKey="0">
+          <Accordion.Toggle
+            as={Button}
+            variant="link"
+            eventKey="0"
+            onClick={() => {setNewMessage(true)}}>
             id: {contact.id} - Subject: {contact.subject}{" "}
+            {!newMessage ? (
+              <>
+                <MarkunreadIcon />
+              </>
+            ) : (
+              <>
+                <DraftsIcon />
+              </>
+            )}
           </Accordion.Toggle>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
