@@ -57,7 +57,7 @@ function ContactMessages(contact) {
             as={Button}
             variant="link"
             eventKey="0"
-            onClick={(ctx) => {setNewMessage(false), nookies.set(ctx, "Message", newMessage)}}>
+            onClick={(ctx) => {setNewMessage(false), nookies.set(ctx, "Message", false)}}>
             id: {contact.id} - Subject: {contact.subject}{" "}
             {newMessage ? (
               <>
