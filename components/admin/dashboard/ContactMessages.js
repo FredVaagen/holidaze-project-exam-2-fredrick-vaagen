@@ -19,14 +19,12 @@ function ContactMessages(contact) {
   const [newMessage, setNewMessage] = useState(true);
 
   useEffect((ctx) => {
-    const parsedMessage = Boolean(nookies.get(ctx));
+    const parsedMessage = Boolean(nookies.get(ctx))
     setNewMessage(parsedMessage);
   }, []);
 
   useEffect((ctx) => {
-    nookies.set(ctx, "Message", newMessage, {
-      path: '/'
-    });
+    nookies.set(ctx, "Message", newMessage)
   }, [newMessage]);
 
   const remove = async (ctx) => {
@@ -59,7 +57,7 @@ function ContactMessages(contact) {
             as={Button}
             variant="link"
             eventKey="0"
-            onClick={(ctx) => {setNewMessage(false), nookies.set(ctx, "Message", false)}}>
+            onClick={(ctx) => {setNewMessage(false), nookies.set(ctx, "Message", newMessage)}}>
             id: {contact.id} - Subject: {contact.subject}{" "}
             {newMessage ? (
               <>
