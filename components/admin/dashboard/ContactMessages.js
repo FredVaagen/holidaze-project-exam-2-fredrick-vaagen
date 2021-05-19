@@ -15,11 +15,10 @@ import DraftsIcon from "@material-ui/icons/Drafts";
 function ContactMessages(contact) {
   const { handleSubmit } = useForm();
   const router = useRouter();
-  const [newMessage, setNewMessage] = useState(false);
+  const [newMessage, setNewMessage] = useState(true);
 
   useEffect((ctx) => {
     const parsedMessage = Boolean(parseCookies(ctx).parsedMessage);
-    console.log({parsedMessage})
     setNewMessage(parsedMessage);
   }, []);
 
@@ -57,7 +56,7 @@ function ContactMessages(contact) {
             as={Button}
             variant="link"
             eventKey="0"
-            onClick={() => {setNewMessage(true)}}>
+            onClick={(ctx) => {setCookie(ctx, "Message", Boolean(setNewMessage(true)))}}>
             id: {contact.id} - Subject: {contact.subject}{" "}
             {!newMessage ? (
               <>
