@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { parseCookies, setCookie } from "nookies";
+import { parseCookies, setCookie} from "nookies";
+import nookies from 'nookies'
 import { useForm } from "react-hook-form";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
@@ -18,12 +19,14 @@ function ContactMessages(contact) {
   const [newMessage, setNewMessage] = useState(true);
 
   useEffect((ctx) => {
-    const parsedMessage = Boolean(parseCookies(ctx).parsedMessage);
+    const parsedMessage = Boolean(nookies.get(ctx));
     setNewMessage(parsedMessage);
   }, []);
 
   useEffect((ctx) => {
-    setCookie(ctx, "Message", newMessage);
+    nookies.set(ctx, "Message", newMessage, {
+      path: '/'
+    });
   }, [newMessage]);
 
   const remove = async (ctx) => {
@@ -56,9 +59,9 @@ function ContactMessages(contact) {
             as={Button}
             variant="link"
             eventKey="0"
-            onClick={(ctx) => {setCookie(ctx, "Message", Boolean(setNewMessage(true)))}}>
+            onClick={() => {setNewMessage(false)}}>
             id: {contact.id} - Subject: {contact.subject}{" "}
-            {!newMessage ? (
+            {newMessage ? (
               <>
                 <MarkunreadIcon />
               </>
