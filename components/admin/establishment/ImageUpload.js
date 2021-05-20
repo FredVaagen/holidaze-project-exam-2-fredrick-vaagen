@@ -13,11 +13,11 @@ const ImageUpload = (props) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors, isSubmitSuccessful, isDirty },
   } = useForm();
   const router = useRouter();
 
-  //Image confirmation upload confirmation message. Fires if upload is complete -> 
+  //Image confirmation upload confirmation message. Fires if upload is complete ->
   const [imageConfirmationMessage, setImageConfirmationMessage] =
     useState(false);
 
@@ -71,17 +71,21 @@ const ImageUpload = (props) => {
               {...register("file", { required: true })}
             />
           </div>
-          <Button
-            variant="contained"
-            type="submit"
-            className="button mt-3"
-            onClick={() => {
-              if (isSubmitSuccessful) {
-                setImageConfirmationMessage(true);
-              }
-            }}>
-            Upload image(s)
-          </Button>
+          {isDirty ? (
+            <Button
+              variant="contained"
+              type="submit"
+              className="button mt-3"
+              onClick={() => {
+                if (isSubmitSuccessful) {
+                  setImageConfirmationMessage(true);
+                }
+              }}>
+              Upload image(s)
+            </Button>
+          ) : (
+            <></>
+          )}
           {errors.file && (
             <div className="alert-danger">Image input cannot be empty.</div>
           )}
@@ -106,6 +110,7 @@ const ImageUpload = (props) => {
           }
           .fileUpload {
             margin-top: 1rem;
+            margin-bottom: 3rem;
           }
 
           .fileUpload label {

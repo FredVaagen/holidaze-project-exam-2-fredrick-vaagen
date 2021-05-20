@@ -14,7 +14,7 @@ const EditEstablishment = (props) => {
   const {
     register,
     handleSubmit,
-    formState: { isSubmitSuccessful },
+    formState: { isSubmitSuccessful, isDirty },
   } = useForm();
   const router = useRouter();
   //Checks if there is an update to the form ->
@@ -276,7 +276,7 @@ const EditEstablishment = (props) => {
                 </div>
               </div>
             </div>
-          <Button
+          {isDirty ? (<Button
             variant="contained"
             type="submit"
             className="button"
@@ -287,7 +287,7 @@ const EditEstablishment = (props) => {
               }
             }}>
             Update
-          </Button>
+          </Button> ) :( <></>)}
 
           {update ? (
             <>
