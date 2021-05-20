@@ -34,6 +34,7 @@ function EstablishmentsDesktop({
     <>
      <Container>
      <SearchBar {...{establishments}} />
+     <Container>
       <h1 className="mt-5 mb-5">Find a place to stay</h1>
       <DropdownButton
         className="mt-3"
@@ -103,6 +104,7 @@ function EstablishmentsDesktop({
           Bed and Breakfast
         </Dropdown.Item>
       </DropdownButton>
+      </Container>
       </Container>
 
       {sortEstablishments.map((establishment) => (
