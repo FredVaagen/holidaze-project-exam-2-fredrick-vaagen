@@ -76,6 +76,7 @@ const EditEstablishment = (props) => {
       if (res) {
         refreshData();
         setUpdate(true);
+        setCheckmarkWifi(data.wifi)
       }
     } catch (error) {
       console.log(error);
@@ -167,11 +168,6 @@ const EditEstablishment = (props) => {
                 <div>
                   <input
                     type="checkbox"
-                    onClick={() => {
-                      if(checkmarkWifi === true) {
-                        setCheckmarkWifi(false)
-                      } else setCheckmarkWifi(true)
-                    }}
                     defaultChecked={checkmarkWifi}
                     {...register("wifi")}
                   />
