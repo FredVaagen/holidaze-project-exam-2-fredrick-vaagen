@@ -11,6 +11,7 @@ import Badge from "react-bootstrap/Badge";
 import Button from "@material-ui/core/Button";
 import SimpleMap from "./maps/SimpleMap";
 import AppContext from "../../context/AppContext";
+import SearchBar from "./search/SearchBar";
 
 function EstablishmentsDesktop({
   //Props from getServerSideProps
@@ -22,15 +23,16 @@ function EstablishmentsDesktop({
   sortByGuesthouse,
   sortByBedAndBreakfast,
 }) {
-  // Checks if the admin is logged in -> 
+  // Checks if the admin is logged in ->
   const { user } = useContext(AppContext);
-  // Set the state sortEstablishments used to map the establishment. If you wanna sort by hotels set state of establishments to sortByHotels for.ex. -> 
+  // Set the state sortEstablishments used to map the establishment. If you wanna sort by hotels set state of establishments to sortByHotels for.ex. ->
   const [sortEstablishments, setSortEstaeblishments] = useState(establishments);
   //Used to change the name of the sort places to matching sort category for UX purposes->
   const [sortName, setSortName] = useState("Sort places");
 
   return (
     <>
+    <SearchBar {...{establishments}} />
       <h1 className="mt-5 mb-5">Find a place to stay</h1>
       <DropdownButton
         className="mt-3"
@@ -100,7 +102,7 @@ function EstablishmentsDesktop({
           Bed and Breakfast
         </Dropdown.Item>
       </DropdownButton>
-          
+
       {sortEstablishments.map((establishment) => (
         //sortEstablishments value get set by the useState function [sortEstablishments, setSortEstaeblishments] = useState(establishments));
         // onClick functions above changes the state to the desired value (ex. sortByGuesthouse)
@@ -166,6 +168,7 @@ function EstablishmentsDesktop({
             margin-0;
             margin-top: 3rem;
             margin-bottom: 3rem;
+            background: white;
           }
           .establishment-container:hover {
             transform: scale(1.01);
@@ -229,31 +232,29 @@ function EstablishmentsDesktop({
           .establishment-specific__image-col img {
             height: 100%;     
           }
-          .searchbar {
-            max-width: 100%;
-          }
-
+    
           ///////////OVERRIDING DROPDOWNBUTTON CSS FROM BOOTSTRAP ////////////////
 
           .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
             color: black !important;
             background-color: #fff;
             border-color: #005cbf;
-        }
+          }
 
-        .btn-primary {
+          .btn-primary {
+            color: black !important;
+            background-color: #fff !important;
+            border: none !important;
+            box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+          }
+
+          .dropdown-item:active {
           color: black !important;
-          background-color: #fff !important;
-          border: none !important;
-          box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-        }
+          background: none !important;
+          } import SearchBar from './search/SearchBar';
 
-        .dropdown-item:active {
-        color: black !important;
-        background: none !important;
-        } 
 
-        ///////////////////////END////////////////////////////////////
+          ///////////////////////END////////////////////////////////////
         `}
       </style>
     </>
