@@ -26,6 +26,8 @@ const EditEstablishment = (props) => {
     router.replace(router.asPath);
   };
 
+  console.log(props.facilities.wifi)
+
   const submitData = async (data, ctx) => {
     //Gets token
     const token = parseCookies(ctx).token;
@@ -164,7 +166,7 @@ const EditEstablishment = (props) => {
                 <div>
                   <input
                     type="checkbox"
-                    defaultChecked={false}
+                    defaultChecked={props.facilities.wifi}
                     {...register("wifi")}
                   />
                 </div>
@@ -174,7 +176,7 @@ const EditEstablishment = (props) => {
                 <div>
                   <input
                     type="checkbox"
-                    defaultChecked={false}
+                    defaultChecked={props.facilities.accesible}
                     {...register("accesible")}
                   />
                 </div>
@@ -184,7 +186,7 @@ const EditEstablishment = (props) => {
                 <div>
                   <input
                     type="checkbox"
-                    defaultChecked={false}
+                    defaultChecked={props.facilities.workstation}
                     {...register("workstation")}
                   />
                 </div>
@@ -194,7 +196,7 @@ const EditEstablishment = (props) => {
                 <div>
                   <input
                     type="checkbox"
-                    defaultChecked={false}
+                    defaultChecked={props.facilities.smokefree}
                     {...register("smokefree")}
                   />
                 </div>
@@ -204,7 +206,7 @@ const EditEstablishment = (props) => {
                 <div>
                   <input
                     type="checkbox"
-                    defaultChecked={false}
+                    defaultChecked={props.facilities.ac}
                     {...register("ac")}
                   />
                 </div>
@@ -214,7 +216,7 @@ const EditEstablishment = (props) => {
                 <div>
                   <input
                     type="checkbox"
-                    defaultChecked={false}
+                    defaultChecked={props.facilities.airportshuttle}
                     {...register("airportshuttle")}
                   />
                 </div>
@@ -224,7 +226,7 @@ const EditEstablishment = (props) => {
                 <div>
                   <input
                     type="checkbox"
-                    defaultChecked={false}
+                    defaultChecked={props.facilities.gym}
                     {...register("gym")}
                   />
                 </div>
@@ -234,7 +236,7 @@ const EditEstablishment = (props) => {
                 <div>
                   <input
                     type="checkbox"
-                    defaultChecked={false}
+                    defaultChecked={props.facilities.tv}
                     {...register("tv")}
                   />
                 </div>
@@ -244,7 +246,7 @@ const EditEstablishment = (props) => {
                 <div>
                   <input
                     type="checkbox"
-                    defaultChecked={false}
+                    defaultChecked={props.facilities.hotelbar}
                     {...register("hotelbar")}
                   />
                 </div>
@@ -254,7 +256,7 @@ const EditEstablishment = (props) => {
                 <div>
                   <input
                     type="checkbox"
-                    defaultChecked={false}
+                    defaultChecked={props.facilities.pool}
                     {...register("pool")}
                   />
                 </div>
@@ -264,7 +266,7 @@ const EditEstablishment = (props) => {
                 <div>
                   <input
                     type="checkbox"
-                    defaultChecked={false}
+                    defaultChecked={props.facilities.parking}
                     {...register("parking")}
                   />
                 </div>
@@ -274,7 +276,7 @@ const EditEstablishment = (props) => {
                 <div>
                   <input
                     type="checkbox"
-                    defaultChecked={false}
+                    defaultChecked={props.facilities.kitchen}
                     {...register("kitchen")}
                   />
                 </div>
