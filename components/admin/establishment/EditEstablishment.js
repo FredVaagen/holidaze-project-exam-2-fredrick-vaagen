@@ -10,7 +10,7 @@ import { BASE_URL } from "./../../../constants/api";
 import ImageUpload from "./ImageUpload";
 
 const EditEstablishment = (props) => {
-  //react-hook-form validation -> 
+  //react-hook-form validation ->
   const {
     register,
     handleSubmit,
@@ -26,14 +26,11 @@ const EditEstablishment = (props) => {
     router.replace(router.asPath);
   };
 
-  const [checkmarkWifi, setCheckmarkWifi] = useState(props.facilities.wifi)
-
-
   const submitData = async (data, ctx) => {
     //Gets token
     const token = parseCookies(ctx).token;
     try {
-      //The form data of the edit form. Push new data if there is new, or push the old. 
+      //The form data of the edit form. Push new data if there is new, or push the old.
       const formDataToSend = {
         description: data.description || props.description,
         name: data.name || props.name,
@@ -42,20 +39,6 @@ const EditEstablishment = (props) => {
         lng: data.lng || props.lng,
         address: data.address || props.address,
         category: data.category || props.category,
-        facilities: {
-          accesible: data.accesible || props.accesible,
-          workstation: data.workstation || props.workstation,
-          smokefree: data.smokefree || props.smokefree,
-          ac: data.ac || props.ac,
-          airportshuttle: data.airportshuttle || props.airportshuttle,
-          gym: data.gym || props.gym,
-          tv: data.tv || props.tv,
-          wifi: data.wifi || props.wifi,
-          hotelbar: data.hotelbar || props.hotelbar,
-          pool: data.pool || props.pool,
-          parking: data.parking || props.parking,
-          kitchen: data.kithcen || props.kitchen,
-        },
       };
       // Makes a PUT request to update establishment data.
       const res = await axios({
@@ -76,7 +59,6 @@ const EditEstablishment = (props) => {
       if (res) {
         refreshData();
         setUpdate(true);
-        setCheckmarkWifi(data.wifi)
       }
     } catch (error) {
       console.log(error);
@@ -88,7 +70,7 @@ const EditEstablishment = (props) => {
     //If you press confirm on the alert box ->
     if (confirm("Are you sure you want to remove this establishment?")) {
       try {
-        const res = await axios({
+        await axios({
           method: "DELETE",
           url: `${BASE_URL}/establishments/${props.id}`,
           headers: {
@@ -161,129 +143,7 @@ const EditEstablishment = (props) => {
               placeholder={props.address}
             />
           </div>
-          <h3 className="mb-3">Facilites</h3>
-            <div className="facilities">
-              <div>
-                <label> WIFI</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={checkmarkWifi}
-                    {...register("wifi")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Accesible</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.accesible}
-                    {...register("accesible")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Workstation</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.workstation}
-                    {...register("workstation")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Smokefree</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.smokefree}
-                    {...register("smokefree")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Aircondition</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.ac}
-                    {...register("ac")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Airport Shuttle</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.airportshuttle}
-                    {...register("airportshuttle")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Gym</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.gym}
-                    {...register("gym")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>TV</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.tv}
-                    {...register("tv")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Hotel Bar</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.hotelbar}
-                    {...register("hotelbar")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Pool</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.pool}
-                    {...register("pool")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Parking</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.parking}
-                    {...register("parking")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Kitchen</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.kitchen}
-                    {...register("kitchen")}
-                  />
-                </div>
-              </div>
-            </div>
+
           <Button
             variant="contained"
             type="submit"
