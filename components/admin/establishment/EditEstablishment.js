@@ -10,7 +10,7 @@ import { BASE_URL } from "./../../../constants/api";
 import ImageUpload from "./ImageUpload";
 
 const EditEstablishment = (props) => {
-  //react-hook-form validation -> 
+  //react-hook-form validation ->
   const {
     register,
     handleSubmit,
@@ -30,7 +30,7 @@ const EditEstablishment = (props) => {
     //Gets token
     const token = parseCookies(ctx).token;
     try {
-      //The form data of the edit form. Push new data if there is new, or push the old. 
+      //The form data of the edit form. Push new data if there is new, or push the old.
       const formDataToSend = {
         description: data.description || props.description,
         name: data.name || props.name,
@@ -137,12 +137,41 @@ const EditEstablishment = (props) => {
             <label>Longitude</label>
             <input {...register("lng")} placeholder={props.lng} />
           </div>
-          <div>
+          <div className="category">
             <div>
               {" "}
-              <label>Category</label>
+              <label>Category: {props.category}</label>
             </div>
-   
+            <div>
+              <label>Hotel</label>
+              <input
+                type="radio"
+                name="hotel"
+                {...register("category")}
+                type="radio"
+                value="hotel"
+              />
+            </div>
+            <div>
+              <label>Guesthouse</label>
+              <input
+                type="radio"
+                label="Guesthouse"
+                name="guesthouse"
+                {...register("category")}
+                type="radio"
+                value="guesthouse"
+              />
+            </div>
+            <label>Bed and breakfast</label>
+            <input
+              type="radio"
+              label="Bed and breakfast"
+              name="bedandbreakfast"
+              {...register("category")}
+              type="radio"
+              value="bedandbreakfast"
+            />
           </div>
           <div>
             <label className="mt-3">Address</label>
@@ -153,141 +182,144 @@ const EditEstablishment = (props) => {
             />
           </div>
           <h3 className="mb-3">Facilites</h3>
-            <div className="facilities">
+          <div className="facilities">
+            <div>
+              <label> WIFI</label>
               <div>
-                <label> WIFI</label>
-                <div>
-                  <input
-                    type="checkbox"
-
-                    defaultChecked={props.facilities.wifi}
-                    {...register("wifi")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Accesible</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.accesible}
-                    {...register("accesible")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Workstation</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.workstation}
-                    {...register("workstation")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Smokefree</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.smokefree}
-                    {...register("smokefree")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Aircondition</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.ac}
-                    {...register("ac")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Airport Shuttle</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.airportshuttle}
-                    {...register("airportshuttle")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Gym</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.gym}
-                    {...register("gym")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>TV</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.tv}
-                    {...register("tv")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Hotel Bar</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.hotelbar}
-                    {...register("hotelbar")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Pool</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.pool}
-                    {...register("pool")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Parking</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.parking}
-                    {...register("parking")}
-                  />
-                </div>
-              </div>
-              <div>
-                <label>Kitchen</label>
-                <div>
-                  <input
-                    type="checkbox"
-                    defaultChecked={props.facilities.kitchen}
-                    {...register("kitchen")}
-                  />
-                </div>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.wifi}
+                  {...register("wifi")}
+                />
               </div>
             </div>
-          {isDirty ? (<Button
-            variant="contained"
-            type="submit"
-            className="button"
-            onClick={() => {
-              if (isSubmitSuccessful) {
-                setUpdate(true);
-                setShowToast(true);
-              }
-            }}>
-            Update
-          </Button> ) :( <></>)}
+            <div>
+              <label>Accesible</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.accesible}
+                  {...register("accesible")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Workstation</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.workstation}
+                  {...register("workstation")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Smokefree</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.smokefree}
+                  {...register("smokefree")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Aircondition</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.ac}
+                  {...register("ac")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Airport Shuttle</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.airportshuttle}
+                  {...register("airportshuttle")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Gym</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.gym}
+                  {...register("gym")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>TV</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.tv}
+                  {...register("tv")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Hotel Bar</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.hotelbar}
+                  {...register("hotelbar")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Pool</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.pool}
+                  {...register("pool")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Parking</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.parking}
+                  {...register("parking")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>Kitchen</label>
+              <div>
+                <input
+                  type="checkbox"
+                  defaultChecked={props.facilities.kitchen}
+                  {...register("kitchen")}
+                />
+              </div>
+            </div>
+          </div>
+          {isDirty ? (
+            <Button
+              variant="contained"
+              type="submit"
+              className="button"
+              onClick={() => {
+                if (isSubmitSuccessful) {
+                  setUpdate(true);
+                  setShowToast(true);
+                }
+              }}>
+              Update
+            </Button>
+          ) : (
+            <></>
+          )}
 
           {update ? (
             <>
@@ -350,11 +382,21 @@ const EditEstablishment = (props) => {
             color: black !important;
             font-size: 11px !important;
           }
+          .category input {
+            width: 20px;
+          }
           .facilities {
             display: flex;
             justify-content: space-between;
             text-align: center;
             margin-bottom: 3rem;
+          }
+
+          @media only screen and (max-width: 1110px) {
+            .facilities {
+              display: block;
+              text-align: left;
+            }
           }
         `}
       </style>

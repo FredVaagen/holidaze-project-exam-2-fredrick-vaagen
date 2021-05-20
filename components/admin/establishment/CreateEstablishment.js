@@ -9,24 +9,24 @@ import Button from "@material-ui/core/Button";
 import { BASE_URL } from "../../../constants/api";
 
 function CreateEstablishment() {
-   //React hook form - Errors for form validation, isSubmitSuccsessful = Used for my useState function to detect if form is submitted. 
+  //React hook form - Errors for form validation, isSubmitSuccsessful = Used for my useState function to detect if form is submitted.
   const {
-    //react-hook-form validation -> 
+    //react-hook-form validation ->
     register,
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
   } = useForm();
 
-  // Shows the state of the form. When the form is submitted setShowForm is set to false to hide the form. 
+  // Shows the state of the form. When the form is submitted setShowForm is set to false to hide the form.
   const [showForm, setShowForm] = useState(true);
-  //Sets the state of the name of the establishment. setName is set to the form input of the name when form is submitted. 
+  //Sets the state of the name of the establishment. setName is set to the form input of the name when form is submitted.
   const [name, setName] = useState(0);
 
-  // Function to send the form data and create a new establishment. 
+  // Function to send the form data and create a new establishment.
   const submitData = async (data, ctx) => {
     const token = parseCookies(ctx).token;
     try {
-      //Form  value inputs to be sent to server -> 
+      //Form  value inputs to be sent to server ->
       const formDataToSend = {
         name: data.name,
         description: data.description,
@@ -50,7 +50,7 @@ function CreateEstablishment() {
           kitchen: data.kithcen,
         },
       };
-      // Make a post request to upload formdata from the input fields (Not the images). 
+      // Make a post request to upload formdata from the input fields (Not the images).
       const inputValue = await axios({
         url: `${BASE_URL}/establishments`,
         method: "POST",
@@ -61,7 +61,7 @@ function CreateEstablishment() {
         data: formDataToSend,
       });
 
-      //input value = the files(images) added to the file input 
+      //input value = the files(images) added to the file input
       const id = inputValue.data.id;
       const formData = new FormData();
       formData.append("files", data.file[0]);
@@ -76,7 +76,7 @@ function CreateEstablishment() {
       formData.append("files", data.file[9]);
       formData.append("files", data.file[10]);
       formData.append("ref", "establishments");
-      formData.append("refId", id); 
+      formData.append("refId", id);
       formData.append("field", "images");
 
       //Make a post request to upload images
@@ -90,7 +90,7 @@ function CreateEstablishment() {
       });
     } catch (error) {}
 
-    // if post request is ok -> Sets the value of the showForm to false and hides the form. 
+    // if post request is ok -> Sets the value of the showForm to false and hides the form.
     setShowForm(false);
     setName(data.name);
   };
@@ -102,7 +102,7 @@ function CreateEstablishment() {
           <Form
             noValidate
             className="create-establishment-form"
-            //when form is submitted -> fire handleSubmit and submitData, if there are no errors. 
+            //when form is submitted -> fire handleSubmit and submitData, if there are no errors.
             onSubmit={handleSubmit(submitData)}>
             <Form.Group>
               <Form.Label>Name</Form.Label>
@@ -131,16 +131,35 @@ function CreateEstablishment() {
             )}
 
             <Form.Group>
-              <Form.Label>Category</Form.Label>
-              <Form.Control
-                as="select"
-                name="category"
-                {...register("category", { required: true })}>
-                <option></option>
-                <option>hotel</option>
-                <option>guesthouse</option>
-                <option>bedandbreakfast</option>
-              </Form.Control>
+              <fieldset>
+                <Form.Group>
+                  <Form.Label as="category">Category</Form.Label>
+                  <Form.Check
+                    type="radio"
+                    label="Hotel"
+                    name="hotel"
+                    {...register("category")}
+                    type="radio"
+                    value="hotel"
+                  />
+                  <Form.Check
+                    type="radio"
+                    label="Guesthouse"
+                    name="guesthouse"
+                    {...register("category")}
+                    type="radio"
+                    value="guesthouse"
+                  />
+                  <Form.Check
+                    type="radio"
+                    label="Bed and breakfast"
+                    name="bedandbreakfast"
+                    {...register("category")}
+                    type="radio"
+                    value="bedandbreakfast"
+                  />
+                </Form.Group>
+              </fieldset>
               {errors.category && (
                 <div className="alert-danger">Category is required</div>
               )}
@@ -410,6 +429,12 @@ function CreateEstablishment() {
             text-align: center;
             margin-bottom: 3rem;
           }
+          @media only screen and (max-width: 1110px) {
+            .facilities {
+              display: block;
+              text-align: left;
+            }
+          }
           .created-confirmation {
             font-weight: 300;
             text-align: center;
@@ -418,12 +443,6 @@ function CreateEstablishment() {
           }
           .created-confirmation:hover {
             cursor: pointer;
-          }
-          @media only screen and (max-width: 1110px) {
-            .facilities {
-              display: block;
-              text-align: left;
-            }
           }
         `}
       </style>
