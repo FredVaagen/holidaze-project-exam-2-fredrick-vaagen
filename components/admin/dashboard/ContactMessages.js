@@ -1,7 +1,6 @@
-import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { parseCookies} from "nookies";
+import { parseCookies } from "nookies";
 import { useForm } from "react-hook-form";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
@@ -9,8 +8,6 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import { BASE_URL } from "../../../constants/api";
-import MarkunreadIcon from "@material-ui/icons/Markunread";
-import DraftsIcon from "@material-ui/icons/Drafts";
 
 function ContactMessages(contact) {
   const { handleSubmit } = useForm();
@@ -23,7 +20,7 @@ function ContactMessages(contact) {
     if (confirm("Are you sure you want to remove this contact message?")) {
       //Delete request fires when you press "ok/confirm"
       try {
-        const res = await axios({
+        await axios({
           method: "DELETE",
           url: `${BASE_URL}/contacts/${contact.id}`,
           headers: {
@@ -40,15 +37,10 @@ function ContactMessages(contact) {
   };
   return (
     <Accordion>
-      <Card className="mt-5">
+      <Card >
         <Card.Header>
-          <Accordion.Toggle
-            as={Button}
-            variant="link"
-            eventKey="0">
-           
+          <Accordion.Toggle as={Button} variant="link" eventKey="0">
             id: {contact.id} - Subject: {contact.subject}{" "}
-           
           </Accordion.Toggle>
         </Card.Header>
         <Accordion.Collapse eventKey="0">

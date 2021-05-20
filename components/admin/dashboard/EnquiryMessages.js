@@ -37,7 +37,7 @@ function EnquiryMessages(enquiry) {
     }
   };
   return (
-    <Accordion className="mt-5">
+    <Accordion>
       <Card>
         <Card.Header>
           <Accordion.Toggle as={Button} variant="link" eventKey="0">

@@ -6,12 +6,12 @@ import SearchBar from "../establishments/search/SearchBar";
 function HomeDesktop(establishments) {
   return (
     <Container fluid className="background-image">
-      <Container className="headline-container">
+      <Container className="text-container">
         <Link href="/establishments">
           <a>
-            <h1 className="headline">HOLIDAZE</h1>
-            <h2 className="subheading">
-              Find the perfect accomedation while staying in Bergen, Norway.
+            <h1>Holidaze</h1>
+            <h2>
+              Find the perfect accommodation while staying in Bergen, Norway.
             </h2>
           </a>
         </Link>
@@ -30,20 +30,21 @@ function HomeDesktop(establishments) {
               background-position: center;
               padding: 0;
             }
-            .headline-container {
+            .text-container {
               height: 100%;
               text-align: center;
               display: grid;
               align-content: center;
             }
 
-            .headline {
+            h1 {
               color: white;
-              font-size: 7rem;
+              font-size: 100px;
               margin-top: 1rem;
-              font-weight: 300;
+              font-weight: 400;
             }
-            .subheading {
+
+            h2 {
               color: white;
               text-align: center;
               font-size: 20px;

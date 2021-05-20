@@ -13,7 +13,7 @@ function HomeMobile(establishments) {
         <a>
           <h1 className="headline">HOLIDAZE</h1>
           <h2 className="subheading">
-            Find the perfect accomedation while staying in Bergen, Norway.
+            Find the perfect accommodation while staying in Bergen, Norway.
           </h2>
         </a>
       </Link>

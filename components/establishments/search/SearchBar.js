@@ -13,12 +13,12 @@ function SearchBar({ establishments }) {
     JSON.stringify(establishments, (value) => {
       if (value === name) {
       }
-      //If the value === the name -> 
+      //If the value === the name ->
       return value;
     });
   };
 
-  // If you click the establishment on the serchbar pushes you to the detail page of the establishment -> 
+  // If you click the establishment on the serchbar pushes you to the detail page of the establishment ->
   const goToEstablishment = async (event, value) => {
     await getEstablishmentName();
     Router.push(`/establishment/${value}`);
@@ -32,7 +32,7 @@ function SearchBar({ establishments }) {
         renderInput={(params) => (
           <TextField
             {...params}
-            placeholder="Search Establishments..."
+            placeholder="Search places"
             InputProps={{
               ...params.InputProps,
               startAdornment: (
@@ -55,7 +55,6 @@ function SearchBar({ establishments }) {
             max-width: 1280px;
             min-width: 200px;
             margin-top: 1rem;
-
           }
           @media only screen and (max-width: 990px) {
             .searchbar {
@@ -68,7 +67,6 @@ function SearchBar({ establishments }) {
               width: 100%;
               max-width: 100%;
               z-index: 3;
-              
             }
           }
           .MuiInputBase-root {
