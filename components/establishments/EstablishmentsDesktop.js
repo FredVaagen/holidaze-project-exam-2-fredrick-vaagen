@@ -32,7 +32,8 @@ function EstablishmentsDesktop({
 
   return (
     <>
-    <SearchBar {...{establishments}} />
+     <Container>
+     <SearchBar {...{establishments}} />
       <h1 className="mt-5 mb-5">Find a place to stay</h1>
       <DropdownButton
         className="mt-3"
@@ -102,6 +103,7 @@ function EstablishmentsDesktop({
           Bed and Breakfast
         </Dropdown.Item>
       </DropdownButton>
+      </Container>
 
       {sortEstablishments.map((establishment) => (
         //sortEstablishments value get set by the useState function [sortEstablishments, setSortEstaeblishments] = useState(establishments));
