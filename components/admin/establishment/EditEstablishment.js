@@ -26,7 +26,8 @@ const EditEstablishment = (props) => {
     router.replace(router.asPath);
   };
 
-  console.log(props.facilities.wifi)
+  const [checkmarkWifi, setCheckmarkWifi] = useState(props.facilities.wifi)
+
 
   const submitData = async (data, ctx) => {
     //Gets token
@@ -166,7 +167,12 @@ const EditEstablishment = (props) => {
                 <div>
                   <input
                     type="checkbox"
-                    defaultChecked={props.facilities.wifi}
+                    onClick={() => {
+                      if(checkmarkWifi === true) {
+                        setCheckmarkWifi(false)
+                      } else setCheckmarkWifi(true)
+                    }}
+                    defaultChecked={checkmarkWifi}
                     {...register("wifi")}
                   />
                 </div>
