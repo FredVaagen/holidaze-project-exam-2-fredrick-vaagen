@@ -51,7 +51,7 @@ const EditEstablishment = (props) => {
           hotelbar: data.hotelbar || props.hotelbar,
           pool: data.pool || props.pool,
           parking: data.parking || props.parking,
-          kitchen: data.kithcen || props.kitchen,
+          kitchen: data.kitchen || props.kitchen,
         },
       };
       // Makes a PUT request to update establishment data.

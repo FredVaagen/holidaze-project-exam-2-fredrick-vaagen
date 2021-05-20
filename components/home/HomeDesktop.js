@@ -41,7 +41,7 @@ function HomeDesktop(establishments) {
               color: white;
               font-size: 100px;
               margin-top: 1rem;
-              font-weight: 400;
+              font-weight: 300;
             }
 
             h2 {
