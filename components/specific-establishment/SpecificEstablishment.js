@@ -93,8 +93,8 @@ function SpecificEstablishmentCard({ establishment, images }) {
             h3 {
               font-weight: 300;
               text-align: left;
-              margin-top: 2rem;
-              margin-bottom: 2rem;
+              margin-top: 1rem;
+              margin-bottom: 1rem;
             }
 
             .carousel-item img {

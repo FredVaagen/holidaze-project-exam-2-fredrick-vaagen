@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { parseCookies } from "nookies";
 import Button from "@material-ui/core/Button";
 import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
 import Toast from "react-bootstrap/Toast";
 import { BASE_URL } from "./../../../constants/api";
 import ImageUpload from "./ImageUpload";
@@ -21,7 +22,10 @@ const EditEstablishment = (props) => {
   const [update, setUpdate] = useState(false);
   //Toast message box (show) is set to true  if the page is updated ->
   const [showToast, setShowToast] = useState(false);
-  //Used to update the prop data when editing establishments.
+
+  //Show loading spinner on submit button when loading data ->
+  const [loading, setLoading] = useState(false);
+
   const refreshData = () => {
     router.replace(router.asPath);
   };
@@ -54,8 +58,9 @@ const EditEstablishment = (props) => {
           kitchen: data.kitchen || props.kitchen,
         },
       };
+      setLoading(true);
       // Makes a PUT request to update establishment data.
-      const res = await axios({
+      await axios({
         method: "PUT",
         url: `${BASE_URL}/establishments/${props.id}`,
         headers: {
@@ -64,18 +69,19 @@ const EditEstablishment = (props) => {
         },
         data: formDataToSend,
       });
+     
 
       if (data.name) {
         //If you change the name of the establishment -> Update the URL
         router.replace(`/admin/edit/${data.name}`);
       }
       // If request is ok -> refreshData
-      if (res) {
-        refreshData();
-        setUpdate(true);
-      }
     } catch (error) {
-      console.log(error);
+      router.back();
+    } finally {
+      setLoading(false);
+      setUpdate(true);
+      refreshData();
     }
   };
   //Function to remove/delete a establishment
@@ -122,6 +128,7 @@ const EditEstablishment = (props) => {
             <label>Price per night</label>
             <input
               type="number"
+              step="0.01"
               {...register("price")}
               placeholder={props.price}
             />
@@ -131,11 +138,21 @@ const EditEstablishment = (props) => {
               Find longtide and latitude - <a>https://www.latlong.net/</a>
             </div>
             <label>Latitude</label>
-            <input {...register("lat")} placeholder={props.lat} />
+            <input
+              type="number"
+              step="0.01"
+              {...register("lat")}
+              placeholder={props.lat}
+            />
           </div>
           <div>
             <label>Longitude</label>
-            <input {...register("lng")} placeholder={props.lng} />
+            <input
+              type="number"
+              step="0.01"
+              {...register("lng")}
+              placeholder={props.lng}
+            />
           </div>
           <div className="category">
             <div>
@@ -315,7 +332,17 @@ const EditEstablishment = (props) => {
                   setShowToast(true);
                 }
               }}>
-              Update
+              {loading ? (
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+              ) : (
+                "Update"
+              )}
             </Button>
           ) : (
             <></>

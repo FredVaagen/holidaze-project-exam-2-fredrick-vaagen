@@ -1,3 +1,4 @@
+import {useState} from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -8,14 +9,19 @@ import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import { BASE_URL } from "../../../constants/api";
 
 function EnquiryMessages(enquiry) {
   const { handleSubmit } = useForm();
   const router = useRouter();
 
+  //Arrow toggle when clicking enquiry container accordion -> 
+  const [arrow, setArrow] = useState(false);
+
   const remove = async (ctx) => {
-    //Gets token from cookies -> 
+    //Gets token from cookies ->
     const token = parseCookies(ctx).token;
     // If you press confirm on alert box to delete message ->
     if (confirm("Are you sure you want to remove this enquiry?")) {
@@ -40,8 +46,19 @@ function EnquiryMessages(enquiry) {
     <Accordion>
       <Card>
         <Card.Header>
-          <Accordion.Toggle as={Button} variant="link" eventKey="0">
-            ID: {enquiry.id}, {enquiry.establishmentName}
+          <Accordion.Toggle
+            as={Button}
+            className="enquiry-id-text"
+            onClick={() => {
+              setArrow(!true);
+              if(arrow == false) {
+                setArrow(true)
+              }
+            }}
+            variant="link"
+            eventKey="0">
+            ID: {enquiry.id}: {enquiry.establishmentName}{" "}
+            {arrow ? (<ArrowDropDownIcon />) : (<ArrowDropUpIcon/>)}
           </Accordion.Toggle>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
@@ -67,17 +84,29 @@ function EnquiryMessages(enquiry) {
       </Card>
       <style global jsx>
         {`
+          .accordion .card-header {
+            background: white;
+            display: flex;
+            flex-direction: column;
+          }
+          .enquiry-id-text {
+            display: flex;
+            color: black;
+            justify-content: space-between;
+          }
+          .enquiry-id-text:hover {
+            color: black;
+            text-decoration: none;
+          }
           .remove-form {
             position: absolute;
             top: 55px;
             right: 0;
           }
-
           .remove {
             background: none !important;
             border: none;
           }
-
           .remove svg {
             color: black;
             position: absolute;

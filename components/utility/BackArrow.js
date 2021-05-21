@@ -14,13 +14,13 @@ function BackArrow() {
           .back-arrow {
             margin-top: 2rem;
             transition: 0.3s;
-            margin-left: 1rem;
+            padding-left: 2rem;
             opacity: 0.5;
           }
 
           .back-arrow:hover {
             cursor: pointer;
-            transform: scale(1.01);
+            
             opacity: 1;
           }
           .MuiSvgIcon-root {

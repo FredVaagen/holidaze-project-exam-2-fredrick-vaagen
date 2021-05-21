@@ -1,5 +1,6 @@
-import axios from "axios";
+import {useState} from "react";
 import { useRouter } from "next/router";
+import axios from "axios";
 import { parseCookies } from "nookies";
 import { useForm } from "react-hook-form";
 import Accordion from "react-bootstrap/Accordion";
@@ -7,11 +8,16 @@ import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import { BASE_URL } from "../../../constants/api";
 
 function ContactMessages(contact) {
   const { handleSubmit } = useForm();
   const router = useRouter();
+  
+ //Arrow toggle down/up when clicking contact message container accordion -> 
+  const [arrow, setArrow] = useState(false);
 
   const remove = async (ctx) => {
     //Gets token from cookies ->
@@ -37,10 +43,21 @@ function ContactMessages(contact) {
   };
   return (
     <Accordion>
-      <Card >
+      <Card>
         <Card.Header>
-          <Accordion.Toggle as={Button} variant="link" eventKey="0">
+          <Accordion.Toggle
+            className="enquiry-id-text"
+            onClick={() => {
+              setArrow(!true);
+              if(arrow == false) {
+                setArrow(true)
+              }
+            }}
+            as={Button}
+            variant="link"
+            eventKey="0">
             id: {contact.id} - Subject: {contact.subject}{" "}
+            {arrow ? (<ArrowDropDownIcon />) : (<ArrowDropUpIcon/>)}
           </Accordion.Toggle>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
@@ -62,11 +79,24 @@ function ContactMessages(contact) {
       </Card>
       <style global jsx>
         {`
-          .remove-form {
-            position: absolute;
-            top: 55px;
-            right: 0;
+          .accordion .card-header {
+            background: white;
+            display: flex;
+            flex-direction: column;
           }
+
+
+          .enquiry-id-text {
+            display: flex;
+            color: black;
+            justify-content: space-between;
+          }
+
+          .enquiry-id-text:hover {
+            color: black;
+            text-decoration: none;
+          }
+
 
           .remove {
             background: none !important;
@@ -76,6 +106,7 @@ function ContactMessages(contact) {
           .remove svg {
             color: black;
             position: absolute;
+            top: 10px;
             right: 10px;
           }
         `}

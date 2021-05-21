@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Link from "next/link";
+import router from "next/router";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { parseCookies } from "nookies";
 import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
 import Form from "react-bootstrap/Form";
 import Button from "@material-ui/core/Button";
 import { BASE_URL } from "../../../constants/api";
@@ -21,6 +23,8 @@ function CreateEstablishment() {
   const [showForm, setShowForm] = useState(true);
   //Sets the state of the name of the establishment. setName is set to the form input of the name when form is submitted.
   const [name, setName] = useState(0);
+  //Show loading spinner on submit button when loading data -> 
+  const [loading, setLoading] = useState(false);
 
   // Function to send the form data and create a new establishment.
   const submitData = async (data, ctx) => {
@@ -60,7 +64,7 @@ function CreateEstablishment() {
         },
         data: formDataToSend,
       });
-
+      setLoading(true);
       //input value = the files(images) added to the file input
       const id = inputValue.data.id;
       const formData = new FormData();
@@ -88,11 +92,16 @@ function CreateEstablishment() {
         url: `${BASE_URL}/upload`,
         data: formData,
       });
-    } catch (error) {}
-
-    // if post request is ok -> Sets the value of the showForm to false and hides the form.
-    setShowForm(false);
-    setName(data.name);
+    } catch (error) {
+      if (error) {
+        router.back();
+      }
+    } finally {
+      // if post request is ok -> Sets the value of the showForm to false and hides the form.
+      setShowForm(false);
+      setName(data.name);
+      setLoading(false);
+    }
   };
 
   return (
@@ -108,11 +117,11 @@ function CreateEstablishment() {
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
-                {...register("name", { required: true })}
+                {...register("name", { required: true, minLength: 3 })}
               />
               {errors.description && (
                 <div className="alert-danger">
-                  Name of establishment is required
+                  Name of establishment is required (min 3 characters)
                 </div>
               )}
             </Form.Group>
@@ -121,12 +130,12 @@ function CreateEstablishment() {
               <Form.Control
                 as="textarea"
                 type="text"
-                {...register("description", { required: true })}
+                {...register("description", { required: true, minLength: 10 })}
               />
             </Form.Group>
             {errors.description && (
               <div className="alert-danger">
-                Description of establishment is required
+                Description of establishment is required (min 10 characters)
               </div>
             )}
 
@@ -138,7 +147,7 @@ function CreateEstablishment() {
                     type="radio"
                     label="Hotel"
                     name="hotel"
-                    {...register("category")}
+                    {...register("category", { required: true })}
                     type="radio"
                     value="hotel"
                   />
@@ -146,7 +155,7 @@ function CreateEstablishment() {
                     type="radio"
                     label="Guesthouse"
                     name="guesthouse"
-                    {...register("category")}
+                    {...register("category", { required: true })}
                     type="radio"
                     value="guesthouse"
                   />
@@ -154,7 +163,7 @@ function CreateEstablishment() {
                     type="radio"
                     label="Bed and breakfast"
                     name="bedandbreakfast"
-                    {...register("category")}
+                    {...register("category", { required: true })}
                     type="radio"
                     value="bedandbreakfast"
                   />
@@ -169,6 +178,7 @@ function CreateEstablishment() {
               <Form.Label>Price per night</Form.Label>
               <Form.Control
                 type="number"
+                step="0.01"
                 {...register("price", { required: true })}
               />
               {errors.price && (
@@ -186,7 +196,11 @@ function CreateEstablishment() {
                 </a>
               </Form.Label>
 
-              <Form.Control {...register("lat", { required: true })} />
+              <Form.Control
+                {...register("lat", { required: true })}
+                type="number"
+                step="0.01"
+              />
               {errors.lat && (
                 <div className="alert-danger">
                   Latitude of establishment is required
@@ -202,7 +216,11 @@ function CreateEstablishment() {
                   Click to find latitude and longitude
                 </a>{" "}
               </Form.Label>
-              <Form.Control {...register("lng", { required: true })} />
+              <Form.Control
+                type="number"
+                step="0.01"
+                {...register("lng", { required: true })}
+              />
               {errors.lng && (
                 <div className="alert-danger">
                   Longitude of establishment is required
@@ -370,7 +388,17 @@ function CreateEstablishment() {
                   setShowForm(false);
                 }
               }}>
-              Submit
+              {loading ? (
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+              ) : (
+                "Submit"
+              )}
             </Button>
           </Form>
         ) : (
@@ -414,6 +442,7 @@ function CreateEstablishment() {
           .button {
             width: 200px !important;
             margin-bottom: 2rem !important;
+            margin-top: 2rem !important;
             background: #fff !important;
             color: black !important;
             font-size: 11px !important;
