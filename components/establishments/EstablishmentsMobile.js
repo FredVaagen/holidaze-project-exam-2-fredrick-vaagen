@@ -130,8 +130,9 @@ function EstablishmentsMobile({
                   <h3>{establishment.name}</h3>
                   <Badge>{establishment.category}</Badge>
                   <p>{establishment.address}</p>
+                  <p>NOK {establishment.price} per night </p>
                   <Button variant="contained" className="button">
-                    NOK {establishment.price} per night
+                    details
                   </Button>
                 </Col>
               </Row>
@@ -169,11 +170,6 @@ function EstablishmentsMobile({
           .row {
             flex-wrap: nowrap;
           }
-          .establishment-container:hover {
-            transform: scale(1.02);
-            cursor: pointer;
-          }
-
           .details h3 {
             font-size: 20px;
             margin-bottom: 0;
@@ -202,6 +198,7 @@ function EstablishmentsMobile({
 
           img {
             border-radius: 10px;
+            height: 200px;
           }
 
           .button {
@@ -210,6 +207,7 @@ function EstablishmentsMobile({
             font-size: 11px !important;
             width: 100%;
             font-weight: 300;
+           
             
           }
 
@@ -239,23 +237,11 @@ function EstablishmentsMobile({
             }
 
             img {
-              height: 185px;
+              height: 200px;
             
             }
           }
-          //OVERRIDING DROPDOWNBUTTON CSS FROM BOOTSTRAP -> 
-          .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
-            color: black !important;
-            background-color: #fff;
-            border-color: #005cbf;
-          }
 
-          .btn-primary {
-            color: black !important;
-            background-color: #fff !important;
-            border: none !important;
-            box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-          }
 
           @media only screen and (max-width: 500px) {
             .row {
@@ -270,6 +256,25 @@ function EstablishmentsMobile({
               padding-left: 7px !important;
               padding-top: 5px !important;
             }
+          }
+
+
+
+
+
+
+          //OVERRIDING DROPDOWNBUTTON CSS FROM BOOTSTRAP -> 
+          .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+            color: black !important;
+            background-color: #fff;
+            border-color: #005cbf;
+          }
+
+          .btn-primary {
+            color: black !important;
+            background-color: #fff !important;
+            border: none !important;
+            box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
           }
 
         `}
