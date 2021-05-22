@@ -129,7 +129,7 @@ function EstablishmentsDesktop({
                         src={image.formats.small.url}
                         alt={image.name}
                         width="1000"
-                        height="auto"
+                        height="185px"
                       />
                     </Carousel.Item>
                   ))}
@@ -139,9 +139,10 @@ function EstablishmentsDesktop({
                 <h3>{establishment.name}</h3>
                 <Badge>{establishment.category}</Badge>
                 <p className="address">{establishment.address}</p>
-                <Button variant="contained" className="button">
+                <p className="address">
                   NOK {establishment.price} per night
-                </Button>
+                </p>
+                <Button variant="contained" className="button">See more</Button> 
                 {user ? (
                   <Link
                     href="/admin/edit/[name]"

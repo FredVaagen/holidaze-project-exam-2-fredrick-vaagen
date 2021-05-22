@@ -142,7 +142,7 @@ function CreateEstablishment() {
             <Form.Group>
               <fieldset>
                 <Form.Group>
-                  <Form.Label as="category">Category</Form.Label>
+                  <Form.Label>Category</Form.Label>
                   <Form.Check
                     type="radio"
                     label="Hotel"

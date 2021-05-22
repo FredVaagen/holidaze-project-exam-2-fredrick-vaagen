@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import GoogleMapReact from "google-map-react";
 import Marker from "./Marker";
 import { GOOGLE_API } from "../../../constants/api";
@@ -6,7 +5,7 @@ import { GOOGLE_API } from "../../../constants/api";
 const SimpleMap = (props) => {
   const longitude = props.lng;
   const latitude = props.lat;
-  // Functions from the Google API Maps Docs -> 
+  // Functions from the Google API Maps Docs ->
   const getMapOptions = () => {
     return {
       disableDefaultUI: true,
@@ -22,11 +21,11 @@ const SimpleMap = (props) => {
     };
   };
 
-  const center =  {lat: latitude, lng: longitude};
+  const center = { lat: latitude, lng: longitude };
   const zoom = 11;
 
   return (
-    // Functions from the Google API Maps Docs -> 
+    // Functions from the Google API Maps Docs ->
     <div style={{ height: "100%", width: "100%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: GOOGLE_API }}
@@ -39,7 +38,7 @@ const SimpleMap = (props) => {
           lat={latitude}
           lng={longitude}
           name={props.address}
-          color="blue"
+          color="black"
         />
       </GoogleMapReact>
     </div>

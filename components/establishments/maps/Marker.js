@@ -12,27 +12,10 @@ const Marker = (props) => {
       <div className="pulse" />
       <style jsx global>
         {`
-          .marker {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 18px;
-            height: 18px;
-            background-color: #000;
-            border: 2px solid #fff;
-            border-radius: 100%;
-            user-select: none;
-            transform: translate(-50%, -50%);
-          }
-          .marker:hover {
-            z-index: 1;
-          }
-
           .pin {
             width: 30px;
             height: 30px;
             border-radius: 50% 50% 50% 0;
-            background: #00cae9;
             position: absolute;
             transform: rotate(-45deg);
             left: 50%;
@@ -118,7 +101,6 @@ const Marker = (props) => {
           }
         `}
       </style>
-      ;
     </div>
   );
 };
