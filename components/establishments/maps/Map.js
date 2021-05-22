@@ -1,8 +1,9 @@
 import GoogleMapReact from "google-map-react";
 import Marker from "./Marker";
 import { GOOGLE_API } from "../../../constants/api";
+import InformationPanel from "./InformationPanel";
 
-const SimpleMap = (props) => {
+const Map = (props) => {
   const longitude = props.lng;
   const latitude = props.lat;
   // Functions from the Google API Maps Docs ->
@@ -40,9 +41,10 @@ const SimpleMap = (props) => {
           name={props.address}
           color="black"
         />
+        <InformationPanel address={props.address} name={props.name} />
       </GoogleMapReact>
     </div>
   );
 };
 
-export default SimpleMap;
+export default Map;

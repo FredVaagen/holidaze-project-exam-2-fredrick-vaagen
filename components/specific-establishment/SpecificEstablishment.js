@@ -7,16 +7,16 @@ import Carousel from "react-bootstrap/Carousel";
 import Button from "@material-ui/core/Button";
 import Modal from "react-bootstrap/Modal";
 import BackArrow from "../utility/BackArrow";
-import SimpleMap from "../establishments/maps/SimpleMap";
+import Map from "../establishments/maps/Map";
 import Enquiry from "./enquiry/EnquiryForm";
 import Facilities from "./facilities/Facilities";
 
 function SpecificEstablishmentCard({ establishment, images }) {
-  //set modal show state to false -> 
+  //set modal show state to false ->
   const [show, setShow] = useState(false);
-  //When you click close on the modal -> 
+  //When you click close on the modal ->
   const handleClose = () => setShow(false);
-  //When handleShow is called set modal to true -> 
+  //When handleShow is called set modal to true ->
   const handleShow = () => setShow(true);
   return (
     <>
@@ -25,19 +25,19 @@ function SpecificEstablishmentCard({ establishment, images }) {
         <Container className="establishment-images">
           <h1>{establishment.name}</h1>
           <p className="establishment-address">{establishment.address}</p>
-              <Carousel fade indicators={false}>
-                {images.map((image) => (
-                  <Carousel.Item key={image.id}>
-                    <Image
-                      className="d-block w-100"
-                      src={image.url}
-                      alt={image.name}
-                      width="1280"
-                      height="auto"
-                    />
-                  </Carousel.Item>
-                ))}
-              </Carousel>
+          <Carousel fade indicators={false}>
+            {images.map((image) => (
+              <Carousel.Item key={image.id}>
+                <Image
+                  className="d-block w-100"
+                  src={image.url}
+                  alt={image.name}
+                  width="1280"
+                  height="auto"
+                />
+              </Carousel.Item>
+            ))}
+          </Carousel>
         </Container>
         <Container className="details-container">
           <Facilities {...establishment} />
@@ -49,11 +49,11 @@ function SpecificEstablishmentCard({ establishment, images }) {
           <h3>Location </h3>
           <p className="establishment-address">{establishment.address}</p>
           <div className="map">
-            <SimpleMap {...establishment} />
+            <Map {...establishment} />
           </div>
           <Button className="button" variant="contained" onClick={handleShow}>
-          Book {establishment.name}
-        </Button>
+            Book {establishment.name}
+          </Button>
         </Container>
 
         <Modal
@@ -155,6 +155,10 @@ function SpecificEstablishmentCard({ establishment, images }) {
               color: black !important;
               font-size: 11px !important;
               font-weight: 300 !important;
+            }
+
+            .map-address-panel {
+              display: none;
             }
           `}
         </style>

@@ -23,7 +23,7 @@ function CreateEstablishment() {
   const [showForm, setShowForm] = useState(true);
   //Sets the state of the name of the establishment. setName is set to the form input of the name when form is submitted.
   const [name, setName] = useState(0);
-  //Show loading spinner on submit button when loading data -> 
+  //Show loading spinner on submit button when loading data ->
   const [loading, setLoading] = useState(false);
 
   // Function to send the form data and create a new establishment.

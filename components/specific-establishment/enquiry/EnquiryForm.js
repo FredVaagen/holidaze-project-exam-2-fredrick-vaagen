@@ -17,8 +17,8 @@ function Enquiry(establishment) {
   // USED to show/hide modal form. UseState is false when form is submitted.
   const [showModal, setShowModal] = useState(true);
   const [email, setEmail] = useState(0);
-  const [checkinDate, setCheckinDate] = useState(" ")
-  console.log(checkinDate)
+  const [checkinDate, setCheckinDate] = useState(" ");
+  console.log(checkinDate);
   const establishmentName = establishment.name;
   //If submitting form and no error ->
   const onSubmit = async (data) => {
@@ -44,18 +44,14 @@ function Enquiry(establishment) {
               <Form.Label className="ml-3">Check in</Form.Label> <span>*</span>
               <Col>
                 <Controller
-                  render={({ field}) => (
+                  render={({ field }) => (
                     <DatePicker
                       onChange={(e) => field.onChange(e)}
                       minDate={new Date()}
                       selected={field.value}
                       isClearable
                       placeholderText="01/01/2021"
-   
-                    
-                      
                     />
-                    
                   )}
                   control={control}
                   name="startDate"
@@ -66,7 +62,6 @@ function Enquiry(establishment) {
                     You must pick a checkin date
                   </div>
                 )}
-            
               </Col>
             </Form.Group>
             <Form.Group>

@@ -9,7 +9,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import Badge from "react-bootstrap/Badge";
 import Button from "@material-ui/core/Button";
-import SimpleMap from "./maps/SimpleMap";
+import Map from "./maps/Map";
 import AppContext from "../../context/AppContext";
 import SearchBar from "./search/SearchBar";
 
@@ -32,79 +32,79 @@ function EstablishmentsDesktop({
 
   return (
     <>
-     <Container>
-     <SearchBar {...{establishments}} />
-     <Container>
-      <h1 className="mt-5 mb-5">Find a place to stay</h1>
-      <DropdownButton
-        className="mt-3"
-        id="dropdown-basic-button"
-        title={sortName}>
-        <Dropdown.Item
-          href="#/a-z"
-          onClick={() => {
-            //on click set new state ->
-            setSortEstaeblishments(establishments);
-            setSortName("Sort places: a-z");
-          }}>
-          Name: a - z
-        </Dropdown.Item>
-        <Dropdown.Item
-          href="#/z-a"
-          onClick={() => {
-            //on click set new state ->
-            setSortEstaeblishments(nameDesc);
-            setSortName("Sort places: z-a");
-          }}>
-          Name: z - a
-        </Dropdown.Item>
-        <Dropdown.Item
-          href="#/Lower-Higher"
-          onClick={() => {
-            //on click set new state ->
-            setSortEstaeblishments(priceAsc);
-            setSortName("Sort places: Lower - higher");
-          }}>
-          Price: Lower - higher
-        </Dropdown.Item>
-        <Dropdown.Item
-          href="#/lower-higher"
-          onClick={() => {
-            //on click set new state ->
-            setSortEstaeblishments(priceDesc);
-            setSortName("Sort places: Higher - lower");
-          }}>
-          Price: Higher - lower
-        </Dropdown.Item>
-        <Dropdown.Item
-          href="#/hotels"
-          onClick={() => {
-            //on click set new state ->
-            setSortEstaeblishments(sortByHotel);
-            setSortName("Sort places: Hotels");
-          }}>
-          Hotels
-        </Dropdown.Item>
-        <Dropdown.Item
-          href="#/guesthouses"
-          onClick={() => {
-            //on click set new state ->
-            setSortEstaeblishments(sortByGuesthouse);
-            setSortName("Sort places: Guesthouses");
-          }}>
-          Guesthouses
-        </Dropdown.Item>
-        <Dropdown.Item
-          href="#/bedandbreakfast"
-          onClick={() => {
-            //on click set new state ->
-            setSortEstaeblishments(sortByBedAndBreakfast);
-            setSortName("Sort places: Bed and Breakfast");
-          }}>
-          Bed and Breakfast
-        </Dropdown.Item>
-      </DropdownButton>
-      </Container>
+      <Container>
+        <SearchBar {...{ establishments }} />
+        <Container>
+          <h1 className="mt-5 mb-5">Find a place to stay</h1>
+          <DropdownButton
+            className="mt-3"
+            id="dropdown-basic-button"
+            title={sortName}>
+            <Dropdown.Item
+              href="#/a-z"
+              onClick={() => {
+                //on click set new state ->
+                setSortEstaeblishments(establishments);
+                setSortName("Sort places: a-z");
+              }}>
+              Name: a - z
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#/z-a"
+              onClick={() => {
+                //on click set new state ->
+                setSortEstaeblishments(nameDesc);
+                setSortName("Sort places: z-a");
+              }}>
+              Name: z - a
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#/Lower-Higher"
+              onClick={() => {
+                //on click set new state ->
+                setSortEstaeblishments(priceAsc);
+                setSortName("Sort places: Lower - higher");
+              }}>
+              Price: Lower - higher
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#/lower-higher"
+              onClick={() => {
+                //on click set new state ->
+                setSortEstaeblishments(priceDesc);
+                setSortName("Sort places: Higher - lower");
+              }}>
+              Price: Higher - lower
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#/hotels"
+              onClick={() => {
+                //on click set new state ->
+                setSortEstaeblishments(sortByHotel);
+                setSortName("Sort places: Hotels");
+              }}>
+              Hotels
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#/guesthouses"
+              onClick={() => {
+                //on click set new state ->
+                setSortEstaeblishments(sortByGuesthouse);
+                setSortName("Sort places: Guesthouses");
+              }}>
+              Guesthouses
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#/bedandbreakfast"
+              onClick={() => {
+                //on click set new state ->
+                setSortEstaeblishments(sortByBedAndBreakfast);
+                setSortName("Sort places: Bed and Breakfast");
+              }}>
+              Bed and Breakfast
+            </Dropdown.Item>
+          </DropdownButton>
+        </Container>
       </Container>
 
       {sortEstablishments.map((establishment) => (
@@ -139,10 +139,10 @@ function EstablishmentsDesktop({
                 <h3>{establishment.name}</h3>
                 <Badge>{establishment.category}</Badge>
                 <p className="address">{establishment.address}</p>
-                <p className="address">
-                  NOK {establishment.price} per night
-                </p>
-                <Button variant="contained" className="button">See more</Button> 
+                <p className="address">NOK {establishment.price} per night</p>
+                <Button variant="contained" className="button">
+                  See more
+                </Button>
                 {user ? (
                   <Link
                     href="/admin/edit/[name]"
@@ -156,7 +156,7 @@ function EstablishmentsDesktop({
                 )}
               </Col>
               <Col s={4} lg={5} className="map-container">
-                <SimpleMap {...establishment} />
+                <Map {...establishment} />
               </Col>
             </Row>
           </Container>
