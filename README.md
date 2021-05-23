@@ -2,6 +2,8 @@
 
 #How to start: 
 
-Download files -> NPM I 
+Install NPM packages:  NPM i 
 
-Npm run develop start project on local server. 
+How to start: Npm run develop 
+
+
