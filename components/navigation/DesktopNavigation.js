@@ -1,16 +1,16 @@
 import { useContext } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 // ICONS
-import FilterHdrIcon from "@material-ui/icons/FilterHdr";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import HotelIcon from "@material-ui/icons/Hotel";
 import ContactSupportIcon from "@material-ui/icons/ContactSupport";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-
+//My Imports
 import { logout } from "../../lib/auth";
 import AppContext from "../../context/AppContext";
 
@@ -20,8 +20,7 @@ function DesktopNavigation() {
     <Container fluid>
       <Navbar>
         <Navbar.Brand href="/">
-          <FilterHdrIcon />
-          Holidaze
+         <Image src="/logo.svg" height="30px" width="60px"/>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
