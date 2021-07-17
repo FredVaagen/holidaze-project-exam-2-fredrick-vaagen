@@ -142,7 +142,6 @@ function EstablishmentsDesktop({
                 <Facilities {...establishment} />
                 <p className="address">{establishment.address}</p>
                 <Button variant="contained" className="button">
-                  
                   See more
                 </Button>
                 {user ? (
@@ -242,7 +241,7 @@ function EstablishmentsDesktop({
             font-weight: 300;
           }
           .button {
-            background: black;
+            background: black !important;
             color: white !important;
             font-size: 11px !important;
             font-weight: 600 !important;
