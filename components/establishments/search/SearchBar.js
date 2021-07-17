@@ -48,6 +48,8 @@ function SearchBar({ establishments }) {
         {`
           .searchbar {
             background: white;
+            box-shadow: 0 1px 3px rgb(41 51 57 / 50%);
+
             border-radius: 15px;
             border: none;
             align-self: center;
@@ -73,18 +75,15 @@ function SearchBar({ establishments }) {
             height: 50px;
             border-radius: 50px !important;
           }
-
           .MuiAutocomplete-clearIndicator {
             visibility: visible;
           }
           .MuiInput-underline:before {
             border-bottom: none !important;
           }
-
           .MuiInput-underline:after {
             border-bottom: none !important;
           }
-
           .MuiInputAdornment-root {
             box-sizing: border-box;
           }

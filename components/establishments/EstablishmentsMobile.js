@@ -10,6 +10,8 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Badge from "react-bootstrap/Badge";
 import Button from "@material-ui/core/Button";
 import SearchBar from "./search/SearchBar";
+import Facilities from "../specific-establishment/facilities/Facilities";
+
 
 function EstablishmentsMobile({
   establishments,
@@ -129,10 +131,12 @@ function EstablishmentsMobile({
                 <Col s={5} md={5} lg className="details">
                   <h3>{establishment.name}</h3>
                   <Badge>{establishment.category}</Badge>
+                  <Facilities {...establishment} />
+
                   <p>{establishment.address}</p>
                   <p>NOK {establishment.price} per night </p>
                   <Button variant="contained" className="button">
-                    details
+                    See more
                   </Button>
                 </Col>
               </Row>
@@ -188,6 +192,22 @@ function EstablishmentsMobile({
             font-weight: 300;
           }
 
+          .facilities h3 {
+            display: none;
+           }
+           .facilities {
+             height: auto;
+             font-size: 11px;
+             font-weight: 300;
+             margin-bottom: 1rem;
+           }
+           .facilities svg {
+             font-size: 12px;
+             opacity: 0.7;
+             margin-right: 10px;
+             margin-left: 3px;
+           }
+
           p {
             font-size: 12px;
           }
@@ -202,8 +222,8 @@ function EstablishmentsMobile({
           }
 
           .button {
-            color: black !important;
-            background: #fff !important;
+            color: #fff !important;
+            background: #000 !important;
             font-size: 11px !important;
             width: 100%;
             font-weight: 300;

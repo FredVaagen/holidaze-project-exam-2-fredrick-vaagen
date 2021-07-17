@@ -17,7 +17,7 @@ import AppContext from "../../context/AppContext";
 function DesktopNavigation() {
   const { user, setUser } = useContext(AppContext);
   return (
-    <Container fluid>
+    <Container className="nav-container" fluid>
       <Navbar>
         <Navbar.Brand href="/">
          <Image src="/logo.svg" height="30px" width="60px"/>
@@ -75,6 +75,12 @@ function DesktopNavigation() {
       </Navbar>
       <style global jsx>
         {`
+
+        .navbar {
+          padding: .5rem;
+          height: 50px;
+        }
+       
           .navbar .navbar-nav .nav-link {
             padding-right: 3rem;
             font-size: 12px;
@@ -83,6 +89,7 @@ function DesktopNavigation() {
             transition: 0.3s;
             font-family: "Roboto", sans-serif;
             font-weight: 300;
+            
           }
 
           .navbar .navbar-nav .nav-link:hover {
@@ -91,6 +98,7 @@ function DesktopNavigation() {
             color: black;
             opacity: 0.8;
             transform: scale(1.05);
+            
           }
 
           .navbar svg {

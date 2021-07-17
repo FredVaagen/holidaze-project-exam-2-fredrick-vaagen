@@ -22,10 +22,10 @@ function HomeDesktop(establishments) {
               display: flex;
               flex-direction: column;
               padding: 0;
-              min-height: 100vh;
+              min-height: 90vh;
             }
             .background-image {
-              height: 100vh;
+              height: 90vh;
               background: url("/background-desktop.jpg") no-repeat;
               background-position: center;
               padding: 0;

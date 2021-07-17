@@ -12,6 +12,7 @@ import Button from "@material-ui/core/Button";
 import Map from "./maps/Map";
 import AppContext from "../../context/AppContext";
 import SearchBar from "./search/SearchBar";
+import Facilities from "../specific-establishment/facilities/Facilities";
 
 function EstablishmentsDesktop({
   //Props from getServerSideProps
@@ -138,9 +139,10 @@ function EstablishmentsDesktop({
               <Col s={12} md={6} lg={4} className="details">
                 <h3>{establishment.name}</h3>
                 <Badge>{establishment.category}</Badge>
+                <Facilities {...establishment} />
                 <p className="address">{establishment.address}</p>
-                <p className="address">NOK {establishment.price} per night</p>
                 <Button variant="contained" className="button">
+                  
                   See more
                 </Button>
                 {user ? (
@@ -176,7 +178,7 @@ function EstablishmentsDesktop({
             background: white;
           }
           .establishment-container:hover {
-            transform: scale(1.01);
+           
             cursor: pointer;
           }
 
@@ -217,6 +219,21 @@ function EstablishmentsDesktop({
             margin-bottom: 1rem;
             text-align: left;
           }
+          .facilities h3 {
+           display: none;
+          }
+          .facilities {
+            height: auto;
+            font-size: 11px;
+            font-weight: 300;
+            margin-bottom: 1rem;
+          }
+          .facilities svg {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-right: 10px;
+            margin-left: 3px;
+          }
           p {
             font-size: 12px;
           }
@@ -225,10 +242,16 @@ function EstablishmentsDesktop({
             font-weight: 300;
           }
           .button {
-            background: #fff !important;
-            color: black !important;
+            background: black;
+            color: white !important;
             font-size: 11px !important;
-            font-weight: 300 !important;
+            font-weight: 600 !important;
+            transition: .3s;
+          }
+
+          .button:hover {
+            transform: scale(1.01);
+            background: black;
           }
           .establishment-specific__image-col {
             padding-top: 10px;;
@@ -251,12 +274,13 @@ function EstablishmentsDesktop({
             background-color: #fff !important;
             border: none !important;
             box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+            
           }
 
           .dropdown-item:active {
           color: black !important;
           background: none !important;
-          } import SearchBar from './search/SearchBar';
+          } 
 
 
           ///////////////////////END////////////////////////////////////
