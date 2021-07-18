@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 //Bootstrap imports
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -17,6 +18,7 @@ import FilterHdrIcon from "@material-ui/icons/FilterHdr";
 
 function MobileNavigation() {
   const { user, setUser } = useContext(AppContext);
+  const router = useRouter();
   return (
     <>
       <Navbar fixed="bottom" className="appbar">
@@ -56,6 +58,7 @@ function MobileNavigation() {
                     onClick={() => {
                       logout();
                       setUser(null);
+                      router.push("/")
                     }}>
                     <ExitToAppIcon />
                     Logout

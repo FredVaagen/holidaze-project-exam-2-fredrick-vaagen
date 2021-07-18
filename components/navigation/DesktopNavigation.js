@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import Nav from "react-bootstrap/Nav";
@@ -16,6 +17,7 @@ import AppContext from "../../context/AppContext";
 
 function DesktopNavigation() {
   const { user, setUser } = useContext(AppContext);
+  const router = useRouter();
   return (
     <Container className="nav-container" fluid>
       <Navbar>
@@ -58,6 +60,7 @@ function DesktopNavigation() {
                     onClick={() => {
                       logout();
                       setUser(null);
+                      router.push("/")
                     }}>
                     <ExitToAppIcon /> Logout
                   </Nav.Link>
