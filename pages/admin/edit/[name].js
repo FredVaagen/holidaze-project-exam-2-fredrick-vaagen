@@ -3,18 +3,28 @@ import { BASE_URL } from "../../../constants/api";
 import BackArrow from "../../../components/utility/BackArrow";
 import EditEstablishment from "../../../components/admin/establishment/EditEstablishment";
 import { parseCookies } from "nookies";
+import { useRouter } from "next/router";
+
+
 
 
 export default function Establishment({ establishment, ctx }) {
   const token = parseCookies(ctx).token;
-  return (
-    <Container>
-      <BackArrow />
+  const router = useRouter();
+
+
+  if (token) {
+    return (
       <Container>
-        <EditEstablishment {...establishment} />
+        <BackArrow />
+        <Container>
+          <EditEstablishment {...establishment} />
+        </Container>
       </Container>
-    </Container>
-  );
+    );
+
+  } else router.back()
+
 }
 
 
