@@ -114,14 +114,14 @@ const EditEstablishment = (props) => {
         <form onSubmit={handleSubmit(submitData)}>
           <div>
             <label>Name</label>
-            <input type="text" {...register("name")} placeholder={props.name} />
+            <input type="text" {...register("name")}  value={props.name} />
           </div>
           <div>
             <label>Description</label>
             <textarea
               type="text"
               {...register("description")}
-              placeholder={props.description}
+              value={props.description}
             />
           </div>
           <div>
@@ -130,7 +130,7 @@ const EditEstablishment = (props) => {
               type="number"
               step="0.01"
               {...register("price")}
-              placeholder={props.price}
+              value={props.price}
             />
           </div>
           <div>
@@ -142,7 +142,7 @@ const EditEstablishment = (props) => {
               type="number"
               step="0.01"
               {...register("lat")}
-              placeholder={props.lat}
+              value={props.lat}
             />
           </div>
           <div>
@@ -151,7 +151,7 @@ const EditEstablishment = (props) => {
               type="number"
               step="0.01"
               {...register("lng")}
-              placeholder={props.lng}
+              value={props.lng}
             />
           </div>
           <div className="category">
@@ -195,7 +195,7 @@ const EditEstablishment = (props) => {
             <input
               type="text"
               {...register("address")}
-              placeholder={props.address}
+               value={props.address}
             />
           </div>
           <h3 className="mb-3">Facilites</h3>
@@ -365,9 +365,9 @@ const EditEstablishment = (props) => {
       </div>
 
       <form onSubmit={handleSubmit(removeEstablishment)}>
-        <button className="remove" type="submit">
+        <Button className="remove" type="submit">
           Remove establishment
-        </button>
+        </Button>
       </form>
 
       <style global jsx>
@@ -394,20 +394,25 @@ const EditEstablishment = (props) => {
           .remove {
             margin-top: 3rem;
             margin-bottom: 3rem;
-            background: none;
-            transistion: 1s;
-            border: 1px solid black;
+            background: #000 !important;
+            color: #fff !important;
           }
+
           .remove:hover {
-            background: red;
-            color: white;
+            background: red !important;
           }
+    
           .button {
             width: 200px !important;
             margin-bottom: 2rem !important;
             background: #fff !important;
             color: black !important;
             font-size: 11px !important;
+          }
+
+          .button:hover {
+            background: green !important;
+            color: white !important;
           }
           .category input {
             width: 20px;
