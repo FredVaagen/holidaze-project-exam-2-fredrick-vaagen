@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 export default function Establishment({ establishment, ctx }) {
   const token = parseCookies(ctx).token;
   const router = useRouter();
-  
+
   if (token) {
     return (
       <Container>
@@ -19,7 +19,7 @@ export default function Establishment({ establishment, ctx }) {
       </Container>
     );
 
-  } else router.back()
+  } else router.push("/")
 
 }
 
