@@ -19,7 +19,9 @@ export default function Establishment({ establishment, ctx }) {
       </Container>
     );
 
-  } else router.push("/")
+  } else 
+  router.push("/")
+  router.reload()
 
 }
 
