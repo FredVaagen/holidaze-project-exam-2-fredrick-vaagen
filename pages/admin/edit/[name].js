@@ -2,8 +2,11 @@ import Container from "react-bootstrap/Container";
 import { BASE_URL } from "../../../constants/api";
 import BackArrow from "../../../components/utility/BackArrow";
 import EditEstablishment from "../../../components/admin/establishment/EditEstablishment";
+import { parseCookies } from "nookies";
 
-export default function Establishment({ establishment }) {
+
+export default function Establishment({ establishment, ctx }) {
+  const token = parseCookies(ctx).token;
   return (
     <Container>
       <BackArrow />
