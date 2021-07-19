@@ -165,8 +165,21 @@ function EstablishmentsDesktop({
       ))}
       <style global jsx>
         {`
+          body {
+            background: linear-gradient(90deg, rgba(236,236,236,1) 17%, rgba(251,251,251,1) 100%);
+          }
+
+          .nav-container {
+            background: #fff;
+           
+            position: fixed;
+            z-index: 3;
+            margin-top: -8rem;
+          }
+
           .main {
             min-height: 1000px;
+
           }
           .establishment-container {
             transition: 0.5s;
@@ -241,16 +254,18 @@ function EstablishmentsDesktop({
             font-weight: 300;
           }
           .button {
-            background: black !important;
-            color: white !important;
+            background: linear-gradient(90deg, rgba(236,236,236,1) 17%, rgba(251,251,251,1) 100%);
+            color: black !important;
             font-size: 11px !important;
             font-weight: 600 !important;
-            transition: .3s;
+            transition: .4s;
           }
 
           .button:hover {
             transform: scale(1.01);
-            background: black;
+            background: linear-gradient(90deg, rgba(236,236,236,1) 100%, rgba(251,251,251,1) 100%);
+
+            
           }
           .establishment-specific__image-col {
             padding-top: 10px;;

@@ -12,7 +12,6 @@ import Button from "@material-ui/core/Button";
 import SearchBar from "./search/SearchBar";
 import Facilities from "../specific-establishment/facilities/Facilities";
 
-
 function EstablishmentsMobile({
   establishments,
   nameDesc,
@@ -145,6 +144,10 @@ function EstablishmentsMobile({
         ))}
         <style global jsx>
           {`
+          body {
+            background: linear-gradient(90deg, rgba(236,236,236,1) 17%, rgba(251,251,251,1) 100%);
+            }
+
           .main {
             min-height: 1000px;
           }
@@ -155,6 +158,7 @@ function EstablishmentsMobile({
             margin-0;
             margin-top: 3rem;
             margin-bottom: 3rem;
+            background: white;
           }
 
            h1 {
@@ -222,13 +226,12 @@ function EstablishmentsMobile({
           }
 
           .button {
-            color: #fff !important;
-            background: #000 !important;
+            color: black !important;
+            background: linear-gradient(90deg, rgba(236,236,236,1) 17%, rgba(251,251,251,1) 100%);
             font-size: 11px !important;
             width: 100%;
             font-weight: 300;
-           
-            
+  
           }
 
           .details {

@@ -151,12 +151,18 @@ function SpecificEstablishmentCard({ establishment, images }) {
               width: 100% !important;
               margin-bottom: 2rem !important;
               margin-top: 2rem !important;
-              background: #000 !important;
-              color: #fff !important;
-              font-size: 11px !important;
-              font-weight: 300 !important;
-              background: linear-gradient(90deg, rgba(131,96,171,1) 7%, rgba(255,67,67,1) 48%, rgba(131,96,171,1) 86%);
+              color: black !important;
+              font-size: 12px !important;
+              font-weight: 500 !important;
+              background: linear-gradient(90deg, rgba(236,236,236,1) 17%, rgba(251,251,251,1) 100%);
+              transition: .4s;
+            }
 
+            .button:hover {
+              transform: scale(1.01);
+              background: linear-gradient(90deg, rgba(236,236,236,1) 100%, rgba(251,251,251,1) 100%);
+  
+              
             }
 
             .map-address-panel {

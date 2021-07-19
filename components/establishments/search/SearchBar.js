@@ -11,9 +11,7 @@ function SearchBar({ establishments }) {
   const getEstablishmentName = (name) => {
     //Converts to string
     JSON.stringify(establishments, (value) => {
-      if (value === name) {
-      }
-      //If the value === the name ->
+
       return value;
     });
   };
@@ -49,14 +47,14 @@ function SearchBar({ establishments }) {
           .searchbar {
             background: white;
             box-shadow: 0 1px 3px rgb(41 51 57 / 50%);
-
+            margin-top: 8rem;
             border-radius: 15px;
             border: none;
             align-self: center;
             width: 100%;
             max-width: 1280px;
             min-width: 200px;
-            margin-top: 1rem;
+            
           }
           @media only screen and (max-width: 990px) {
             .searchbar {
