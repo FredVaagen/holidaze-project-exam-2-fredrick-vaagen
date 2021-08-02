@@ -272,7 +272,7 @@ function EstablishmentsDesktop({
             padding-left: 10px;
           }
           .establishment-specific__image-col img {
-            height: 100%;     
+            height: 200px;     
           }
     
           ///////////OVERRIDING DROPDOWNBUTTON CSS FROM BOOTSTRAP ////////////////
