@@ -151,16 +151,15 @@ function SpecificEstablishmentCard({ establishment, images }) {
               width: 100% !important;
               margin-bottom: 2rem !important;
               margin-top: 2rem !important;
-              color: black !important;
+              color: #fff !important;
               font-size: 12px !important;
               font-weight: 500 !important;
-              background: linear-gradient(90deg, rgba(236,236,236,1) 17%, rgba(251,251,251,1) 100%);
+              background: #D2122E;
               transition: .4s;
             }
 
             .button:hover {
               transform: scale(1.01);
-              background: linear-gradient(90deg, rgba(236,236,236,1) 100%, rgba(251,251,251,1) 100%);
   
               
             }

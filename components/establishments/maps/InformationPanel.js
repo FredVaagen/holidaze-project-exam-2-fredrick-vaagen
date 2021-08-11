@@ -15,7 +15,7 @@ const InformationPanel = (props) => {
             background: #fff;
             position: absolute;
             left: 0;
-            top: -91px;
+            top: -99px;
             box-shadow: 0 1px 3px rgb(41 51 57 / 50%);
           }
         `}

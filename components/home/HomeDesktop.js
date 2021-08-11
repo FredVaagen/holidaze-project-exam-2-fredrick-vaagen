@@ -42,6 +42,8 @@ function HomeDesktop(establishments) {
               font-size: 100px;
               margin-top: 1rem;
               font-weight: 300;
+              text-transform: uppercase;
+              
             }
 
             h2 {

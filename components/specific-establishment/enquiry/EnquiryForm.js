@@ -231,7 +231,7 @@ function Enquiry(establishment) {
             width: 100% !important;
             margin-bottom: 2rem !important;
             margin-top: 2rem !important;
-            background: #000 !important;
+            background: #D2122E !important;
             color: #fff !important;
             font-size: 11px !important;
             font-weight: 300 !important;

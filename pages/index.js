@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Container from "react-bootstrap/Container";
 import { BASE_URL } from "../constants/api";
 import MediaQuery from "../components/utility/MediaQuery";
 import HomeMobile from "../components/home/HomeMobile";

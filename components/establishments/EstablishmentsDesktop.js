@@ -34,9 +34,8 @@ function EstablishmentsDesktop({
   return (
     <>
       <Container>
-        <SearchBar {...{ establishments }} />
         <Container>
-          <h1 className="mt-5 mb-5">Find a place to stay</h1>
+          <h1 >Find a place to stay</h1>
           <DropdownButton
             className="mt-3"
             id="dropdown-basic-button"
@@ -106,6 +105,7 @@ function EstablishmentsDesktop({
             </Dropdown.Item>
           </DropdownButton>
         </Container>
+        <SearchBar {...{ establishments }} />
       </Container>
 
       {sortEstablishments.map((establishment) => (
@@ -142,7 +142,7 @@ function EstablishmentsDesktop({
                 <Facilities {...establishment} />
                 <p className="address">{establishment.address}</p>
                 <Button variant="contained" className="button">
-                  See more
+                  Read more
                 </Button>
                 {user ? (
                   <Link
@@ -165,21 +165,34 @@ function EstablishmentsDesktop({
       ))}
       <style global jsx>
         {`
-          body {
-            background: linear-gradient(90deg, rgba(236,236,236,1) 17%, rgba(251,251,251,1) 100%);
-          }
+        
 
           .nav-container {
             background: #fff;
            
             position: fixed;
             z-index: 3;
-            margin-top: -8rem;
+            margin-top: -5rem;
+          
           }
 
           .main {
             min-height: 1000px;
 
+          }
+
+          .searchbar {
+            background: white;
+            box-shadow: 0 1px 3px rgb(41 51 57 / 50%);
+            
+            border-radius: 15px;
+            border: none;
+            align-self: center;
+            width: 100%;
+            max-width: 1280px;
+            min-width: 200px;
+            margin-top: 2rem;
+            
           }
           .establishment-container {
             transition: 0.5s;
@@ -195,7 +208,7 @@ function EstablishmentsDesktop({
           }
 
           h1 {
-            margin-top: 2rem;
+            margin-top: 5rem;
             font-weight: 300;
           }
           .col-md-6, .col-lg-3, .col-lg-5 {
@@ -254,16 +267,17 @@ function EstablishmentsDesktop({
             font-weight: 300;
           }
           .button {
-            background: linear-gradient(90deg, rgba(236,236,236,1) 17%, rgba(251,251,251,1) 100%);
-            color: black !important;
+            background: #D2122E;
+            color: #fff !important;
             font-size: 11px !important;
-            font-weight: 600 !important;
-            transition: .4s;
+            
+            transition: .2s;
           }
 
           .button:hover {
             transform: scale(1.01);
-            background: linear-gradient(90deg, rgba(236,236,236,1) 100%, rgba(251,251,251,1) 100%);
+            background: #D2122E;
+
 
             
           }
@@ -288,7 +302,7 @@ function EstablishmentsDesktop({
             background-color: #fff !important;
             border: none !important;
             box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-            
+           
           }
 
           .dropdown-item:active {
@@ -296,8 +310,11 @@ function EstablishmentsDesktop({
           background: none !important;
           } 
 
-
           ///////////////////////END////////////////////////////////////
+
+          .bottom-footer {
+            background: white;
+          }
         `}
       </style>
     </>

@@ -47,12 +47,12 @@ function SearchBar({ establishments }) {
           .searchbar {
             background: white;
             box-shadow: 0 1px 3px rgb(41 51 57 / 50%);
-            margin-top: 8rem;
+            
             border-radius: 15px;
             border: none;
             align-self: center;
             width: 100%;
-            max-width: 1280px;
+            max-width: 600px;
             min-width: 200px;
             
           }
